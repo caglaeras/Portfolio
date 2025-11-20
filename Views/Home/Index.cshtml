@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+
+<style>
+    :root {
+        --main-color: #762251;
+    }
+
+    .section {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: auto;
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        margin-bottom: 40px;
+        transition: transform 0.3s ease;
+        border-left: 4px solid var(--main-color);
+    }
+
+        .section:hover {
+            transform: translateY(-3px);
+        }
+
+    h2 {
+        font-weight: 600;
+        color: #0d1b2a;
+        margin-bottom: 25px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+        h2::after {
+            content: "";
+            width: 60px;
+            height: 3px;
+            background-color: var(--main-color);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+    p, td {
+        color: #444;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    table {
+        font-size: 0.95rem;
+    }
+
+        table th {
+            background-color: #f5eaf0;
+            font-weight: 600;
+            text-align: center;
+            color: var(--main-color);
+        }
+
+    .cv-section img {
+        max-width: 220px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+        .cv-section img:hover {
+            transform: scale(1.05);
+        }
+
+    .btn-primary {
+        background-color: #005aab;
+        border: 2px solid var(--main-color);
+        font-weight: 600;
+        padding: 10px 24px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: var(--main-color);
+            border-color: #003f7d;
+            color: #fff;
+        }
+</style>
+
+<div class="container mt-5">
+
+    <!-- Hakkımda -->
+    <div class="section animate__animated animate__fadeIn">
+        <h2>Hakkımda</h2>
+        <p>
+            Merhaba! Şu anda Bilgisayar ve Öğretim Teknolojileri Öğretmenliği bölümü öğrencisiyim. Teknoloji ile eğitimi birleştirerek ilgi çekici dijital öğrenme araçları geliştirme konusunda tutkuluyum.
+            Projelerim web tasarımından oyun tabanlı öğrenme ortamlarına kadar çeşitleniyor ve hedefim, eğitimi daha erişilebilir ve keyifli hale getiren etkileşimli çözümler üretmek.
+        </p>
+    </div>
+
+    <!-- Programın Amaçları -->
+    <div class="section animate__animated animate__fadeInUp">
+        <h2>Programın Amaçları</h2>
+        <p>
+            Program; pedagojik bilgi ile teknolojiyi birleştirerek, öğrencileri öğretmenlik, öğretim tasarımı ve eğitim yazılımı geliştirme gibi kariyerlere hazırlar.
+            Öğretim teorileri, programlama, multimedya tasarımı, veritabanları ve e-öğrenme teknolojileri gibi konuları kapsar.
+            Öğrenciler, modern dijital öğrenme ortamlarını analiz etme, tasarlama ve geliştirme yetkinliği kazanırlar.
+        </p>
+    </div>
+
+    <!-- Aldığım Dersler -->
+    <div class="section animate__animated animate__fadeInUp">
+        <h2>Aldığım Dersler</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ders Kodu</th>
+                        <th>Ders Açıklaması</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>CET 101</td><td>Eğitim teknolojisine giriş ve öğrenmedeki kritik rolü.</td></tr>
+                    <tr><td>CET 102</td><td>Eğitimde bilgi sistemleri; HTML ve web tasarımına giriş.</td></tr>
+                    <tr><td>CET 215</td><td>Öğrenme ortamlarında teknolojinin evrimi ve teori analizi.</td></tr>
+                    <tr><td>CET 224</td><td>Eğitsel görsellerin ve multimedya materyallerinin tasarımı ve değerlendirilmesi.</td></tr>
+                    <tr><td>CET 282</td><td>Öğretim yöntemleri ve eğitim teknolojisinin rolü.</td></tr>
+                    <tr><td>CET 301</td><td>Eğitim araçları için görsel programlama ve veritabanı uygulamaları.</td></tr>
+                    <tr><td>CET 314</td><td>Ağ temelleri, internet yapısı ve eğitimdeki uygulamaları.</td></tr>
+                    <tr><td>CET 321</td><td>İlişkisel veritabanı tasarımı, SQL ve eğitim projeleri için veri modelleme.</td></tr>
+                    <tr><td>CET 322</td><td>İstemci-sunucu programlama, HTTP, çerezler ve eğitim web uygulamaları.</td></tr>
+                    <tr><td>CET 341</td><td>Öğretim tasarımı teorileri ve öğrenme materyalleri geliştirme.</td></tr>
+                    <tr><td>CET 372</td><td>Eğitimde multimedya ve oyun tasarımı, içerik üretim ortamları.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- CV -->
+    <div class="section cv-section text-center animate__animated animate__fadeInUp">
+        <h2>CV'm</h2>
+        <p>Aşağıdaki butonu kullanarak CV’mi görüntüleyebilir veya indirebilirsiniz.</p>
+        <br />
+        <a class="btn btn-primary mt-2" href="~/documents/MyCV.pdf" target="_blank">CV’mi İndir (PDF)</a>
+    </div>
+
+</div>

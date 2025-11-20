@@ -1,0 +1,164 @@
+﻿@using Portfolio.Models
+@{
+    ViewData["Title"] = "Marketing Projeleri";
+    var videoProjects = ViewData["Videos"] as List<Marketing>;
+    var imageProjects = ViewData["Images"] as List<Marketing>;
+
+    var gifProjects = imageProjects?.Where(p => p.ImagePath.EndsWith(".gif")).ToList();
+    var staticImageProjects = imageProjects?.Where(p => !p.ImagePath.EndsWith(".gif")).ToList();
+}
+
+<style>
+    :root {
+        --main-color: #762251;
+    }
+
+    h2, h3 {
+        color: var(--main-color);
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 8px;
+        margin-bottom: 30px;
+    }
+
+        h2::after, h3::after {
+            content: "";
+            width: 50px;
+            height: 3px;
+            background-color: var(--main-color);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+    .card {
+        border: none;
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(118, 34, 81, 0.3);
+        }
+
+    .card-img-top {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        object-fit: cover;
+        height: 180px;
+    }
+
+    .card-body {
+        padding: 1rem 1.25rem;
+    }
+
+    .text-primary {
+        color: var(--main-color) !important;
+    }
+
+    .text-success {
+        color: #762251 !important;
+    }
+
+    .text-warning {
+        color: #762251 !important;
+    }
+
+    .border-warning {
+        border-color: #762251 !important;
+    }
+
+    /* Video iframe ratio for responsiveness */
+    .ratio {
+        border-radius: 12px 12px 0 0;
+        overflow: hidden;
+        box-shadow: inset 0 0 30px rgba(0,0,0,0.05);
+    }
+
+    /* Card titles */
+    .card-title {
+        font-weight: 600;
+        color: var(--main-color);
+    }
+
+    /* Card text */
+    .card-text {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+</style>
+
+<div class="container py-5">
+
+    <h2 class="text-center">Marketing ile İlgili Hazırladığım İçerikler</h2>
+    <p class="text-center mb-5 fs-5 text-secondary">
+        Önceki stajlarımda, case study'lerde ve bireysel çalışmalarımda hazırladığım video ve görsel örnekleri aşağıda inceleyebilirsiniz.
+    </p>
+
+    <h3 class="text-center text-primary">Video Örnekleri</h3>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var project in videoProjects)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    @if (project.VideoPath.Contains("youtube.com"))
+                    {
+                        <div class="ratio ratio-16x9">
+                            <iframe src="@project.VideoPath" title="@project.Title" allowfullscreen></iframe>
+                        </div>
+                    }
+                    else
+                    {
+                        <video class="card-img-top" controls>
+                            <source src="~/@project.VideoPath" type="video/mp4" />
+                            Tarayıcınız video etiketini desteklemiyor.
+                        </video>
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@project.Title</h5>
+                        <p class="card-text">@project.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- 🖼️ Statik Görseller -->
+    <h3 class="text-center text-success mt-5">Statik Görseller</h3>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var project in staticImageProjects)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="~/@project.ImagePath" class="card-img-top" alt="@project.Title" />
+                    <div class="card-body">
+                        <h5 class="card-title">@project.Title</h5>
+                        <p class="card-text">@project.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <h3 class="text-center text-warning mt-5"> Animasyonlu Görseller (GIF)</h3>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var project in gifProjects)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border border-warning rounded-3">
+                    <img src="~/@project.ImagePath" class="card-img-top" alt="@project.Title" />
+                    <div class="card-body">
+                        <h5 class="card-title">@project.Title</h5>
+                        <p class="card-text">@project.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
