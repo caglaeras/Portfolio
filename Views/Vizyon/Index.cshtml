@@ -1,0 +1,153 @@
+﻿@{
+    ViewData["Title"] = "Vizyon ve Eğitim Bilgileri";
+    var mainColor = "#762251";
+    var textColor = "#333";
+    var secondaryText = "#6c757d";
+    var cardBg = "#ffffff";
+}
+
+<style>
+    /* ------------------------------------------------------------------- */
+    /* Home sayfasındaki estetik ile tam uyumlu stiller */
+    /* ------------------------------------------------------------------- */
+    :root {
+        --main-color: #762251;
+        --text-color: #333;
+        --secondary-text: #6c757d;
+        --card-bg: #ffffff;
+    }
+
+    /* 🔥 Vücut Arka Planı (Layout'ta tanımlı, burada geçersiz kılınmayacak) */
+
+    .section {
+        padding: 40px 30px;
+        max-width: 1000px;
+        margin: 40px auto;
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(118, 34, 81, 0.15);
+        }
+
+    /* 🔥 BAŞLIK STİLLERİ (Sola Hizalı ve Kalın) */
+    h2 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: var(--main-color);
+        margin-bottom: 25px;
+        text-align: left; /* Sola Hizalı Başlık */
+        position: relative;
+        padding-bottom: 15px;
+        letter-spacing: -0.5px;
+    }
+
+        h2::after {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background-color: var(--main-color);
+            position: absolute;
+            bottom: 0;
+            left: 0; /* Sola Hizalı Çizgi */
+            transform: translateX(0);
+            border-radius: 1px;
+        }
+
+    /* 🔥 Ana Sayfa Başlığı (Tamamen Ortalanmış) */
+    .display-5 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: var(--text-color); /* Başlık rengi koya çevrildi */
+        letter-spacing: -1px;
+    }
+
+
+    p {
+        color: var(--secondary-text);
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .lead {
+        color: var(--text-color) !important; /* Lead metin daha belirgin */
+        font-weight: 500;
+    }
+
+    /* Tablo Stilleri */
+    table th {
+        background-color: #f5eaf0;
+        font-weight: 600;
+        text-align: left;
+        color: var(--main-color);
+        padding: 10px 15px !important;
+    }
+
+    table td {
+        color: var(--secondary-text);
+        padding: 10px 15px !important;
+        font-size: 0.95rem;
+    }
+
+    /* Mobil Uyum (Opsiyonel) */
+    @@media (max-width: 768px) {
+        h2 {
+            text-align: center;
+        }
+
+            h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+    }
+</style>
+
+<div class="container py-5">
+
+    <h1 class="display-5 fw-bold text-center mb-5" style="color: var(--text-color);">Eğitim Vizyonum ve Kazanımlarım</h1>
+
+    <div class="section mx-auto">
+        <h2>Eğitim Vizyonu ve Amacı</h2>
+        <p class="lead" style="font-size: 1.15rem; color: var(--text-color);">
+            Benim vizyonum, öğrenme süreçlerini çağdaş teknoloji ile zenginleştirerek **erişilebilir, ilgi çekici ve etkili** dijital çözümler tasarlamaktır.
+        </p>
+        <p>
+            BÖTE programı; **pedagojik bilgi** ile **teknolojiyi** birleştirerek, öğrencileri öğretmenlik, öğretim tasarımı ve eğitim yazılımı geliştirme gibi kariyerlere hazırlar. Program; öğrenme teorileri, programlama, multimedya tasarımı, veritabanları ve e-öğrenme teknolojileri gibi konuları kapsar. Mezunlar, modern dijital öğrenme ortamlarını analiz etme, tasarlama ve geliştirme yetkinliği kazanırlar.
+        </p>
+    </div>
+
+    <div class="section mx-auto">
+        <h2>Aldığım Tüm Önemli Dersler ve Kazanımlar</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">Ders Kodu</th>
+                        <th>Kazanılan Yetkinlikler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>CET 101</td><td>Eğitim teknolojisine giriş ve öğrenmedeki kritik rolü.</td></tr>
+                    <tr><td>CET 102</td><td>Eğitimde bilgi sistemleri; HTML ve web tasarımına giriş.</td></tr>
+                    <tr><td>CET 215</td><td>Öğrenme ortamlarında teknolojinin evrimi ve teori analizi.</td></tr>
+                    <tr><td>CET 224</td><td>Eğitsel görsellerin ve multimedya materyallerinin tasarımı ve değerlendirilmesi.</td></tr>
+                    <tr><td>CET 282</td><td>Öğretim yöntemleri ve eğitim teknolojisinin rolü.</td></tr>
+                    <tr><td>CET 301</td><td>Eğitim araçları için görsel programlama ve veritabanı uygulamaları.</td></tr>
+                    <tr><td>CET 314</td><td>Ağ temelleri, internet yapısı ve eğitimdeki uygulamaları.</td></tr>
+                    <tr><td>CET 321</td><td>İlişkisel veritabanı tasarımı, SQL ve eğitim projeleri için veri modelleme.</td></tr>
+                    <tr><td>CET 322</td><td>İstemci-sunucu programlama, HTTP, çerezler ve eğitim web uygulamaları.</td></tr>
+                    <tr><td>CET 341</td><td>Öğretim tasarımı teorileri ve öğrenme materyalleri geliştirme.</td></tr>
+                    <tr><td>CET 372</td><td>Eğitimde multimedya ve oyun tasarımı, içerik üretim ortamları.</td></tr>
+                    <tr><td>CET 401</td><td>Nicel ve nitel araştırma yöntemlerine giriş. Araştırma önerisi tasarımı.</td></tr>
+                    <tr><td>CET 431</td><td>Proje kavramı, proje yönetimi ilkeleri ve süreçleri: Proje planlama, bütçelendirme, izleme, risk denetimi, zaman ve kaynak yönetimi.</td></tr>
+                    <tr><td>CET 441</td><td>Uzaktan eğitimin tarihçesi, uzaktan eğitimin kullanıldığı öğretim ortamları; uzaktan eğitimde kullanılan teknolojiler.</td></tr>
+                    <tr><td>CET 451</td><td>Öğretim kaynaklarının, ünite ve ders planlarının tasarımı.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

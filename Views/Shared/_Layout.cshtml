@@ -2,46 +2,133 @@
 <html lang="tr">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewData["Title"] - Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Çağla Eraslan </title>
 
-    <!-- Bootstrap & Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+
+    @* 🔥 Font Awesome 6.x sürümünü ekliyoruz. *@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
-            --main-color: #762251;
+            --main-color: #762251; /* Ana Mor */
+            --soft-bg: #fdfdfd; /* Hafif Beyaz Arkaplan */
+            --text-color: #333; /* Koyu Metin */
+            --secondary-text: #6c757d; /* Yumuşak Gri Metin */
         }
 
+        /* Tipografi */
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f7f9fc;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--soft-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sayfa İçeriği Main Bölümü */
+        main {
+            flex-grow: 1;
+        }
+
+        /* Başlıklar ve Navigasyon Stilleri */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            color: var(--main-color);
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .navbar-brand {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--main-color) !important;
+            font-size: 1.5rem;
         }
 
         .nav-link {
             font-weight: 500;
-            color: #333 !important;
+            color: var(--text-color) !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
         }
 
-            .nav-link:hover {
+            .nav-link.active {
+                font-weight: 600;
                 color: var(--main-color) !important;
+                border-bottom: 3px solid var(--main-color);
+                padding-bottom: 5px;
             }
 
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--main-color);
+        .shadow-sm {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        /* 🔥 YENİ FOOTER STİLLERİ */
+        .app-footer {
+            background-color: var(--main-color); /* Ana rengi arkaplan olarak kullan */
+            color: #f8f9fa; /* Açık renkli metinler */
+            padding: 40px 0;
+            border-top: 5px solid #5c1b41; /* Daha koyu bir üst çizgi */
+            font-size: 0.9rem;
+        }
+
+            .app-footer h5 {
+                color: #ffffff; /* Başlıklar için beyaz renk */
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+
+            .app-footer a {
+                color: #ffffff; /* Linkler için beyaz */
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+                .app-footer a:hover {
+                    color: #d8d8d8; /* Hafif grileşme hover'da */
+                    text-decoration: underline;
+                }
+
+        .footer-social-icon {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: #ffffff;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+            .footer-social-icon:hover {
+                color: #d8d8d8;
+                transform: translateY(-3px);
+            }
+
+        .footer-info-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+            .footer-info-item i {
+                margin-right: 10px;
+                color: #d8d8d8;
+                font-size: 1.1rem;
+            }
+
+        /* Genel Yumuşaklık */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
     </style>
 </head>
 <body>
-    <!-- 🔹 Responsive Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">Çağla Eraslan Portfolyo</a>
+            <a class="navbar-brand" href="/">Çağla Eraslan </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,31 +136,93 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    @{
+                        var currentController = ViewContext.RouteData.Values["Controller"].ToString();
+                    }
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                        <a class="nav-link @(currentController == "Home" ? "active" : "")" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Vizyon" ? "active" : "")" asp-controller="Vizyon" asp-action="Index">Vizyon & Eğitim</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Unity" ? "active" : "")" asp-controller="Unity" asp-action="Index">Unity</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Unity" asp-action="Index">Unity</a>
+                        <a class="nav-link @(currentController == "Web" ? "active" : "")" asp-controller="Web" asp-action="Index">Web Geliştirme</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Web" asp-action="Index">Web Geliştirme</a>
+                        <a class="nav-link @(currentController == "Other" ? "active" : "")" asp-controller="Other" asp-action="Index">Diğer Projeler</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Other" asp-action="Index">Diğer Projeler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Marketing" asp-action="Index">Marketing Portfolyo</a>
+                        <a class="nav-link @(currentController == "Marketing" ? "active" : "")" asp-controller="Marketing" asp-action="Index">Marketing Portfolyo</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Sayfa içeriği -->
-    <main role="main" class="pb-3">
+    <main role="main">
         @RenderBody()
     </main>
 
+    @* 🔥 YENİ FOOTER BAŞLANGICI *@
+    <footer class="app-footer mt-auto">
+        <div class="container text-center text-md-start">
+            <div class="row gy-4">
+
+                <div class="col-md-4 col-lg-4 mx-auto">
+                    <h5 class="text-uppercase fw-bold mb-4">Çağla Eraslan</h5>
+                    <p style="color: #e0e0e0;">
+                        Boğaziçi Üniversitesi Bilgisayar ve Öğretim Teknolojileri öğrencisi. Eğitimi teknolojiyle buluşturarak, kullanıcı odaklı ve etkileşimli dijital öğrenme çözümleri üretiyorum.
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-lg-3 mx-auto">
+                    <h5 class="text-uppercase fw-bold mb-4">İletişim</h5>
+                    <ul class="list-unstyled">
+                        <li class="footer-info-item">
+                            <i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye
+                        </li>
+                        <li class="footer-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:caglaeraslan@gmail.com">caglaeraslan@gmail.com</a>
+                        </li>
+                        <li class="footer-info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:+905454920810">+90 545 492 08 10</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-lg-2 mx-auto">
+                    <h5 class="text-uppercase fw-bold mb-4">Takip Et</h5>
+                    <div class="d-flex justify-content-center justify-content-md-start mb-2">
+                        <a href="https://www.linkedin.com/in/%C3%A7a%C4%9Fla-eraslan-76608b1b5/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="LinkedIn Profili">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/caglaeras" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="GitHub Profili (Varsa)">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        @* Diğer sosyal medya ikonlarını buraya ekleyebilirsiniz *@
+                    </div>
+                </div>
+
+            </div>
+            <hr class="my-3" style="border-color: rgba(255, 255, 255, 0.2);">
+            <div class="text-center py-3">
+                &copy; @DateTime.Now.Year Çağla Eraslan Portfolyo. Tüm Hakları Saklıdır.
+            </div>
+        </div>
+    </footer>
+    @* 🔥 YENİ FOOTER SONU *@
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    @* 🔥 Font Awesome CDN'i body sonuna taşımaya gerek yok, head'e ekledik. *@
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

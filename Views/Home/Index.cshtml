@@ -1,150 +1,228 @@
 ﻿@{
     ViewData["Title"] = "Ana Sayfa";
+    var mainColor = "#762251";
+    var textColor = "#333";
+    var secondaryText = "#6c757d";
+    var cardBg = "#ffffff";
 }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
-
 <style>
+    /* ------------------------------------------------------------------- */
+    /* GENEL ESTETİK VE PROFESYONEL STİLLER */
+    /* ------------------------------------------------------------------- */
     :root {
         --main-color: #762251;
+        --text-color: #333;
+        --secondary-text: #6c757d;
+        --card-bg: #ffffff;
+        /* 🔥 YENİ GRADYAN RENKLERİ */
+        --grad-start: #f8eaf0; /* Çok açık mor/pembe */
+        --grad-end: #e8f0f8; /* Çok açık mavi/gri */
     }
 
+    /* 🔥 ARKA PLAN ANİMASYONU */
+    @@keyframes background-flow {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    body {
+        /* Layout'ta tanımlı, burada geçersiz kılınıyor */
+        background: linear-gradient(-45deg, var(--grad-start), var(--grad-end), #f0f0f5, #f8eaf0);
+        background-size: 400% 400%; /* Gradyan alanını büyüt */
+        animation: background-flow 30s ease infinite; /* Yavaş ve sonsuz animasyon */
+    }
+
+    /* 🔥 ANA CONTAINER İZOLASYONU */
+    .container {
+        position: relative;
+        z-index: 2; /* İçeriğin arka planın üzerinde kalmasını sağla */
+        /* Ek hafif gölge ekleyebiliriz */
+    }
+
+    /* SECTİON VE KART STİLLERİ (Değişiklik Yok) */
     .section {
-        padding: 60px 20px;
+        padding: 40px 30px;
         max-width: 1000px;
-        margin: auto;
-        background-color: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-        margin-bottom: 40px;
-        transition: transform 0.3s ease;
-        border-left: 4px solid var(--main-color);
+        margin: 0 auto 40px auto;
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
         .section:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(118, 34, 81, 0.15);
         }
 
+    /* BAŞLIK STİLLERİ (Değişiklik Yok) */
     h2 {
-        font-weight: 600;
-        color: #0d1b2a;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: var(--main-color);
         margin-bottom: 25px;
-        text-align: center;
+        text-align: left;
         position: relative;
-        padding-bottom: 10px;
+        padding-bottom: 15px;
+        letter-spacing: -0.5px;
     }
 
         h2::after {
             content: "";
-            width: 60px;
-            height: 3px;
+            width: 30px;
+            height: 2px;
             background-color: var(--main-color);
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
+            left: 0;
+            transform: translateX(0);
+            border-radius: 1px;
         }
 
-    p, td {
-        color: #444;
+    p {
+        color: var(--secondary-text);
         font-size: 1rem;
-        line-height: 1.6;
+        line-height: 1.7;
     }
 
-    table {
-        font-size: 0.95rem;
+    /* GİRİŞ (HERO) BÖLÜMÜ */
+    .hero-section {
+        padding: 60px 40px;
+        max-width: 1000px;
+        margin: 0 auto 40px auto;
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 40px;
     }
 
-        table th {
-            background-color: #f5eaf0;
-            font-weight: 600;
-            text-align: center;
-            color: var(--main-color);
+    /* Profil Fotoğrafı Stili */
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 15px;
+        border: 4px solid var(--main-color);
+        box-shadow: 0 8px 20px rgba(118, 34, 81, 0.3);
+        transition: transform 0.4s ease, border-radius 0.4s ease;
+    }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(1deg);
+            border-radius: 25px;
         }
 
-    .cv-section img {
-        max-width: 220px;
-        border-radius: 10px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-    }
-
-        .cv-section img:hover {
-            transform: scale(1.05);
-        }
-
-    .btn-primary {
-        background-color: #005aab;
-        border: 2px solid var(--main-color);
+    /* Buton Stili (Değişiklik Yok) */
+    .btn-main {
+        background-color: var(--main-color);
+        border: none;
+        color: #fff;
         font-weight: 600;
-        padding: 10px 24px;
+        padding: 12px 30px;
         border-radius: 8px;
         transition: all 0.3s ease;
     }
 
-        .btn-primary:hover {
-            background-color: var(--main-color);
-            border-color: #003f7d;
-            color: #fff;
+        .btn-main:hover {
+            background-color: #5c1b41;
+            box-shadow: 0 4px 15px rgba(118, 34, 81, 0.4);
         }
+
+    .btn-about {
+        background-color: var(--main-color);
+        color: #fff;
+        font-weight: 600;
+        padding: 15px 40px;
+        border-radius: 10px;
+        font-size: 1.15rem;
+        box-shadow: 0 6px 20px rgba(118, 34, 81, 0.3);
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .btn-about:hover {
+            background-color: #5c1b41;
+            box-shadow: 0 8px 25px rgba(118, 34, 81, 0.5);
+            transform: translateY(-2px);
+        }
+
+    /* Responsive Düzenleme (Değişiklik Yok) */
+    @@media (max-width: 768px) {
+        .hero-section {
+            flex-direction: column;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+            .hero-section h1 {
+                text-align: center !important;
+            }
+
+        .profile-img {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+            h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        .btn-about {
+            font-size: 1rem;
+            padding: 12px 30px;
+        }
+    }
 </style>
 
 <div class="container mt-5">
 
-    <!-- Hakkımda -->
-    <div class="section animate__animated animate__fadeIn">
-        <h2>Hakkımda</h2>
-        <p>
-            Merhaba! Şu anda Bilgisayar ve Öğretim Teknolojileri Öğretmenliği bölümü öğrencisiyim. Teknoloji ile eğitimi birleştirerek ilgi çekici dijital öğrenme araçları geliştirme konusunda tutkuluyum.
-            Projelerim web tasarımından oyun tabanlı öğrenme ortamlarına kadar çeşitleniyor ve hedefim, eğitimi daha erişilebilir ve keyifli hale getiren etkileşimli çözümler üretmek.
-        </p>
-    </div>
+    <div class="hero-section mx-auto">
 
-    <!-- Programın Amaçları -->
-    <div class="section animate__animated animate__fadeInUp">
-        <h2>Programın Amaçları</h2>
-        <p>
-            Program; pedagojik bilgi ile teknolojiyi birleştirerek, öğrencileri öğretmenlik, öğretim tasarımı ve eğitim yazılımı geliştirme gibi kariyerlere hazırlar.
-            Öğretim teorileri, programlama, multimedya tasarımı, veritabanları ve e-öğrenme teknolojileri gibi konuları kapsar.
-            Öğrenciler, modern dijital öğrenme ortamlarını analiz etme, tasarlama ve geliştirme yetkinliği kazanırlar.
-        </p>
-    </div>
+        <div class="flex-shrink-0">
+            @* FOTOĞRAFINIZ BURADA *@
+            <img src="~/images/foto.jpeg" class="profile-img" alt="Çağla Eraslan Profil Fotoğrafı" />
+        </div>
 
-    <!-- Aldığım Dersler -->
-    <div class="section animate__animated animate__fadeInUp">
-        <h2>Aldığım Dersler</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Ders Kodu</th>
-                        <th>Ders Açıklaması</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>CET 101</td><td>Eğitim teknolojisine giriş ve öğrenmedeki kritik rolü.</td></tr>
-                    <tr><td>CET 102</td><td>Eğitimde bilgi sistemleri; HTML ve web tasarımına giriş.</td></tr>
-                    <tr><td>CET 215</td><td>Öğrenme ortamlarında teknolojinin evrimi ve teori analizi.</td></tr>
-                    <tr><td>CET 224</td><td>Eğitsel görsellerin ve multimedya materyallerinin tasarımı ve değerlendirilmesi.</td></tr>
-                    <tr><td>CET 282</td><td>Öğretim yöntemleri ve eğitim teknolojisinin rolü.</td></tr>
-                    <tr><td>CET 301</td><td>Eğitim araçları için görsel programlama ve veritabanı uygulamaları.</td></tr>
-                    <tr><td>CET 314</td><td>Ağ temelleri, internet yapısı ve eğitimdeki uygulamaları.</td></tr>
-                    <tr><td>CET 321</td><td>İlişkisel veritabanı tasarımı, SQL ve eğitim projeleri için veri modelleme.</td></tr>
-                    <tr><td>CET 322</td><td>İstemci-sunucu programlama, HTTP, çerezler ve eğitim web uygulamaları.</td></tr>
-                    <tr><td>CET 341</td><td>Öğretim tasarımı teorileri ve öğrenme materyalleri geliştirme.</td></tr>
-                    <tr><td>CET 372</td><td>Eğitimde multimedya ve oyun tasarımı, içerik üretim ortamları.</td></tr>
-                </tbody>
-            </table>
+        <div>
+            <h1 class="display-5 fw-bold mb-3" style="color: var(--text-color); text-align: left;">
+                Merhaba, Ben Çağla Eraslan
+            </h1>
+            <p class="lead mb-4" style="color: var(--secondary-text); font-size: 1.2rem; max-width: 600px;">
+                Boğaziçi Üniversitesi Bilgisayar ve Öğretim Teknolojileri öğrencisiyim. Eğitimi teknolojiyle buluşturarak, kullanıcı odaklı ve etkileşimli dijital öğrenme çözümleri üretiyorum.
+            </p>
+
+            <a class="btn btn-main mt-3" href="~/documents/MyCV.pdf" target="_blank">
+                <i class="fas fa-download me-2"></i> CV'mi İndir (PDF)
+            </a>
         </div>
     </div>
 
-    <!-- CV -->
-    <div class="section cv-section text-center animate__animated animate__fadeInUp">
-        <h2>CV'm</h2>
-        <p>Aşağıdaki butonu kullanarak CV’mi görüntüleyebilir veya indirebilirsiniz.</p>
-        <br />
-        <a class="btn btn-primary mt-2" href="~/documents/MyCV.pdf" target="_blank">CV’mi İndir (PDF)</a>
+    <div class="text-center my-5">
+        @* 🔥 Yeni Hakkımda Butonunu Ortala *@
+        <h2 style="text-align: center; margin-bottom: 30px;">Tanışalım!</h2>
+        <a asp-controller="Vizyon" asp-action="Index" class="btn btn-about">
+            <i class="fas fa-graduation-cap"></i> Hakkımda
+        </a>
     </div>
+
+
 
 </div>

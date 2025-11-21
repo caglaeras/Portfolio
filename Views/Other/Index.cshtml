@@ -2,66 +2,107 @@
 
 @{
     ViewData["Title"] = "Diğer Projeler";
+    // Bu değişkenler stil bloğunda kullanılacaktır
+    var mainColor = "#762251";
+    var textColor = "#333";
+    var secondaryText = "#6c757d";
+    var cardBg = "#ffffff";
 }
 
-<!-- Bootstrap 5 CDN -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
-    body {
-        background: linear-gradient(135deg, #f4f6f8, #e8eff5);
-        font-family: 'Poppins', sans-serif;
+    /* ------------------------------------------------------------------- */
+    /* Home sayfasındaki son estetik ve profesyonel stillerle tam uyum       */
+    /* ------------------------------------------------------------------- */
+
+    /* Ana Renk Tanımı (Gerektiğinde referans için) */
+    :root {
+        --main-color: #762251;
+        --text-color: #333;
+        --secondary-text: #6c757d;
+        --card-bg: #ffffff;
     }
 
-    h2 {
-        font-weight: 600;
+    /* 🔥 Minimal Başlık Çizgisi ve Font Stili */
+    h2, h3 {
+        font-family: 'Inter', sans-serif;
+        color: var(--main-color);
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 40px;
         text-align: center;
-        margin-bottom: 2rem;
-        color: #333;
+        letter-spacing: -0.5px;
     }
 
+        h2::after, h3::after {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background-color: var(--main-color);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+    /* 🔥 Kart Stili (Geliştirilmiş Gölge ve Hover) */
     .card {
-        border-radius: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 15px; /* Yumuşak köşeler */
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Yumuşak gölge */
+        height: 100%;
+        overflow: hidden;
+        background-color: var(--card-bg);
     }
 
         .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px); /* Belirgin kalkış efekti */
+            box-shadow: 0 15px 40px rgba(118, 34, 81, 0.35); /* Vurgulu gölge */
         }
 
+    /* Video Çerçeve Köşeleri */
     .ratio iframe {
-        border-top-left-radius: 16px;
-        border-top-right-radius: 16px;
+        border-radius: 15px 15px 0 0; /* Kartın köşeleriyle uyumlu */
     }
 
     .card-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #2c3e50;
+        font-size: 1.3rem; /* Daha büyük başlık */
+        font-weight: 700;
+        color: var(--main-color);
     }
 
     .card-text {
         font-size: 0.95rem;
-        color: #555;
+        color: var(--secondary-text);
     }
 
-    .container {
-        max-width: 1200px;
+    .card-body {
+        padding: 1.5rem; /* İç boşluk artırıldı */
+    }
+
+    /* Giriş başlık stili */
+    .lead {
+        color: var(--secondary-text);
+        font-size: 1.1rem;
     }
 </style>
 
 <div class="container py-5">
-    <h2>Diğer Projeler</h2>
-    <h3>Boğaziçi'nde aldığım derslerde öğrendiklerimi uyguladığım diğer projeler</h3>
+
+    <div class="text-center mb-5 pb-4">
+        <h1 class="display-5 fw-bold" style="color: var(--text-color);">Boğaziçi'nde Geliştirilen Projeler</h1>
+        <p class="lead mx-auto" style="max-width: 800px;">
+            Boğaziçi Üniversitesi'nde aldığım derslerde, teorik bilgileri pratiğe dökmek amacıyla geliştirdiğim çeşitli teknoloji ve mühendislik projeleridir.
+        </p>
+    </div>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         @foreach (var project in Model)
         {
             <div class="col">
-                <div class="card h-100 shadow-sm border-0">
+                <div class="card h-100 shadow border-0">
                     <div class="ratio ratio-16x9">
                         <iframe src="https://www.youtube.com/embed/@project.YouTubeId"
                                 title="@project.Title"
@@ -72,9 +113,13 @@
                     <div class="card-body">
                         <h5 class="card-title">@project.Title</h5>
                         <p class="card-text">@project.Description</p>
+                        @* Eğer LinkPath diye bir alan varsa buraya buton eklenebilir: *@
+                        @* <a href="@project.LinkPath" class="btn btn-main mt-3">Detayları Gör</a> *@
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+
+@* Bu sayfada JavaScript Lightbox kullanılmadığı için Scripts bölümü gerekmez. *@
