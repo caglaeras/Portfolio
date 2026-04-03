@@ -14,7 +14,7 @@
       "downloadCv": "CV'mi İndir (PDF)",
       "letsMeet": "Tanışalım!",
       "aboutMe": "Hakkımda",
-      "heroImage": "/images/foto.jpeg"
+      "heroImage": "/images/foto.JPEG"
     },
     "footer": {
       "title": "Çağla Eraslan",
@@ -126,7 +126,7 @@
       "downloadCv": "Download my CV (PDF)",
       "letsMeet": "Let's Meet!",
       "aboutMe": "About Me",
-      "heroImage": "/images/foto.jpeg"
+      "heroImage": "/images/foto.JPEG"
     },
     "footer": {
       "title": "Çağla Eraslan",
