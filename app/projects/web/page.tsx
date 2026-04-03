@@ -3,19 +3,19 @@
 import React from "react";
 import ProjectCard from "@/components/ProjectCard";
 import { useLanguage } from "@/context/LanguageContext";
-import styles from "../GridPage.module.css"; 
+import styles from "../../GridPage.module.css"; 
 
-export default function Unity() {
+export default function Web() {
   const { content } = useLanguage();
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>{content.unity.title}</h1>
-        <p className={styles.lead}>{content.unity.lead}</p>
+        <h1 className={styles.title}>{content.web.title}</h1>
+        <p className={styles.lead}>{content.web.lead}</p>
       </div>
       <div className={styles.grid}>
-        {content.unity.projects.map((project: Record<string, any>, idx: number) => (
+        {content.web.projects.map((project: Record<string, any>, idx: number) => (
           <ProjectCard key={idx} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} />
         ))}
       </div>

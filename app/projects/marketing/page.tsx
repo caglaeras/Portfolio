@@ -3,7 +3,7 @@
 import React from "react";
 import ProjectCard from "@/components/ProjectCard";
 import { useLanguage } from "@/context/LanguageContext";
-import styles from "../GridPage.module.css"; 
+import styles from "../../GridPage.module.css"; 
 
 export default function Marketing() {
   const { content, language } = useLanguage();

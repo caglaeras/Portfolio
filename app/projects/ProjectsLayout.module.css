@@ -1,0 +1,82 @@
+.container {
+  padding: 40px 0 80px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--secondary-text);
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+.tabMenuWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.tabMenu {
+  display: flex;
+  gap: 15px;
+  background: var(--card-bg);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tabBtn {
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+  background: transparent;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid transparent;
+}
+
+.tabBtn:hover {
+  color: var(--text-color);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.tabBtn.active {
+  background: #fff;
+  color: var(--text-color);
+  border-color: rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.contentArea {
+  min-height: 500px;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 2.2rem; }
+  .tabMenu { gap: 8px; }
+  .tabBtn { padding: 10px 16px; font-size: 0.85rem; }
+}
