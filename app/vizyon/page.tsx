@@ -18,6 +18,12 @@ export default function Vizyon() {
         <p className={styles.text}>{t.visionText}</p>
       </div>
 
+      <div style={{ textAlign: "center", marginTop: "50px", paddingBottom: "20px" }}>
+        <a href="mailto:caglaeraslan@gmail.com" className="btn-main">
+          {content.home.letsMeet}
+        </a>
+      </div>
+
     </div>
   );
 }

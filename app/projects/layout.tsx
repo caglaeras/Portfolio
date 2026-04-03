@@ -23,9 +23,6 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
       {/* Persistent Page Header */}
       <div className={styles.header}>
         <h1 className={styles.title}>{content.nav.projects}</h1>
-        <p className={styles.subtitle}>
-          {language === 'tr' ? "Kategoriler arası gezinmek için menüyü kullanın." : "Use the menu to navigate between categories."}
-        </p>
       </div>
 
       {/* Tab Menu */}

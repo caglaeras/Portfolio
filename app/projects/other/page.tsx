@@ -11,7 +11,7 @@ export default function Other() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>{content.other.title}</h1>
+        <h2 className={styles.title} style={{ fontSize: "2.2rem" }}>{content.other.title}</h2>
         <p className={styles.lead}>{content.other.lead}</p>
       </div>
       <div className={styles.grid}>

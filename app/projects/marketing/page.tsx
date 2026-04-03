@@ -11,7 +11,7 @@ export default function Marketing() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>{content.marketing.title}</h1>
+        <h2 className={styles.title} style={{ fontSize: "2.2rem" }}>{content.marketing.title}</h2>
         <p className={styles.lead}>{content.marketing.lead}</p>
       </div>
       

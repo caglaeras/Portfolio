@@ -27,9 +27,9 @@ export default function Home() {
             <a href="/Portfolio/documents/CaglaEraslan_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn-main">
               {t.downloadCv}
             </a>
-            <a href="mailto:caglaeraslan@gmail.com" className="btn-main">
-              {t.letsMeet}
-            </a>
+            <Link href="/vizyon" className="btn-main">
+              {language === 'tr' ? 'Daha Fazlası..' : 'More..'}
+            </Link>
           </div>
         </div>
 

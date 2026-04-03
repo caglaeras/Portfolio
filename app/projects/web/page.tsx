@@ -11,7 +11,7 @@ export default function Web() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>{content.web.title}</h1>
+        <h2 className={styles.title} style={{ fontSize: "2.2rem" }}>{content.web.title}</h2>
         <p className={styles.lead}>{content.web.lead}</p>
       </div>
       <div className={styles.grid}>

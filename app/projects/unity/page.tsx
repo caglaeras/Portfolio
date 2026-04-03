@@ -11,7 +11,7 @@ export default function Unity() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>{content.unity.title}</h1>
+        <h2 className={styles.title} style={{ fontSize: "2.2rem" }}>{content.unity.title}</h2>
         <p className={styles.lead}>{content.unity.lead}</p>
       </div>
       <div className={styles.grid}>
