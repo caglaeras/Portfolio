@@ -16,6 +16,7 @@ export default function Vizyon() {
         <h2 className="section-title">{t.visionTitle}</h2>
         <p className={styles.lead}>{t.visionLead}</p>
         <p className={styles.text}>{t.visionText}</p>
+        {t.visionThird && <p className={styles.text} style={{ marginTop: '20px' }}>{t.visionThird}</p>}
       </div>
 
       <div style={{ textAlign: "center", marginTop: "50px", paddingBottom: "20px" }}>

@@ -13,6 +13,10 @@ export default function Education() {
       <h1 className={styles.pageTitle}>{content.nav.education}</h1>
 
       <div className={`card-glass ${styles.section}`}>
+        {t.educationIntro && <p className={styles.lead} style={{ marginBottom: "30px" }}>{t.educationIntro}</p>}
+        {t.educationTargetTitle && <h2 className="section-title" style={{ marginTop: "20px" }}>{t.educationTargetTitle}</h2>}
+        {t.educationTargetDesc && <p className={styles.text} style={{ marginBottom: "50px" }}>{t.educationTargetDesc}</p>}
+        
         <h2 className="section-title">{t.coursesTitle}</h2>
         <div className={styles.tableResponsive}>
           <table className={styles.table}>
