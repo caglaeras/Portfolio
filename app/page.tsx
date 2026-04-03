@@ -28,8 +28,11 @@ export default function Home() {
               {t.downloadCv}
             </a>
             <Link href="/vizyon" className="btn-main">
-              {language === 'tr' ? 'Daha Fazlası..' : 'More..'}
+              {language === 'tr' ? 'Daha..' : 'More..'}
             </Link>
+            <a href="mailto:caglaeraslan@gmail.com" aria-label="Email Me" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '52px', height: '52px', borderRadius: '50%', backgroundColor: 'var(--main-color)', color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.2rem', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.15)' }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)' }}>
+              <i className="fas fa-envelope"></i>
+            </a>
           </div>
         </div>
 
