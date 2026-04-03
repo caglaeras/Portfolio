@@ -27,10 +27,6 @@ const Footer = () => {
                 <i className="fas fa-envelope"></i> 
                 <a href="mailto:caglaeraslan@gmail.com">caglaeraslan@gmail.com</a>
               </li>
-              <li className={styles.listItem}>
-                <i className="fas fa-phone-alt"></i> 
-                <a href="tel:+905454920810">+90 545 492 08 10</a>
-              </li>
             </ul>
           </div>
 
