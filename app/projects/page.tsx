@@ -17,8 +17,8 @@ export default function Projects() {
         <p className={styles.lead}>{content.unity.lead}</p>
       </div>
       <div className={styles.grid}>
-        {content.unity.projects.map((project, idx) => (
-          <ProjectCard key={`unity-${idx}`} {...project} />
+        {content.unity.projects.map((project: any, idx: number) => (
+          <ProjectCard key={`unity-${idx}`} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} />
         ))}
       </div>
 
@@ -30,8 +30,8 @@ export default function Projects() {
         <p className={styles.lead}>{content.web.lead}</p>
       </div>
       <div className={styles.grid}>
-        {content.web.projects.map((project, idx) => (
-          <ProjectCard key={`web-${idx}`} {...project} />
+        {content.web.projects.map((project: any, idx: number) => (
+          <ProjectCard key={`web-${idx}`} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} />
         ))}
       </div>
 
@@ -43,8 +43,8 @@ export default function Projects() {
         <p className={styles.lead}>{content.other.lead}</p>
       </div>
       <div className={styles.grid}>
-        {content.other.projects.map((project, idx) => (
-          <ProjectCard key={`other-${idx}`} {...project} />
+        {content.other.projects.map((project: any, idx: number) => (
+          <ProjectCard key={`other-${idx}`} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} />
         ))}
       </div>
 
@@ -61,7 +61,7 @@ export default function Projects() {
         {content.nav.projects === "Projects" ? "Video Content" : "Video İçerikleri"}
       </h3>
       <div className={styles.grid} style={{ marginBottom: "60px" }}>
-        {content.marketing.videos?.map((vid, idx) => (
+        {content.marketing.videos?.map((vid: any, idx: number) => (
           <ProjectCard key={`mvid-${idx}`} title={vid.title} description={vid.desc} videoId={vid.videoId} />
         ))}
       </div>
@@ -71,7 +71,7 @@ export default function Projects() {
         {content.nav.projects === "Projects" ? "Visual Design" : "Görsel Tasarım"}
       </h3>
       <div className={styles.grid}>
-        {content.marketing.images?.map((img, idx) => (
+        {content.marketing.images?.map((img: any, idx: number) => (
           <ProjectCard key={`mimg-${idx}`} title={img.title} description={img.desc} image={img.image} />
         ))}
       </div>
