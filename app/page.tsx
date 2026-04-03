@@ -14,10 +14,13 @@ export default function Home() {
     <div className={styles.container}>
       <div className={`card-glass ${styles.heroCard}`}>
         <div className={styles.imageContainer}>
-          <img 
+          <Image 
             src={t.heroImage} 
             alt="Çağla Eraslan Profil Fotoğrafı" 
-            className={styles.profileImg} 
+            className={styles.profileImg}
+            width={160}
+            height={160}
+            unoptimized
           />
         </div>
 

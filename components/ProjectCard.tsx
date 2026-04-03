@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./ProjectCard.module.css";
+import Image from "next/image";
 
 interface ProjectCardProps {
   title: string;
@@ -21,7 +22,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, videoId, 
             allowFullScreen
           ></iframe>
         ) : image ? (
-          <img src={image} alt={title} className={styles.image} loading="lazy" />
+          <Image src={image} alt={title} fill className={styles.image} unoptimized />
         ) : null}
       </div>
       <div className={styles.body}>
