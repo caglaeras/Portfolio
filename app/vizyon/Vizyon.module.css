@@ -1,0 +1,78 @@
+.container {
+  padding: 20px 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  text-align: center;
+  font-size: 2.2rem;
+  color: var(--text-color);
+  margin-bottom: 50px;
+}
+
+.section {
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.lead {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.text {
+  font-size: 1rem;
+  color: var(--secondary-text);
+  line-height: 1.7;
+}
+
+.tableResponsive {
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: var(--bg-color);
+}
+
+.table th {
+  background-color: rgba(118, 34, 81, 0.08);
+  font-weight: 600;
+  text-align: left;
+  color: var(--main-color);
+  padding: 16px;
+  border-bottom: 2px solid rgba(118, 34, 81, 0.1);
+}
+
+.table td {
+  color: var(--secondary-text);
+  padding: 16px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.courseCode {
+  font-weight: 600;
+  color: var(--text-color) !important;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 25px;
+  }
+}

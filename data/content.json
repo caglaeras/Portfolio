@@ -1,0 +1,226 @@
+{
+  "tr": {
+    "nav": {
+      "home": "Ana Sayfa",
+      "vizyon": "Vizyon & Eğitim",
+      "unity": "Unity",
+      "web": "Web Geliştirme",
+      "other": "Diğer Projeler",
+      "marketing": "Marketing Portfolyo"
+    },
+    "home": {
+      "greeting": "Merhaba, Ben Çağla Eraslan",
+      "bio": "Boğaziçi Üniversitesi Bilgisayar ve Öğretim Teknolojileri öğrencisiyim. Eğitimi teknolojiyle buluşturarak, kullanıcı odaklı ve etkileşimli dijital öğrenme çözümleri üretiyorum.",
+      "downloadCv": "CV'mi İndir (PDF)",
+      "letsMeet": "Tanışalım!",
+      "aboutMe": "Hakkımda",
+      "heroImage": "/images/foto.jpeg"
+    },
+    "footer": {
+      "title": "Çağla Eraslan",
+      "bio": "Boğaziçi Üniversitesi Bilgisayar ve Öğretim Teknolojileri öğrencisi. Eğitimi teknolojiyle buluşturarak, kullanıcı odaklı ve etkileşimli dijital öğrenme çözümleri üretiyorum.",
+      "contact": "İletişim",
+      "location": "İstanbul, Türkiye",
+      "follow": "Takip Et",
+      "rights": "Çağla Eraslan Portfolyo. Tüm Hakları Saklıdır."
+    },
+    "vizyon": {
+      "title": "Eğitim Vizyonum ve Kazanımlarım",
+      "visionTitle": "Eğitim Vizyonu ve Amacı",
+      "visionLead": "Benim vizyonum, öğrenme süreçlerini çağdaş teknoloji ile zenginleştirerek erişilebilir, ilgi çekici ve etkili dijital çözümler tasarlamaktır.",
+      "visionText": "BÖTE programı; pedagojik bilgi ile teknolojiyi birleştirerek, öğrencileri öğretmenlik, öğretim tasarımı ve eğitim yazılımı geliştirme gibi kariyerlere hazırlar. Program; öğrenme teorileri, programlama, multimedya tasarımı, veritabanları ve e-öğrenme teknolojileri gibi konuları kapsar. Mezunlar, modern dijital öğrenme ortamlarını analiz etme, tasarlama ve geliştirme yetkinliği kazanırlar.",
+      "coursesTitle": "Aldığım Tüm Önemli Dersler ve Kazanımlar",
+      "courseCode": "Ders Kodu",
+      "courseCompetency": "Kazanılan Yetkinlikler",
+      "courses": [
+        { "code": "CET 101", "desc": "Eğitim teknolojisine giriş ve öğrenmedeki kritik rolü." },
+        { "code": "CET 102", "desc": "Eğitimde bilgi sistemleri; HTML ve web tasarımına giriş." },
+        { "code": "CET 215", "desc": "Öğrenme ortamlarında teknolojinin evrimi ve teori analizi." },
+        { "code": "CET 224", "desc": "Eğitsel görsellerin ve multimedya materyallerinin tasarımı ve değerlendirilmesi." },
+        { "code": "CET 282", "desc": "Öğretim yöntemleri ve eğitim teknolojisinin rolü." },
+        { "code": "CET 301", "desc": "Eğitim araçları için görsel programlama ve veritabanı uygulamaları." },
+        { "code": "CET 314", "desc": "Ağ temelleri, internet yapısı ve eğitimdeki uygulamaları." },
+        { "code": "CET 321", "desc": "İlişkisel veritabanı tasarımı, SQL ve eğitim projeleri için veri modelleme." },
+        { "code": "CET 322", "desc": "İstemci-sunucu programlama, HTTP, çerezler ve eğitim web uygulamaları." },
+        { "code": "CET 341", "desc": "Öğretim tasarımı teorileri ve öğrenme materyalleri geliştirme." },
+        { "code": "CET 372", "desc": "Eğitimde multimedya ve oyun tasarımı, içerik üretim ortamları." },
+        { "code": "CET 401", "desc": "Nicel ve nitel araştırma yöntemlerine giriş. Araştırma önerisi tasarımı." },
+        { "code": "CET 431", "desc": "Proje kavramı, proje yönetimi ilkeleri ve süreçleri: Proje planlama, bütçelendirme, izleme, risk denetimi, zaman ve kaynak yönetimi." },
+        { "code": "CET 441", "desc": "Uzaktan eğitimin tarihçesi, uzaktan eğitimin kullanıldığı öğretim ortamları; uzaktan eğitimde kullanılan teknolojiler." },
+        { "code": "CET 451", "desc": "Öğretim kaynaklarının, ünite ve ders planlarının tasarımı." }
+      ]
+    },
+    "unity": {
+      "title": "Unity ile Geliştirdiğim Projeler",
+      "lead": "Oyun motoru Unity ve C# kullanarak geliştirdiğim prototipler, mobil oyunlar ve interaktif simülasyonlar. Oyun tasarımı ve geliştirme becerilerimi gösteren çalışmalar.",
+      "projects": [
+        { "title": "Dans Animasyonu", "desc": "Bu projede karakter rigleme, kemik yapılarının birleşimi ve dans animasyonu oluşturma süreçlerini gerçekleştirdim. Ayrıca karakterle senkronize şekilde ses efektleri için Audio Source bileşenini kullandım.", "videoId": "tVeVMm9t0AE" },
+        { "title": "Işık Kullanımı", "desc": "Universal Render Pipeline (URP) kullanarak farklı 2D ışık türlerini sahnede uyguladım. Karakter animasyonu eşliğinde her ışık türünü vurgulayan dinamik bir animasyon/gif oluşturuldu.", "videoId": "LWPtN9uJTjk" },
+        { "title": "2D Platform Oyunu", "desc": "Bu projede bir top karakterini WASD tuşlarıyla yönlendirerek platformlar arasında ilerlediği ve dikenli tuzaklara çarpmadan tamamlaması gereken bir mini platform oyunu geliştirdim.", "videoId": "ceNNmWJ9K3g" },
+        { "title": "2D Bir Oyun Örneği", "desc": "Oyuncu yukarı ve aşağı yön tuşlarıyla bir uzay gemisini kontrol ediyor. Space tuşuyla ateş ederek karşısına çıkan engelleri yok etmesi gereken basit ama etkili bir oyun kurguladım.", "videoId": "ysaB9TzSp7M" },
+        { "title": "Ateş Atma", "desc": "Unity üzerinde basit kontrolleri test etmek için geliştirdiğim bu projede, hedefe doğru ateş gönderen, çarptıktan sonra yok olan objeler için temel script fonksiyonları geliştirdim.", "videoId": "W2rIoqOzSKM" },
+        { "title": "Flappy Bird Remake", "desc": "Klasik Flappy Bird oyununu yeniden Unity üzerinde canlandırdım. Yerçekimi, skor takip sistemi ve engel geçişleri gibi mekanikleri birebir şekilde kodladım.", "videoId": "T6Rnd_THoG8" },
+        { "title": "Eğitsel Yazılım Projesi", "desc": "8. sınıf müfredatına uygun olarak genetik materyaller konusunu oyunlaştırarak öğreten bir Unity projesi geliştirdim. Öğrencilerin deneme-yanılma yoluyla öğrenmelerini teşvik eden interaktif bir sistem içeriyor.", "videoId": "TTYB2RYx4p4" }
+      ]
+    },
+    "web": {
+      "title": "Web Geliştirme Projeleri",
+      "lead": "Web programlama derslerim ve bireysel çalışmalarım sonucunda ortaya çıkan web projelerim.",
+      "projects": [
+        { "title": "Lion Commerse", "desc": "HTML ve CSS kullanarak geliştirdiğim bu statik e-ticaret sitesi, temel web sayfası yapısını ve responsive tasarım ilkelerini öğrenmemi sağladı. Ürün listeleri, iletişim formu ve stil öğeleriyle tam sayfa bir alışveriş sitesi simülasyonu oluşturdum.", "videoId": "Xhp_GIoMdxo" },
+        { "title": "WorldStory", "desc": "Bu .NET projesi, World History (Dünya Tarihi) temasından esinlenerek oluşturduğum bir bilgi uygulamasıdır. Dünya kıtalarının tarihsel özelliklerini, önemli savaşları ve genel kültürel bilgileri kullanıcıya basit bir arayüzle sunmayı hedefledim.", "videoId": "FFdFfIFaShI" },
+        { "title": "UniMarket", "desc": "ASP.NET MVC teknolojisiyle geliştirdiğim bu platform, üniversite öğrencilerinin kendi aralarında ikinci el eşya alım satımı yapabilmeleri için tasarlandı. Kullanıcıların ilan ekleyebildiği, favori ürünleri listeleyebildiği ve iletişime geçebildiği işlevsel bir web uygulamasıdır.", "videoId": "xbRc3xKAoq8" }
+      ]
+    },
+    "other": {
+      "title": "Diğer Projelerim",
+      "lead": "Eğitim teknolojileri entegrasyonu, veritabanı tasarımı ve video kurgu gibi alanlarda geliştirdiğim diğer çalışmalar.",
+      "projects": [
+        { "title": "Articulate", "desc": "Articulate Storyline platformu üzerinden hazırladığım bu interaktif eğitsel içerikte, kesir kavramı öğrencilerin aktif katılım sağlayabileceği uygulamalarla anlatıldı. Eğitim teknolojileri alanındaki tasarım becerilerimi geliştirdiğim bir projedir.", "videoId": "xLoHTwxcuTQ" },
+        { "title": "SQL ile Coaching System Planlama", "desc": "MySQL veri tabanı yapısını kullanarak bireysel koçluk sistemine ait kullanıcı, oturum ve planlama detaylarını içeren bir veritabanı tasarımı gerçekleştirdim. Bu proje SQL sorguları ile sistem planlamasını nasıl yapabileceğimi gösteriyor.", "videoId": "jTIoYyWDDEo" },
+        { "title": "Kahve Hakkında Eğitsel Video", "desc": "Ekip arkadaşım ile birlikte kahve üzerine hazırladığımız bu eğitsel videoda, içeriğin senaryosu, çekimi ve Adobe Premiere Pro ile kurgulama süreci tamamen bize aittir. Hem içerik üretimi hem de post-prodüksiyon deneyimi sundu.", "videoId": "KP_9mSYPptw" }
+      ]
+    },
+    "marketing": {
+      "title": "Marketing Portföyüm",
+      "lead": "Pazarlama ve içerik üretimi odaklı hazırladığım görsel ve video çalışmalarım.",
+      "videos": [
+        { "title": "YouTube Shorts 1", "desc": "Tanıtım videosu 1", "videoId": "gMKkm5kcke8" },
+        { "title": "YouTube Shorts 2", "desc": "Tanıtım videosu 2", "videoId": "X3o4-4pyn2g" },
+        { "title": "YouTube Shorts 3", "desc": "Tanıtım videosu 3", "videoId": "gynXSZEaN98" },
+        { "title": "YouTube Shorts 4", "desc": "Tanıtım videosu 4", "videoId": "ct7o0Q4l6sk" },
+        { "title": "YouTube Shorts 5", "desc": "Tanıtım videosu 5", "videoId": "AITJHwzmJnI" },
+        { "title": "YouTube Shorts 6", "desc": "Tanıtım videosu 6", "videoId": "dMhl93xgxQ4" },
+        { "title": "YouTube Shorts 7", "desc": "Tanıtım videosu 7", "videoId": "lKKu1GCBBN8" }
+      ],
+      "images": [
+        { "title": "Afiş Örneği 1", "desc": "Oyun tanıtımı için hazırlanmış bir afiş örneği.", "image": "/images/1.png" },
+        { "title": "Afiş Örneği 2", "desc": "Oyun tanıtımı için hazırlanmış bir afiş örneği.", "image": "/images/3.png" },
+        { "title": "Afiş Örneği 3", "desc": "Oyun tanıtımı için hazırlanmış bir afiş örneği.", "image": "/images/poster.png" },
+        { "title": "Maxxine Serbest Çalışma", "desc": "Poster çalışması.", "image": "/images/freeproject1.png" },
+        { "title": "little Women Serbest Çalışma", "desc": "Poster çalışması.", "image": "/images/freeproject2.png" },
+        { "title": "Yayın Öncesi Duyuru", "desc": "Ön sipariş ile alınan oyunumuz için yapılan bir duyuru görseli.", "image": "/images/pre-r_announcement.png" },
+        { "title": "Blog Duyurusu", "desc": "Yayına alınan blogları duyurmak için hazırlanmış bir görsel", "image": "/images/blog_announcement.png" },
+        { "title": "AppStore Görseli", "desc": "Appstore'a eklenmek üzere hazırlanmış görsel.", "image": "/images/app_storeimage.png" },
+        { "title": "İnfografik Çalışması", "desc": "Veriler ile hazırlanmış bir infografik örneği", "image": "/images/infografik.png" },
+        { "title": "Yeni Mod Duyurusu", "desc": "Oyuna yeni eklenen bir mod için yapılan duyuru görseli", "image": "/images/announcement_post.gif" },
+        { "title": "Websitesi Tanıtımı", "desc": "Yayına aldığımız websitesi için hazırlanan duyuru", "image": "/images/website_announcement.gif" },
+        { "title": "Sosyal Medya İçeriği", "desc": "Verilen hizmete dair ilgi çekici bir içerik fikri", "image": "/images/hs.gif" },
+        { "title": "Uygulama Tanıtım", "desc": "App tanıtımı için ilgi çekici bir içerik", "image": "/images/dr.gif" },
+        { "title": "Sosyal Medya İçeriği", "desc": "Motivasyonel ilgi çekici bir içerik fikri", "image": "/images/files.gif" }
+      ]
+    }
+  },
+  "en": {
+    "nav": {
+      "home": "Home",
+      "vizyon": "Vision & Education",
+      "unity": "Unity",
+      "web": "Web Development",
+      "other": "Other Projects",
+      "marketing": "Marketing Portfolio"
+    },
+    "home": {
+      "greeting": "Hello, I'm Çağla Eraslan",
+      "bio": "I am a Computer Education and Instructional Technology student at Boğaziçi University. I create user-centric and interactive digital learning solutions by bridging education and technology.",
+      "downloadCv": "Download my CV (PDF)",
+      "letsMeet": "Let's Meet!",
+      "aboutMe": "About Me",
+      "heroImage": "/images/foto.jpeg"
+    },
+    "footer": {
+      "title": "Çağla Eraslan",
+      "bio": "Boğaziçi University CEIT student. Creating user-centric and interactive digital learning solutions by bridging education and technology.",
+      "contact": "Contact",
+      "location": "Istanbul, Turkey",
+      "follow": "Follow Me",
+      "rights": "Çağla Eraslan Portfolio. All Rights Reserved."
+    },
+    "vizyon": {
+      "title": "My Educational Vision and Achievements",
+      "visionTitle": "Educational Vision and Goal",
+      "visionLead": "My vision is to design accessible, engaging, and effective digital solutions by enriching learning processes with contemporary technology.",
+      "visionText": "The CEIT program prepares students for careers like teaching, instructional design, and educational software development by combining pedagogical knowledge and technology. It covers learning theories, programming, multimedia design, databases, and e-learning tech. Graduates gain competencies to analyze, design, and develop modern digital learning environments.",
+      "coursesTitle": "Key Courses Taken and Competencies Gained",
+      "courseCode": "Course Code",
+      "courseCompetency": "Competencies Gained",
+      "courses": [
+        { "code": "CET 101", "desc": "Introduction to educational technology and its critical role in learning." },
+        { "code": "CET 102", "desc": "Information systems in education; introduction to HTML and web design." },
+        { "code": "CET 215", "desc": "Evolution of technology in learning environments and theory analysis." },
+        { "code": "CET 224", "desc": "Design and evaluation of educational visuals and multimedia materials." },
+        { "code": "CET 282", "desc": "Teaching methods and the role of educational technology." },
+        { "code": "CET 301", "desc": "Visual programming and database applications for educational tools." },
+        { "code": "CET 314", "desc": "Network fundamentals, internet structure, and their applications in education." },
+        { "code": "CET 321", "desc": "Relational database design, SQL, and data modeling for educational projects." },
+        { "code": "CET 322", "desc": "Client-server programming, HTTP, cookies, and educational web applications." },
+        { "code": "CET 341", "desc": "Instructional design theories and learning materials development." },
+        { "code": "CET 372", "desc": "Multimedia and game design in education, content production environments." },
+        { "code": "CET 401", "desc": "Introduction to quantitative and qualitative research methods. Research proposal design." },
+        { "code": "CET 431", "desc": "Project concept, principles and processes of project management: Planning, budgeting, monitoring, and timeline/resource management." },
+        { "code": "CET 441", "desc": "History of distance education, teaching environments using distance education, and related technologies." },
+        { "code": "CET 451", "desc": "Design of instructional resources, units, and lesson plans." }
+      ]
+    },
+    "unity": {
+      "title": "Projects Developed with Unity",
+      "lead": "Prototypes, mobile games, and interactive simulations I developed using the Unity game engine and C#. These works showcase my game design and development skills.",
+      "projects": [
+        { "title": "Dance Animation", "desc": "In this project, I handled character rigging, bone structure linking, and dance animation creation. I also used the Audio Source component to synchronize sound effects with the character.", "videoId": "tVeVMm9t0AE" },
+        { "title": "Light Usage", "desc": "I applied different 2D light types in a scene using the Universal Render Pipeline (URP). This dynamic animation showcases various lighting effects accompanying character animation.", "videoId": "LWPtN9uJTjk" },
+        { "title": "2D Platform Game", "desc": "A mini-platformer where the player guides a ball using WASD keys, navigating between platforms and completing the course without hitting spike traps.", "videoId": "ceNNmWJ9K3g" },
+        { "title": "2D Game Example", "desc": "The player controls a spaceship moving up and down. They must destroy obstacles by shooting with the Space key in this simple yet effective game concept.", "videoId": "ysaB9TzSp7M" },
+        { "title": "Shooting Projectile", "desc": "A basic controls testing project developed in Unity, featuring core script functions for objects that shoot towards a target and destroy themselves upon impact.", "videoId": "W2rIoqOzSKM" },
+        { "title": "Flappy Bird Remake", "desc": "I recreated the classic Flappy Bird game in Unity. I precisely coded mechanics like gravity, score tracking, and obstacle generation.", "videoId": "T6Rnd_THoG8" },
+        { "title": "Educational Software Project", "desc": "I developed a Unity project that gamifies the subject of genetic materials for 8th-grade curriculums. It features an interactive system encouraging trial-and-error learning.", "videoId": "TTYB2RYx4p4" }
+      ]
+    },
+    "web": {
+      "title": "Web Development Projects",
+      "lead": "Web projects created through my web programming courses and independent work.",
+      "projects": [
+        { "title": "Lion Commerse", "desc": "This static e-commerce site, built using HTML and CSS, helped me learn basic web structure and responsive design principles. I simulated a full shopping site with product lists, a contact form, and styling.", "videoId": "Xhp_GIoMdxo" },
+        { "title": "WorldStory", "desc": "An ASP.NET project inspired by World History, acting as an informational app. I aimed to present historical aspects of continents, major wars, and general cultural knowledge with a simple interface.", "videoId": "FFdFfIFaShI" },
+        { "title": "UniMarket", "desc": "Developed with ASP.NET MVC, this platform is designed for university students to trade second-hand items among themselves. Users can post listings, favorite items, and communicate through this functional app.", "videoId": "xbRc3xKAoq8" }
+      ]
+    },
+    "other": {
+      "title": "Other Projects",
+      "lead": "Other projects I've developed in areas like educational tech integration, database design, and video editing.",
+      "projects": [
+        { "title": "Articulate", "desc": "An interactive educational piece prepared on the Articulate Storyline platform, teaching the concept of fractions through active-participation apps. It helped develop my tech-education design skills.", "videoId": "xLoHTwxcuTQ" },
+        { "title": "SQL Coaching System Planning", "desc": "Designed a database using MySQL for an individual coaching system, containing user, session, and planning details. This showcases how SQL queries can structurally plan an entire system.", "videoId": "jTIoYyWDDEo" },
+        { "title": "Educational Video on Coffee", "desc": "An educational video about coffee created with a teammate. We handled the script, filming, and Adobe Premiere Pro editing entirely. It offered both content production and post-production experience.", "videoId": "KP_9mSYPptw" }
+      ]
+    },
+    "marketing": {
+      "title": "Marketing Portfolio",
+      "lead": "My visual and video works focused on marketing and content production.",
+      "videos": [
+        { "title": "YouTube Shorts 1", "desc": "Promotional video 1", "videoId": "gMKkm5kcke8" },
+        { "title": "YouTube Shorts 2", "desc": "Promotional video 2", "videoId": "X3o4-4pyn2g" },
+        { "title": "YouTube Shorts 3", "desc": "Promotional video 3", "videoId": "gynXSZEaN98" },
+        { "title": "YouTube Shorts 4", "desc": "Promotional video 4", "videoId": "ct7o0Q4l6sk" },
+        { "title": "YouTube Shorts 5", "desc": "Promotional video 5", "videoId": "AITJHwzmJnI" },
+        { "title": "YouTube Shorts 6", "desc": "Promotional video 6", "videoId": "dMhl93xgxQ4" },
+        { "title": "YouTube Shorts 7", "desc": "Promotional video 7", "videoId": "lKKu1GCBBN8" }
+      ],
+      "images": [
+        { "title": "Poster Example 1", "desc": "A poster example created for a game promotion.", "image": "/images/1.png" },
+        { "title": "Poster Example 2", "desc": "A poster example created for a game promotion.", "image": "/images/3.png" },
+        { "title": "Poster Example 3", "desc": "A poster example created for a game promotion.", "image": "/images/poster.png" },
+        { "title": "Maxxine Free Work", "desc": "Poster design work.", "image": "/images/freeproject1.png" },
+        { "title": "Little Women Free Work", "desc": "Poster design work.", "image": "/images/freeproject2.png" },
+        { "title": "Pre-Release Announcement", "desc": "Announcement visual for an upcoming pre-order game.", "image": "/images/pre-r_announcement.png" },
+        { "title": "Blog Announcement", "desc": "Visual prepared to announce newly published blog posts.", "image": "/images/blog_announcement.png" },
+        { "title": "AppStore Visual", "desc": "Visual prepared to be featured on the AppStore.", "image": "/images/app_storeimage.png" },
+        { "title": "Infographic Work", "desc": "An infographic example prepared with data analysis.", "image": "/images/infografik.png" },
+        { "title": "New Mode Announcement", "desc": "Announcement visual for a new game mode.", "image": "/images/announcement_post.gif" },
+        { "title": "Website Launch", "desc": "Announcement prepared to celebrate our website launch.", "image": "/images/website_announcement.gif" },
+        { "title": "Social Media Content", "desc": "An engaging content idea for a service.", "image": "/images/hs.gif" },
+        { "title": "App Promotion", "desc": "Engaging visual for app promotion.", "image": "/images/dr.gif" },
+        { "title": "Social Media Content", "desc": "A motivational and engaging content idea.", "image": "/images/files.gif" }
+      ]
+    }
+  }
+}

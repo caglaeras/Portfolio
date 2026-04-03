@@ -1,0 +1,136 @@
+.header {
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--main-color);
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.menuBtn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.navLink {
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--main-color);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--main-color);
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: 60%;
+}
+
+.navLink.active {
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+.langBtn {
+  background-color: rgba(118, 34, 81, 0.1);
+  color: var(--main-color);
+  border: 1px solid rgba(118, 34, 81, 0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.langBtn:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .menuBtn {
+    display: block;
+  }
+  
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    flex-direction: column;
+    padding: 20px 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.4s ease;
+  }
+  
+  .nav.open {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .navList {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .navItem {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navLink {
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+}
