@@ -24,7 +24,7 @@ export default function Home() {
           <p className={styles.bio}>{t.bio}</p>
 
           <div className={styles.buttons}>
-            <a href="/Portfolio/documents/CaglaEraslanCV.pdf" target="_blank" rel="noopener noreferrer" className="btn-main">
+            <a href="/Portfolio/documents/CaglaEraslan_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn-main">
               {t.downloadCv}
             </a>
             <a href="mailto:caglaeraslan@gmail.com" className="btn-main">
