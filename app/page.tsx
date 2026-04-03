@@ -15,7 +15,7 @@ export default function Home() {
       <div className={`card-glass ${styles.heroCard}`}>
         <div className={styles.imageContainer}>
           <Image 
-            src={t.heroImage} 
+            src={`/Portfolio${t.heroImage}`}
             alt="Çağla Eraslan Profil Fotoğrafı" 
             className={styles.profileImg}
             width={160}
