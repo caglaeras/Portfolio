@@ -51,27 +51,27 @@ export default function Home() {
         {/* Vision Feature */}
         <Link href="/vizyon" className={styles.featureCard}>
           <i className={`fas fa-leaf ${styles.featureIcon}`}></i>
-          <h3 className={styles.featureTitle}>{content.nav.vizyon}</h3>
+          <h3 className={styles.featureTitle}>{content.nav.vision}</h3>
           <p className={styles.featureDesc}>
-            {language === 'tr' ? "Akademik vizyonum, öğrenim geçmişim ve eğitim teknolojilerine olan tutkum." : "My academic vision, learning background, and passion for educational technologies."}
+            {language === 'tr' ? "Eğitim vizyonum ve dijital çözümler tasarlama amacım." : "My educational vision and goal to design digital solutions."}
           </p>
         </Link>
         
-        {/* Unity Feature */}
-        <Link href="/unity" className={styles.featureCard}>
-          <i className={`fa-brands fa-unity ${styles.featureIcon}`}></i>
-          <h3 className={styles.featureTitle}>Unity 3D</h3>
+        {/* Education Feature */}
+        <Link href="/education" className={styles.featureCard}>
+          <i className={`fas fa-graduation-cap ${styles.featureIcon}`}></i>
+          <h3 className={styles.featureTitle}>{content.nav.education}</h3>
           <p className={styles.featureDesc}>
-            {language === 'tr' ? "Oyun motoru üzerinde geliştirdiğim yaratıcı simülasyon ve mobil 2D/3D oyun projelerim." : "Creative simulation and mobile 2D/3D game projects I developed on the Unity engine."}
+            {language === 'tr' ? "BÖTE programında aldığım temel dersler ve kazandığım yetkinlikler." : "Key courses taken and competencies gained in the CEIT program."}
           </p>
         </Link>
 
-        {/* Marketing Feature */}
-        <Link href="/marketing" className={styles.featureCard}>
-          <i className={`fas fa-pen-nib ${styles.featureIcon}`}></i>
-          <h3 className={styles.featureTitle}>{content.nav.marketing}</h3>
+        {/* Projects Feature */}
+        <Link href="/projects" className={styles.featureCard}>
+          <i className={`fas fa-laptop-code ${styles.featureIcon}`}></i>
+          <h3 className={styles.featureTitle}>{content.nav.projects}</h3>
           <p className={styles.featureDesc}>
-            {language === 'tr' ? "Modern pazarlama stratejilerim, dijital içerik yönetimlerim ve yaratıcı video kurgularım." : "My modern marketing strategies, digital content management, and creative video edits."}
+            {language === 'tr' ? "Unity 3D, Web Geliştirme, Marketing ve diğer projelerim." : "My Unity 3D, Web Development, Marketing, and other projects."}
           </p>
         </Link>
 

@@ -13,11 +13,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: content.nav.home, path: "/" },
-    { name: content.nav.vizyon, path: "/vizyon" },
-    { name: content.nav.unity, path: "/unity" },
-    { name: content.nav.web, path: "/web" },
-    { name: content.nav.other, path: "/other" },
-    { name: content.nav.marketing, path: "/marketing" },
+    { name: content.nav.vision, path: "/vizyon" },
+    { name: content.nav.education, path: "/education" },
+    { name: content.nav.projects, path: "/projects" },
   ];
 
   const isActive = (path: string) => {

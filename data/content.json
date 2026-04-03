@@ -2,11 +2,9 @@
   "tr": {
     "nav": {
       "home": "Ana Sayfa",
-      "vizyon": "Vizyon & Eğitim",
-      "unity": "Unity",
-      "web": "Web Geliştirme",
-      "other": "Diğer Projeler",
-      "marketing": "Marketing Portfolyo"
+      "vision": "Vizyon",
+      "education": "Eğitim",
+      "projects": "Projeler"
     },
     "home": {
       "greeting": "Merhaba, Ben Çağla Eraslan",
@@ -120,11 +118,9 @@
   "en": {
     "nav": {
       "home": "Home",
-      "vizyon": "Vision & Education",
-      "unity": "Unity",
-      "web": "Web Development",
-      "other": "Other Projects",
-      "marketing": "Marketing Portfolio"
+      "vision": "Vision",
+      "education": "Education",
+      "projects": "Projects"
     },
     "home": {
       "greeting": "Hello, I'm Çağla Eraslan",
