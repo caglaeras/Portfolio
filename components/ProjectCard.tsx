@@ -16,15 +16,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, videoId, 
         {videoId ? (
           <iframe
             className={styles.iframe}
-            src={`https://www.youtube.com/embed/${videoId}`}
+            src={`https://www.youtube.com/embed/${videoId}?showinfo=0&rel=0`}
             title={title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         ) : image ? (
-          <Image src={`/Portfolio${image}`} alt={title} fill className={styles.image} unoptimized />
+          <Image src={`/Portfolio${image}`} alt={title} fill className={styles.mediaElement} unoptimized />
         ) : null}
       </div>
+
       <div className={styles.body}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.desc}>{description}</p>
