@@ -47,7 +47,13 @@
         { "code": "CET 401", "desc": "Nicel ve nitel araştırma yöntemlerine giriş. Araştırma önerisi tasarımı." },
         { "code": "CET 431", "desc": "Proje kavramı, proje yönetimi ilkeleri ve süreçleri: Proje planlama, bütçelendirme, izleme, risk denetimi, zaman ve kaynak yönetimi." },
         { "code": "CET 441", "desc": "Uzaktan eğitimin tarihçesi, uzaktan eğitimin kullanıldığı öğretim ortamları; uzaktan eğitimde kullanılan teknolojiler." },
-        { "code": "CET 451", "desc": "Öğretim kaynaklarının, ünite ve ders planlarının tasarımı." }
+        { "code": "CET 451", "desc": "Öğretim kaynaklarının, ünite ve ders planlarının tasarımı." },
+        { "code": "CET 444", "desc": "Örgün ve yaygın eğitim kurumları için proje planlama, geliştirme, uygulama ve değerlendirme." },
+        { "code": "CET 462", "desc": "Okullarda rehberlik altında öğretmenlik; Bilişim Teknolojileri ve yazılım dersleri için ünite ve ders planı tasarımı; bağımsız ders planlama ve uygulama." },
+        { "code": "CET 472", "desc": "Eğitsel yazılım tasarımı, geliştirilmesi ve değerlendirilmesi; bilgisayar destekli öğrenme ortamlarının düzenlenmesi; İnsan-Bilgisayar Etkileşimi (HCI) araştırmaları ve öğrenme teorilerinin uygulanması." },
+        { "code": "CMPE 150", "desc": "Python kullanarak hesaplama ve programlama temellerine giriş." },
+        { "code": "CMPE 210", "desc": "Nesne yönelimli programlama prensipleri ve C++ kullanarak uygulama geliştirme." },
+        { "code": "CMPE 496", "desc": "İnsan-bilgisayar etkileşimi teorileri, kullanılabilirlik prensipleri ve arayüz tasarımı." }
       ]
     },
     "unity": {
@@ -159,7 +165,13 @@
         { "code": "CET 401", "desc": "Introduction to quantitative and qualitative research methods. Research proposal design." },
         { "code": "CET 431", "desc": "Project concept, principles and processes of project management: Planning, budgeting, monitoring, and timeline/resource management." },
         { "code": "CET 441", "desc": "History of distance education, teaching environments using distance education, and related technologies." },
-        { "code": "CET 451", "desc": "Design of instructional resources, units, and lesson plans." }
+        { "code": "CET 451", "desc": "Design of instructional resources, units, and lesson plans." },
+        { "code": "CET 444", "desc": "Project planning, development, implementation and evaluation for formal and non-formal educational institutions." },
+        { "code": "CET 462", "desc": "Supervised teaching in schools; designing unit and lesson plans for IT and software courses; independent lesson planning and delivery." },
+        { "code": "CET 472", "desc": "Educational software design, development and evaluation; organizing computer-based learning environments; applying HCI research and learning theories." },
+        { "code": "CMPE 150", "desc": "Introduction to computing and programming fundamentals using Python." },
+        { "code": "CMPE 210", "desc": "Object-oriented programming principles and application development using C++." },
+        { "code": "CMPE 496", "desc": "Human-computer interaction theories, usability principles and interface design." }
       ]
     },
     "unity": {
