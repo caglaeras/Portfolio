@@ -1,15 +1,15 @@
-.navbar {
-  background: var(--nav-bg);
+.header {
+  background: var(--bg-color);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 20px 40px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--card-border);
 }
 
-.navContainer {
+.container {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
@@ -25,9 +25,20 @@
   letter-spacing: -0.02em;
 }
 
-.navLinks {
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
   display: flex;
   gap: 35px;
+  align-items: center;
+  list-style: none;
+}
+
+.navItem {
+  display: flex;
   align-items: center;
 }
 
@@ -40,26 +51,26 @@
   letter-spacing: 0.02em;
 }
 
-.navLink:hover {
+.navLink:hover, .navLink.active {
   color: var(--text-color);
 }
 
 .langBtn {
   background: transparent;
-  color: var(--secondary-text);
-  border: none;
-  padding: 0;
-  font-family: 'Lora', serif;
-  font-size: 0.95rem;
-  font-style: italic;
+  color: var(--text-color);
+  border: 1px solid var(--card-border);
+  padding: 6px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
   transition: all 0.3s ease;
 }
 
 .langBtn:hover {
-  color: var(--text-color);
+  background: var(--text-color);
+  color: var(--bg-color);
 }
 
-.mobileMenuBtn {
+.menuBtn {
   display: none;
   background: transparent;
   border: none;
@@ -69,25 +80,29 @@
 }
 
 @media (max-width: 768px) {
-  .navbar {
+  .header {
     padding: 15px 20px;
   }
-  .mobileMenuBtn {
+  .menuBtn {
     display: block;
   }
-  .navLinks {
+  .nav {
     display: none;
     position: absolute;
     top: 65px;
     left: 0;
     right: 0;
-    background: #fff;
-    flex-direction: column;
+    background: var(--bg-color);
     padding: 30px 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--card-border);
+    box-shadow: 0 10px 30px var(--box-shadow);
   }
-  .navLinks.open {
+  .nav.open {
     display: flex;
+  }
+  .navList {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
   }
 }

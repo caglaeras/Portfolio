@@ -6,22 +6,26 @@
   margin-top: 80px;
 }
 
-.footerContainer {
+.container {
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 50px;
   padding-bottom: 50px;
-  border-bottom: 1px solid var(--card-border);
 }
 
-.footerCol h4 {
+.title {
   font-size: 1.3rem;
   margin-bottom: 25px;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
 }
 
-.footerCol p {
+.bio {
   color: var(--secondary-text);
   line-height: 1.8;
   font-size: 0.95rem;
@@ -29,7 +33,7 @@
   font-weight: 300;
 }
 
-.footerList {
+.list {
   list-style: none;
   padding: 0;
 }
@@ -45,31 +49,41 @@
 }
 
 .listItem i {
-  color: var(--text-color);
+  color: var(--main-color);
   font-size: 1rem;
 }
 
-.socialIcons {
+.socials {
   display: flex;
   gap: 20px;
 }
 
-.socialIcon {
+.icon {
   color: var(--text-color);
   font-size: 1.3rem;
   transition: all 0.4s ease;
   opacity: 0.6;
 }
 
-.socialIcon:hover {
+.icon:hover {
   opacity: 1;
   transform: translateY(-2px);
   color: var(--main-color);
 }
 
-.footerBottom {
+.bottom {
   text-align: center;
   padding-top: 30px;
+}
+
+.hr {
+  border: 0;
+  height: 1px;
+  background: var(--card-border);
+  margin-bottom: 30px;
+}
+
+.copy {
   font-size: 0.85rem;
   color: var(--secondary-text);
   font-weight: 300;
