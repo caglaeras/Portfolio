@@ -17,8 +17,8 @@ export default function Home() {
       <section className={styles.heroSection}>
         <div className={styles.textContent}>
           <h1 className={styles.title}>
-            {language === 'tr' ? "Merhaba," : "Hello,"} <br/>
-            <strong>{t.greeting.split("Ben ")[1] || "Çağla Eraslan."}</strong>
+            {t.greeting1} <br/>
+            <strong>{t.greeting2}</strong>
           </h1>
           
           <p className={styles.bio}>{t.bio}</p>

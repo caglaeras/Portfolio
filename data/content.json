@@ -7,7 +7,8 @@
       "projects": "Projeler"
     },
     "home": {
-      "greeting": "Merhaba, Ben Çağla Eraslan",
+      "greeting1": "Merhaba,",
+      "greeting2": "Ben Çağla Eraslan.",
       "bio": "Boğaziçi Üniversitesi Bilgisayar ve Öğretim Teknolojileri öğrencisiyim. Eğitimi teknolojiyle buluşturarak, kullanıcı odaklı ve etkileşimli dijital öğrenme çözümleri üretiyorum.",
       "downloadCv": "CV'm",
       "letsMeet": "Tanışalım!",
@@ -123,8 +124,9 @@
       "projects": "Projects"
     },
     "home": {
-      "greeting": "Hello, I'm Çağla Eraslan",
-      "bio": "I am a Computer Education and Instructional Technology student at Boğaziçi University. I create user-centric and interactive digital learning solutions by bridging education and technology.",
+      "greeting1": "Hello, I'm",
+      "greeting2": "Cagla Eraslan.",
+      "bio": "CET student at Boğaziçi University with a focus on educational software design, multimedia, and HCI. I bridge research and practice, designing interactive learning experiences in Unity and web, while applying these skills in real-world marketing and product contexts. Interested in graduate research at the intersection of instructional design and digital media.",
       "downloadCv": "My CV",
       "letsMeet": "Let's Meet!",
       "aboutMe": "About Me",
