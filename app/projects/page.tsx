@@ -1,81 +1,64 @@
 "use client";
 
 import React from "react";
-import ProjectCard from "@/components/ProjectCard";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import styles from "../GridPage.module.css"; 
+import styles from "../Home.module.css"; 
 
 export default function Projects() {
-  const { content } = useLanguage();
+  const { content, language } = useLanguage();
 
   return (
     <div className={styles.container}>
-      
-      {/* Unity 3D Section */}
-      <div className={styles.header} style={{ marginTop: 0 }}>
-        <h1 className={styles.title}>{content.unity.title}</h1>
-        <p className={styles.lead}>{content.unity.lead}</p>
-      </div>
-      <div className={styles.grid}>
-        {content.unity.projects.map((project: any, idx: number) => (
-          <ProjectCard key={`unity-${idx}`} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} />
-        ))}
+      <div style={{ textAlign: "center", marginBottom: "40px" }}>
+        <h1 style={{ fontSize: "2.8rem", fontFamily: "Lora, serif", color: "var(--text-color)" }}>
+           {content.nav.projects}
+        </h1>
+        <p style={{ color: "var(--secondary-text)", marginTop: "15px", fontSize: "1.1rem" }}>
+           {language === "tr" ? "Lütfen incelemek istediğiniz kategoriye tıklayın." : "Please select a category to explore."}
+        </p>
       </div>
 
-      <hr style={{ margin: "80px 0", border: 0, borderTop: "1px solid var(--card-border)" }} />
+      {/* Projects Sub-Navigation Grid */}
+      <section className={styles.featuredGrid}>
+        
+        {/* Unity */}
+        <Link href="/unity" className={styles.featureCard}>
+          <i className={`fa-brands fa-unity ${styles.featureIcon}`}></i>
+          <h3 className={styles.featureTitle}>Unity 3D</h3>
+          <p className={styles.featureDesc}>
+             {language === 'tr' ? "Yaratıcı simülasyon ve mobil 2D/3D oyun projelerim." : "Creative simulation and mobile 2D/3D game projects."}
+          </p>
+        </Link>
+        
+        {/* Web */}
+        <Link href="/web" className={styles.featureCard}>
+          <i className={`fas fa-code ${styles.featureIcon}`}></i>
+          <h3 className={styles.featureTitle}>{language === 'tr' ? "Web Geliştirme" : "Web Development"}</h3>
+          <p className={styles.featureDesc}>
+             {language === 'tr' ? "Front-end ve back-end web uygulamalarım." : "Front-end and back-end web applications."}
+          </p>
+        </Link>
 
-      {/* Web Development Section */}
-      <div className={styles.header}>
-        <h1 className={styles.title}>{content.web.title}</h1>
-        <p className={styles.lead}>{content.web.lead}</p>
-      </div>
-      <div className={styles.grid}>
-        {content.web.projects.map((project: any, idx: number) => (
-          <ProjectCard key={`web-${idx}`} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} />
-        ))}
-      </div>
+        {/* Marketing */}
+        <Link href="/marketing" className={styles.featureCard}>
+          <i className={`fas fa-pen-nib ${styles.featureIcon}`}></i>
+          <h3 className={styles.featureTitle}>{language === 'tr' ? "Marketing Portfolyo" : "Marketing Portfolio"}</h3>
+          <p className={styles.featureDesc}>
+             {language === 'tr' ? "Dijital içerik yönetimlerim ve yaratıcı video kurgularım." : "Digital content management and creative video edits."}
+          </p>
+        </Link>
 
-      <hr style={{ margin: "80px 0", border: 0, borderTop: "1px solid var(--card-border)" }} />
+        {/* Other */}
+        <Link href="/other" className={styles.featureCard}>
+          <i className={`fas fa-layer-group ${styles.featureIcon}`}></i>
+          <h3 className={styles.featureTitle}>{language === 'tr' ? "Diğer Projeler" : "Other Projects"}</h3>
+          <p className={styles.featureDesc}>
+             {language === 'tr' ? "Çeşitli yazılım ve tasarım projelerim." : "Various software and design projects."}
+          </p>
+        </Link>
 
-      {/* Other Projects Section */}
-      <div className={styles.header}>
-        <h1 className={styles.title}>{content.other.title}</h1>
-        <p className={styles.lead}>{content.other.lead}</p>
-      </div>
-      <div className={styles.grid}>
-        {content.other.projects.map((project: any, idx: number) => (
-          <ProjectCard key={`other-${idx}`} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} />
-        ))}
-      </div>
-
-      <hr style={{ margin: "80px 0", border: 0, borderTop: "1px solid var(--card-border)" }} />
-
-      {/* Marketing Section */}
-      <div className={styles.header}>
-        <h1 className={styles.title}>{content.marketing.title}</h1>
-        <p className={styles.lead}>{content.marketing.lead}</p>
-      </div>
-      
-      {/* Marketing Videos */}
-      <h3 style={{ marginBottom: "30px", fontSize: "1.5rem", fontFamily: "Lora, serif" }}>
-        {content.nav.projects === "Projects" ? "Video Content" : "Video İçerikleri"}
-      </h3>
-      <div className={styles.grid} style={{ marginBottom: "60px" }}>
-        {content.marketing.videos?.map((vid: any, idx: number) => (
-          <ProjectCard key={`mvid-${idx}`} title={vid.title} description={vid.desc} videoId={vid.videoId} />
-        ))}
-      </div>
-
-      {/* Marketing Images */}
-      <h3 style={{ marginBottom: "30px", fontSize: "1.5rem", fontFamily: "Lora, serif" }}>
-        {content.nav.projects === "Projects" ? "Visual Design" : "Görsel Tasarım"}
-      </h3>
-      <div className={styles.grid}>
-        {content.marketing.images?.map((img: any, idx: number) => (
-          <ProjectCard key={`mimg-${idx}`} title={img.title} description={img.desc} image={img.image} />
-        ))}
-      </div>
-
+      </section>
     </div>
   );
 }
