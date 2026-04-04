@@ -7,9 +7,10 @@ interface ProjectCardProps {
   description: string;
   videoId?: string;
   image?: string;
+  pdfLink?: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, videoId, image }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, videoId, image, pdfLink }) => {
   return (
     <div className={`card-glass ${styles.card}`}>
       <div className={styles.mediaContainer}>
@@ -23,12 +24,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, videoId, 
           ></iframe>
         ) : image ? (
           <Image src={`/Portfolio${image}`} alt={title} fill className={styles.mediaElement} unoptimized />
+        ) : pdfLink ? (
+           <div className={styles.pdfPlaceholder}>
+             <i className="fas fa-file-pdf" style={{ fontSize: "4rem", color: "var(--main-color)" }}></i>
+           </div>
         ) : null}
       </div>
 
       <div className={styles.body}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.desc}>{description}</p>
+
+        {pdfLink && (
+           <div className={styles.actions}>
+             <a href={`/Portfolio${pdfLink}`} target="_blank" rel="noopener noreferrer" className={`btn-main ${styles.downloadBtn}`}>
+               <i className="fas fa-download"></i> View / Download
+             </a>
+           </div>
+        )}
       </div>
     </div>
   );

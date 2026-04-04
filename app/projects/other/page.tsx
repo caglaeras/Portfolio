@@ -16,7 +16,7 @@ export default function Other() {
       </div>
       <div className={styles.grid}>
         {content.other.projects.map((project: Record<string, any>, idx: number) => (
-          <ProjectCard key={idx} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} />
+          <ProjectCard key={idx} title={project.title} description={project.desc} videoId={project.videoId} image={project.image} pdfLink={project.pdfLink} />
         ))}
       </div>
     </div>
