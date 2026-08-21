@@ -2,12 +2,11 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import LivePreview from "@/components/LivePreview";
 import Portal from "@/components/Portal";
 import StoryDrawer, { type StoryLink, type StorySection } from "@/components/StoryDrawer";
 import {
   LOAD_TIMEOUT,
-  PREVIEW_HEIGHT,
-  PREVIEW_WIDTH,
   STORY_ORDER,
   webProjects,
   type LiveWebProject,
@@ -46,74 +45,6 @@ const Icons = {
 };
 
 const watchUrl = (videoId: string) => "https://www.youtube.com/watch?v=" + videoId;
-
-/* ---------------------------------------------------------------------------
-   Mini onizleme: iframe 1280px genislikte render edilir, kart genisligine
-   JS ile hesaplanan olcekle sigdirilir. Kart boyu degistikce yeniden hesaplanir.
-   --------------------------------------------------------------------------- */
-
-function useFitPreview(
-  stageRef: React.RefObject<HTMLElement>,
-  frameRef: React.RefObject<HTMLIFrameElement>
-) {
-  const fit = useCallback(() => {
-    const stage = stageRef.current;
-    const frame = frameRef.current;
-    if (!stage || !frame) return;
-    const scale = stage.clientWidth / PREVIEW_WIDTH;
-    frame.style.transform = "scale(" + scale + ")";
-    frame.style.height = scale > 0 ? stage.clientHeight / scale + "px" : PREVIEW_HEIGHT + "px";
-  }, [stageRef, frameRef]);
-
-  useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return;
-    fit();
-    let observer: ResizeObserver | undefined;
-    if (typeof ResizeObserver === "function") {
-      observer = new ResizeObserver(fit);
-      observer.observe(stage);
-    }
-    window.addEventListener("resize", fit);
-    return () => {
-      if (observer) observer.disconnect();
-      window.removeEventListener("resize", fit);
-    };
-  }, [fit]);
-
-  return { fit };
-}
-
-/**
- * Kart goruntu alanina girdi mi? loading="lazy" iframe'ler ekranin altinda
- * beklerken yuklenmez, bu yuzden zaman asimi sayaci ancak kart gorunur olunca
- * baslatilir. Aksi halde alt siradaki kart bosuna yedek baglantiya duser.
- */
-function useInView(ref: React.RefObject<HTMLElement>) {
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || inView) return;
-    if (typeof IntersectionObserver !== "function") {
-      setInView(true);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [ref, inView]);
-
-  return inView;
-}
 
 /**
  * iframe yukleme durumu.
@@ -164,45 +95,14 @@ interface Copy {
 }
 
 function LiveStage({ project, copy }: { project: LiveWebProject; copy: Copy }) {
-  const stageRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(stageRef);
-  const { frameRef, loaded, failed } = useFrameLoader(project.live, inView);
-  const { fit } = useFitPreview(stageRef, frameRef);
-
-  // Yuklendiginde olcegi bir kez daha hesapla.
-  useEffect(() => {
-    if (loaded) fit();
-  }, [loaded, fit]);
-
   return (
-    <div className={styles.stage} ref={stageRef}>
-      <span className={styles.liveDot}>
-        <span />
-        {copy.liveBadge}
-      </span>
-
-      {!loaded && <div className={styles.skeleton} data-label={copy.previewLoading} />}
-
-      {failed && (
-        <div className={styles.stageFallback}>
-          <p>{copy.previewFailed}</p>
-          <a className={`${styles.btn} ${styles.quiet}`} href={project.live} target="_blank" rel="noopener noreferrer">
-            {copy.openSite}
-          </a>
-        </div>
-      )}
-
-      {/* src, dinleyici baglandiktan sonra useFrameLoader icinde atanir. */}
-      <iframe
-        ref={frameRef}
-        className={styles.mini}
-        loading="lazy"
-        tabIndex={-1}
-        aria-hidden="true"
-        scrolling="no"
-        title={`${project.name} ${copy.previewBtn}`}
-      />
-    </div>
+    <LivePreview
+      src={project.live}
+      title={`${project.name} ${copy.previewBtn}`}
+      aspect="16 / 10"
+      badge={{ label: copy.liveBadge, live: true }}
+      labels={{ loading: copy.previewLoading, failed: copy.previewFailed, open: copy.openSite }}
+    />
   );
 }
 

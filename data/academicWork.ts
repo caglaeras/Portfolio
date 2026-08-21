@@ -36,6 +36,8 @@ export interface AcademicExtra {
   href: string;
   /** true ise adres public/ altinda, basePath onune eklenir. */
   local?: boolean;
+  /** mockup icin: kart gorseli yerine kucultulmus canli onizleme gosterilir. */
+  preview?: boolean;
 }
 
 interface AcademicBase {
@@ -257,7 +259,7 @@ export const academicWork: AcademicItem[] = [
     pdf: "/documents/project_development.pdf",
     image: "/images/project_development.png",
     tags: ["PDF", "Figma"],
-    extras: [{ kind: "mockup", href: "https://onion-read-07842130.figma.site/" }],
+    extras: [{ kind: "mockup", href: "https://onion-read-07842130.figma.site/", preview: true }],
     title: {
       tr: "Proje Geliştirme Dersi Dokümantasyonu",
       en: "Project Development Class Documentation",

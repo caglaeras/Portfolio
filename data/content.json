@@ -125,7 +125,10 @@
       "essayBtn": "Değerlendirme Yazısı",
       "mockupBtn": "Arayüz Taslağı",
       "openEssayFor": "değerlendirme yazısını yeni sekmede aç",
-      "openMockupFor": "arayüz taslağını yeni sekmede aç"
+      "openMockupFor": "arayüz taslağını yeni sekmede aç",
+      "previewLoading": "Önizleme yükleniyor",
+      "previewFailed": "Önizleme bu tarayıcıda gösterilemedi.",
+      "openInNewTab": "Yeni sekmede aç"
     },
     "story": {
       "kicker": "Proje Hikayesi",
@@ -304,7 +307,10 @@
       "essayBtn": "Reflection Essay",
       "mockupBtn": "UI Mock-up",
       "openEssayFor": "reflection essay, open in a new tab",
-      "openMockupFor": "UI mock-up, open in a new tab"
+      "openMockupFor": "UI mock-up, open in a new tab",
+      "previewLoading": "Loading preview",
+      "previewFailed": "The preview could not be shown in this browser.",
+      "openInNewTab": "Open in new tab"
     },
     "story": {
       "kicker": "Project Story",

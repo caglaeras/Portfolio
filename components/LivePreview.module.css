@@ -1,0 +1,124 @@
+/*
+ * Kart icinde kucultulmus canli site onizlemesi.
+ * /projects/web ve /projects/other sayfalari ayni bileseni kullanir.
+ */
+
+.stage {
+  --skeleton: #ECEAE6;
+  position: relative;
+  width: 100%;
+  background: #15130f;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+
+/*
+ * iframe PREVIEW_WIDTH genisliginde render edilir, sonra JS ile hesaplanan
+ * olcekle kart genisligine sigdirilir. Tiklama gecmez, odak almaz.
+ */
+.mini {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 800px;
+  border: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  background: #fff;
+}
+
+.badge {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.93);
+  color: var(--text-color);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4E9A63;
+}
+
+/* Yuklenene kadar iskelet. */
+.skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(100deg, var(--skeleton) 28%, #F5F3F0 46%, var(--skeleton) 64%);
+  background-size: 240% 100%;
+  animation: sweep 1.5s linear infinite;
+}
+
+.skeleton::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: auto 0 18px 0;
+  text-align: center;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+}
+
+@keyframes sweep {
+  from { background-position: 120% 0; }
+  to { background-position: -120% 0; }
+}
+
+/* iframe hic gelmezse devreye giren yedek katman. */
+.fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  background: #F3F1EE;
+  color: var(--secondary-text);
+  font-size: 0.88rem;
+}
+
+.fallbackLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 11px 18px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--card-border);
+  color: var(--secondary-text);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.fallbackLink:hover {
+  border-color: var(--text-color);
+  color: var(--text-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

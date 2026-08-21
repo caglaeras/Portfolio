@@ -115,22 +115,6 @@
   border-bottom: 1px solid var(--card-border);
 }
 
-/*
- * Mini onizleme: iframe 1280px genislikte render edilir, sonra JS ile
- * hesaplanan olcekle kart genisligine sigdirilir. Tiklama gecmez.
- */
-.stage iframe.mini {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1280px;
-  height: 800px;
-  border: 0;
-  transform-origin: 0 0;
-  pointer-events: none;
-  background: #fff;
-}
-
 /* Demo videolari 16:9; kendi oraniyla dursun ki kirpilmasin. */
 .stageVideo { aspect-ratio: 16 / 9; }
 
@@ -254,32 +238,6 @@
 }
 
 .stageFallback[hidden] { display: none; }
-
-.liveDot {
-  position: absolute;
-  z-index: 4;
-  top: 12px;
-  left: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(255, 255, 255, 0.93);
-  color: var(--text-color);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 100px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-}
-
-.liveDot span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4E9A63;
-}
 
 /* --- Kart govdesi ------------------------------------------------------- */
 

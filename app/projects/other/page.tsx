@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import LivePreview from "@/components/LivePreview";
 import StoryDrawer, { type StoryLink, type StorySection } from "@/components/StoryDrawer";
 import {
   academicWork,
@@ -63,6 +64,12 @@ const Icons = {
 const watchUrl = (videoId: string) => "https://www.youtube.com/watch?v=" + videoId;
 
 type Copy = Record<string, string>;
+
+/** preview isaretli mockup baglantisi varsa adresini verir. */
+function livePreviewOf(item: AcademicItem) {
+  const mockup = item.extras?.find((extra) => extra.kind === "mockup" && extra.preview);
+  return mockup ? mockup.href : null;
+}
 
 /** Ek baglantilarin etiketi, ikonu ve adresi tek yerden cozulur. */
 function resolveExtra(extra: AcademicExtra, copy: Copy) {
@@ -262,6 +269,20 @@ export default function Other() {
                   isPlaying={playingId === item.id}
                   onPlay={() => setPlayingId(item.id)}
                   onStop={() => setPlayingId(null)}
+                />
+              ) : livePreviewOf(item) ? (
+                /* Arayuz taslagi olan belge kartinda statik gorsel yerine
+                   kucultulmus canli onizleme gosterilir. */
+                <LivePreview
+                  src={livePreviewOf(item) as string}
+                  title={`${title} ${copy.mockupBtn}`}
+                  aspect="16 / 9"
+                  badge={{ label: copy.mockupBtn }}
+                  labels={{
+                    loading: copy.previewLoading,
+                    failed: copy.previewFailed,
+                    open: copy.openInNewTab,
+                  }}
                 />
               ) : (
                 <div className={`${styles.stage} ${styles.docStage}`}>
