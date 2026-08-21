@@ -212,6 +212,108 @@ export const academicWork: AcademicItem[] = [
     },
   },
   {
+    id: "lesson-plan-spreadsheet",
+    kind: "document",
+    pdf: "/documents/lesson_plan_spreadsheet.pdf",
+    image: "/images/lesson_plan_spreadsheet_preview.png",
+    tags: ["MEB BT.6.4.1", "ISTE", "PRIMM", "PDF"],
+    title: {
+      tr: "Ders Planı: Acemi Dedektif ile Tablo Biçimlendirme",
+      en: "Lesson Plan: Spreadsheet Formatting with a Detective Case",
+    },
+    summary: {
+      tr: "6. sınıf Bilişim Teknolojileri için 35 dakikalık ders planı: senaryo temelli bir dedektif vakası üzerinden elektronik tablo biçimlendirme. Sınıfta uygulandı.",
+      en: "A 35 minute lesson plan for 6th grade Information Technologies: spreadsheet formatting through a scenario based detective case. Taught in class.",
+    },
+    story: {
+      problem: {
+        tr: "Elektronik tablo biçimlendirme, öğrenciye anlatıldığında sıkıcı bir düğme turuna dönüşüyor. Kalın, italik ya da sütun genişliği tek tek gösterildiğinde öğrenci neden bunu yaptığını bilmiyor, dolayısıyla ertesi hafta hatırlamıyor.",
+        en: "Spreadsheet formatting turns into a dull tour of buttons when it is simply demonstrated. Shown one by one, bold, italics or column width leave the learner without a reason for doing it, so none of it survives to the following week.",
+      },
+      amac: {
+        tr: "Biçimlendirmenin bir amaca hizmet ettiği bir durum kurmak istedim. Hedefim, öğrencinin tabloyu güzelleştirmek için değil, bir başkasının okuyabilmesi için düzenlemesiydi.",
+        en: "I wanted to set up a situation where formatting serves a purpose. My goal was for students to tidy the table not to make it pretty, but so that someone else could read it.",
+      },
+      cozum: {
+        tr: "Dersi bir vaka dosyası üzerine kurdum: öğrenciler acemi dedektif oluyor ve dağınık şüpheli tablosunu profesyonel dedektife teslim edilecek okunur bir tabloya çeviriyor. Vakayı çözmek görevin parçası değil, bu sınırı derste açıkça tekrarlıyorum; böylece dikkat biçimlendirmede kalıyor. Grup içinde rol dağılımı, ekler ve teslim klasörüyle akış baştan sona planlandı.",
+        en: "I built the lesson around a case file: students become trainee detectives and turn a messy suspect table into a readable one to hand to the professional detective. Solving the case is deliberately not part of the task, a boundary I restate during the lesson so attention stays on the formatting. The flow is planned end to end, with group roles, appendices and a submission folder.",
+      },
+      ozellikler: {
+        tr: [
+          "Acemi dedektif senaryosu üzerine kurulu 35 dakikalık akış",
+          "Sütun genişliği, kalın, italik, yazı boyutu ve üstü çizili biçimlendirme hedefleri",
+          "Grup içinde rol dağılımıyla iş birliği",
+          "Öğrencinin kendi ve eşinin işini denetlediği öz değerlendirme listesi",
+          "MEB BT.6.4.1.2 kazanımı, ISTE ve PRIMM çerçeveleriyle hizalama",
+          "Yedi ek: senaryo, vaka dosyası, yeni kanıt, görevler, kontrol listesi, kapanış videosu, teslim klasörü",
+        ],
+        en: [
+          "A 35 minute flow built on a trainee detective scenario",
+          "Formatting targets: column width, bold, italics, font size and strikethrough",
+          "Collaboration through assigned roles within the group",
+          "A self assessment checklist covering both the student's work and their partner's",
+          "Aligned to the MoNE BT.6.4.1.2 outcome and to the ISTE and PRIMM frameworks",
+          "Seven appendices: scenario, case file, new evidence, tasks, checklist, closing video, submission folder",
+        ],
+      },
+      ogrendim: {
+        tr: "Senaryonun asıl işinin motivasyon değil sınır çizmek olduğunu gördüm; görevin ne OLMADIĞINI söylemek, ne olduğunu söylemek kadar önemliydi. Öz değerlendirme listesinin de öğretmenin yerine geçmediğini, öğrenciye neye bakacağını öğrettiğini fark ettim.",
+        en: "I saw that the scenario's real job is not motivation but drawing a boundary; saying what the task is NOT mattered as much as saying what it is. I also noticed that the self assessment checklist does not replace the teacher, it teaches the student what to look for.",
+      },
+    },
+  },
+  {
+    id: "lesson-plan-ai-literacy",
+    kind: "document",
+    pdf: "/documents/lesson_plan_ai_literacy.pdf",
+    image: "/images/lesson_plan_ai_literacy_preview.png",
+    tags: ["AI4K12", "CSTA", "ISTE", "PDF"],
+    title: {
+      tr: "Ders Planı: Yapay Zekada Temsil ve Prompt ile Arayüz Tasarımı",
+      en: "Lesson Plan: Representation in AI and Designing UI through Prompts",
+    },
+    summary: {
+      tr: "9. sınıf hazırlık için 40 dakikalık yapay zeka okuryazarlığı ders planı: temsil kavramı ve yapılandırılmış prompt ile arayüz üretimi. Sınıfta uygulandı.",
+      en: "A 40 minute AI literacy lesson plan for 9th grade preparatory: the concept of representation and generating a UI with a structured prompt. Taught in class.",
+    },
+    story: {
+      problem: {
+        tr: "Öğrenciler yapay zekaya bir şey yazıp çıktı almayı biliyor ama arada ne olduğunu bilmiyor. Çıktı beklediği gibi olmadığında da suçu araca atıyor, kendi isteminin belirsizliğini görmüyor.",
+        en: "Students know how to type something into an AI and get an output, but not what happens in between. When the output is not what they expected they blame the tool, without seeing how vague their own prompt was.",
+      },
+      amac: {
+        tr: "Temsil kavramını soyut bir tanım olarak değil, öğrencinin kendi gözüyle görebileceği bir zincir olarak öğretmek istedim: yazdığı cümle, üretilen kod ve ekranda çıkan sayfa. Aynı derste istemin belirginliğinin çıktıyı nasıl değiştirdiğini de göstermeyi hedefledim.",
+        en: "I wanted to teach representation not as an abstract definition but as a chain the student can see for themselves: the sentence they write, the code produced, and the page that appears on screen. In the same lesson I aimed to show how the specificity of a prompt changes the output.",
+      },
+      cozum: {
+        tr: "Dersi bir karşılaştırma üzerine kurdum: aynı hedef için belirsiz bir istem (V1) ile beş parçalı tarife göre yazılmış yapılandırılmış bir istem (V2) yazdırıp iki çıktıyı yan yana inceletiyorum. Tarifin parçaları hedef kitle, amaç, içerik, biçem ve yapı. Ders, yapay zekanın varsayılan biçem tercihlerinin eğitim verisindeki örüntülerden geldiği tartışmasıyla kapanıyor, çıkışta iki dakikalık sessiz bir çıkış kartı toplanıyor.",
+        en: "I built the lesson around a comparison: for the same goal, students write a vague prompt (V1) and a structured one following a five part recipe (V2), then examine the two outputs side by side. The parts of the recipe are audience, purpose, content, style and structure. The lesson closes on a discussion of how an AI's default style choices come from patterns in its training data, and a two minute silent exit ticket is collected at the door.",
+      },
+      ozellikler: {
+        tr: [
+          "Temsilin üç katmanı: doğal dil istemi, HTML/CSS kodu, ekrandaki sayfa",
+          "Beş parçalı istem tarifi: hedef kitle, amaç, içerik, biçem, yapı",
+          "Belirsiz istem ile yapılandırılmış istemin çıktılarını karşılaştırma",
+          "Yapay zekanın varsayılan tercihlerinin eğitim verisinden geldiğini tartışma",
+          "Iki dakikalık çıkış kartı ve ödev olarak verilen düzey belirleme değerlendirmesi",
+          "AI4K12 Büyük Fikir 2, 3 ve 5, CSTA 3A, ISTE ve MEB TYMM ile hizalama",
+        ],
+        en: [
+          "The three layers of representation: natural language prompt, HTML and CSS code, the rendered page",
+          "A five part prompt recipe: audience, purpose, content, style, structure",
+          "Comparing the outputs of a vague prompt and a structured one",
+          "Discussing how an AI's default choices come from its training data",
+          "A two minute exit ticket plus a summative assessment set as homework",
+          "Aligned to AI4K12 Big Ideas 2, 3 and 5, CSTA 3A, ISTE and the MoNE TYMM framework",
+        ],
+      },
+      ogrendim: {
+        tr: "Yapay zekayı öğretirken en zor kısmın araç değil, öğrencinin kendi isteminin belirsizliğini fark etmesi olduğunu gördüm; iki çıktıyı yan yana koymak, benim anlatabileceğim her açıklamadan daha ikna edici oldu. Kırk dakikalık bir derste eleştirel tartışmayı sona bırakmanın da riskli olduğunu, o yüzden çıkış kartını sabit tuttuğumu öğrendim.",
+        en: "I saw that the hardest part of teaching AI is not the tool but getting students to notice how vague their own prompt was; putting two outputs side by side was more convincing than any explanation I could give. I also learned that leaving the critical discussion to the end of a forty minute lesson is risky, which is why I keep the exit ticket fixed.",
+      },
+    },
+  },
+  {
     id: "research-proposal",
     kind: "document",
     pdf: "/documents/research_proposal.pdf",
