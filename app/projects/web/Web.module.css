@@ -369,49 +369,6 @@
 
 /* --- Proje hikayesi paneli --------------------------------------------- */
 
-.drawer {
-  position: fixed;
-  z-index: 50;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: min(520px, 100%);
-  display: flex;
-  flex-direction: column;
-  background: var(--card-bg);
-  border-left: 1px solid var(--card-border);
-  box-shadow: -18px 0 50px rgba(0, 0, 0, 0.12);
-  transform: translateX(100%);
-  transition: transform 0.42s var(--ease);
-  visibility: hidden;
-}
-
-.drawer.open {
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.drawerHead {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 26px 26px 18px;
-  border-bottom: 1px solid var(--card-border);
-}
-
-.drawerHead .kicker {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--main-color);
-  margin-bottom: 7px;
-}
-
-.drawerHead h3 { font-size: 1.4rem; }
-
 .iconBtn {
   flex: none;
   width: 36px;
@@ -433,84 +390,8 @@
   color: #fff;
 }
 
-.drawerScroll {
-  flex: 1;
-  overflow-y: auto;
-  padding: 24px 26px 8px;
-}
-
-.storyBlock { margin-bottom: 26px; }
-
-.storyBlock h4 {
-  font-family: var(--font-body);
-  font-size: 0.71rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--main-color);
-  margin-bottom: 9px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid var(--card-border);
-}
-
-.storyBlock p {
-  color: var(--secondary-text);
-  font-size: 0.93rem;
-  font-weight: 300;
-}
-
-.storyBlock ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.storyBlock li {
-  position: relative;
-  padding-left: 18px;
-  color: var(--secondary-text);
-  font-size: 0.93rem;
-  font-weight: 300;
-}
-
-.storyBlock li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 6px;
-  height: 1px;
-  background: var(--main-color);
-}
-
-.drawerFoot {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 18px 26px 24px;
-  border-top: 1px solid var(--card-border);
-  background: var(--bg-color);
-}
-
 /* Mobilde alttan yukari acilan tam genislik panel. */
-@media (max-width: 640px) {
-  .drawer {
-    top: auto;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: min(88vh, 100%);
-    border-left: 0;
-    border-top: 1px solid var(--card-border);
-    border-radius: 14px 14px 0 0;
-    transform: translateY(100%);
-    box-shadow: 0 -18px 50px rgba(0, 0, 0, 0.16);
-  }
-  .drawer.open { transform: translateY(0); }
-  .drawerHead { padding: 22px 20px 16px; }
-  .drawerScroll { padding: 20px 20px 8px; }
-  .drawerFoot { padding: 16px 20px 22px; }
+@media (max-width: 640px) {  .drawer.open { transform: translateY(0); }  .drawerScroll { padding: 20px 20px 8px; }
 }
 
 /* --- Canli onizleme modali -------------------------------------------- */

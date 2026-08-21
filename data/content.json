@@ -88,9 +88,7 @@
     "web": {
       "title": "Web Geliştirme Projeleri",
       "lead": "Web programlama derslerim ve bireysel çalışmalarım sonucunda ortaya çıkan web projelerim.",
-      "storyKicker": "Proje Hikayesi",
       "previewBtn": "Canlı Önizleme",
-      "storyBtn": "Proje Hikayesi",
       "githubBtn": "GitHub'da İncele",
       "liveBadge": "Canlı",
       "previewLoading": "Önizleme yükleniyor",
@@ -104,33 +102,39 @@
       "liveSiteLink": "Canlı Site",
       "repoLink": "GitHub Deposu",
       "demoLink": "Demo Videosu",
-      "closeStory": "Proje hikayesi panelini kapat",
       "closePreview": "Canlı önizlemeyi kapat",
       "playVideo": "demo videosunu oynat",
       "closeVideo": "videosunu kapat",
       "openPreviewFor": "canlı önizlemesini tam ekran aç",
-      "openStoryFor": "proje hikayesini aç",
       "openRepoFor": "deposunu GitHub'da aç",
-      "techsOf": "teknolojileri",
-      "storyLabels": {
+      "techsOf": "teknolojileri"
+    },
+    "other": {
+      "title": "Academic Work",
+      "lead": "Eğitim teknolojileri, öğretim tasarımı, veritabanı planlaması ve içerik üretimi alanlarında yürüttüğüm akademik çalışmalar.",
+      "downloadBtn": "İndir / Görüntüle",
+      "watchBtn": "Videoyu Aç",
+      "docLink": "Belgeyi Aç",
+      "playVideo": "videosunu oynat",
+      "closeVideo": "videosunu kapat",
+      "videoFailed": "Video bu pencerede açılamadı.",
+      "openYoutube": "YouTube'da aç",
+      "openDocFor": "belgesini yeni sekmede aç",
+      "previewOf": "önizleme görseli",
+      "techsOf": "etiketleri"
+    },
+    "story": {
+      "kicker": "Proje Hikayesi",
+      "button": "Proje Hikayesi",
+      "close": "Proje hikayesi panelini kapat",
+      "openFor": "proje hikayesini aç",
+      "labels": {
         "problem": "Problem",
         "amac": "Amaç",
         "cozum": "Çözüm",
         "ozellikler": "Öne Çıkan Özellikler",
         "ogrendim": "Neler Öğrendim"
       }
-    },
-    "other": {
-      "title": "Diğer Projelerim",
-      "lead": "Eğitim teknolojileri entegrasyonu, veritabanı tasarımı ve video kurgu gibi alanlarda geliştirdiğim diğer çalışmalar.",
-      "projects": [
-        { "title": "Articulate", "desc": "Articulate Storyline platformu üzerinden hazırladığım bu interaktif eğitsel içerikte, kesir kavramı öğrencilerin aktif katılım sağlayabileceği uygulamalarla anlatıldı. Eğitim teknolojileri alanındaki tasarım becerilerimi geliştirdiğim bir projedir.", "videoId": "xLoHTwxcuTQ" },
-        { "title": "SQL ile Coaching System Planlama", "desc": "MySQL veri tabanı yapısını kullanarak bireysel koçluk sistemine ait kullanıcı, oturum ve planlama detaylarını içeren bir veritabanı tasarımı gerçekleştirdim. Bu proje SQL sorguları ile sistem planlamasını nasıl yapabileceğimi gösteriyor.", "videoId": "jTIoYyWDDEo" },
-        { "title": "Kahve Hakkında Eğitsel Video", "desc": "Ekip arkadaşım ile birlikte kahve üzerine hazırladığımız bu eğitsel videoda, içeriğin senaryosu, çekimi ve Adobe Premiere Pro ile kurgulama süreci tamamen bize aittir. Hem içerik üretimi hem de post-prodüksiyon deneyimi sundu.", "videoId": "KP_9mSYPptw" },
-        { "title": "Akademik Araştırma Önerisi", "desc": "Tüm metodoloji, teorik arka plan ve araştırma hedeflerini detaylandırdığım akademik bir araştırma önerisi çalışması.", "pdfLink": "/documents/research_proposal.pdf", "image": "/images/research_proposal.png" },
-        { "title": "Proje Geliştirme Dersi", "desc": "Proje geliştirme dersi kapsamında hazırladığım, projenin planlama, uygulama ve değerlendirme aşamalarını gösteren dokümantasyon.", "pdfLink": "/documents/project_development.pdf", "image": "/images/project_development.png" },
-        { "title": "Online Ders Hazırlığı (Canvas)", "desc": "Canvas öğrenme yönetim sistemi üzerinden bir online ders için geliştirdiğim tam kapsamlı yapı ve hazırlık materyalleri.", "pdfLink": "/documents/canvas_lesson.pdf", "image": "/images/canvas_lesson.png" }
-      ]
     },
     "marketing": {
       "title": "Marketing Portföyüm",
@@ -259,9 +263,7 @@
     "web": {
       "title": "Web Development Projects",
       "lead": "Web projects created through my web programming courses and independent work.",
-      "storyKicker": "Project Story",
       "previewBtn": "Live Preview",
-      "storyBtn": "Project Story",
       "githubBtn": "View on GitHub",
       "liveBadge": "Live",
       "previewLoading": "Loading preview",
@@ -275,33 +277,39 @@
       "liveSiteLink": "Live Site",
       "repoLink": "GitHub Repository",
       "demoLink": "Demo Video",
-      "closeStory": "Close the project story panel",
       "closePreview": "Close the live preview",
       "playVideo": "demo video, play",
       "closeVideo": "video, close",
       "openPreviewFor": "live preview, open full screen",
-      "openStoryFor": "project story, open",
       "openRepoFor": "repository, open on GitHub",
-      "techsOf": "technologies",
-      "storyLabels": {
+      "techsOf": "technologies"
+    },
+    "other": {
+      "title": "Academic Work",
+      "lead": "Academic work in educational technology, instructional design, database planning and content production.",
+      "downloadBtn": "View / Download",
+      "watchBtn": "Open the video",
+      "docLink": "Open the document",
+      "playVideo": "video, play",
+      "closeVideo": "video, close",
+      "videoFailed": "The video could not be played in this window.",
+      "openYoutube": "Open on YouTube",
+      "openDocFor": "document, open in a new tab",
+      "previewOf": "preview image",
+      "techsOf": "tags"
+    },
+    "story": {
+      "kicker": "Project Story",
+      "button": "Project Story",
+      "close": "Close the project story panel",
+      "openFor": "project story, open",
+      "labels": {
         "problem": "Problem",
         "amac": "Goal",
         "cozum": "Solution",
         "ozellikler": "Key Features",
         "ogrendim": "What I Learned"
       }
-    },
-    "other": {
-      "title": "Other Projects",
-      "lead": "Other projects I've developed in areas like educational tech integration, database design, and video editing.",
-      "projects": [
-        { "title": "Articulate", "desc": "An interactive educational piece prepared on the Articulate Storyline platform, teaching the concept of fractions through active-participation apps. It helped develop my tech-education design skills.", "videoId": "xLoHTwxcuTQ" },
-        { "title": "SQL Coaching System Planning", "desc": "Designed a database using MySQL for an individual coaching system, containing user, session, and planning details. This showcases how SQL queries can structurally plan an entire system.", "videoId": "jTIoYyWDDEo" },
-        { "title": "Educational Video on Coffee", "desc": "An educational video about coffee created with a teammate. We handled the script, filming, and Adobe Premiere Pro editing entirely. It offered both content production and post-production experience.", "videoId": "KP_9mSYPptw" },
-        { "title": "Academic Research Proposal", "desc": "A research proposal conducted academically, detailing the complete methodology, theoretical background, and research objectives.", "pdfLink": "/documents/research_proposal.pdf", "image": "/images/research_proposal.png" },
-        { "title": "Project Development Class", "desc": "Documentation from my project development class, showcasing the planning, implementation, and evaluation phases of the project.", "pdfLink": "/documents/project_development.pdf", "image": "/images/project_development.png" },
-        { "title": "Online Lesson Preparation (Canvas)", "desc": "Complete structure and preparation materials developed for an online lesson using the Canvas learning management system.", "pdfLink": "/documents/canvas_lesson.pdf", "image": "/images/canvas_lesson.png" }
-      ]
     },
     "marketing": {
       "title": "Marketing Portfolio",

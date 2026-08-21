@@ -1,0 +1,349 @@
+/*
+ * /projects/other (Academic Work) sayfasi. Palet, fontlar ve reset
+ * app/globals.css icinden gelir. Hikaye paneli components/StoryDrawer'da.
+ */
+
+.page {
+  --main-tint: rgba(140, 123, 101, 0.12);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --font-display: 'Lora', Georgia, serif;
+  display: block;
+}
+
+.page h2,
+.page h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.page :focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: 3px;
+}
+
+.pageTitle {
+  font-size: clamp(2rem, 4.4vw, 2.7rem);
+  margin-bottom: 16px;
+  position: relative;
+  padding-bottom: 22px;
+}
+
+.pageTitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  height: 2px;
+  background: var(--main-color);
+}
+
+.pageLead {
+  max-width: 62ch;
+  color: var(--secondary-text);
+  font-weight: 300;
+  font-size: 1.03rem;
+}
+
+/* --- Kart grid'i -------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  margin-top: 52px;
+}
+
+@media (max-width: 820px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* --- Medya alani ------------------------------------------------------- */
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #15130f;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Belge onizlemesi: sayfanin ust kismi gorunsun, ortadan kirpilmasin. */
+.docStage {
+  background: #F3F1EE;
+}
+
+.docStage .thumb {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.docBadge {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.93);
+  color: var(--text-color);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.docBadge svg {
+  width: 12px;
+  height: 12px;
+  color: var(--main-color);
+}
+
+/* Kapak goruntusunun tamamini kaplayan oynat dugmesi. */
+.playBtn {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgba(20, 18, 16, 0.22);
+  cursor: pointer;
+  transition: background 0.3s var(--ease);
+}
+
+.playBtn:hover {
+  background: rgba(20, 18, 16, 0.38);
+}
+
+.playBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--main-color);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.24);
+  transition: transform 0.28s var(--ease);
+}
+
+.playBadge svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 3px;
+}
+
+.playBtn:hover .playBadge {
+  transform: scale(1.08);
+}
+
+.videoClose {
+  position: absolute;
+  z-index: 4;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(20, 18, 16, 0.66);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s var(--ease);
+}
+
+.videoClose:hover {
+  background: rgba(20, 18, 16, 0.92);
+}
+
+.videoClose svg {
+  width: 15px;
+  height: 15px;
+}
+
+.stageFallback {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  background: #F3F1EE;
+  color: var(--secondary-text);
+  font-size: 0.88rem;
+}
+
+/* --- Kart govdesi ----------------------------------------------------- */
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 14px;
+  padding: 24px 24px 26px;
+}
+
+.cardName {
+  font-size: 1.24rem;
+}
+
+.cardSummary {
+  color: var(--secondary-text);
+  font-size: 0.93rem;
+  font-weight: 300;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  list-style: none;
+}
+
+.chips li {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--main-color-hover);
+  background: var(--main-tint);
+  border-radius: 100px;
+  padding: 4px 11px;
+}
+
+/* Hikaye ve indirme butonlari yan yana. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 11px 18px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.btn:hover {
+  background: var(--text-color);
+  color: #fff;
+}
+
+.btn.primary {
+  border-color: var(--main-color);
+  background: var(--main-color);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--main-color-hover);
+  border-color: var(--main-color-hover);
+}
+
+.btn.quiet {
+  border-color: var(--card-border);
+  color: var(--secondary-text);
+}
+
+.btn.quiet:hover {
+  border-color: var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+}
+
+.btn svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+@media (max-width: 480px) {
+  /* Dar ekranda butonlar tam genislige yayilsin, taşmasın. */
+  .actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page,
+  .page *,
+  .page *::before,
+  .page *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

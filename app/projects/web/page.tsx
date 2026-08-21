@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import StoryDrawer, { type StoryLink, type StorySection } from "@/components/StoryDrawer";
 import {
   LOAD_TIMEOUT,
   PREVIEW_HEIGHT,
@@ -318,28 +319,31 @@ function ModalStage({ project, copy }: { project: LiveWebProject; copy: Copy }) 
 
 export default function Web() {
   const { content, language } = useLanguage();
-  const copy = content.web as unknown as Copy & { storyLabels: Record<StoryKey, string> };
+  const copy = content.web as unknown as Copy;
+  const storyCopy = content.story as unknown as {
+    kicker: string;
+    button: string;
+    close: string;
+    openFor: string;
+    labels: Record<StoryKey, string>;
+  };
 
   const [storyFor, setStoryFor] = useState<WebProject | null>(null);
   const [previewFor, setPreviewFor] = useState<LiveWebProject | null>(null);
   const [playingId, setPlayingId] = useState<string | null>(null);
 
-  const drawerRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const lastFocused = useRef<HTMLElement | null>(null);
 
-  const openPanel = storyFor ? "drawer" : previewFor ? "modal" : null;
+  const closeStory = useCallback(() => setStoryFor(null), []);
+  const closePanel = useCallback(() => setPreviewFor(null), []);
 
-  const closePanel = useCallback(() => {
-    setStoryFor(null);
-    setPreviewFor(null);
-  }, []);
-
-  /* Panel acikken: body scroll kilitli, ESC kapatir, odak panelde kalir. */
+  /* Modal acikken: body scroll kilitli, ESC kapatir, odak modalda kalir.
+     Hikaye paneli ayni isi StoryDrawer icinde kendisi yapar. */
   useEffect(() => {
-    if (!openPanel) return;
+    if (!previewFor) return;
 
-    const panel = openPanel === "drawer" ? drawerRef.current : modalRef.current;
+    const panel = modalRef.current;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -381,15 +385,33 @@ export default function Web() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [openPanel, closePanel]);
+  }, [previewFor, closePanel]);
 
-  /* Panel kapaninca odak, paneli acan butona geri doner. */
+  /* Modal kapaninca odak, modali acan butona geri doner. */
   useEffect(() => {
-    if (openPanel) return;
+    if (previewFor) return;
     const target = lastFocused.current;
     if (target && typeof target.focus === "function") target.focus();
     lastFocused.current = null;
-  }, [openPanel]);
+  }, [previewFor]);
+
+  const storySections: StorySection[] = storyFor
+    ? STORY_ORDER.map((key) => {
+        const value = storyFor.story[key][language];
+        return Array.isArray(value)
+          ? { label: storyCopy.labels[key], items: value }
+          : { label: storyCopy.labels[key], text: value };
+      })
+    : [];
+
+  const storyLinks: StoryLink[] = storyFor
+    ? [
+        ...(storyFor.kind === "live"
+          ? [{ label: copy.liveSiteLink, href: storyFor.live, icon: Icons.external, primary: true }]
+          : [{ label: copy.demoLink, href: watchUrl(storyFor.videoId), icon: Icons.play }]),
+        { label: copy.repoLink, href: storyFor.github, icon: Icons.github },
+      ]
+    : [];
 
   const remember = (event: React.MouseEvent<HTMLButtonElement>) => {
     lastFocused.current = event.currentTarget;
@@ -446,14 +468,11 @@ export default function Web() {
                 <button
                   type="button"
                   className={styles.btn}
-                  aria-label={`${project.name} ${copy.openStoryFor}`}
-                  onClick={(event) => {
-                    remember(event);
-                    setStoryFor(project);
-                  }}
+                  aria-label={`${project.name} ${storyCopy.openFor}`}
+                  onClick={() => setStoryFor(project)}
                 >
                   {Icons.book}
-                  <span>{copy.storyBtn}</span>
+                  <span>{storyCopy.button}</span>
                 </button>
 
                 <a
@@ -472,89 +491,21 @@ export default function Web() {
         ))}
       </div>
 
-      {/* Hikaye paneli ve onizleme modali icin ortak zemin */}
+      {/* Onizleme modalinin zemini */}
       <div
-        className={`${styles.backdrop} ${openPanel ? styles.open : ""}`}
+        className={`${styles.backdrop} ${previewFor ? styles.open : ""}`}
         onClick={closePanel}
         aria-hidden="true"
       />
 
-      <aside
-        ref={drawerRef}
-        className={`${styles.drawer} ${storyFor ? styles.open : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label={storyFor ? `${storyFor.name} ${copy.storyKicker}` : copy.storyKicker}
-        aria-hidden={storyFor ? "false" : "true"}
-      >
-        {storyFor && (
-          <>
-            <div className={styles.drawerHead}>
-              <div>
-                <span className={styles.kicker}>{copy.storyKicker}</span>
-                <h3>{storyFor.name}</h3>
-              </div>
-              <button type="button" className={styles.iconBtn} aria-label={copy.closeStory} onClick={closePanel}>
-                {Icons.close}
-              </button>
-            </div>
-
-            <div className={styles.drawerScroll}>
-              {STORY_ORDER.map((key) => {
-                const value = storyFor.story[key];
-                return (
-                  <div key={key} className={styles.storyBlock}>
-                    <h4>{copy.storyLabels[key]}</h4>
-                    {Array.isArray(value[language]) ? (
-                      <ul>
-                        {(value[language] as string[]).map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p>{value[language] as string}</p>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className={styles.drawerFoot}>
-              {storyFor.kind === "live" && (
-                <a
-                  className={`${styles.btn} ${styles.primary}`}
-                  href={storyFor.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {Icons.external}
-                  <span>{copy.liveSiteLink}</span>
-                </a>
-              )}
-              {storyFor.kind === "youtube" && (
-                <a
-                  className={`${styles.btn} ${styles.quiet}`}
-                  href={watchUrl(storyFor.videoId)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {Icons.play}
-                  <span>{copy.demoLink}</span>
-                </a>
-              )}
-              <a
-                className={`${styles.btn} ${styles.quiet}`}
-                href={storyFor.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {Icons.github}
-                <span>{copy.repoLink}</span>
-              </a>
-            </div>
-          </>
-        )}
-      </aside>
+      <StoryDrawer
+        title={storyFor ? storyFor.name : null}
+        kicker={storyCopy.kicker}
+        closeLabel={storyCopy.close}
+        sections={storySections}
+        links={storyLinks}
+        onClose={closeStory}
+      />
 
       <div
         ref={modalRef}
