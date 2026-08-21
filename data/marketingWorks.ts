@@ -1,93 +1,269 @@
 /**
- * Marketing Works — content list for /projects/marketing-works
+ * Marketing Works - content list for /projects/marketing
  *
- * This file is the single source of truth for WHICH items appear in the two
- * horizontal reels on the Marketing Works page. The surrounding page copy
- * (title, subtitle, intro paragraph, section headings) lives in
- * data/content.json under `marketingWorks`, alongside the rest of the site's
- * TR/EN strings.
+ * Single source of truth for both horizontal strips on the Marketing Works
+ * page. Page copy (title, intro, section headings) stays in data/content.json
+ * under `marketing`, with the rest of the site's TR/EN strings.
  *
- * ── Where the files live ─────────────────────────────────────────────────────
- *   Videos   →  public/marketing/videos/<filename>
- *               plus a same-named poster frame, e.g. reel-01.mp4 + reel-01.jpg
- *   Visuals  →  public/marketing/visuals/<filename>
+ * -- Videos -----------------------------------------------------------------
+ * Two kinds of entry are supported in the same strip:
  *
- * Paths are resolved with the `/Portfolio` basePath by the page itself, so only
- * the bare file name goes here.
+ *   source: "youtube"  ->  needs `videoId`. Nothing but a thumbnail loads
+ *                          until the card is clicked, then the player is
+ *                          mounted with autoplay.
+ *   source: "file"     ->  needs `src` (path under public/) plus `poster`,
+ *                          `width` and `height`. Use this for self-hosted
+ *                          Reels dropped into public/marketing/videos/:
  *
- * ── Adding an item ───────────────────────────────────────────────────────────
- * Drop the file into the folder above, then append an entry below. Captions are
- * rendered as one line: "platform • goal (role)".
+ *   {
+ *     id: "v1",
+ *     type: "video",
+ *     source: "file",
+ *     src: "/marketing/videos/reel-01.mp4",
+ *     poster: "/marketing/videos/reel-01.jpg",
+ *     width: 1080,
+ *     height: 1920,
+ *     label: { tr: "Instagram Reels", en: "Instagram Reels" },
+ *     note: { tr: "Hasta bilgilendirme", en: "Patient education" },
+ *   }
  *
- *   marketingVideos:
- *     {
- *       id: "v1",
- *       type: "video",
- *       filename: "reel-01.mp4",
- *       poster: "reel-01.jpg",
- *       platform: "Instagram Reels",
- *       goal: { tr: "Hasta Bilgilendirme", en: "Patient Education" },
- *       role: { tr: "İçerik Üretimi & Kurgu", en: "Content Production & Editing" },
- *     }
+ * -- Visuals ----------------------------------------------------------------
+ * `width` and `height` are the file's real pixel size. Card shape is derived
+ * from them, so any ratio works without touching the CSS - just keep them
+ * accurate or the thumbnail will be letterboxed.
  *
- *   marketingVisuals (ratio drives the card shape — "1:1" | "4:5" | "9:16"):
- *     {
- *       id: "i1",
- *       type: "visual",
- *       filename: "post-01.png",
- *       ratio: "4:5",
- *       platform: "Instagram Feed",
- *       goal: { tr: "Farkındalık Postu", en: "Awareness Post" },
- *       role: { tr: "Görsel Tasarım", en: "Visual Design" },
- *     }
+ * -- Captions ---------------------------------------------------------------
+ * Rendered as one line: "label - note". Both are TR/EN.
  */
-
-export type MarketingWorkType = "video" | "visual";
-
-/** Instagram-friendly card shapes. */
-export type VisualRatio = "1:1" | "4:5" | "9:16";
 
 export interface LocalizedText {
   tr: string;
   en: string;
 }
 
-interface MarketingWorkBase {
-  /** Stable key — also used to track which video is currently playing. */
+interface ItemBase {
   id: string;
-  type: MarketingWorkType;
-  filename: string;
-  /** Distribution surface, e.g. "Instagram Reels". Same in both languages. */
-  platform: string;
-  /** What the piece was made to do. */
-  goal: LocalizedText;
-  /** Contribution on the piece. */
-  role: LocalizedText;
+  label: LocalizedText;
+  note: LocalizedText;
 }
 
-export interface MarketingVideo extends MarketingWorkBase {
+export interface YouTubeVideo extends ItemBase {
   type: "video";
-  /** Poster frame in the same folder, same base name, `.jpg`. */
+  source: "youtube";
+  videoId: string;
+}
+
+export interface FileVideo extends ItemBase {
+  type: "video";
+  source: "file";
+  src: string;
   poster: string;
+  width: number;
+  height: number;
 }
 
-export interface MarketingVisual extends MarketingWorkBase {
+export type MarketingVideo = YouTubeVideo | FileVideo;
+
+export interface MarketingVisual extends ItemBase {
   type: "visual";
-  ratio: VisualRatio;
+  /** Path under public/, e.g. "/images/1.png". */
+  src: string;
+  width: number;
+  height: number;
 }
 
-/** Folder names under public/marketing/, used to build the asset URLs. */
-export const VIDEO_DIR = "marketing/videos";
-export const VISUAL_DIR = "marketing/visuals";
+/** Shorts and Reels. Vertical cards. */
+export const marketingVideos: MarketingVideo[] = [
+  {
+    id: "yt1",
+    type: "video",
+    source: "youtube",
+    videoId: "gMKkm5kcke8",
+    label: { tr: "YouTube Shorts 1", en: "YouTube Shorts 1" },
+    note: { tr: "Tanıtım videosu 1", en: "Promotional video 1" },
+  },
+  {
+    id: "yt2",
+    type: "video",
+    source: "youtube",
+    videoId: "X3o4-4pyn2g",
+    label: { tr: "YouTube Shorts 2", en: "YouTube Shorts 2" },
+    note: { tr: "Tanıtım videosu 2", en: "Promotional video 2" },
+  },
+  {
+    id: "yt3",
+    type: "video",
+    source: "youtube",
+    videoId: "gynXSZEaN98",
+    label: { tr: "YouTube Shorts 3", en: "YouTube Shorts 3" },
+    note: { tr: "Tanıtım videosu 3", en: "Promotional video 3" },
+  },
+  {
+    id: "yt4",
+    type: "video",
+    source: "youtube",
+    videoId: "ct7o0Q4l6sk",
+    label: { tr: "YouTube Shorts 4", en: "YouTube Shorts 4" },
+    note: { tr: "Tanıtım videosu 4", en: "Promotional video 4" },
+  },
+  {
+    id: "yt5",
+    type: "video",
+    source: "youtube",
+    videoId: "AITJHwzmJnI",
+    label: { tr: "YouTube Shorts 5", en: "YouTube Shorts 5" },
+    note: { tr: "Tanıtım videosu 5", en: "Promotional video 5" },
+  },
+  {
+    id: "yt6",
+    type: "video",
+    source: "youtube",
+    videoId: "dMhl93xgxQ4",
+    label: { tr: "YouTube Shorts 6", en: "YouTube Shorts 6" },
+    note: { tr: "Tanıtım videosu 6", en: "Promotional video 6" },
+  },
+  {
+    id: "yt7",
+    type: "video",
+    source: "youtube",
+    videoId: "lKKu1GCBBN8",
+    label: { tr: "YouTube Shorts 7", en: "YouTube Shorts 7" },
+    note: { tr: "Tanıtım videosu 7", en: "Promotional video 7" },
+  },
+];
 
-/** 9:16 video content — Reels / Shorts / TikTok. */
-export const marketingVideos: MarketingVideo[] = [];
+/** Post, story and banner artwork. Mixed ratios. */
+export const marketingVisuals: MarketingVisual[] = [
+  {
+    id: "img1",
+    type: "visual",
+    src: "/images/1.png",
+    width: 1024,
+    height: 768,
+    label: { tr: "Afiş Örneği 1", en: "Poster Example 1" },
+    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster example created for a game promotion." },
+  },
+  {
+    id: "img2",
+    type: "visual",
+    src: "/images/3.png",
+    width: 1024,
+    height: 768,
+    label: { tr: "Afiş Örneği 2", en: "Poster Example 2" },
+    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster example created for a game promotion." },
+  },
+  {
+    id: "img3",
+    type: "visual",
+    src: "/images/poster.png",
+    width: 1024,
+    height: 768,
+    label: { tr: "Afiş Örneği 3", en: "Poster Example 3" },
+    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster example created for a game promotion." },
+  },
+  {
+    id: "img4",
+    type: "visual",
+    src: "/images/freeproject1.png",
+    width: 1024,
+    height: 768,
+    label: { tr: "Maxxine Serbest Çalışma", en: "Maxxine Free Work" },
+    note: { tr: "Poster çalışması.", en: "Poster design work." },
+  },
+  {
+    id: "img5",
+    type: "visual",
+    src: "/images/freeproject2.png",
+    width: 1024,
+    height: 768,
+    label: { tr: "little Women Serbest Çalışma", en: "Little Women Free Work" },
+    note: { tr: "Poster çalışması.", en: "Poster design work." },
+  },
+  {
+    id: "img6",
+    type: "visual",
+    src: "/images/pre-r_announcement.png",
+    width: 1080,
+    height: 1080,
+    label: { tr: "Yayın Öncesi Duyuru", en: "Pre-Release Announcement" },
+    note: { tr: "Ön sipariş ile alınan oyunumuz için yapılan bir duyuru görseli.", en: "Announcement visual for an upcoming pre-order game." },
+  },
+  {
+    id: "img7",
+    type: "visual",
+    src: "/images/blog_announcement.png",
+    width: 1024,
+    height: 768,
+    label: { tr: "Blog Duyurusu", en: "Blog Announcement" },
+    note: { tr: "Yayına alınan blogları duyurmak için hazırlanmış bir görsel", en: "Visual prepared to announce newly published blog posts." },
+  },
+  {
+    id: "img8",
+    type: "visual",
+    src: "/images/app_storeimage.png",
+    width: 1080,
+    height: 1920,
+    label: { tr: "AppStore Görseli", en: "AppStore Visual" },
+    note: { tr: "Appstore'a eklenmek üzere hazırlanmış görsel.", en: "Visual prepared to be featured on the AppStore." },
+  },
+  {
+    id: "img9",
+    type: "visual",
+    src: "/images/infografik.png",
+    width: 800,
+    height: 2000,
+    label: { tr: "İnfografik Çalışması", en: "Infographic Work" },
+    note: { tr: "Veriler ile hazırlanmış bir infografik örneği", en: "An infographic example prepared with data analysis." },
+  },
+  {
+    id: "img10",
+    type: "visual",
+    src: "/images/announcement_post.gif",
+    width: 1080,
+    height: 1080,
+    label: { tr: "Yeni Mod Duyurusu", en: "New Mode Announcement" },
+    note: { tr: "Oyuna yeni eklenen bir mod için yapılan duyuru görseli", en: "Announcement visual for a new game mode." },
+  },
+  {
+    id: "img11",
+    type: "visual",
+    src: "/images/website_announcement.gif",
+    width: 800,
+    height: 800,
+    label: { tr: "Websitesi Tanıtımı", en: "Website Launch" },
+    note: { tr: "Yayına aldığımız websitesi için hazırlanan duyuru", en: "Announcement prepared to celebrate our website launch." },
+  },
+  {
+    id: "img12",
+    type: "visual",
+    src: "/images/hs.gif",
+    width: 810,
+    height: 1012,
+    label: { tr: "Sosyal Medya İçeriği", en: "Social Media Content" },
+    note: { tr: "Verilen hizmete dair ilgi çekici bir içerik fikri", en: "An engaging content idea for a service." },
+  },
+  {
+    id: "img13",
+    type: "visual",
+    src: "/images/dr.gif",
+    width: 810,
+    height: 1012,
+    label: { tr: "Uygulama Tanıtım", en: "App Promotion" },
+    note: { tr: "App tanıtımı için ilgi çekici bir içerik", en: "Engaging visual for app promotion." },
+  },
+  {
+    id: "img14",
+    type: "visual",
+    src: "/images/files.gif",
+    width: 810,
+    height: 1012,
+    label: { tr: "Sosyal Medya İçeriği", en: "Social Media Content" },
+    note: { tr: "Motivasyonel ilgi çekici bir içerik fikri", en: "A motivational and engaging content idea." },
+  },
+];
 
-/** Mixed-ratio visual content — feed posts, stories, banners. */
-export const marketingVisuals: MarketingVisual[] = [];
-
-/** Renders the single-line card caption for the active language. */
+/** Single-line card caption for the active language. */
 export const captionFor = (
   item: MarketingVideo | MarketingVisual,
   language: "tr" | "en"
-): string => `${item.platform} • ${item.goal[language]} (${item.role[language]})`;
+): string => `${item.label[language]} — ${item.note[language]}`;

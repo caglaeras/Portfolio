@@ -125,6 +125,11 @@
 }
 
 .reel {
+  /*
+   * Every card is this tall; its width comes from the artwork ratio (--ar),
+   * so mixed 4:3 / 1:1 / 4:5 / 9:16 / 2:5 items line up on one baseline.
+   */
+  --reel-h: 380px;
   display: flex;
   align-items: flex-start;
   gap: 20px;
@@ -180,6 +185,10 @@
 
 .card {
   flex: 0 0 auto;
+  /* --ar is width / height, set inline from the file's real pixel size. */
+  width: calc(var(--reel-h) * var(--ar));
+  /* Keeps a 4:3 poster or a very wide item from swallowing the viewport. */
+  max-width: min(76vw, 520px);
   display: flex;
   flex-direction: column;
   background: var(--card-bg);
@@ -195,26 +204,11 @@
   box-shadow: var(--box-shadow-hover);
 }
 
-/*
- * Card widths are chosen so every media box is the same height (380px desktop,
- * 300px mobile) regardless of the aspect ratio of the artwork inside it.
- */
-.ratio916 {
-  width: 214px;
-}
-
-.ratio45 {
-  width: 304px;
-}
-
-.ratio11 {
-  width: 380px;
-}
-
 .media {
   position: relative;
   display: block;
   width: 100%;
+  aspect-ratio: var(--ar);
   padding: 0;
   border: 0;
   background: #111;
@@ -222,30 +216,34 @@
   overflow: hidden;
 }
 
-.ratio916 .media {
-  aspect-ratio: 9 / 16;
+/* Fills a .media box that is already sized - used for the YouTube facade. */
+.mediaBtn {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
-.ratio45 .media {
-  aspect-ratio: 4 / 5;
-}
-
-.ratio11 .media {
-  aspect-ratio: 1 / 1;
-}
-
-.media:focus-visible {
+.media:focus-visible,
+.mediaBtn:focus-visible {
   outline: 2px solid var(--main-color);
   outline-offset: -2px;
 }
 
 .video,
 .poster,
-.visual {
+.visual,
+.frame {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  border: 0;
   object-fit: cover;
 }
 
@@ -291,6 +289,30 @@
   transform: scale(1.08);
 }
 
+/* Sits over a running YouTube player so the card can be closed again. */
+.stopBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.stopBtn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
 .zoomOverlay {
   position: absolute;
   inset: 0;
@@ -310,7 +332,7 @@
   opacity: 1;
 }
 
-/* Single-line caption: platform - goal (role) */
+/* Single-line caption: label - note */
 .captionBox {
   padding: 12px 14px;
   border-top: 1px solid var(--card-border);
@@ -324,6 +346,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
+}
+
+.captionLine strong {
+  color: var(--text-color);
+  font-weight: 600;
 }
 
 /* ── Lightbox ─────────────────────────────────────────────────────────────── */
@@ -409,25 +436,15 @@
   }
 
   .reel {
+    --reel-h: 300px;
     cursor: default;
     gap: 14px;
     scroll-snap-type: x proximity;
   }
 
   .card {
+    max-width: 82vw;
     scroll-snap-align: start;
-  }
-
-  .ratio916 {
-    width: 169px;
-  }
-
-  .ratio45 {
-    width: 240px;
-  }
-
-  .ratio11 {
-    width: 300px;
   }
 
   .closeBtn {

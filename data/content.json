@@ -109,31 +109,16 @@
     "marketing": {
       "title": "Marketing Portföyüm",
       "lead": "Pazarlama ve içerik üretimi odaklı hazırladığım görsel ve video çalışmalarım.",
-      "videos": [
-        { "title": "YouTube Shorts 1", "desc": "Tanıtım videosu 1", "videoId": "gMKkm5kcke8" },
-        { "title": "YouTube Shorts 2", "desc": "Tanıtım videosu 2", "videoId": "X3o4-4pyn2g" },
-        { "title": "YouTube Shorts 3", "desc": "Tanıtım videosu 3", "videoId": "gynXSZEaN98" },
-        { "title": "YouTube Shorts 4", "desc": "Tanıtım videosu 4", "videoId": "ct7o0Q4l6sk" },
-        { "title": "YouTube Shorts 5", "desc": "Tanıtım videosu 5", "videoId": "AITJHwzmJnI" },
-        { "title": "YouTube Shorts 6", "desc": "Tanıtım videosu 6", "videoId": "dMhl93xgxQ4" },
-        { "title": "YouTube Shorts 7", "desc": "Tanıtım videosu 7", "videoId": "lKKu1GCBBN8" }
-      ],
-      "images": [
-        { "title": "Afiş Örneği 1", "desc": "Oyun tanıtımı için hazırlanmış bir afiş örneği.", "image": "/images/1.png" },
-        { "title": "Afiş Örneği 2", "desc": "Oyun tanıtımı için hazırlanmış bir afiş örneği.", "image": "/images/3.png" },
-        { "title": "Afiş Örneği 3", "desc": "Oyun tanıtımı için hazırlanmış bir afiş örneği.", "image": "/images/poster.png" },
-        { "title": "Maxxine Serbest Çalışma", "desc": "Poster çalışması.", "image": "/images/freeproject1.png" },
-        { "title": "little Women Serbest Çalışma", "desc": "Poster çalışması.", "image": "/images/freeproject2.png" },
-        { "title": "Yayın Öncesi Duyuru", "desc": "Ön sipariş ile alınan oyunumuz için yapılan bir duyuru görseli.", "image": "/images/pre-r_announcement.png" },
-        { "title": "Blog Duyurusu", "desc": "Yayına alınan blogları duyurmak için hazırlanmış bir görsel", "image": "/images/blog_announcement.png" },
-        { "title": "AppStore Görseli", "desc": "Appstore'a eklenmek üzere hazırlanmış görsel.", "image": "/images/app_storeimage.png" },
-        { "title": "İnfografik Çalışması", "desc": "Veriler ile hazırlanmış bir infografik örneği", "image": "/images/infografik.png" },
-        { "title": "Yeni Mod Duyurusu", "desc": "Oyuna yeni eklenen bir mod için yapılan duyuru görseli", "image": "/images/announcement_post.gif" },
-        { "title": "Websitesi Tanıtımı", "desc": "Yayına aldığımız websitesi için hazırlanan duyuru", "image": "/images/website_announcement.gif" },
-        { "title": "Sosyal Medya İçeriği", "desc": "Verilen hizmete dair ilgi çekici bir içerik fikri", "image": "/images/hs.gif" },
-        { "title": "Uygulama Tanıtım", "desc": "App tanıtımı için ilgi çekici bir içerik", "image": "/images/dr.gif" },
-        { "title": "Sosyal Medya İçeriği", "desc": "Motivasyonel ilgi çekici bir içerik fikri", "image": "/images/files.gif" }
-      ]
+      "intro": "Bu galeri, pazarlama ve içerik üretimi kapsamında hazırladığım video ve görsel çalışmaları bir arada topluyor. Şeritleri yatay olarak kaydırarak gezebilir, oynatmak için video kartlarına, büyütmek için görsellere tıklayabilirsiniz. Her kartın altındaki satır çalışmanın ne olduğunu ve hangi amaçla üretildiğini özetler.",
+      "videoSectionTitle": "Video İçerikleri",
+      "visualSectionTitle": "Görsel İçerikler",
+      "dragHint": "Kaydırmak için sürükleyin veya okları kullanın",
+      "emptyState": "Bu şeride ait içerikler yakında eklenecek.",
+      "playLabel": "Oynat",
+      "pauseLabel": "Durdur",
+      "stopLabel": "Videoyu kapat",
+      "zoomLabel": "Büyüt",
+      "closeLabel": "Kapat"
     },
     "genCiftligi": {
       "title": "Gen Çiftliği: 8. Sınıf Genetik Konuları İçin Unity Tabanlı Eğitsel Oyun ve Araştırma Çalışması",
@@ -158,19 +143,6 @@
       "ebookDesc": "Kanser hastaları ve yakınları için hazırlanan dijital rehberler; NCCN (National Comprehensive Cancer Network), ASCO (American Society of Clinical Oncology) ve ESMO (European Society for Medical Oncology) klinik protokollerine kıyaslanarak medikal doğruluk süzgecinden geçirilmiştir.",
       "metricsTitle": "Büyüme Performansı ve Metrikler",
       "metricsDesc": "Büyüme pazarlaması stratejileri kapsamında optimize edilen içerik dağıtımı ve Meta Ads kampanyalarıyla elde edilen performans göstergeleri gizlilik nedeniyle oranlı olarak sunulmuştur."
-    },
-    "marketingWorks": {
-      "title": "Marketing Works",
-      "subtitle": "Cancera Health Sosyal Medya İçerik Galerisi",
-      "intro": "Bu galeride yer alan video ve görsel çalışmalar, Cancera Health sosyal medya operasyonunun bir parçası olarak üretilmiştir. İçerikler; hasta ve hasta yakınlarını bilgilendirme, onkolojide farkındalık oluşturma ve topluluk etkileşimini artırma amaçlarıyla planlanmıştır. Her kartın altındaki satır; içeriğin yayınlandığı platformu, kampanya amacını ve üretim sürecindeki rolümü belirtir.",
-      "videoSectionTitle": "Video Content",
-      "visualSectionTitle": "Visual Content",
-      "emptyState": "Bu şeride ait içerikler yakında eklenecek.",
-      "dragHint": "Kaydırmak için sürükleyin veya okları kullanın",
-      "playLabel": "Oynat",
-      "pauseLabel": "Durdur",
-      "zoomLabel": "Büyüt",
-      "closeLabel": "Kapat"
     }
   },
   "en": {
@@ -283,31 +255,16 @@
     "marketing": {
       "title": "Marketing Portfolio",
       "lead": "My visual and video works focused on marketing and content production.",
-      "videos": [
-        { "title": "YouTube Shorts 1", "desc": "Promotional video 1", "videoId": "gMKkm5kcke8" },
-        { "title": "YouTube Shorts 2", "desc": "Promotional video 2", "videoId": "X3o4-4pyn2g" },
-        { "title": "YouTube Shorts 3", "desc": "Promotional video 3", "videoId": "gynXSZEaN98" },
-        { "title": "YouTube Shorts 4", "desc": "Promotional video 4", "videoId": "ct7o0Q4l6sk" },
-        { "title": "YouTube Shorts 5", "desc": "Promotional video 5", "videoId": "AITJHwzmJnI" },
-        { "title": "YouTube Shorts 6", "desc": "Promotional video 6", "videoId": "dMhl93xgxQ4" },
-        { "title": "YouTube Shorts 7", "desc": "Promotional video 7", "videoId": "lKKu1GCBBN8" }
-      ],
-      "images": [
-        { "title": "Poster Example 1", "desc": "A poster example created for a game promotion.", "image": "/images/1.png" },
-        { "title": "Poster Example 2", "desc": "A poster example created for a game promotion.", "image": "/images/3.png" },
-        { "title": "Poster Example 3", "desc": "A poster example created for a game promotion.", "image": "/images/poster.png" },
-        { "title": "Maxxine Free Work", "desc": "Poster design work.", "image": "/images/freeproject1.png" },
-        { "title": "Little Women Free Work", "desc": "Poster design work.", "image": "/images/freeproject2.png" },
-        { "title": "Pre-Release Announcement", "desc": "Announcement visual for an upcoming pre-order game.", "image": "/images/pre-r_announcement.png" },
-        { "title": "Blog Announcement", "desc": "Visual prepared to announce newly published blog posts.", "image": "/images/blog_announcement.png" },
-        { "title": "AppStore Visual", "desc": "Visual prepared to be featured on the AppStore.", "image": "/images/app_storeimage.png" },
-        { "title": "Infographic Work", "desc": "An infographic example prepared with data analysis.", "image": "/images/infografik.png" },
-        { "title": "New Mode Announcement", "desc": "Announcement visual for a new game mode.", "image": "/images/announcement_post.gif" },
-        { "title": "Website Launch", "desc": "Announcement prepared to celebrate our website launch.", "image": "/images/website_announcement.gif" },
-        { "title": "Social Media Content", "desc": "An engaging content idea for a service.", "image": "/images/hs.gif" },
-        { "title": "App Promotion", "desc": "Engaging visual for app promotion.", "image": "/images/dr.gif" },
-        { "title": "Social Media Content", "desc": "A motivational and engaging content idea.", "image": "/images/files.gif" }
-      ]
+      "intro": "This gallery brings together the video and visual work I produced for marketing and content production. Scroll each strip sideways to browse it, click a video card to play it, and click a visual to open it full size. The line under every card summarises what the piece is and what it was made for.",
+      "videoSectionTitle": "Video Content",
+      "visualSectionTitle": "Visual Content",
+      "dragHint": "Drag to scroll, or use the arrows",
+      "emptyState": "Content for this strip is coming soon.",
+      "playLabel": "Play",
+      "pauseLabel": "Pause",
+      "stopLabel": "Close video",
+      "zoomLabel": "Expand",
+      "closeLabel": "Close"
     },
     "genCiftligi": {
       "title": "Gen Çiftliği: A Unity-Based Educational Game for 8th-Grade Genetics, Design and Quasi-Experimental Evaluation",
@@ -332,19 +289,6 @@
       "ebookDesc": "Digital nutrition guides designed for cancer patients and caregivers were rigorously validated against clinical protocols from the NCCN (National Comprehensive Cancer Network), ASCO (American Society of Clinical Oncology), and ESMO (European Society for Medical Oncology).",
       "metricsTitle": "Growth Performance & Metrics",
       "metricsDesc": "Key performance indicators across content distribution channels and Meta Ads campaigns are presented as ratio metrics for privacy reasons."
-    },
-    "marketingWorks": {
-      "title": "Marketing Works",
-      "subtitle": "Cancera Health Social Media Content Gallery",
-      "intro": "The videos and visuals in this gallery were produced as part of the Cancera Health social media operation. Each piece was planned to inform patients and caregivers, build awareness around oncology topics, and grow community engagement. The line beneath every card notes the platform it shipped on, the campaign goal, and my role in producing it.",
-      "videoSectionTitle": "Video Content",
-      "visualSectionTitle": "Visual Content",
-      "emptyState": "Content for this strip is coming soon.",
-      "dragHint": "Drag to scroll, or use the arrows",
-      "playLabel": "Play",
-      "pauseLabel": "Pause",
-      "zoomLabel": "Expand",
-      "closeLabel": "Close"
     }
   }
 }
