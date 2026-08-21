@@ -82,8 +82,7 @@
         { "title": "2D Platform Oyunu", "desc": "Bu projede bir top karakterini WASD tuşlarıyla yönlendirerek platformlar arasında ilerlediği ve dikenli tuzaklara çarpmadan tamamlaması gereken bir mini platform oyunu geliştirdim.", "videoId": "ceNNmWJ9K3g" },
         { "title": "2D Bir Oyun Örneği", "desc": "Oyuncu yukarı ve aşağı yön tuşlarıyla bir uzay gemisini kontrol ediyor. Space tuşuyla ateş ederek karşısına çıkan engelleri yok etmesi gereken basit ama etkili bir oyun kurguladım.", "videoId": "ysaB9TzSp7M" },
         { "title": "Ateş Atma", "desc": "Unity üzerinde basit kontrolleri test etmek için geliştirdiğim bu projede, hedefe doğru ateş gönderen, çarptıktan sonra yok olan objeler için temel script fonksiyonları geliştirdim.", "videoId": "W2rIoqOzSKM" },
-        { "title": "Flappy Bird Remake", "desc": "Klasik Flappy Bird oyununu yeniden Unity üzerinde canlandırdım. Yerçekimi, skor takip sistemi ve engel geçişleri gibi mekanikleri birebir şekilde kodladım.", "videoId": "T6Rnd_THoG8" },
-        { "title": "Eğitsel Yazılım Projesi", "desc": "8. sınıf müfredatına uygun olarak genetik materyaller konusunu oyunlaştırarak öğreten bir Unity projesi geliştirdim. Öğrencilerin deneme-yanılma yoluyla öğrenmelerini teşvik eden interaktif bir sistem içeriyor.", "videoId": "TTYB2RYx4p4" }
+        { "title": "Flappy Bird Remake", "desc": "Klasik Flappy Bird oyununu yeniden Unity üzerinde canlandırdım. Yerçekimi, skor takip sistemi ve engel geçişleri gibi mekanikleri birebir şekilde kodladım.", "videoId": "T6Rnd_THoG8" }
       ]
     },
     "web": {
@@ -244,8 +243,7 @@
         { "title": "2D Platform Game", "desc": "A mini-platformer where the player guides a ball using WASD keys, navigating between platforms and completing the course without hitting spike traps.", "videoId": "ceNNmWJ9K3g" },
         { "title": "2D Game Example", "desc": "The player controls a spaceship moving up and down. They must destroy obstacles by shooting with the Space key in this simple yet effective game concept.", "videoId": "ysaB9TzSp7M" },
         { "title": "Shooting Projectile", "desc": "A basic controls testing project developed in Unity, featuring core script functions for objects that shoot towards a target and destroy themselves upon impact.", "videoId": "W2rIoqOzSKM" },
-        { "title": "Flappy Bird Remake", "desc": "I recreated the classic Flappy Bird game in Unity. I precisely coded mechanics like gravity, score tracking, and obstacle generation.", "videoId": "T6Rnd_THoG8" },
-        { "title": "Educational Software Project", "desc": "I developed a Unity project that gamifies the subject of genetic materials for 8th-grade curriculums. It features an interactive system encouraging trial-and-error learning.", "videoId": "TTYB2RYx4p4" }
+        { "title": "Flappy Bird Remake", "desc": "I recreated the classic Flappy Bird game in Unity. I precisely coded mechanics like gravity, score tracking, and obstacle generation.", "videoId": "T6Rnd_THoG8" }
       ]
     },
     "web": {
