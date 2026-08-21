@@ -12,13 +12,10 @@ export default function GenCiftligiPage() {
   if (!data) return null;
 
   /*
-   * WebGL build'i henuz yok: elimizde Windows build'i var, tarayici surumu
-   * ayri bir Unity export'u gerektiriyor. Bu deger null oldugu surece oyun
-   * penceresi yerine indirme paneli gosterilir; WebGL cikisi
-   * public/games/gen-ciftligi/ altina konulup burasi doldurulunca oynatici
-   * kendiliginden geri gelir.
+   * WebGL build'i public/games/gen-ciftligi/ altinda. Bu deger null yapilirsa
+   * oyun penceresi yerine Windows indirme paneli gosterilir.
    */
-  const gameBuildUrl: string | null = null;
+  const gameBuildUrl: string | null = "/Portfolio/games/gen-ciftligi/index.html";
   const pdfPaperUrl = "/Portfolio/papers/Cagla_Eraslan_FinalReport.pdf";
   const windowsDownloadUrl = "/Portfolio/downloads/GenCiftligi_Windows.zip";
 
