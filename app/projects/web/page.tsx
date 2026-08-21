@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import Portal from "@/components/Portal";
 import StoryDrawer, { type StoryLink, type StorySection } from "@/components/StoryDrawer";
 import {
   LOAD_TIMEOUT,
@@ -491,53 +492,59 @@ export default function Web() {
         ))}
       </div>
 
-      {/* Onizleme modalinin zemini */}
-      <div
-        className={`${styles.backdrop} ${previewFor ? styles.open : ""}`}
-        onClick={closePanel}
-        aria-hidden="true"
-      />
+      {/* Modal ve zemini body altina tasinir: contentArea transform tasidigi
+          icin burada kalsalar viewport'a gore konumlanamazlar. */}
+      <Portal>
+        <div className={styles.overlayRoot}>
+          {/* Onizleme modalinin zemini */}
+          <div
+            className={`${styles.backdrop} ${previewFor ? styles.open : ""}`}
+            onClick={closePanel}
+            aria-hidden="true"
+          />
 
-      <StoryDrawer
-        title={storyFor ? storyFor.name : null}
-        kicker={storyCopy.kicker}
-        closeLabel={storyCopy.close}
-        sections={storySections}
-        links={storyLinks}
-        onClose={closeStory}
-      />
+          <StoryDrawer
+            title={storyFor ? storyFor.name : null}
+            kicker={storyCopy.kicker}
+            closeLabel={storyCopy.close}
+            sections={storySections}
+            links={storyLinks}
+            onClose={closeStory}
+          />
 
-      <div
-        ref={modalRef}
-        className={`${styles.modal} ${previewFor ? styles.open : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label={previewFor ? `${previewFor.name} ${copy.previewBtn}` : copy.previewBtn}
-        aria-hidden={previewFor ? "false" : "true"}
-      >
-        {previewFor && (
-          <>
-            <div className={styles.modalBar}>
-              <h3>{previewFor.name}</h3>
-              <a
-                className={`${styles.btn} ${styles.quiet}`}
-                href={previewFor.live}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {copy.openNewTab}
-                {Icons.external}
-              </a>
-              <button type="button" className={styles.iconBtn} aria-label={copy.closePreview} onClick={closePanel}>
-                {Icons.close}
-              </button>
-            </div>
+          <div
+            ref={modalRef}
+            className={`${styles.modal} ${previewFor ? styles.open : ""}`}
+            role="dialog"
+            aria-modal="true"
+            aria-label={previewFor ? `${previewFor.name} ${copy.previewBtn}` : copy.previewBtn}
+            aria-hidden={previewFor ? "false" : "true"}
+          >
+            {previewFor && (
+              <>
+                <div className={styles.modalBar}>
+                  <h3>{previewFor.name}</h3>
+                  <a
+                    className={`${styles.btn} ${styles.quiet}`}
+                    href={previewFor.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {copy.openNewTab}
+                    {Icons.external}
+                  </a>
+                  <button type="button" className={styles.iconBtn} aria-label={copy.closePreview} onClick={closePanel}>
+                    {Icons.close}
+                  </button>
+                </div>
 
-            {/* Modal kapaninca bu alt agac sokulur, iframe arkada calismaya devam etmez. */}
-            <ModalStage project={previewFor} copy={copy} />
-          </>
-        )}
-      </div>
+                {/* Modal kapaninca bu alt agac sokulur, iframe arkada calismaya devam etmez. */}
+                <ModalStage project={previewFor} copy={copy} />
+              </>
+            )}
+          </div>
+        </div>
+      </Portal>
     </div>
   );
 }

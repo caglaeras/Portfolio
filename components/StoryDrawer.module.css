@@ -106,7 +106,16 @@
 
 .scroll {
   flex: 1;
+  /*
+   * min-height: 0 sart. Flex ogesinin varsayilan min-height: auto degeri,
+   * ogenin icerigi kadar buyumesine izin veriyor ve overflow-y: auto hic
+   * devreye girmiyordu; uzun hikayelerde panel tasip alttaki baglanti satiri
+   * ekran disinda kaliyordu.
+   */
+  min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 24px 26px 8px;
 }
 

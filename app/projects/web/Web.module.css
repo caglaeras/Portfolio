@@ -14,6 +14,29 @@
   display: block;
 }
 
+/*
+ * Portal edilen overlay agaci .page disinda kaldigi icin, orada tanimli
+ * degiskenler burada tekrar veriliyor.
+ */
+.overlayRoot {
+  --skeleton: #ECEAE6;
+  --overlay: rgba(20, 18, 16, 0.62);
+  --font-display: 'Lora', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.overlayRoot h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.overlayRoot :focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: 3px;
+}
+
 .page h2,
 .page h3,
 .page h4 {

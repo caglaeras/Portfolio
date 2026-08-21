@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Portal from "./Portal";
 import styles from "./StoryDrawer.module.css";
 
 const CloseIcon = (
@@ -111,70 +112,77 @@ export default function StoryDrawer({
   }, [open, onClose]);
 
   return (
-    <div className={styles.root}>
-      <div
-        className={`${styles.backdrop} ${open ? styles.open : ""}`}
-        onClick={onClose}
-        aria-hidden="true"
-      />
+    /*
+     * Portal sart: ProjectsLayout.contentArea bir transform tasidigi icin,
+     * agacta burada kalan position: fixed ogeler viewport'a gore degil o
+     * kutuya gore konumlanir.
+     */
+    <Portal>
+      <div className={styles.root}>
+        <div
+          className={`${styles.backdrop} ${open ? styles.open : ""}`}
+          onClick={onClose}
+          aria-hidden="true"
+        />
 
-      <aside
-        ref={drawerRef}
-        className={`${styles.drawer} ${open ? styles.open : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label={open ? `${title} ${kicker}` : kicker}
-        aria-hidden={open ? "false" : "true"}
-      >
-        {open && (
-          <>
-            <div className={styles.head}>
-              <div>
-                <span className={styles.kicker}>{kicker}</span>
-                <h3>{title}</h3>
-              </div>
-              <button type="button" className={styles.closeBtn} aria-label={closeLabel} onClick={onClose}>
-                {CloseIcon}
-              </button>
-            </div>
-
-            <div className={styles.scroll} ref={scrollRef}>
-              {sections.map((section) => (
-                <div key={section.label} className={styles.block}>
-                  <h4>{section.label}</h4>
-                  {section.items ? (
-                    <ul>
-                      {section.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>{section.text}</p>
-                  )}
+        <aside
+          ref={drawerRef}
+          className={`${styles.drawer} ${open ? styles.open : ""}`}
+          role="dialog"
+          aria-modal="true"
+          aria-label={open ? `${title} ${kicker}` : kicker}
+          aria-hidden={open ? "false" : "true"}
+        >
+          {open && (
+            <>
+              <div className={styles.head}>
+                <div>
+                  <span className={styles.kicker}>{kicker}</span>
+                  <h3>{title}</h3>
                 </div>
-              ))}
-            </div>
+                <button type="button" className={styles.closeBtn} aria-label={closeLabel} onClick={onClose}>
+                  {CloseIcon}
+                </button>
+              </div>
 
-            {links.length > 0 && (
-              <div className={styles.foot}>
-                {links.map((link) => (
-                  <a
-                    key={link.href + link.label}
-                    className={`${styles.footLink} ${link.primary ? styles.primary : ""}`}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    download={link.download ? "" : undefined}
-                  >
-                    {link.icon}
-                    <span>{link.label}</span>
-                  </a>
+              <div className={styles.scroll} ref={scrollRef}>
+                {sections.map((section) => (
+                  <div key={section.label} className={styles.block}>
+                    <h4>{section.label}</h4>
+                    {section.items ? (
+                      <ul>
+                        {section.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>{section.text}</p>
+                    )}
+                  </div>
                 ))}
               </div>
-            )}
-          </>
-        )}
-      </aside>
-    </div>
+
+              {links.length > 0 && (
+                <div className={styles.foot}>
+                  {links.map((link) => (
+                    <a
+                      key={link.href + link.label}
+                      className={`${styles.footLink} ${link.primary ? styles.primary : ""}`}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download={link.download ? "" : undefined}
+                    >
+                      {link.icon}
+                      <span>{link.label}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </aside>
+      </div>
+    </Portal>
   );
 }

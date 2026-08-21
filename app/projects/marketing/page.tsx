@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Portal from "@/components/Portal";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   captionFor,
@@ -439,31 +440,35 @@ export default function Marketing() {
         })}
       </ReelSection>
 
+      {/* Lightbox body altina tasinir: contentArea transform tasidigi icin
+          burada kalsa viewport'a gore konumlanamaz. */}
       {lightbox && (
-        <div
-          className={styles.lightboxOverlay}
-          onClick={() => setLightbox(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className={styles.closeBtn}
+        <Portal>
+            <div
+              className={styles.lightboxOverlay}
               onClick={() => setLightbox(null)}
-              aria-label={copy.closeLabel}
+              role="dialog"
+              aria-modal="true"
             >
-              <i className="fas fa-xmark" aria-hidden="true"></i>
-            </button>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${BASE}${lightbox.src}`}
-              alt={captionFor(lightbox, language)}
-              className={styles.lightboxImg}
-            />
-            <p className={styles.lightboxCaption}>{captionFor(lightbox, language)}</p>
-          </div>
-        </div>
+              <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+                <button
+                  type="button"
+                  className={styles.closeBtn}
+                  onClick={() => setLightbox(null)}
+                  aria-label={copy.closeLabel}
+                >
+                  <i className="fas fa-xmark" aria-hidden="true"></i>
+                </button>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`${BASE}${lightbox.src}`}
+                  alt={captionFor(lightbox, language)}
+                  className={styles.lightboxImg}
+                />
+                <p className={styles.lightboxCaption}>{captionFor(lightbox, language)}</p>
+              </div>
+            </div>
+        </Portal>
       )}
     </div>
   );
