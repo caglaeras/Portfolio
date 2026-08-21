@@ -8,7 +8,7 @@ export default function ProjectsIndex() {
 
   useEffect(() => {
     // Automatically redirect to the first tab
-    router.replace("/projects/unity");
+    router.replace("/projects/gen-ciftligi");
   }, [router]);
 
   return (

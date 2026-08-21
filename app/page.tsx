@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import Skills from "@/components/Skills";
 import styles from "./Home.module.css";
 
 export default function Home() {
@@ -23,14 +24,32 @@ export default function Home() {
           
           <p className={styles.bio}>{t.bio}</p>
 
+          {/* Credibility Signals Badges */}
+          {t.credibility && (
+            <div className={styles.credibilityList}>
+              {t.credibility.map((item, idx) => (
+                <div key={idx} className={styles.credibilityBadge}>
+                  <i className={`fas ${idx === 0 ? "fa-trophy" : idx === 1 ? "fa-award" : "fa-chalkboard-teacher"} ${styles.credibilityIcon}`}></i>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Action CTAs */}
           <div className={styles.buttons}>
+            <Link href="/projects/gen-ciftligi" className="btn-main">
+              <i className="fas fa-microscope" style={{ marginRight: "6px" }}></i>
+              {t.seeResearchBtn || "See My Research"}
+            </Link>
+            <Link href="/projects/cancera-growth" className="btn-main">
+              <i className="fas fa-chart-line" style={{ marginRight: "6px" }}></i>
+              {t.marketingCasesBtn || "Marketing Case Studies"}
+            </Link>
             <a href="/Portfolio/documents/CaglaEraslan_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn-main">
               {t.downloadCv}
             </a>
-            <Link href="/vizyon" className="btn-main">
-              {language === 'tr' ? 'Daha..' : 'More..'}
-            </Link>
-            <a href="mailto:caglaeraslan@gmail.com" aria-label="Email Me" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '52px', height: '52px', borderRadius: '50%', backgroundColor: 'var(--main-color)', color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.2rem', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.15)' }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)' }}>
+            <a href="mailto:caglaeraslan@gmail.com" aria-label="Email Çağla Eraslan" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--main-color)', color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.15)' }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)' }}>
               <i className="fas fa-envelope"></i>
             </a>
           </div>
@@ -39,7 +58,7 @@ export default function Home() {
         <div className={styles.imageWrapper}>
           <Image 
             src={`/Portfolio${t.heroImage}`}
-            alt="Profile Picture" 
+            alt="Çağla Eraslan Profile Picture" 
             className={styles.profileImg}
             width={450}
             height={560}
@@ -48,8 +67,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Categorized Skills Section */}
+      <Skills />
+
       {/* Featured Navigation Grid */}
-      <section className={styles.featuredGrid}>
+      <section className={styles.featuredGrid} style={{ marginTop: "60px" }}>
         
         {/* Vision Feature */}
         <Link href="/vizyon" className={styles.featureCard}>
@@ -74,7 +96,7 @@ export default function Home() {
           <i className={`fas fa-laptop-code ${styles.featureIcon}`}></i>
           <h3 className={styles.featureTitle}>{content.nav.projects}</h3>
           <p className={styles.featureDesc}>
-            {language === 'tr' ? "Unity 3D, Web Geliştirme, Marketing ve diğer projelerim." : "My Unity 3D, Web Development, Marketing, and other projects."}
+            {language === 'tr' ? "Gen Çiftliği, Cancera Growth, Unity 3D ve Web projelerim." : "Gen Çiftliği, Cancera Growth, Unity 3D, and Web projects."}
           </p>
         </Link>
 
@@ -83,3 +105,4 @@ export default function Home() {
     </div>
   );
 }
+

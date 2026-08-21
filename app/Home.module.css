@@ -37,8 +37,36 @@
 .buttons {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 35px;
 }
+
+.credibilityList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.credibilityBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(140, 123, 101, 0.08);
+  border-left: 3px solid var(--main-color);
+  padding: 10px 16px;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.92rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.credibilityIcon {
+  color: var(--main-color);
+  font-size: 1rem;
+}
+
 
 .imageWrapper {
   flex: 1;

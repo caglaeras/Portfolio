@@ -1,0 +1,207 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.headerCard {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 40px 35px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(140, 123, 101, 0.12);
+  color: var(--main-color);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2.2rem;
+  line-height: 1.25;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.sectionCard {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 35px;
+}
+
+.sectionHeading {
+  font-size: 1.5rem;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.sectionHeading::after {
+  content: "";
+  width: 35px;
+  height: 2px;
+  background: var(--main-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.bodyText {
+  font-size: 1.05rem;
+  color: var(--secondary-text);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+/* Pure CSS Flowchart Component for n8n Pipeline */
+.flowchartContainer {
+  margin: 30px 0;
+  padding: 25px;
+  background: var(--bg-color);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+}
+
+.flowchartTitle {
+  font-size: 1.1rem;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.flowchartGrid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.flowStep {
+  flex: 1;
+  min-width: 140px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 16px 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.flowIcon {
+  font-size: 1.5rem;
+  color: var(--main-color);
+  margin-bottom: 8px;
+}
+
+.flowLabel {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.flowSub {
+  font-size: 0.78rem;
+  color: var(--secondary-text);
+}
+
+.flowArrow {
+  font-size: 1.2rem;
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guidelineGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.guidelineCard {
+  background: var(--bg-color);
+  border-left: 4px solid var(--main-color);
+  border-radius: 0 6px 6px 0;
+  padding: 20px;
+}
+
+.guidelineCode {
+  font-size: 1.2rem;
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.guidelineName {
+  font-size: 0.85rem;
+  color: var(--secondary-text);
+  margin-top: 4px;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.metricCard {
+  background: var(--bg-color);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 22px;
+  text-align: center;
+}
+
+.metricVal {
+  font-size: 2.2rem;
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+.metricLabel {
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+  margin-top: 6px;
+}
+
+@media (max-width: 850px) {
+  .flowchartGrid {
+    flex-direction: column;
+  }
+  .flowArrow {
+    transform: rotate(90deg);
+    margin: 8px 0;
+  }
+  .guidelineGrid, .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+}
