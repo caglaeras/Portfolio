@@ -4,7 +4,7 @@
   Bu dosya tek basina calisan bir sayfadir: CSS ve JS gomulu, harici bagimlilik olarak yalnizca Google Fonts kullanir.
   Tum metinler ve proje verileri asagidaki PROJECTS dizisinde durur; icerik guncellemesi icin sadece o diziyi duzenlemek yeterlidir.
   Next.js icine tasimak icin: <style> blogu bir CSS module'e, PROJECTS dizisi data/ altinda bir dosyaya, <script> blogu da bir client component'e alinir.
-  Video yollari (assets/*.mp4) simdilik yer tutucudur; dosyalar eklenene kadar kartlar otomatik olarak GitHub yonlendirmesine duser.
+  UniMarket ve WorldStory kartlari YouTube demo videolarini kullanir; kapak goruntusu tiklanmadan hicbir oynatici yuklenmez.
 -->
 <html lang="tr">
 <head>
@@ -172,14 +172,81 @@ a { color: inherit; text-decoration: none; }
   background: #fff;
 }
 
-.stage video {
+/* Demo videolari 16:9; kendi oraniyla dursun ki kirpilmasin. */
+.stage-video { aspect-ratio: 16 / 9; }
+
+.stage-video img.thumb {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: #15130f;
 }
+
+.stage-video iframe.player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Kapak goruntusunun tamamini kaplayan oynat dugmesi. */
+.play-btn {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgba(20, 18, 16, 0.22);
+  cursor: pointer;
+  transition: background 0.3s var(--ease);
+}
+
+.play-btn:hover { background: rgba(20, 18, 16, 0.38); }
+
+.play-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--main-color);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.24);
+  transition: transform 0.28s var(--ease);
+}
+
+.play-badge svg { width: 20px; height: 20px; margin-left: 3px; }
+
+.play-btn:hover .play-badge { transform: scale(1.08); }
+
+/* Oynayan videoyu kapatip kapak goruntusune donmek icin. */
+.video-close {
+  position: absolute;
+  z-index: 4;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(20, 18, 16, 0.66);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s var(--ease);
+}
+
+.video-close:hover { background: rgba(20, 18, 16, 0.92); }
 
 /* Yuklenene kadar iskelet. */
 .skeleton {
@@ -702,11 +769,10 @@ a { color: inherit; text-decoration: none; }
     {
       id: "unimarket",
       name: "UniMarket",
-      kind: "video",
+      kind: "youtube",
       summary: "Üniversite öğrencilerine yönelik ikinci el eşya pazaryeri. Sepet, sipariş, favoriler ve nakliyeci listesi içerir.",
       tags: ["ASP.NET Core", "EF Core", "SQL Server"],
-      video: "assets/unimarket-demo.mp4",
-      poster: "",
+      videoId: "xbRc3xKAoq8",
       github: "https://github.com/caglaeras/HousingMarket",
       story: {
         problem: "Dönem sonlarında öğrenciler taşınırken, hâlâ kullanılabilir durumdaki eşyalar çöpe gidiyor ya da çok ucuza elden çıkıyor. Öğrencilerin birbirine güvenli biçimde ulaşabileceği ortak bir yer yoktu.",
@@ -725,11 +791,10 @@ a { color: inherit; text-decoration: none; }
     {
       id: "worldstory",
       name: "WorldStory",
-      kind: "video",
+      kind: "youtube",
       summary: "Kıtaların tarihini ve kültürünü quizlerle öğreten .NET MAUI uygulaması. Öğrenme takibi ve yerel veri saklama içerir.",
       tags: [".NET MAUI", "C#", "SQLite"],
-      video: "assets/worldstory-demo.mp4",
-      poster: "",
+      videoId: "FFdFfIFaShI",
       github: "https://github.com/caglaeras/WorldStoryApp",
       story: {
         problem: "Kıtaların tarihi ve kültürü, ders kitaplarında çoğu zaman ezberlenecek bir bilgi yığını olarak kalıyor. Öğrenenin kendi hızında ilerleyip ne kadar öğrendiğini görebileceği bir ortam eksikti.",
@@ -776,20 +841,8 @@ a { color: inherit; text-decoration: none; }
     return node;
   }
 
-  /* Video posteri verilmediyse, proje adini tasiyan bir yer tutucu uretir. */
-  function placeholderPoster(name) {
-    var svg = [
-      '<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800">',
-      '<rect width="1280" height="800" fill="#1d1a16"/>',
-      '<circle cx="640" cy="368" r="58" fill="none" stroke="#8C7B65" stroke-width="3"/>',
-      '<path d="M620 340 L676 368 L620 396 Z" fill="#8C7B65"/>',
-      '<text x="640" y="486" fill="#efece7" font-family="Georgia,serif" font-size="42" text-anchor="middle">',
-      name,
-      '</text>',
-      '<text x="640" y="530" fill="#9b948a" font-family="Helvetica,Arial,sans-serif" font-size="21" letter-spacing="3" text-anchor="middle">DEMO VIDEO</text>',
-      '</svg>'
-    ].join("");
-    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  function youtubeWatchUrl(videoId) {
+    return "https://www.youtube.com/watch?v=" + videoId;
   }
 
   /* --- Mini onizleme olcegi -------------------------------------------- */
@@ -867,34 +920,94 @@ a { color: inherit; text-decoration: none; }
     return stage;
   }
 
-  function buildVideoStage(project) {
-    var stage = el("div", "stage");
+  /*
+   * YouTube demo kartlari. Sayfa acilisinda yalnizca kapak goruntusu inar;
+   * oynatici ancak tiklandiginda kurulur, kapatildiginda tamamen sokulur.
+   * Ayni anda tek video oynar.
+   */
+  var playingCard = null;
 
-    var video = document.createElement("video");
-    video.controls = true;
-    video.preload = "metadata";
-    video.poster = project.poster ? project.poster : placeholderPoster(project.name);
-    video.src = project.video;
-    video.setAttribute("playsinline", "");
-    video.setAttribute("aria-label", project.name + " demo videosu");
+  function buildYouTubeStage(project) {
+    var stage = el("div", "stage stage-video");
+
+    var thumb = document.createElement("img");
+    thumb.className = "thumb";
+    thumb.loading = "lazy";
+    thumb.alt = "";
+    thumb.src = "https://i.ytimg.com/vi/" + project.videoId + "/maxresdefault.jpg";
+    /* maxres her videoda bulunmaz, yoksa hqdefault'a dus. */
+    thumb.addEventListener("error", function () {
+      if (thumb.dataset.fallback) return;
+      thumb.dataset.fallback = "1";
+      thumb.src = "https://i.ytimg.com/vi/" + project.videoId + "/hqdefault.jpg";
+    });
+    stage.appendChild(thumb);
 
     var fallback = el("div", "stage-fallback");
     fallback.hidden = true;
-    fallback.appendChild(el("p", null, "Demo videosu henüz eklenmedi."));
-    var link = el("a", "btn quiet", "GitHub'da incele");
-    link.href = project.github;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    fallback.appendChild(link);
+    fallback.appendChild(el("p", null, "Video bu pencerede açılamadı."));
+    var ytLink = el("a", "btn quiet", "YouTube'da aç");
+    ytLink.href = youtubeWatchUrl(project.videoId);
+    ytLink.target = "_blank";
+    ytLink.rel = "noopener noreferrer";
+    fallback.appendChild(ytLink);
+    stage.appendChild(fallback);
 
-    /* Yer tutucu mp4 yoksa kart kirik gorunmesin, GitHub'a yonlendir. */
-    video.addEventListener("error", function () {
-      fallback.hidden = false;
-      video.style.display = "none";
+    var playBtn = el("button", "play-btn");
+    playBtn.type = "button";
+    playBtn.setAttribute("aria-label", project.name + " demo videosunu oynat");
+    var badge = el("span", "play-badge");
+    badge.innerHTML = ICONS.play;
+    playBtn.appendChild(badge);
+    stage.appendChild(playBtn);
+
+    function stop() {
+      var frame = stage.querySelector("iframe.player");
+      if (frame) frame.remove();
+      var closeBtn = stage.querySelector(".video-close");
+      if (closeBtn) closeBtn.remove();
+      playBtn.hidden = false;
+      fallback.hidden = true;
+      if (playingCard === stop) playingCard = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+      if (playingCard && playingCard !== stop) playingCard();
+      playingCard = stop;
+      playBtn.hidden = true;
+
+      var frame = document.createElement("iframe");
+      frame.className = "player";
+      frame.src = "https://www.youtube.com/embed/" + project.videoId +
+        "?autoplay=1&rel=0&playsinline=1&modestbranding=1";
+      frame.title = project.name + " demo videosu";
+      frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+      frame.setAttribute("allowfullscreen", "");
+
+      var settled = false;
+      var timer = window.setTimeout(function () {
+        if (settled) return;
+        settled = true;
+        fallback.hidden = false;
+      }, LOAD_TIMEOUT);
+      frame.addEventListener("load", function () {
+        settled = true;
+        window.clearTimeout(timer);
+      });
+
+      stage.appendChild(frame);
+
+      var closeBtn = el("button", "video-close");
+      closeBtn.type = "button";
+      closeBtn.setAttribute("aria-label", project.name + " videosunu kapat");
+      closeBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+      closeBtn.addEventListener("click", function () {
+        stop();
+        playBtn.focus();
+      });
+      stage.appendChild(closeBtn);
     });
 
-    stage.appendChild(video);
-    stage.appendChild(fallback);
     return stage;
   }
 
@@ -902,7 +1015,7 @@ a { color: inherit; text-decoration: none; }
     var card = el("article", "card");
     card.id = "card-" + project.id;
 
-    card.appendChild(project.kind === "live" ? buildLiveStage(project) : buildVideoStage(project));
+    card.appendChild(project.kind === "live" ? buildLiveStage(project) : buildYouTubeStage(project));
 
     var body = el("div", "card-body");
     body.appendChild(el("h2", "card-name", project.name));
@@ -1067,6 +1180,14 @@ a { color: inherit; text-decoration: none; }
       liveLink.rel = "noopener noreferrer";
       liveLink.innerHTML = ICONS.external + "<span>Canlı Site</span>";
       drawerFoot.appendChild(liveLink);
+    }
+    if (project.videoId) {
+      var ytFootLink = el("a", "btn quiet");
+      ytFootLink.href = youtubeWatchUrl(project.videoId);
+      ytFootLink.target = "_blank";
+      ytFootLink.rel = "noopener noreferrer";
+      ytFootLink.innerHTML = ICONS.play + "<span>Demo Videosu</span>";
+      drawerFoot.appendChild(ytFootLink);
     }
     var ghLink = el("a", "btn quiet");
     ghLink.href = project.github;
