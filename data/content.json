@@ -173,7 +173,11 @@
       "downloadWindowsBtn": "Windows Sürümünü İndir (ZIP)",
       "researchTitle": "3. Araştırmayı Oku",
       "downloadPdfBtn": "PDF'i İndir",
-      "disclaimer": "ÖNEMLİ NOT: Bu değerlendirmede kullanılan veriler, araştırmanın nicel istatistiksel metodolojisini ve SPSS analiz süreçlerini göstermek amacıyla oluşturulmuş simüle edilmiş bir veri setidir."
+      "disclaimer": "ÖNEMLİ NOT: Bu değerlendirmede kullanılan veriler, araştırmanın nicel istatistiksel metodolojisini ve SPSS analiz süreçlerini göstermek amacıyla oluşturulmuş simüle edilmiş bir veri setidir.",
+      "playIntroDownload": "Oyunun Windows sürümü aşağıdan indirilebilir. Tarayıcıda oynanabilen WebGL sürümü hazırlandığında oyun doğrudan bu bölümde çalışacak.",
+      "buildPanelTitle": "Windows Sürümü",
+      "buildPanelText": "Arşivi indirip açtıktan sonra GenCiftligi.exe dosyasını çalıştırın. Oyunun çalışması için arşivdeki tüm dosyalar aynı klasörde kalmalıdır.",
+      "buildPanelMeta": "ZIP arşivi, 35 MB, açıldığında 119 MB"
     },
     "canceraGrowth": {
       "title": "Sağlık Alanında Büyüme Pazarlaması ve Otomasyon Vaka Çalışması",
@@ -360,7 +364,11 @@
       "downloadWindowsBtn": "Download Windows Build (ZIP)",
       "researchTitle": "3. Read the Research",
       "downloadPdfBtn": "Download PDF",
-      "disclaimer": "IMPORTANT DISCLAIMER: The evaluation used a simulated dataset constructed to demonstrate the study's statistical methodology and SPSS analysis procedures."
+      "disclaimer": "IMPORTANT DISCLAIMER: The evaluation used a simulated dataset constructed to demonstrate the study's statistical methodology and SPSS analysis procedures.",
+      "playIntroDownload": "The Windows version of the game can be downloaded below. Once a browser playable WebGL version is exported, the game will run right here in this section.",
+      "buildPanelTitle": "Windows Build",
+      "buildPanelText": "Download and extract the archive, then run GenCiftligi.exe. Every file in the archive has to stay in the same folder for the game to start.",
+      "buildPanelMeta": "ZIP archive, 35 MB, 119 MB extracted"
     },
     "canceraGrowth": {
       "title": "Healthcare Growth Marketing and Automation Case Study",

@@ -11,8 +11,15 @@ export default function GenCiftligiPage() {
 
   if (!data) return null;
 
-  const gameBuildUrl = "/Portfolio/games/gen-ciftligi/index.html";
-  const pdfPaperUrl = "/Portfolio/papers/Eraslan_2026_GenCiftligi.pdf";
+  /*
+   * WebGL build'i henuz yok: elimizde Windows build'i var, tarayici surumu
+   * ayri bir Unity export'u gerektiriyor. Bu deger null oldugu surece oyun
+   * penceresi yerine indirme paneli gosterilir; WebGL cikisi
+   * public/games/gen-ciftligi/ altina konulup burasi doldurulunca oynatici
+   * kendiliginden geri gelir.
+   */
+  const gameBuildUrl: string | null = null;
+  const pdfPaperUrl = "/Portfolio/papers/Cagla_Eraslan_FinalReport.pdf";
   const windowsDownloadUrl = "/Portfolio/downloads/GenCiftligi_Windows.zip";
 
   return (
@@ -73,29 +80,50 @@ export default function GenCiftligiPage() {
       <section className={styles.sectionCard}>
         <h2 className={styles.sectionHeading}>{data.playTitle || "2. Play the Game"}</h2>
         <p className={styles.bodyText}>
-          {language === "tr"
-            ? "Oyun doğrudan tarayıcınızda çalışır. Aşağıdaki Unity WebGL penceresini kullanarak oynamaya başlayabilirsiniz."
-            : "Play the game directly in your browser using the interactive Unity WebGL player below."}
+          {gameBuildUrl
+            ? language === "tr"
+              ? "Oyun doğrudan tarayıcınızda çalışır. Aşağıdaki Unity WebGL penceresini kullanarak oynamaya başlayabilirsiniz."
+              : "Play the game directly in your browser using the interactive Unity WebGL player below."
+            : data.playIntroDownload}
         </p>
 
-        {/* Responsive 16:9 Unity WebGL Iframe Player */}
-        <div className={styles.webglWrapper}>
-          {isLoadingGame && (
-            <div className={styles.loadingOverlay}>
-              <div className={styles.spinner}></div>
-              <span>{data.loadingGame || "Loading game..."}</span>
-            </div>
-          )}
-          <iframe
-            src={gameBuildUrl}
-            title="Gen Çiftliği Unity WebGL Game"
-            className={styles.webglIframe}
-            onLoad={() => setIsLoadingGame(false)}
-            allowFullScreen
-          />
-        </div>
+        {gameBuildUrl ? (
+          /* Responsive 16:9 Unity WebGL Iframe Player */
+          <div className={styles.webglWrapper}>
+            {isLoadingGame && (
+              <div className={styles.loadingOverlay}>
+                <div className={styles.spinner}></div>
+                <span>{data.loadingGame || "Loading game..."}</span>
+              </div>
+            )}
+            <iframe
+              src={gameBuildUrl}
+              title="Gen Çiftliği Unity WebGL Game"
+              className={styles.webglIframe}
+              onLoad={() => setIsLoadingGame(false)}
+              allowFullScreen
+            />
+          </div>
+        ) : (
+          <div className={styles.buildPanel}>
+            <i className={`fab fa-windows ${styles.buildIcon}`}></i>
+            <strong className={styles.buildTitle}>{data.buildPanelTitle}</strong>
+            <p className={styles.buildText}>{data.buildPanelText}</p>
+            <a
+              href={windowsDownloadUrl}
+              className="btn-main"
+              style={{ padding: "12px 26px", fontSize: "0.85rem" }}
+            >
+              <i className="fas fa-download" style={{ marginRight: "8px" }}></i>
+              {data.downloadWindowsBtn}
+            </a>
+            <span className={styles.buildMeta}>{data.buildPanelMeta}</span>
+          </div>
+        )}
 
-        {/* Desktop Note & Windows Download Button */}
+        {/* Masaustu notu ve indirme butonu: yalnizca oynatici varken, cunku
+            oynatici yokken ayni buton zaten panelin icinde duruyor. */}
+        {gameBuildUrl && (
         <div className={styles.playFooter}>
           <div className={styles.playNoteText}>
             <i className="fas fa-desktop" style={{ color: "var(--main-color)" }}></i>
@@ -113,6 +141,7 @@ export default function GenCiftligiPage() {
             {data.downloadWindowsBtn || "Download Windows Build"}
           </a>
         </div>
+        )}
       </section>
 
       {/* SECTION 3: READ THE RESEARCH */}

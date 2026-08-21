@@ -233,3 +233,46 @@
     align-items: flex-start;
   }
 }
+
+/* WebGL build'i yokken oyun penceresinin yerini alan indirme paneli. */
+.buildPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 44px 28px;
+  border: 1px dashed var(--card-border);
+  border-radius: 6px;
+  background: var(--bg-color);
+}
+
+.buildIcon {
+  font-size: 2.1rem;
+  color: var(--main-color);
+  opacity: 0.75;
+}
+
+.buildTitle {
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.buildText {
+  max-width: 52ch;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--secondary-text);
+}
+
+.buildMeta {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--secondary-text);
+  opacity: 0.8;
+}
