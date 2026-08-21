@@ -14,6 +14,7 @@
  * content.json icindeki `other` bolumunden etiketini alir:
  *   "essay"   -> calismanin yazili raporu (public/ altina goreli PDF)
  *   "mockup"  -> arayuz taslagi (dis adres)
+ *   "schema"  -> veritabani semasi / kod dokumu (public/ altina goreli PDF)
  */
 
 import type { LocalizedList, LocalizedText } from "./webProjects";
@@ -28,7 +29,7 @@ export interface AcademicStory {
   ogrendim: LocalizedText;
 }
 
-export type AcademicExtraKind = "essay" | "mockup";
+export type AcademicExtraKind = "essay" | "mockup" | "schema";
 
 export interface AcademicExtra {
   kind: AcademicExtraKind;
@@ -113,16 +114,18 @@ export const academicWork: AcademicItem[] = [
   },
   {
     id: "sql-coaching",
-    kind: "youtube",
-    videoId: "jTIoYyWDDEo",
-    tags: ["MySQL"],
+    kind: "document",
+    pdf: "/documents/coaching_system_presentation.pdf",
+    image: "/images/coaching_system_preview.png",
+    tags: ["SQL Server", "T-SQL", "PDF"],
+    extras: [{ kind: "schema", href: "/documents/coaching_system_schema.pdf", local: true }],
     title: {
       tr: "SQL ile Koçluk Sistemi Planlaması",
       en: "Coaching System Planning with SQL",
     },
     summary: {
-      tr: "Bireysel koçluk sistemine ait kullanıcı, oturum ve planlama verilerini tutan MySQL veritabanı tasarımı.",
-      en: "A MySQL database design holding the user, session and planning data of an individual coaching system.",
+      tr: "Öğrenci koçluğu sistemi için SQL Server üzerinde kurulmuş veritabanı tasarımı: 20 tablo, saklı yordam, tetikleyici ve görünümler.",
+      en: "A database design built on SQL Server for a student coaching system: 20 tables, a stored procedure, a trigger and views.",
     },
     story: {
       problem: {
@@ -134,26 +137,28 @@ export const academicWork: AcademicItem[] = [
         en: "I wanted to plan the system starting from the data rather than the interface. My goal was to see up front which question would be answered by which query.",
       },
       cozum: {
-        tr: "MySQL üzerinde kullanıcı, oturum ve planlama tablolarını ilişkileriyle birlikte tasarladım. Sistemin ihtiyaç duyduğu raporları SQL sorgularıyla çıkararak tasarımın işe yaradığını doğruladım.",
-        en: "On MySQL I designed the user, session and planning tables together with their relationships. I verified the design by producing the reports the system needs through SQL queries.",
+        tr: "SQL Server üzerinde öğrenci, koç, oturum, paket, hedef, ödeme ve iletişim kayıtlarını kapsayan 20 tabloyu yabancı anahtar ilişkileriyle birlikte kurdum. Tasarımı yalnızca şemada bırakmayıp saklı yordam, tetikleyici ve görünümlerle çalışır hale getirdim, raporları da JOIN ve GROUP BY sorgularıyla çıkardım.",
+        en: "On SQL Server I built 20 tables covering students, coaches, sessions, packages, goals, payments and communication records, wired together with foreign keys. Rather than leaving the design as a schema, I made it work through a stored procedure, a trigger and views, and produced the reports with JOIN and GROUP BY queries.",
       },
       ozellikler: {
         tr: [
-          "Kullanıcı, oturum ve planlama tabloları ve aralarındaki ilişkiler",
-          "Sistem ihtiyaçlarını karşılayan SQL sorguları",
-          "Veriden başlayarak yapılan sistem planlaması",
-          "Sorgularla doğrulanmış veri modeli",
+          "Yabancı anahtarlarla bağlanmış 20 tablo",
+          "Hedef eklemek için saklı yordam (AddGoal)",
+          "Geri bildirim eklenince bildirim üreten tetikleyici",
+          "Öğrenci gelişimi ve iletişim özeti için iki görünüm",
+          "JOIN, GROUP BY ve ORDER BY ile raporlama sorguları",
         ],
         en: [
-          "User, session and planning tables with the relationships between them",
-          "SQL queries that answer the needs of the system",
-          "System planning that starts from the data",
-          "A data model verified through queries",
+          "20 tables wired together with foreign keys",
+          "A stored procedure for adding a goal (AddGoal)",
+          "A trigger that creates a notification when feedback arrives",
+          "Two views, for student progress and a communication summary",
+          "Reporting queries with JOIN, GROUP BY and ORDER BY",
         ],
       },
       ogrendim: {
-        tr: "Bir sistemi anlamanın en hızlı yolunun, ondan hangi soruları soracağımı yazmak olduğunu gördüm. İlişkileri baştan kurmanın, sonradan tablo eklemekten çok daha az iş çıkardığını öğrendim.",
-        en: "I saw that the fastest way to understand a system is to write down which questions I will ask of it. I learned that establishing the relationships up front creates far less work than adding tables later.",
+        tr: "Bir sistemi anlamanın en hızlı yolunun, ondan hangi soruları soracağımı yazmak olduğunu gördüm. İlişkileri baştan kurmanın sonradan tablo eklemekten çok daha az iş çıkardığını, tetikleyici ve görünümlerin ise tekrar eden işi şemanın içine taşıdığını öğrendim.",
+        en: "I saw that the fastest way to understand a system is to write down which questions I will ask of it. I learned that establishing the relationships up front creates far less work than adding tables later, and that triggers and views move repetitive work into the schema itself.",
       },
     },
   },

@@ -128,7 +128,9 @@
       "openMockupFor": "arayüz taslağını yeni sekmede aç",
       "previewLoading": "Önizleme yükleniyor",
       "previewFailed": "Önizleme bu tarayıcıda gösterilemedi.",
-      "openInNewTab": "Yeni sekmede aç"
+      "openInNewTab": "Yeni sekmede aç",
+      "schemaBtn": "SQL Şeması",
+      "openSchemaFor": "SQL şemasını yeni sekmede aç"
     },
     "story": {
       "kicker": "Proje Hikayesi",
@@ -310,7 +312,9 @@
       "openMockupFor": "UI mock-up, open in a new tab",
       "previewLoading": "Loading preview",
       "previewFailed": "The preview could not be shown in this browser.",
-      "openInNewTab": "Open in new tab"
+      "openInNewTab": "Open in new tab",
+      "schemaBtn": "SQL Schema",
+      "openSchemaFor": "SQL schema, open in a new tab"
     },
     "story": {
       "kicker": "Project Story",

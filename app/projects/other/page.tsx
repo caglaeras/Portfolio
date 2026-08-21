@@ -39,6 +39,12 @@ const Icons = {
       <path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7zM14 3v4h4" />
     </svg>
   ),
+  schema: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <ellipse cx="12" cy="6" rx="8" ry="3" />
+      <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+    </svg>
+  ),
   essay: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
       <path d="M5 3h11l3 3v15H5zM8 9h8M8 13h8M8 17h5" />
@@ -76,6 +82,7 @@ function resolveExtra(extra: AcademicExtra, copy: Copy) {
   const map = {
     essay: { label: copy.essayBtn, aria: copy.openEssayFor, icon: Icons.essay },
     mockup: { label: copy.mockupBtn, aria: copy.openMockupFor, icon: Icons.mockup },
+    schema: { label: copy.schemaBtn, aria: copy.openSchemaFor, icon: Icons.schema },
   } as const;
   return { ...map[extra.kind], href: extra.local ? `${BASE}${extra.href}` : extra.href };
 }
@@ -349,23 +356,28 @@ export default function Other() {
                     </a>
                   )}
 
-                  {(item.extras ?? []).map((extra) => {
-                    const resolved = resolveExtra(extra, copy);
-                    return (
-                      <a
-                        key={extra.kind}
-                        className={`${styles.btn} ${styles.quiet}`}
-                        href={resolved.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${title} ${resolved.aria}`}
-                      >
-                        {resolved.icon}
-                        <span>{resolved.label}</span>
-                      </a>
-                    );
-                  })}
                 </div>
+
+                {(item.extras ?? []).length > 0 && (
+                  <div className={styles.extras}>
+                    {(item.extras ?? []).map((extra) => {
+                      const resolved = resolveExtra(extra, copy);
+                      return (
+                        <a
+                          key={extra.kind}
+                          className={styles.extraLink}
+                          href={resolved.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${title} ${resolved.aria}`}
+                        >
+                          {resolved.icon}
+                          <span>{resolved.label}</span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </article>
           );
