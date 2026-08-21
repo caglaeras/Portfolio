@@ -1,7 +1,7 @@
 /**
- * Marketing Works - content list for /projects/marketing
+ * Marketing - content list for /projects/marketing
  *
- * Single source of truth for both horizontal strips on the Marketing Works
+ * Single source of truth for both horizontal strips on the Marketing
  * page. Page copy (title, intro, section headings) stays in data/content.json
  * under `marketing`, with the rest of the site's TR/EN strings.
  *

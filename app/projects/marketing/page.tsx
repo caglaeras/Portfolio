@@ -9,7 +9,7 @@ import {
   marketingVisuals,
   type MarketingVideo,
   type MarketingVisual,
-} from "@/data/marketingWorks";
+} from "@/data/marketing";
 import styles from "./Marketing.module.css";
 
 /** basePath is not applied to plain media URLs, so it is prepended by hand. */
@@ -26,8 +26,6 @@ const arOf = (width: number, height: number) => (width / height).toFixed(4);
 
 function useReel() {
   const ref = useRef<HTMLDivElement>(null);
-  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
-  const [dragging, setDragging] = useState(false);
   const [edges, setEdges] = useState({ atStart: true, atEnd: true });
 
   const syncEdges = useCallback(() => {
@@ -49,94 +47,49 @@ function useReel() {
     };
   }, [syncEdges]);
 
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    // Touch and pen keep the native momentum scrolling.
-    if (e.pointerType !== "mouse") return;
+  /**
+   * Steps to the next / previous card rather than a fixed pixel amount, so the
+   * mixed card widths always land flush against the left edge of the strip.
+   */
+  const step = (direction: -1 | 1) => {
     const el = ref.current;
     if (!el) return;
-    drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false };
-    setDragging(true);
-  };
+    const left = el.getBoundingClientRect().left;
+    const cards = Array.from(el.children) as HTMLElement[];
+    const offsets = cards.map((c) => c.getBoundingClientRect().left - left);
 
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = ref.current;
-    if (!drag.current.active || !el) return;
-    const dx = e.clientX - drag.current.startX;
-    if (Math.abs(dx) > 4) drag.current.moved = true;
-    el.scrollLeft = drag.current.startScroll - dx;
-  };
+    const target =
+      direction === 1
+        ? offsets.find((offset) => offset > 2)
+        : [...offsets].reverse().find((offset) => offset < -2);
 
-  const endDrag = () => {
-    if (!drag.current.active) return;
-    drag.current.active = false;
-    setDragging(false);
-  };
-
-  /** True when the pointer travelled far enough that the click was really a drag. */
-  const wasDragged = () => drag.current.moved;
-
-  const scrollByPage = (direction: -1 | 1) => {
-    const el = ref.current;
-    if (!el) return;
-    el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
+    if (target === undefined) {
+      el.scrollTo({ left: direction === 1 ? el.scrollWidth : 0, behavior: "smooth" });
+      return;
+    }
+    el.scrollBy({ left: target, behavior: "smooth" });
   };
 
   return {
     ref,
     edges,
-    scrollByPage,
-    wasDragged,
-    reelProps: {
-      className: `${styles.reel} ${dragging ? styles.dragging : ""}`,
-      onPointerDown,
-      onPointerMove,
-      onPointerUp: endDrag,
-      onPointerLeave: endDrag,
-      onPointerCancel: endDrag,
-    },
+    step,
+    reelProps: { className: styles.reel },
   };
 }
 
 interface ReelSectionProps {
   heading: string;
-  hint: string;
   emptyLabel: string;
   isEmpty: boolean;
   reel: ReturnType<typeof useReel>;
   children: React.ReactNode;
 }
 
-function ReelSection({ heading, hint, emptyLabel, isEmpty, reel, children }: ReelSectionProps) {
+function ReelSection({ heading, emptyLabel, isEmpty, reel, children }: ReelSectionProps) {
   return (
     <section className={styles.section}>
-      <div className={styles.reelHeader}>
-        <div>
-          <h2 className={styles.sectionHeading}>{heading}</h2>
-          {!isEmpty && <p className={styles.hint}>{hint}</p>}
-        </div>
-        {!isEmpty && (
-          <div className={styles.arrowControls}>
-            <button
-              type="button"
-              className={styles.arrowBtn}
-              onClick={() => reel.scrollByPage(-1)}
-              disabled={reel.edges.atStart}
-              aria-label="Scroll left"
-            >
-              <i className="fas fa-chevron-left" aria-hidden="true"></i>
-            </button>
-            <button
-              type="button"
-              className={styles.arrowBtn}
-              onClick={() => reel.scrollByPage(1)}
-              disabled={reel.edges.atEnd}
-              aria-label="Scroll right"
-            >
-              <i className="fas fa-chevron-right" aria-hidden="true"></i>
-            </button>
-          </div>
-        )}
-      </div>
+      <h2 className={styles.sectionHeading}>{heading}</h2>
 
       {isEmpty ? (
         <div className={styles.emptyState}>
@@ -144,8 +97,30 @@ function ReelSection({ heading, hint, emptyLabel, isEmpty, reel, children }: Ree
           <p>{emptyLabel}</p>
         </div>
       ) : (
-        <div ref={reel.ref} {...reel.reelProps}>
-          {children}
+        <div className={styles.viewport}>
+          <button
+            type="button"
+            className={`${styles.navBtn} ${styles.navPrev}`}
+            onClick={() => reel.step(-1)}
+            disabled={reel.edges.atStart}
+            aria-label="Previous"
+          >
+            <i className="fas fa-chevron-left" aria-hidden="true"></i>
+          </button>
+
+          <div ref={reel.ref} {...reel.reelProps}>
+            {children}
+          </div>
+
+          <button
+            type="button"
+            className={`${styles.navBtn} ${styles.navNext}`}
+            onClick={() => reel.step(1)}
+            disabled={reel.edges.atEnd}
+            aria-label="Next"
+          >
+            <i className="fas fa-chevron-right" aria-hidden="true"></i>
+          </button>
         </div>
       )}
     </section>
@@ -176,7 +151,6 @@ interface VideoCardProps {
   isActive: boolean;
   onPlay: (id: string) => void;
   onStop: () => void;
-  wasDragged: () => boolean;
 }
 
 /**
@@ -192,7 +166,6 @@ function YouTubeCard({
   isActive,
   onPlay,
   onStop,
-  wasDragged,
 }: VideoCardProps & { item: Extract<MarketingVideo, { source: "youtube" }> }) {
   const caption = captionFor(item, language);
   const [posterFailed, setPosterFailed] = useState(false);
@@ -228,10 +201,7 @@ function YouTubeCard({
             type="button"
             className={styles.mediaBtn}
             aria-label={`${playLabel} — ${caption}`}
-            onClick={() => {
-              if (wasDragged()) return;
-              onPlay(item.id);
-            }}
+            onClick={() => onPlay(item.id)}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -267,7 +237,6 @@ function FileVideoCard({
   isActive,
   onPlay,
   onStop,
-  wasDragged,
 }: VideoCardProps & { item: Extract<MarketingVideo, { source: "file" }> }) {
   const caption = captionFor(item, language);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -298,7 +267,6 @@ function FileVideoCard({
   }, [isActive, playing]);
 
   const toggle = () => {
-    if (wasDragged()) return;
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
@@ -370,7 +338,7 @@ function FileVideoCard({
    Page
    --------------------------------------------------------------------------- */
 
-export default function MarketingWorks() {
+export default function Marketing() {
   const { content, language } = useLanguage();
   const copy = content.marketing;
 
@@ -410,7 +378,6 @@ export default function MarketingWorks() {
 
       <ReelSection
         heading={copy.videoSectionTitle}
-        hint={copy.dragHint}
         emptyLabel={copy.emptyState}
         isEmpty={marketingVideos.length === 0}
         reel={videoReel}
@@ -424,7 +391,6 @@ export default function MarketingWorks() {
             isActive: activeVideoId === item.id,
             onPlay: setActiveVideoId,
             onStop: () => setActiveVideoId(null),
-            wasDragged: videoReel.wasDragged,
           };
           return item.source === "youtube" ? (
             <YouTubeCard key={item.id} item={item} {...shared} />
@@ -436,7 +402,6 @@ export default function MarketingWorks() {
 
       <ReelSection
         heading={copy.visualSectionTitle}
-        hint={copy.dragHint}
         emptyLabel={copy.emptyState}
         isEmpty={marketingVisuals.length === 0}
         reel={visualReel}
@@ -453,10 +418,7 @@ export default function MarketingWorks() {
                 type="button"
                 className={styles.media}
                 aria-label={`${copy.zoomLabel} — ${caption}`}
-                onClick={() => {
-                  if (visualReel.wasDragged()) return;
-                  setLightbox(item);
-                }}
+                onClick={() => setLightbox(item)}
               >
                 <Image
                   src={`${BASE}${item.src}`}
