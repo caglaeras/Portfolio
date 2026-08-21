@@ -214,8 +214,8 @@ export const academicWork: AcademicItem[] = [
   {
     id: "lesson-plan-spreadsheet",
     kind: "document",
-    pdf: "/documents/lesson_plan_spreadsheet.pdf",
-    image: "/images/lesson_plan_spreadsheet_preview.png",
+    pdf: "/documents/6thGrade_LP2.pdf",
+    image: "/images/6thGrade_LP2_preview.png",
     tags: ["MEB BT.6.4.1", "ISTE", "PRIMM", "PDF"],
     title: {
       tr: "Ders Planı: Acemi Dedektif ile Tablo Biçimlendirme",
@@ -265,8 +265,8 @@ export const academicWork: AcademicItem[] = [
   {
     id: "lesson-plan-ai-literacy",
     kind: "document",
-    pdf: "/documents/lesson_plan_ai_literacy.pdf",
-    image: "/images/lesson_plan_ai_literacy_preview.png",
+    pdf: "/documents/9thGrade_LP2.pdf",
+    image: "/images/9thGrade_LP2_preview.png",
     tags: ["AI4K12", "CSTA", "ISTE", "PDF"],
     title: {
       tr: "Ders Planı: Yapay Zekada Temsil ve Prompt ile Arayüz Tasarımı",
