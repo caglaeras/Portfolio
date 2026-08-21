@@ -9,6 +9,9 @@
  *                       kartta gosterilir, tam ekran modal ile buyutulebilir.
  *   kind: "youtube"  -> `videoId` kapak goruntusu olarak inar, oynatici ancak
  *                       tiklaninca kurulur.
+ *
+ * `live` dis bir adres olabilir ya da public/ altinda barindirilan bir sayfa
+ * olabilir; ikisi de ayni sekilde kucultulup gosterilir.
  */
 
 export interface LocalizedText {
@@ -35,7 +38,10 @@ interface WebProjectBase {
   name: string;
   summary: LocalizedText;
   tags: string[];
-  github: string;
+  /** Deposu olmayan projelerde bos birakilir, buton gosterilmez. */
+  github?: string;
+  /** Varsa proje raporu; public/ altina goreli PDF yolu. */
+  report?: string;
   story: WebProjectStory;
 }
 
@@ -148,6 +154,52 @@ export const webProjects: WebProject[] = [
       ogrendim: {
         tr: "Bir dil modelinin çıktısını işe yarar kılanın modelin kendisi değil, ona verilen rubrik ve istem yapısı olduğunu gördüm. Bunun yanında API anahtarı yönetimini ve hata durumlarını arayüzde düzgün karşılamanın önemini kavradım.",
         en: "I saw that what makes a language model output useful is not the model itself but the rubric and prompt structure handed to it. Alongside that I learned how much API key handling and gracefully surfacing errors in the interface matter.",
+      },
+    },
+  },
+  {
+    id: "hue-hunter",
+    name: "Hue Hunter",
+    kind: "live",
+    live: "/Portfolio/apps/hue-hunter/index.html",
+    report: "/documents/HueHunter_HCI_Report.pdf",
+    tags: ["HTML", "CSS", "JavaScript"],
+    summary: {
+      tr: "RGB kaydırıcılarıyla hedef rengi yakalamaya çalıştığınız tek dosyalık renk karıştırma oyunu. İnsan bilgisayar etkileşimi dersi için Hilal Semiz ile birlikte geliştirildi.",
+      en: "A single file colour mixing game where you chase a target colour with RGB sliders. Built with Hilal Semiz for a human computer interaction course.",
+    },
+    story: {
+      problem: {
+        tr: "RGB ile renk karışımı anlatıldığında soyut kalıyor; kırmızı, yeşil ve mavi kanalların birlikte ne ürettiğini görmeden kavramak zor. Bunun yanında küçük bir oyunda arayüz kararları çoğu zaman sezgiyle alınıyor ve hangi ilkeye dayandığı yazılı olmadığı için tartışılamıyor.",
+        en: "Colour mixing in RGB stays abstract when it is only explained; it is hard to grasp what the red, green and blue channels produce together without seeing it. On top of that, interface decisions in a small game are usually made on instinct, and because the reasoning is never written down it cannot be discussed.",
+      },
+      amac: {
+        tr: "Renk karışımını denenebilir hale getiren, küçük ama bitmiş bir oyun yapmak istedik. İkinci hedefimiz her arayüz kararını bilinen bir etkileşim ilkesine bağlayıp raporda gerekçesiyle yazmaktı.",
+        en: "We wanted to build a small but finished game that makes colour mixing something you can try out. Our second goal was to tie every interface decision to a known interaction principle and write down the reasoning in the report.",
+      },
+      cozum: {
+        tr: "HTML, CSS ve JavaScript ile tek dosyada çalışan bir oyun geliştirdim; kurulum gerektirmiyor, tarayıcıda açılıyor. Oyun beş modülden oluşuyor: renk karıştırma, ipucu sistemi, Odd One Out mini oyunu, gardırop ve öğretici. Oyuncu hedef rengi yakaladıkça puan, puan karşılığında da gardıroptaki avatar eşyalarını alabileceği coin kazanıyor; tüm durum tarayıcının yerel deposunda tutuluyor.",
+        en: "I built a game that runs from a single file with HTML, CSS and JavaScript; it needs no installation and opens straight in the browser. It is organised into five modules: colour mixing, the hint system, an Odd One Out mini game, the wardrobe and the tutorial. Matching the target colour earns score, score turns into coins, and coins buy avatar items in the wardrobe; all state is kept in the browser's local storage.",
+      },
+      ozellikler: {
+        tr: [
+          "Hedef rengi ve kendi karışımını yan yana gösteren ekran, R, G, B kaydırıcıları",
+          "Puanın coine, coinin gardıroptaki avatar eşyalarına dönüştüğü döngü",
+          "Beş saniyelik Odd One Out mini oyunuyla ek ipucu kazanma",
+          "İlk oyunda adım adım öğretici, kalıcı yardım ekranı ve genişleyebilir RGB açıklaması",
+          "Kurulum gerektirmeyen tek dosya, durum tarayıcının yerel deposunda",
+        ],
+        en: [
+          "A screen showing the target colour and your own mix side by side, with R, G and B sliders",
+          "A loop where score becomes coins and coins buy avatar items in the wardrobe",
+          "Earning extra hints through a five second Odd One Out mini game",
+          "A step by step tutorial on the first round, a persistent help screen and an expandable explanation of RGB",
+          "A single file with no installation, state kept in the browser's local storage",
+        ],
+      },
+      ogrendim: {
+        tr: "Kaydırıcıyı kontrol ettiği kanalın rengiyle boyamak gibi küçük kararların, ekranda açıklama yazmaktan daha çok işe yaradığını gördüm. Onay pencerelerinin hepsini aynı düzene oturtmanın da kullanıcıyı her seferinde yeniden öğrenmekten kurtardığını, yani tutarlılığın kendi başına bir kolaylık olduğunu öğrendim.",
+        en: "I saw that small decisions, like colouring a slider with the channel it controls, do more work than any on screen explanation. I also learned that putting every confirmation dialog on the same layout saves the user from relearning it each time, so consistency is a convenience in its own right.",
       },
     },
   },

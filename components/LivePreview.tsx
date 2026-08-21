@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { LOAD_TIMEOUT, PREVIEW_HEIGHT, PREVIEW_WIDTH } from "@/data/webProjects";
+import { frameIsReady } from "./frameReady";
 import styles from "./LivePreview.module.css";
 
 export interface LivePreviewLabels {
@@ -95,8 +96,10 @@ export default function LivePreview({ src, title, aspect, labels, badge }: LiveP
     started.current = true;
 
     let timer = 0;
+    let poll = 0;
     const onLoad = () => {
       window.clearTimeout(timer);
+      window.clearInterval(poll);
       setLoaded(true);
       setFailed(false);
       fit();
@@ -106,9 +109,19 @@ export default function LivePreview({ src, title, aspect, labels, badge }: LiveP
     timer = window.setTimeout(() => setFailed(true), LOAD_TIMEOUT);
     frame.src = src;
 
+    /*
+     * load olayi alt kaynaklari bekledigi icin gecikebiliyor. Ayni origin'de
+     * belgeyi okuyup hazir olur olmaz iskeleti kaldiriyoruz; capraz origin'de
+     * bu kontrol false doner ve load olayi beklenmeye devam eder.
+     */
+    poll = window.setInterval(() => {
+      if (frameIsReady(frame)) onLoad();
+    }, 250);
+
     return () => {
       frame.removeEventListener("load", onLoad);
       window.clearTimeout(timer);
+      window.clearInterval(poll);
     };
   }, [inView, src, fit]);
 

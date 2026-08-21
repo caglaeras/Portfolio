@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hue Hunter — Color Mixing Puzzle</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF6E5;
+    --ink: #2B1B4A;
+    --pink: #FF5C8A;
+    --yellow: #FFD23F;
+    --teal: #38C4B5;
+    --lilac: #B69CFF;
+    --shadow: 6px 6px 0 var(--ink);
+    --shadow-sm: 3px 3px 0 var(--ink);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,92,138,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(56,196,181,0.08) 0%, transparent 40%);
+  }
+
+  .app {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--pink);
+    border: 3px solid var(--ink);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stats {
+    display: flex;
+    gap: 12px;
+  }
+
+  .stat-pill {
+    background: white;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-weight: 900;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+  }
+  .stat-pill .label {
+    font-size: 11px;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== START SCREEN ===== */
+  .start-card {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    padding: 56px 40px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .start-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: var(--yellow);
+    border-radius: 50%;
+    border: 4px solid var(--ink);
+    z-index: 0;
+  }
+  .start-card::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -50px;
+    width: 160px; height: 160px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 4px solid var(--ink);
+    z-index: 0;
+  }
+  .start-card > * { position: relative; z-index: 1; }
+
+  .start-eyebrow {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+  }
+
+  .start-card h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 0.95;
+    margin-bottom: 20px;
+    letter-spacing: -0.035em;
+  }
+  .start-card h1 .accent { color: var(--pink); font-style: italic; }
+  .start-card .tagline {
+    font-size: 17px;
+    margin: 0 auto 36px;
+    opacity: 0.7;
+    max-width: 420px;
+    line-height: 1.5;
+  }
+
+  .start-hero {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 36px;
+    height: 180px;
+  }
+  .start-hero canvas {
+    image-rendering: pixelated;
+    width: 120px;
+    height: 160px;
+  }
+
+  .start-cta {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .start-secondary-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .text-btn {
+    background: none;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 6px 12px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+  }
+  .text-btn:hover { opacity: 1; }
+
+  /* Gender select modal */
+  .gender-options {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .gender-card {
+    background: var(--bg);
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    padding: 20px 16px 12px;
+    cursor: pointer;
+    flex: 1;
+    max-width: 140px;
+    transition: transform 0.1s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .gender-card:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+  .gender-card.selected { background: var(--yellow); }
+  .gender-card canvas { image-rendering: pixelated; width: 80px; height: 107px; }
+  .gender-card .gender-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 18px;
+    margin-top: 8px;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 16px 36px;
+    border: 3px solid var(--ink);
+    border-radius: 14px;
+    background: var(--pink);
+    color: white;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn.secondary { background: white; color: var(--ink); }
+  .btn.yellow { background: var(--yellow); color: var(--ink); }
+
+  /* ===== GAME SCREEN ===== */
+  .game-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .swatch-card {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .swatch-label {
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.6;
+    margin-bottom: 12px;
+  }
+  .swatch {
+    height: 180px;
+    border-radius: 16px;
+    border: 3px solid var(--ink);
+    box-shadow: inset 0 0 0 4px white;
+    transition: background 0.15s ease;
+  }
+  .swatch-hex {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 12px;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .swatch-hex.hidden { color: transparent; text-shadow: 0 0 12px rgba(43,27,74,0.3); user-select: none; }
+
+  /* ===== HINT PAIRS ===== */
+  .swatch-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hint-counter {
+    font-size: 11px;
+    background: var(--yellow);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 1;
+  }
+  .hint-counter.empty { background: #eee; opacity: 0.5; }
+
+  .hex-pairs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-top: 12px;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .hex-hash { opacity: 0.5; }
+  .hex-pair {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    background: var(--bg);
+    border: 2px dashed var(--ink);
+    border-radius: 8px;
+    padding: 4px 10px;
+    cursor: pointer;
+    color: var(--ink);
+    min-width: 48px;
+    transition: transform 0.1s ease, background 0.15s ease;
+    letter-spacing: 0.05em;
+  }
+  .hex-pair:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background: white;
+  }
+  .hex-pair:disabled { cursor: not-allowed; }
+  .hex-pair.revealed {
+    border-style: solid;
+    background: white;
+    cursor: default;
+  }
+  .hex-pair.revealed.r { color: #E63946; border-color: #E63946; }
+  .hex-pair.revealed.g { color: #2A9D5F; border-color: #2A9D5F; }
+  .hex-pair.revealed.b { color: #1D6FB8; border-color: #1D6FB8; }
+  .hex-pair.locked { opacity: 0.4; }
+
+  /* ===== SLIDERS ===== */
+  .sliders {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .slider-row:last-child { margin-bottom: 0; }
+
+  .slider-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 28px;
+    width: 32px;
+    text-align: center;
+  }
+  .slider-label.r { color: #E63946; }
+  .slider-label.g { color: #2A9D5F; }
+  .slider-label.b { color: #1D6FB8; }
+
+  .slider-track {
+    flex: 1;
+    position: relative;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 16px;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    background: linear-gradient(to right, #fff, #000);
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"].r-slider { background: linear-gradient(to right, #000, #FF0000); }
+  input[type="range"].g-slider { background: linear-gradient(to right, #000, #00FF00); }
+  input[type="range"].b-slider { background: linear-gradient(to right, #000, #0000FF); }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--ink);
+    cursor: grab;
+    box-shadow: var(--shadow-sm);
+  }
+  input[type="range"]::-webkit-slider-thumb:active { cursor: grabbing; }
+  input[type="range"]::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--ink);
+    cursor: grab;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .slider-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 20px;
+    width: 48px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ===== ACTION BAR ===== */
+  .action-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* ===== RESULT SCREEN ===== */
+  .result-card {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .result-emoji {
+    font-size: 88px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .result-card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .accuracy-display {
+    font-family: 'Fraunces', serif;
+    font-size: 96px;
+    font-weight: 900;
+    color: var(--pink);
+    line-height: 1;
+    margin: 16px 0 8px;
+  }
+  .accuracy-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.6;
+    font-weight: 900;
+    margin-bottom: 32px;
+  }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0 32px;
+  }
+  .compare-card {
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    padding: 12px;
+    background: var(--bg);
+  }
+  .compare-swatch {
+    height: 90px;
+    border-radius: 10px;
+    border: 2px solid var(--ink);
+  }
+  .compare-card .swatch-label { margin-top: 10px; margin-bottom: 0; text-align: center; }
+
+  .result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ===== HELPERS ===== */
+  .hidden-screen { display: none; }
+  .feedback-msg {
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 24px;
+    opacity: 0.7;
+  }
+
+  /* ===== MODAL OVERLAY ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 27, 74, 0.45);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .modal {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 36px 32px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .modal-emoji {
+    font-size: 56px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .modal h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .modal p {
+    font-size: 15px;
+    opacity: 0.75;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .modal .btn { font-size: 15px; padding: 12px 24px; }
+
+  /* ===== ODD ONE OUT MINIGAME ===== */
+  .timer-bar {
+    height: 10px;
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    margin: 20px 0 24px;
+    overflow: hidden;
+    position: relative;
+  }
+  .timer-fill {
+    height: 100%;
+    background: var(--pink);
+    width: 100%;
+    transition: width 0.1s linear;
+  }
+  .timer-fill.warning { background: #FF3B3B; }
+
+  .odd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .odd-tile {
+    aspect-ratio: 1;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .odd-tile:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+  .odd-tile.correct { animation: correctFlash 0.4s ease; }
+  .odd-tile.wrong { animation: wrongShake 0.4s ease; }
+  @keyframes correctFlash {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); box-shadow: 0 0 0 6px var(--teal); }
+  }
+  @keyframes wrongShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+  }
+
+  .channel-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 14px;
+    margin: 0 4px;
+  }
+  .channel-badge.r { background: #ffe5e7; color: #E63946; border-color: #E63946; }
+  .channel-badge.g { background: #e1f5e9; color: #2A9D5F; border-color: #2A9D5F; }
+  .channel-badge.b { background: #e3effa; color: #1D6FB8; border-color: #1D6FB8; }
+
+  /* Hint button on game screen */
+  .earn-hint-btn {
+    background: var(--lilac);
+    color: var(--ink);
+    margin-left: 8px;
+    font-size: 12px;
+    padding: 4px 10px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+  .earn-hint-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  .earn-hint-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ===== CHARACTER ===== */
+  .character-canvas {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  .character-card {
+    background: linear-gradient(135deg, #FFE5EC 0%, #E5F0FF 100%);
+    border: 4px solid var(--ink);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .character-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+
+  /* Mini character in header */
+  .character-mini {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    image-rendering: pixelated;
+  }
+
+  /* Coin pill */
+  .coin-pill {
+    background: var(--yellow);
+  }
+  .coin-pill .coin-icon { font-size: 14px; }
+
+  /* ===== WARDROBE SCREEN ===== */
+  .wardrobe-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 720px) {
+    .wardrobe-grid { grid-template-columns: 1fr; }
+  }
+
+  .wardrobe-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    padding: 10px 18px;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    background: white;
+    color: var(--ink);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease;
+  }
+  .tab-btn:hover { transform: translate(-1px, -1px); }
+  .tab-btn.active { background: var(--ink); color: white; }
+
+  .item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+  .item-card {
+    background: white;
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease;
+    position: relative;
+  }
+  .item-card:hover:not(.locked) { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+  .item-card.locked { background: #f3f0ee; cursor: pointer; }
+  .item-card.equipped { background: var(--yellow); }
+  .item-card.equipped::before {
+    content: '✓ Wearing';
+    position: absolute;
+    top: -10px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+  }
+  .item-preview {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 8px;
+    image-rendering: pixelated;
+  }
+  .item-name {
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .item-price {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .item-price.affordable { color: #2A9D5F; }
+  .item-price.too-expensive { color: #E63946; opacity: 0.6; }
+
+  .color-swatch-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .color-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 3px solid var(--ink);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease;
+    position: relative;
+  }
+  .color-dot:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
+  .color-dot.active::after {
+    content: '✓';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 900;
+    text-shadow: 0 0 4px rgba(0,0,0,0.6);
+  }
+
+  /* Coin animation */
+  @keyframes coinFloat {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-60px); opacity: 0; }
+  }
+  .coin-burst {
+    position: absolute;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--yellow);
+    text-shadow: 2px 2px 0 var(--ink);
+    pointer-events: none;
+    animation: coinFloat 1.6s ease-out forwards;
+  }
+
+  /* ===== HELP BUTTON ===== */
+  .help-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 3px solid var(--ink);
+    background: var(--lilac);
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .help-btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+
+  /* Help modal lists */
+  .help-list {
+    text-align: left;
+    margin: 0 auto 24px;
+    max-width: 360px;
+    list-style: none;
+  }
+  .help-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .help-list li:last-child { margin-bottom: 0; }
+  .help-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--pink);
+    color: white;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  /* ===== TUTORIAL SIGNALING ===== */
+  .tutorial-tip {
+    position: absolute;
+    background: var(--ink);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 14px;
+    box-shadow: 4px 4px 0 var(--pink);
+    z-index: 50;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: tipBounce 1.4s ease-in-out infinite;
+  }
+  @keyframes tipBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .tutorial-tip::before {
+    content: '👉';
+    margin-right: 6px;
+  }
+  .tutorial-tip.below::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 24px;
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--ink);
+  }
+  .tutorial-tip.above::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 24px;
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--ink);
+  }
+  .tutorial-glow {
+    box-shadow: 0 0 0 4px var(--yellow), var(--shadow) !important;
+    animation: pulseGlow 1.4s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 4px var(--yellow), var(--shadow); }
+    50% { box-shadow: 0 0 0 8px var(--yellow), var(--shadow); }
+  }
+
+  /* ===== RGB EXPLAINER (in help modal) ===== */
+  .rgb-explainer {
+    background: var(--bg);
+    border: 2px dashed var(--ink);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .rgb-explainer summary {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .rgb-explainer summary::-webkit-details-marker { display: none; }
+  .rgb-explainer summary::after {
+    content: ' ▾';
+    opacity: 0.5;
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+  .rgb-explainer[open] summary::after {
+    content: ' ▴';
+  }
+  .rgb-body {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .rgb-body p { margin-bottom: 8px; }
+  .rgb-mix-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .rgb-mix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .rgb-mix-swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+  }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .game-grid { grid-template-columns: 1fr; }
+    .compare-row { grid-template-columns: 1fr 1fr; }
+    .start-card h1 { font-size: 44px; }
+    .accuracy-display { font-size: 72px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      Hue Hunter
+    </div>
+    <div class="stats" id="stats" style="display:none;">
+      <canvas class="character-mini" id="characterMini" width="32" height="32"></canvas>
+      <div class="stat-pill"><span class="label">Level</span><span id="levelNum">1</span></div>
+      <div class="stat-pill"><span class="label">Score</span><span id="scoreNum">0</span></div>
+      <div class="stat-pill coin-pill"><span class="coin-icon">🪙</span><span id="coinNum">0</span></div>
+      <button class="help-btn" onclick="openHelp()" title="How to play">?</button>
+    </div>
+  </header>
+
+  <!-- ===== START SCREEN ===== -->
+  <section id="startScreen" class="start-card">
+    <div class="start-eyebrow">A Color Mixing Game</div>
+    <h1>Hue <span class="accent">Hunter.</span></h1>
+    <p class="tagline">Match the swatch. Earn coins. Dress your pixel pal in style.</p>
+
+    <div class="start-hero">
+      <canvas id="characterHero" width="120" height="160"></canvas>
+    </div>
+    <div style="font-size:11px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;opacity:0.5;margin-top:-24px;margin-bottom:32px;">— Your pixel pal —</div>
+
+    <div class="start-cta">
+      <button class="btn" onclick="handleStartClick()" style="font-size:20px;padding:18px 44px;">▶ Start playing</button>
+    </div>
+    <div class="start-secondary-row">
+      <button class="text-btn" onclick="openWardrobe()">👕 Wardrobe</button>
+      <button class="text-btn" onclick="openHelp()">❔ How to play</button>
+    </div>
+  </section>
+
+  <!-- ===== GAME SCREEN ===== -->
+  <section id="gameScreen" class="hidden-screen">
+    <div class="game-grid">
+      <div class="swatch-card">
+        <div class="swatch-label">
+          🎯 Target
+          <span>
+            <span class="hint-counter" id="hintCounter">1 hint</span>
+            <button class="earn-hint-btn" id="earnHintBtn" onclick="openOddOneOut()">+ Earn</button>
+          </span>
+        </div>
+        <div class="swatch" id="targetSwatch"></div>
+        <div class="hex-pairs" id="hexPairs">
+          <span class="hex-hash">#</span>
+          <button class="hex-pair r" data-channel="r" onclick="revealPair('r')">__</button>
+          <button class="hex-pair g" data-channel="g" onclick="revealPair('g')">__</button>
+          <button class="hex-pair b" data-channel="b" onclick="revealPair('b')">__</button>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-label">🎨 Your Mix</div>
+        <div class="swatch" id="userSwatch"></div>
+        <div class="swatch-hex" id="userHex">#000000</div>
+      </div>
+    </div>
+
+    <div class="sliders">
+      <div class="slider-row">
+        <span class="slider-label r">R</span>
+        <div class="slider-track">
+          <input type="range" min="0" max="255" value="0" id="rSlider" class="r-slider" oninput="updateMix()">
+        </div>
+        <span class="slider-value" id="rVal">0</span>
+      </div>
+      <div class="slider-row">
+        <span class="slider-label g">G</span>
+        <div class="slider-track">
+          <input type="range" min="0" max="255" value="0" id="gSlider" class="g-slider" oninput="updateMix()">
+        </div>
+        <span class="slider-value" id="gVal">0</span>
+      </div>
+      <div class="slider-row">
+        <span class="slider-label b">B</span>
+        <div class="slider-track">
+          <input type="range" min="0" max="255" value="0" id="bSlider" class="b-slider" oninput="updateMix()">
+        </div>
+        <span class="slider-value" id="bVal">0</span>
+      </div>
+    </div>
+
+    <div class="action-bar">
+      <button class="btn yellow" id="submitBtn" onclick="submitMix()">✓ Submit Mix</button>
+    </div>
+  </section>
+
+  <!-- ===== RESULT SCREEN ===== -->
+  <section id="resultScreen" class="hidden-screen">
+    <div class="result-card">
+      <span class="result-emoji" id="resultEmoji">🎉</span>
+      <h2 id="resultTitle">Great mix!</h2>
+      <div class="accuracy-label">Accuracy</div>
+      <div class="accuracy-display" id="accuracyVal">0%</div>
+      <p class="feedback-msg" id="feedbackMsg"></p>
+
+      <div class="compare-row">
+        <div class="compare-card">
+          <div class="compare-swatch" id="resultTarget"></div>
+          <div class="swatch-label">Target</div>
+        </div>
+        <div class="compare-card">
+          <div class="compare-swatch" id="resultUser"></div>
+          <div class="swatch-label">Your Mix</div>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn" id="nextBtn" onclick="nextLevel()">Next round →</button>
+        <button class="btn yellow" onclick="openWardrobe()">👕 Wardrobe</button>
+        <button class="btn secondary" onclick="restart()">Restart</button>
+      </div>
+    </div>
+  </section>
+  <!-- ===== WARDROBE SCREEN ===== -->
+  <section id="wardrobeScreen" class="hidden-screen">
+    <div class="result-card" style="padding: 32px 28px; text-align:left;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:12px;">
+        <h2 style="font-family:'Fraunces',serif;font-size:36px;font-weight:900;letter-spacing:-0.02em;">Wardrobe</h2>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <div class="stat-pill coin-pill"><span class="coin-icon">🪙</span><span id="wardrobeCoins">0</span></div>
+          <button class="btn secondary" onclick="closeWardrobe()" style="font-size:14px;padding:10px 20px;">← Back</button>
+        </div>
+      </div>
+      <p style="opacity:0.7;margin-bottom:20px;font-size:14px;">Spend your coins to dress your pixel pal. Earn coins by playing rounds.</p>
+
+      <div class="wardrobe-grid">
+        <div class="character-card">
+          <h3>Your Pal</h3>
+          <canvas class="character-canvas" id="characterPreview" width="120" height="160" style="width:160px;height:213px;"></canvas>
+        </div>
+
+        <div>
+          <div class="wardrobe-tabs">
+            <button class="tab-btn active" data-tab="shirt" onclick="switchTab('shirt')">👕 Shirts</button>
+            <button class="tab-btn" data-tab="bottom" onclick="switchTab('bottom')">👖 Bottoms</button>
+            <button class="tab-btn" data-tab="color" onclick="switchTab('color')">🎨 Colors</button>
+          </div>
+          <div class="item-grid" id="itemGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UNTOUCHED SLIDERS WARNING MODAL ===== -->
+  <div id="untouchedModal" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <span class="modal-emoji">🤔</span>
+      <h3>Submit without mixing?</h3>
+      <p>You haven't moved any sliders yet. Submitting an empty mix will likely score very low. Mix some color first?</p>
+      <div class="modal-actions">
+        <button class="btn yellow" onclick="cancelUntouchedSubmit()">Let me mix</button>
+        <button class="btn secondary" onclick="confirmUntouchedSubmit()">Submit anyway</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HELP / HOW TO PLAY MODAL ===== -->
+  <div id="helpModal" class="modal-overlay" style="display:none;">
+    <div class="modal" style="max-width:540px;">
+      <span class="modal-emoji">🎯</span>
+      <h3>How to play</h3>
+      <ul class="help-list">
+        <li><span class="help-num">1</span><span><strong>Look at the target swatch.</strong> A random color appears at the top.</span></li>
+        <li><span class="help-num">2</span><span><strong>Drag the R, G, B sliders</strong> to mix your own version on the right. Your mix updates live.</span></li>
+        <li><span class="help-num">3</span><span><strong>Stuck? Tap a __ pair</strong> on the target hex to use your hint and reveal that channel.</span></li>
+        <li><span class="help-num">4</span><span><strong>Out of hints? Tap "+ Earn"</strong> for an Odd-One-Out challenge. Spot the different square in 5 seconds to earn a hint.</span></li>
+        <li><span class="help-num">5</span><span><strong>Hit Submit Mix.</strong> Your accuracy becomes coins to spend in the Wardrobe!</span></li>
+      </ul>
+
+      <details class="rgb-explainer">
+        <summary>🌈 What's RGB? (new to color mixing?)</summary>
+        <div class="rgb-body">
+          <p>Screens make every color by mixing three lights: <strong style="color:#E63946;">Red</strong>, <strong style="color:#2A9D5F;">Green</strong>, and <strong style="color:#1D6FB8;">Blue</strong>. Each slider controls how bright that light is, from 0 (off) to 255 (full).</p>
+          <div class="rgb-mix-grid">
+            <div class="rgb-mix"><div class="rgb-mix-swatch" style="background:#FF0000;"></div><span>R: 255</span></div>
+            <div class="rgb-mix"><div class="rgb-mix-swatch" style="background:#FFFF00;"></div><span>R+G</span></div>
+            <div class="rgb-mix"><div class="rgb-mix-swatch" style="background:#FFFFFF;border-color:#ccc;"></div><span>All on</span></div>
+            <div class="rgb-mix"><div class="rgb-mix-swatch" style="background:#000000;"></div><span>All off</span></div>
+          </div>
+          <p style="font-size:13px;opacity:0.7;margin-top:8px;">Unlike paint (where mixing makes things darker), light mixing makes things <em>brighter</em>. R + G + B at full = white.</p>
+        </div>
+      </details>
+
+      <div class="modal-actions">
+        <button class="btn" onclick="closeHelp()">Got it!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GENDER SELECT MODAL ===== -->
+  <div id="genderModal" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <span class="modal-emoji">✨</span>
+      <h3>Pick your pal</h3>
+      <p>Choose the look for your pixel pal. You can change clothes anytime in the Wardrobe.</p>
+      <div class="gender-options">
+        <div class="gender-card" id="genderGirl" onclick="selectGender('girl')">
+          <canvas width="80" height="107"></canvas>
+          <div class="gender-label">Girl</div>
+        </div>
+        <div class="gender-card" id="genderBoy" onclick="selectGender('boy')">
+          <canvas width="80" height="107"></canvas>
+          <div class="gender-label">Boy</div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn" id="genderConfirmBtn" onclick="confirmGender()" disabled style="opacity:0.4;">Let's play!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONFIRM HINT MODAL ===== -->
+  <div id="confirmModal" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <span class="modal-emoji">💡</span>
+      <h3>Use your hint?</h3>
+      <p>Reveal the <span class="channel-badge" id="confirmChannelBadge">R</span> value of the target color. You only have <strong>1 hint</strong> per round.</p>
+      <div class="modal-actions">
+        <button class="btn secondary" onclick="closeConfirm()">Cancel</button>
+        <button class="btn" id="confirmYesBtn">Yes, reveal it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PURCHASE CONFIRM MODAL ===== -->
+  <div id="purchaseModal" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <span class="modal-emoji">🛍️</span>
+      <h3 id="purchaseTitle">Buy this item?</h3>
+      <p id="purchaseDesc">This will cost <strong>80 coins</strong>.</p>
+      <div class="modal-actions">
+        <button class="btn secondary" onclick="closePurchase()">Cancel</button>
+        <button class="btn yellow" id="purchaseYesBtn">Yes, buy it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ODD ONE OUT MODAL ===== -->
+  <div id="oddModal" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <span class="modal-emoji">👁️</span>
+      <h3>Odd one out!</h3>
+      <p>Find the square that's <em>slightly</em> different. Win to earn an extra hint.<br><strong>5 seconds.</strong></p>
+      <div class="timer-bar"><div class="timer-fill" id="timerFill"></div></div>
+      <div class="odd-grid" id="oddGrid"></div>
+    </div>
+  </div>
+
+  <!-- ===== ODD RESULT MODAL ===== -->
+  <div id="oddResultModal" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <span class="modal-emoji" id="oddResultEmoji">🎉</span>
+      <h3 id="oddResultTitle">Hint earned!</h3>
+      <p id="oddResultMsg">You spotted the odd one out. A fresh hint is yours.</p>
+      <div class="modal-actions">
+        <button class="btn" onclick="closeOddResult()">Back to mixing</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let level = 1;
+  let totalScore = 0;
+  const maxLevels = 6;
+  let target = { r: 0, g: 0, b: 0 };
+  let hintsLeft = 1;
+  let revealed = { r: false, g: false, b: false };
+  let pendingChannel = null;
+  let oddTimerInterval = null;
+  let oddRoundUsed = false; // 1 try per round
+
+  function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+  function toHexPair(v) { return v.toString(16).padStart(2, '0').toUpperCase(); }
+
+  function newTarget() {
+    target = { r: randInt(40, 230), g: randInt(40, 230), b: randInt(40, 230) };
+    document.getElementById('targetSwatch').style.background =
+      `rgb(${target.r}, ${target.g}, ${target.b})`;
+  }
+
+  function resetHints() {
+    hintsLeft = 1;
+    revealed = { r: false, g: false, b: false };
+    oddRoundUsed = false;
+    ['r', 'g', 'b'].forEach(ch => {
+      const btn = document.querySelector(`.hex-pair[data-channel="${ch}"]`);
+      btn.textContent = '__';
+      btn.disabled = false;
+      btn.classList.remove('revealed', 'r', 'g', 'b', 'locked');
+    });
+    updateHintCounter();
+  }
+
+  function updateHintCounter() {
+    const el = document.getElementById('hintCounter');
+    el.textContent = hintsLeft === 1 ? '1 hint' : `${hintsLeft} hints`;
+    el.classList.toggle('empty', hintsLeft === 0);
+
+    // Earn-hint button: only enabled when out of hints AND haven't tried this round
+    const earnBtn = document.getElementById('earnHintBtn');
+    const allRevealed = revealed.r && revealed.g && revealed.b;
+    earnBtn.disabled = oddRoundUsed || allRevealed;
+
+    // Lock unrevealed pairs only if no hints AND can't earn more
+    ['r', 'g', 'b'].forEach(ch => {
+      const btn = document.querySelector(`.hex-pair[data-channel="${ch}"]`);
+      if (revealed[ch]) return;
+      const noWayToReveal = hintsLeft === 0;
+      btn.classList.toggle('locked', noWayToReveal);
+      btn.disabled = noWayToReveal;
+    });
+  }
+
+  // Step 1: clicking a pair opens the confirm modal
+  function revealPair(channel) {
+    if (revealed[channel] || hintsLeft <= 0) return;
+    pendingChannel = channel;
+    const badge = document.getElementById('confirmChannelBadge');
+    badge.textContent = channel.toUpperCase();
+    badge.className = `channel-badge ${channel}`;
+    document.getElementById('confirmModal').style.display = 'flex';
+    document.getElementById('confirmYesBtn').onclick = doReveal;
+  }
+
+  function closeConfirm() {
+    document.getElementById('confirmModal').style.display = 'none';
+    pendingChannel = null;
+  }
+
+  // Step 2: actually reveal after confirmation
+  function doReveal() {
+    const channel = pendingChannel;
+    if (!channel) return;
+    revealed[channel] = true;
+    hintsLeft--;
+    const btn = document.querySelector(`.hex-pair[data-channel="${channel}"]`);
+    btn.textContent = toHexPair(target[channel]);
+    btn.classList.add('revealed', channel);
+    btn.disabled = true;
+    updateHintCounter();
+    closeConfirm();
+  }
+
+  // ===== ODD ONE OUT MINIGAME =====
+  function openOddOneOut() {
+    if (oddRoundUsed) return;
+    oddRoundUsed = true;
+    document.getElementById('oddModal').style.display = 'flex';
+    setupOddTiles();
+    startOddTimer();
+  }
+
+  function setupOddTiles() {
+    // Difficulty scales with level: smaller delta = harder
+    // Level 1-2: delta ~50, Level 3-4: ~30, Level 5-6: ~18
+    let delta;
+    if (level <= 2) delta = 50;
+    else if (level <= 4) delta = 30;
+    else delta = 18;
+
+    const baseR = randInt(60, 200);
+    const baseG = randInt(60, 200);
+    const baseB = randInt(60, 200);
+    const baseColor = `rgb(${baseR}, ${baseG}, ${baseB})`;
+
+    // Pick which channel to shift, and direction
+    const channels = ['r', 'g', 'b'];
+    const shiftChannel = channels[randInt(0, 2)];
+    const direction = Math.random() < 0.5 ? 1 : -1;
+    let oddR = baseR, oddG = baseG, oddB = baseB;
+    if (shiftChannel === 'r') oddR = Math.max(0, Math.min(255, baseR + direction * delta));
+    if (shiftChannel === 'g') oddG = Math.max(0, Math.min(255, baseG + direction * delta));
+    if (shiftChannel === 'b') oddB = Math.max(0, Math.min(255, baseB + direction * delta));
+    const oddColor = `rgb(${oddR}, ${oddG}, ${oddB})`;
+
+    const oddIndex = randInt(0, 3);
+    const grid = document.getElementById('oddGrid');
+    grid.innerHTML = '';
+    for (let i = 0; i < 4; i++) {
+      const tile = document.createElement('div');
+      tile.className = 'odd-tile';
+      tile.style.background = (i === oddIndex) ? oddColor : baseColor;
+      tile.onclick = () => handleOddClick(i === oddIndex, tile);
+      grid.appendChild(tile);
+    }
+  }
+
+  function startOddTimer() {
+    const fill = document.getElementById('timerFill');
+    fill.classList.remove('warning');
+    fill.style.transition = 'none';
+    fill.style.width = '100%';
+    // Force reflow so the transition resets
+    void fill.offsetWidth;
+    fill.style.transition = 'width 0.1s linear';
+
+    const total = 5000;
+    const start = Date.now();
+    if (oddTimerInterval) clearInterval(oddTimerInterval);
+    oddTimerInterval = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const pct = Math.max(0, 100 - (elapsed / total) * 100);
+      fill.style.width = pct + '%';
+      if (pct < 30) fill.classList.add('warning');
+      if (elapsed >= total) {
+        clearInterval(oddTimerInterval);
+        oddTimerInterval = null;
+        handleOddTimeout();
+      }
+    }, 50);
+  }
+
+  function handleOddClick(isCorrect, tileEl) {
+    if (oddTimerInterval) {
+      clearInterval(oddTimerInterval);
+      oddTimerInterval = null;
+    }
+    if (isCorrect) {
+      tileEl.classList.add('correct');
+      setTimeout(() => {
+        document.getElementById('oddModal').style.display = 'none';
+        showOddResult(true);
+      }, 450);
+    } else {
+      tileEl.classList.add('wrong');
+      setTimeout(() => {
+        document.getElementById('oddModal').style.display = 'none';
+        showOddResult(false, 'wrong');
+      }, 450);
+    }
+  }
+
+  function handleOddTimeout() {
+    document.getElementById('oddModal').style.display = 'none';
+    showOddResult(false, 'timeout');
+  }
+
+  function showOddResult(won, reason) {
+    const emoji = document.getElementById('oddResultEmoji');
+    const title = document.getElementById('oddResultTitle');
+    const msg = document.getElementById('oddResultMsg');
+    if (won) {
+      hintsLeft++;
+      updateHintCounter();
+      emoji.textContent = '🎉';
+      title.textContent = 'Hint earned!';
+      msg.textContent = 'Sharp eyes. You spotted the odd one. A fresh hint is yours for this round.';
+    } else {
+      emoji.textContent = reason === 'timeout' ? '⏰' : '😅';
+      title.textContent = reason === 'timeout' ? 'Out of time' : 'Not quite';
+      msg.textContent = 'No hint this round — but the mixing is still in your hands. Trust your eyes.';
+    }
+    document.getElementById('oddResultModal').style.display = 'flex';
+  }
+
+  function closeOddResult() {
+    document.getElementById('oddResultModal').style.display = 'none';
+  }
+
+  let slidersTouched = false;
+
+  function updateMix() {
+    const r = +document.getElementById('rSlider').value;
+    const g = +document.getElementById('gSlider').value;
+    const b = +document.getElementById('bSlider').value;
+    document.getElementById('rVal').textContent = r;
+    document.getElementById('gVal').textContent = g;
+    document.getElementById('bVal').textContent = b;
+    document.getElementById('userSwatch').style.background = `rgb(${r}, ${g}, ${b})`;
+    document.getElementById('userHex').textContent = '#' +
+      [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+    slidersTouched = true;
+  }
+
+  function startGame() {
+    level = 1;
+    totalScore = 0;
+    document.getElementById('stats').style.display = 'flex';
+    refreshAllCharacters();
+    showScreen('gameScreen');
+    setupRound();
+  }
+
+  function setupRound() {
+    document.getElementById('levelNum').textContent = level;
+    document.getElementById('scoreNum').textContent = totalScore;
+    newTarget();
+    document.getElementById('rSlider').value = 0;
+    document.getElementById('gSlider').value = 0;
+    document.getElementById('bSlider').value = 0;
+    updateMix();
+    slidersTouched = false; // reset AFTER updateMix to avoid initial flag-set
+    resetHints();
+  }
+
+  function submitMix() {
+    // Error prevention: if user hasn't touched sliders, confirm
+    if (!slidersTouched) {
+      document.getElementById('untouchedModal').style.display = 'flex';
+      return;
+    }
+    doSubmitMix();
+  }
+
+  function confirmUntouchedSubmit() {
+    document.getElementById('untouchedModal').style.display = 'none';
+    doSubmitMix();
+  }
+
+  function cancelUntouchedSubmit() {
+    document.getElementById('untouchedModal').style.display = 'none';
+  }
+
+  function doSubmitMix() {
+    const r = +document.getElementById('rSlider').value;
+    const g = +document.getElementById('gSlider').value;
+    const b = +document.getElementById('bSlider').value;
+
+    // Euclidean distance in RGB space, max ~441
+    const dist = Math.sqrt(
+      Math.pow(r - target.r, 2) +
+      Math.pow(g - target.g, 2) +
+      Math.pow(b - target.b, 2)
+    );
+    const accuracy = Math.max(0, Math.round(100 - (dist / 441) * 100));
+    totalScore += accuracy;
+
+    let emoji, title, msg;
+    if (accuracy >= 95) {
+      emoji = '🌈'; title = 'Perfect mix!'; msg = 'Pixel-perfect. The chromatic gods are pleased.';
+    } else if (accuracy >= 85) {
+      emoji = '🎉'; title = 'Excellent!'; msg = 'Almost indistinguishable. A trained eye, you have.';
+    } else if (accuracy >= 70) {
+      emoji = '👍'; title = 'Nicely done'; msg = 'Close enough to fool a casual glance.';
+    } else if (accuracy >= 50) {
+      emoji = '🤔'; title = 'Not bad'; msg = 'In the right neighborhood. Keep tuning.';
+    } else {
+      emoji = '🎨'; title = 'Keep mixing!'; msg = 'A bold interpretation. Try again next round.';
+    }
+
+    document.getElementById('resultEmoji').textContent = emoji;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('accuracyVal').textContent = accuracy + '%';
+    document.getElementById('feedbackMsg').textContent = msg;
+    document.getElementById('resultTarget').style.background =
+      `rgb(${target.r}, ${target.g}, ${target.b})`;
+    document.getElementById('resultUser').style.background = `rgb(${r}, ${g}, ${b})`;
+
+    const nextBtn = document.getElementById('nextBtn');
+    if (level >= maxLevels) {
+      nextBtn.textContent = 'See final score →';
+    } else {
+      nextBtn.textContent = `Round ${level + 1} of ${maxLevels} →`;
+    }
+
+    showScreen('resultScreen');
+
+    // Award coins = accuracy (1 point = 1 coin)
+    setTimeout(() => awardCoins(accuracy), 300);
+  }
+
+  function nextLevel() {
+    if (level >= maxLevels) {
+      // Game over — show final
+      const avg = Math.round(totalScore / maxLevels);
+      document.getElementById('resultEmoji').textContent = avg >= 80 ? '🏆' : avg >= 60 ? '⭐' : '🎨';
+      document.getElementById('resultTitle').textContent = `Game over! Average: ${avg}%`;
+      document.getElementById('accuracyVal').textContent = totalScore + ' pts';
+      document.getElementById('feedbackMsg').textContent =
+        avg >= 80 ? 'Master mixer. Picasso called, he wants notes.' :
+        avg >= 60 ? 'Solid color sense. Keep practicing.' :
+        'A learning round. Try again to climb.';
+      document.getElementById('nextBtn').textContent = 'Play again';
+      document.getElementById('nextBtn').onclick = restart;
+      return;
+    }
+    level++;
+    document.getElementById('nextBtn').onclick = nextLevel;
+    showScreen('gameScreen');
+    setupRound();
+  }
+
+  function restart() {
+    document.getElementById('nextBtn').onclick = nextLevel;
+    showScreen('startScreen');
+    document.getElementById('stats').style.display = 'none';
+  }
+
+  function showScreen(id) {
+    ['startScreen', 'gameScreen', 'resultScreen', 'wardrobeScreen'].forEach(s => {
+      document.getElementById(s).classList.toggle('hidden-screen', s !== id);
+    });
+  }
+
+  // ============================================================
+  // CHARACTER + WARDROBE SYSTEM
+  // ============================================================
+
+  const COLOR_PALETTE = [
+    { id: 'pink',   name: 'Bubblegum', hex: '#FF5C8A' },
+    { id: 'teal',   name: 'Lagoon',    hex: '#38C4B5' },
+    { id: 'yellow', name: 'Sunshine',  hex: '#FFD23F' },
+    { id: 'lilac',  name: 'Lavender',  hex: '#B69CFF' },
+    { id: 'navy',   name: 'Midnight',  hex: '#2B1B4A' }
+  ];
+
+  const SHIRTS = [
+    { id: 'tee',     name: 'Plain Tee',   price: 0,   pattern: 'solid' },
+    { id: 'stripe',  name: 'Stripey',     price: 80,  pattern: 'stripes' },
+    { id: 'dots',    name: 'Polka',       price: 80,  pattern: 'dots' },
+    { id: 'tank',    name: 'Tank',        price: 80,  pattern: 'tank' },
+    { id: 'hoodie',  name: 'Hoodie',      price: 120, pattern: 'hoodie' }
+  ];
+
+  const BOTTOMS = [
+    { id: 'jeans',   name: 'Jeans',       price: 0,   pattern: 'pants' },
+    { id: 'skirt',   name: 'Skirt',       price: 80,  pattern: 'skirt' },
+    { id: 'shorts',  name: 'Shorts',      price: 80,  pattern: 'shorts' },
+    { id: 'long',    name: 'Long Pants',  price: 80,  pattern: 'longpants' },
+    { id: 'plaid',   name: 'Plaid',       price: 120, pattern: 'plaid' }
+  ];
+
+  const COLOR_PRICE = 30;
+  const STORAGE_KEY = 'hueHunterSave';
+
+  let wardrobe = {
+    coins: 0,
+    gender: null, // 'girl' or 'boy', null = not yet chosen
+    ownedShirts: ['tee'],
+    ownedBottoms: ['jeans'],
+    ownedColors: { shirt: ['pink'], bottom: ['navy'] },
+    equipped: { shirt: 'tee', shirtColor: 'pink', bottom: 'jeans', bottomColor: 'navy' }
+  };
+
+  function saveProgress() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(wardrobe)); } catch(e) {}
+  }
+  function loadProgress() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) wardrobe = { ...wardrobe, ...JSON.parse(raw) };
+    } catch(e) {}
+    updateCoinDisplay();
+    refreshAllCharacters();
+  }
+  function updateCoinDisplay() {
+    document.getElementById('coinNum').textContent = wardrobe.coins;
+    document.getElementById('wardrobeCoins').textContent = wardrobe.coins;
+  }
+
+  // ----- Pixel character renderer (24x32 grid) -----
+  // genderOverride is optional — if not passed, uses wardrobe.gender
+  function drawCharacter(canvas, genderOverride) {
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const px = W / 24;
+    ctx.clearRect(0, 0, W, H);
+    ctx.imageSmoothingEnabled = false;
+
+    const gender = genderOverride || wardrobe.gender || 'girl';
+    const skin = '#FFD9B8', hair = '#3A2417', eye = '#2B1B4A', cheek = '#FF9FB5', ink = '#2B1B4A';
+    const shirtColor = COLOR_PALETTE.find(c => c.id === wardrobe.equipped.shirtColor)?.hex || '#FF5C8A';
+    const bottomColor = COLOR_PALETTE.find(c => c.id === wardrobe.equipped.bottomColor)?.hex || '#2B1B4A';
+    const shirtPattern = SHIRTS.find(s => s.id === wardrobe.equipped.shirt)?.pattern || 'solid';
+    const bottomPattern = BOTTOMS.find(b => b.id === wardrobe.equipped.bottom)?.pattern || 'pants';
+
+    function rect(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(x*px, y*px, w*px+0.5, h*px+0.5); }
+    function p(x, y, c) { ctx.fillStyle = c; ctx.fillRect(x*px, y*px, px+0.5, px+0.5); }
+
+    // Hair — differs by gender
+    if (gender === 'girl') {
+      // Long hair with side pieces
+      rect(7, 2, 10, 4, hair);
+      rect(6, 3, 1, 9, hair);  // long left side
+      rect(17, 3, 1, 9, hair); // long right side
+      rect(5, 5, 1, 6, hair);  // longer extensions
+      rect(18, 5, 1, 6, hair);
+      // bangs
+      rect(8, 6, 8, 1, hair);
+    } else {
+      // Short boy hair — just on top
+      rect(7, 2, 10, 3, hair);
+      rect(6, 3, 1, 3, hair);
+      rect(17, 3, 1, 3, hair);
+      // small fringe
+      p(8, 5, hair); p(15, 5, hair);
+    }
+
+    // Head
+    rect(7, 5, 10, 7, skin);
+    p(6, 8, skin); p(17, 8, skin); p(6, 9, skin); p(17, 9, skin);
+    // For girl, the long hair covers part of the neck/cheek area, redraw
+    if (gender === 'girl') {
+      p(6, 8, hair); p(17, 8, hair);
+      p(6, 9, hair); p(17, 9, hair);
+      p(6, 10, hair); p(17, 10, hair);
+      p(6, 11, hair); p(17, 11, hair);
+    }
+    rect(9, 8, 2, 2, eye); rect(13, 8, 2, 2, eye);
+    p(10, 8, 'white'); p(14, 8, 'white');
+    p(8, 10, cheek); p(15, 10, cheek);
+    rect(11, 11, 2, 1, ink);
+
+    // Neck
+    rect(11, 12, 2, 1, skin);
+    // Torso
+    drawShirt(ctx, px, shirtPattern, shirtColor, ink);
+    // Arms
+    if (shirtPattern === 'tank') {
+      rect(5, 14, 2, 5, skin); rect(17, 14, 2, 5, skin);
+    } else {
+      rect(5, 14, 2, 4, shirtColor); rect(17, 14, 2, 4, shirtColor);
+      rect(5, 18, 2, 1, skin); rect(17, 18, 2, 1, skin);
+    }
+    // Legs
+    drawBottom(ctx, px, bottomPattern, bottomColor, ink);
+    // Shoes
+    rect(8, 30, 3, 2, ink); rect(13, 30, 3, 2, ink);
+  }
+
+  function drawShirt(ctx, px, pattern, color, ink) {
+    function rect(x,y,w,h,c) { ctx.fillStyle = c; ctx.fillRect(x*px, y*px, w*px+0.5, h*px+0.5); }
+    function p(x,y,c) { ctx.fillStyle = c; ctx.fillRect(x*px, y*px, px+0.5, px+0.5); }
+    rect(7, 13, 10, 7, color);
+    if (pattern === 'stripes') {
+      rect(7, 14, 10, 1, 'white');
+      rect(7, 16, 10, 1, 'white');
+      rect(7, 18, 10, 1, 'white');
+    } else if (pattern === 'dots') {
+      p(9, 14, 'white'); p(13, 14, 'white');
+      p(11, 16, 'white'); p(15, 16, 'white');
+      p(9, 18, 'white'); p(13, 18, 'white');
+    } else if (pattern === 'tank') {
+      rect(7, 13, 2, 1, '#FFD9B8'); rect(15, 13, 2, 1, '#FFD9B8');
+    } else if (pattern === 'hoodie') {
+      rect(7, 12, 10, 2, color);
+      rect(8, 11, 8, 1, color);
+      rect(10, 17, 4, 2, ink);
+    }
+  }
+
+  function drawBottom(ctx, px, pattern, color, ink) {
+    function rect(x,y,w,h,c) { ctx.fillStyle = c; ctx.fillRect(x*px, y*px, w*px+0.5, h*px+0.5); }
+    if (pattern === 'skirt') {
+      rect(7, 20, 10, 4, color);
+      rect(6, 23, 12, 1, color);
+      rect(9, 24, 2, 6, '#FFD9B8'); rect(13, 24, 2, 6, '#FFD9B8');
+    } else if (pattern === 'shorts') {
+      rect(8, 20, 8, 4, color);
+      rect(8, 24, 3, 1, color); rect(13, 24, 3, 1, color);
+      rect(9, 25, 2, 5, '#FFD9B8'); rect(13, 25, 2, 5, '#FFD9B8');
+    } else if (pattern === 'longpants') {
+      rect(8, 20, 3, 10, color);
+      rect(13, 20, 3, 10, color);
+    } else if (pattern === 'plaid') {
+      rect(8, 20, 8, 10, color);
+      rect(8, 22, 8, 1, ink);
+      rect(8, 26, 8, 1, ink);
+      rect(11, 20, 1, 10, ink);
+    } else {
+      rect(8, 20, 3, 10, color);
+      rect(13, 20, 3, 10, color);
+      rect(7, 20, 10, 1, ink);
+    }
+  }
+
+  function drawItemPreview(canvas, type, item, color) {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.imageSmoothingEnabled = false;
+    const px = canvas.width / 24;
+    const ink = '#2B1B4A';
+    if (type === 'shirt') drawShirt(ctx, px, item.pattern, color, ink);
+    else if (type === 'bottom') drawBottom(ctx, px, item.pattern, color, ink);
+  }
+
+  function refreshAllCharacters() {
+    const mini = document.getElementById('characterMini');
+    if (mini) drawCharacter(mini);
+    const preview = document.getElementById('characterPreview');
+    if (preview) drawCharacter(preview);
+    const hero = document.getElementById('characterHero');
+    if (hero) drawCharacter(hero);
+  }
+
+  // ----- Wardrobe UI -----
+  let activeTab = 'shirt';
+  let wardrobeReturnScreen = 'startScreen';
+
+  function openWardrobe() {
+    // remember which screen we came from
+    if (!document.getElementById('startScreen').classList.contains('hidden-screen')) {
+      wardrobeReturnScreen = 'startScreen';
+    } else if (!document.getElementById('resultScreen').classList.contains('hidden-screen')) {
+      wardrobeReturnScreen = 'resultScreen';
+    }
+    document.getElementById('stats').style.display = 'flex';
+    showScreen('wardrobeScreen');
+    refreshAllCharacters();
+    renderItems();
+  }
+  function closeWardrobe() {
+    showScreen(wardrobeReturnScreen);
+    if (wardrobeReturnScreen === 'startScreen') {
+      document.getElementById('stats').style.display = 'none';
+    }
+  }
+  function switchTab(tab) {
+    activeTab = tab;
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.tab === tab);
+    });
+    renderItems();
+  }
+
+  function renderItems() {
+    const grid = document.getElementById('itemGrid');
+    grid.innerHTML = '';
+    grid.style.display = '';
+
+    if (activeTab === 'shirt' || activeTab === 'bottom') {
+      grid.style.display = 'grid';
+      const items = activeTab === 'shirt' ? SHIRTS : BOTTOMS;
+      const owned = activeTab === 'shirt' ? wardrobe.ownedShirts : wardrobe.ownedBottoms;
+      const equippedId = activeTab === 'shirt' ? wardrobe.equipped.shirt : wardrobe.equipped.bottom;
+      const previewColor = activeTab === 'shirt'
+        ? COLOR_PALETTE.find(c => c.id === wardrobe.equipped.shirtColor).hex
+        : COLOR_PALETTE.find(c => c.id === wardrobe.equipped.bottomColor).hex;
+
+      items.forEach(item => {
+        const isOwned = owned.includes(item.id);
+        const isEquipped = item.id === equippedId;
+        const canAfford = wardrobe.coins >= item.price;
+        const card = document.createElement('div');
+        card.className = 'item-card' + (isOwned ? '' : ' locked') + (isEquipped ? ' equipped' : '');
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 96; canvas.height = 96;
+        canvas.className = 'item-preview';
+        canvas.style.width = '60px'; canvas.style.height = '60px';
+        card.appendChild(canvas);
+        drawItemPreview(canvas, activeTab, item, previewColor);
+
+        const name = document.createElement('div');
+        name.className = 'item-name';
+        name.textContent = item.name;
+        card.appendChild(name);
+
+        const price = document.createElement('div');
+        price.className = 'item-price';
+        if (isOwned) {
+          price.textContent = isEquipped ? 'Wearing' : 'Tap to wear';
+          price.classList.add('affordable');
+        } else {
+          price.textContent = '🪙 ' + item.price;
+          price.classList.add(canAfford ? 'affordable' : 'too-expensive');
+        }
+        card.appendChild(price);
+        card.onclick = () => handleItemClick(activeTab, item, isOwned);
+        grid.appendChild(card);
+      });
+    } else if (activeTab === 'color') {
+      grid.style.display = 'block';
+      const sections = [
+        { title: 'Shirt color', target: 'shirt' },
+        { title: 'Bottom color', target: 'bottom' }
+      ];
+      sections.forEach(sec => {
+        const heading = document.createElement('h4');
+        heading.style.cssText = 'font-family:Fraunces,serif;font-size:18px;font-weight:900;margin:8px 0 12px;';
+        heading.textContent = sec.title;
+        grid.appendChild(heading);
+
+        const row = document.createElement('div');
+        row.className = 'color-swatch-row';
+        row.style.marginBottom = '20px';
+        COLOR_PALETTE.forEach(color => {
+          const owned = wardrobe.ownedColors[sec.target].includes(color.id);
+          const equipped = (sec.target === 'shirt' ? wardrobe.equipped.shirtColor : wardrobe.equipped.bottomColor) === color.id;
+
+          const wrap = document.createElement('div');
+          wrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:4px;';
+
+          const dot = document.createElement('div');
+          dot.className = 'color-dot' + (equipped ? ' active' : '');
+          dot.style.background = color.hex;
+          if (!owned) dot.style.opacity = '0.4';
+          wrap.appendChild(dot);
+
+          const lbl = document.createElement('div');
+          lbl.style.cssText = 'font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;';
+          lbl.textContent = owned ? color.name : `🪙 ${COLOR_PRICE}`;
+          wrap.appendChild(lbl);
+
+          dot.onclick = () => handleColorClick(sec.target, color, owned);
+          row.appendChild(wrap);
+        });
+        grid.appendChild(row);
+      });
+    }
+  }
+
+  function handleItemClick(type, item, isOwned) {
+    if (isOwned) {
+      if (type === 'shirt') wardrobe.equipped.shirt = item.id;
+      else wardrobe.equipped.bottom = item.id;
+      saveProgress();
+      refreshAllCharacters();
+      renderItems();
+    } else {
+      openPurchaseModal({
+        title: `Buy ${item.name}?`,
+        desc: `This will cost <strong>🪙 ${item.price}</strong>. You have ${wardrobe.coins} coins.`,
+        canAfford: wardrobe.coins >= item.price,
+        onConfirm: () => {
+          wardrobe.coins -= item.price;
+          if (type === 'shirt') {
+            wardrobe.ownedShirts.push(item.id);
+            wardrobe.equipped.shirt = item.id;
+          } else {
+            wardrobe.ownedBottoms.push(item.id);
+            wardrobe.equipped.bottom = item.id;
+          }
+          saveProgress();
+          updateCoinDisplay();
+          refreshAllCharacters();
+          renderItems();
+        }
+      });
+    }
+  }
+
+  function handleColorClick(target, color, isOwned) {
+    if (isOwned) {
+      if (target === 'shirt') wardrobe.equipped.shirtColor = color.id;
+      else wardrobe.equipped.bottomColor = color.id;
+      saveProgress();
+      refreshAllCharacters();
+      renderItems();
+    } else {
+      openPurchaseModal({
+        title: `Buy ${color.name}?`,
+        desc: `Unlock <strong>${color.name}</strong> for your ${target} for <strong>🪙 ${COLOR_PRICE}</strong>. You have ${wardrobe.coins} coins.`,
+        canAfford: wardrobe.coins >= COLOR_PRICE,
+        onConfirm: () => {
+          wardrobe.coins -= COLOR_PRICE;
+          wardrobe.ownedColors[target].push(color.id);
+          if (target === 'shirt') wardrobe.equipped.shirtColor = color.id;
+          else wardrobe.equipped.bottomColor = color.id;
+          saveProgress();
+          updateCoinDisplay();
+          refreshAllCharacters();
+          renderItems();
+        }
+      });
+    }
+  }
+
+  function openPurchaseModal({ title, desc, canAfford, onConfirm }) {
+    document.getElementById('purchaseTitle').textContent = title;
+    document.getElementById('purchaseDesc').innerHTML = canAfford
+      ? desc
+      : desc + '<br><br><span style="color:#E63946;font-weight:900;">Not enough coins! Play more rounds to earn coins.</span>';
+    const yesBtn = document.getElementById('purchaseYesBtn');
+    yesBtn.disabled = !canAfford;
+    yesBtn.style.opacity = canAfford ? '1' : '0.4';
+    yesBtn.style.cursor = canAfford ? 'pointer' : 'not-allowed';
+    yesBtn.onclick = () => {
+      if (canAfford) onConfirm();
+      closePurchase();
+    };
+    document.getElementById('purchaseModal').style.display = 'flex';
+  }
+
+  function closePurchase() {
+    document.getElementById('purchaseModal').style.display = 'none';
+  }
+
+  function awardCoins(amount) {
+    wardrobe.coins += amount;
+    saveProgress();
+    updateCoinDisplay();
+    const result = document.querySelector('#resultScreen .accuracy-display');
+    if (result) {
+      const burst = document.createElement('div');
+      burst.className = 'coin-burst';
+      burst.textContent = `+${amount} 🪙`;
+      const rect = result.getBoundingClientRect();
+      burst.style.left = (rect.left + rect.width / 2 - 40) + 'px';
+      burst.style.top = (rect.top + window.scrollY) + 'px';
+      document.body.appendChild(burst);
+      setTimeout(() => burst.remove(), 1700);
+    }
+  }
+
+  // ============================================================
+  // HELP MODAL
+  // ============================================================
+  function openHelp() {
+    document.getElementById('helpModal').style.display = 'flex';
+  }
+  function closeHelp() {
+    document.getElementById('helpModal').style.display = 'none';
+  }
+
+  // ============================================================
+  // GENDER SELECTION
+  // ============================================================
+  let pendingGender = null;
+
+  function handleStartClick() {
+    if (!wardrobe.gender) {
+      // First-time player — show gender select
+      openGenderModal();
+    } else {
+      // Returning player — start directly
+      startGame();
+      maybeStartTutorial();
+    }
+  }
+
+  function openGenderModal() {
+    pendingGender = null;
+    document.getElementById('genderModal').style.display = 'flex';
+    // Draw preview characters
+    drawGenderPreview('genderGirl', 'girl');
+    drawGenderPreview('genderBoy', 'boy');
+    // Reset selected state
+    document.getElementById('genderGirl').classList.remove('selected');
+    document.getElementById('genderBoy').classList.remove('selected');
+    const btn = document.getElementById('genderConfirmBtn');
+    btn.disabled = true;
+    btn.style.opacity = '0.4';
+  }
+
+  function drawGenderPreview(cardId, gender) {
+    const card = document.getElementById(cardId);
+    const canvas = card.querySelector('canvas');
+    // Temporarily use defaults for preview
+    const savedGender = wardrobe.gender;
+    wardrobe.gender = gender;
+    drawCharacter(canvas);
+    wardrobe.gender = savedGender;
+  }
+
+  function selectGender(gender) {
+    pendingGender = gender;
+    document.getElementById('genderGirl').classList.toggle('selected', gender === 'girl');
+    document.getElementById('genderBoy').classList.toggle('selected', gender === 'boy');
+    const btn = document.getElementById('genderConfirmBtn');
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  }
+
+  function confirmGender() {
+    if (!pendingGender) return;
+    wardrobe.gender = pendingGender;
+    saveProgress();
+    document.getElementById('genderModal').style.display = 'none';
+    refreshAllCharacters();
+    startGame();
+    maybeStartTutorial();
+  }
+
+  // ============================================================
+  // TUTORIAL SIGNALING (first round only)
+  // ============================================================
+  const TUTORIAL_KEY = 'hueHunterTutorialDone';
+  let tutorialStep = 0;
+  let tutorialActive = false;
+
+  function maybeStartTutorial() {
+    try {
+      if (localStorage.getItem(TUTORIAL_KEY) === '1') return;
+    } catch(e) {}
+    tutorialActive = true;
+    tutorialStep = 0;
+    setTimeout(() => showTutorialStep(), 600);
+  }
+
+  function showTutorialStep() {
+    if (!tutorialActive) return;
+    clearTutorialUI();
+
+    if (tutorialStep === 0) {
+      // Point at target
+      const target = document.getElementById('targetSwatch');
+      addTip(target, 'This is the target color', 'below');
+      addGlow(target.parentElement);
+      // Auto-advance after a beat
+      setTimeout(() => { if (tutorialActive) { tutorialStep = 1; showTutorialStep(); } }, 2400);
+
+    } else if (tutorialStep === 1) {
+      // Point at sliders
+      const sliders = document.querySelector('.sliders');
+      addTip(sliders, 'Now drag the R, G, B sliders to mix it', 'above');
+      addGlow(sliders);
+      // Listen for first slider movement to advance
+      const onDrag = () => {
+        if (!tutorialActive) return;
+        ['rSlider','gSlider','bSlider'].forEach(id => {
+          document.getElementById(id).removeEventListener('input', onDrag);
+        });
+        tutorialStep = 2;
+        showTutorialStep();
+      };
+      ['rSlider','gSlider','bSlider'].forEach(id => {
+        document.getElementById(id).addEventListener('input', onDrag);
+      });
+
+    } else if (tutorialStep === 2) {
+      // Point at hint hex pairs
+      const hexPairs = document.getElementById('hexPairs');
+      addTip(hexPairs, 'Stuck? Tap a __ pair to use a hint', 'above');
+      // Auto-advance after a few seconds
+      setTimeout(() => { if (tutorialActive && tutorialStep === 2) { tutorialStep = 3; showTutorialStep(); } }, 3200);
+
+    } else if (tutorialStep === 3) {
+      // Point at submit
+      const submit = document.getElementById('submitBtn');
+      addTip(submit, 'When ready, tap Submit Mix', 'above');
+      addGlow(submit);
+      // Listen for submit click — handled by submitMix indirectly; we hook into the click
+      const onSubmit = () => {
+        document.getElementById('submitBtn').removeEventListener('click', onSubmit);
+        endTutorial();
+      };
+      document.getElementById('submitBtn').addEventListener('click', onSubmit);
+    }
+  }
+
+  function addTip(targetEl, text, position) {
+    const tip = document.createElement('div');
+    tip.className = 'tutorial-tip ' + position;
+    tip.textContent = text;
+    tip.dataset.tutorialTip = '1';
+    document.body.appendChild(tip);
+    // Position near targetEl
+    const r = targetEl.getBoundingClientRect();
+    if (position === 'below') {
+      tip.style.top = (r.bottom + window.scrollY + 14) + 'px';
+      tip.style.left = (r.left + window.scrollX + 16) + 'px';
+    } else {
+      // above
+      // Position above, but render first to measure height
+      tip.style.visibility = 'hidden';
+      requestAnimationFrame(() => {
+        const tipR = tip.getBoundingClientRect();
+        tip.style.top = (r.top + window.scrollY - tipR.height - 14) + 'px';
+        tip.style.left = (r.left + window.scrollX + 16) + 'px';
+        tip.style.visibility = 'visible';
+      });
+    }
+  }
+
+  function addGlow(el) {
+    if (el) el.classList.add('tutorial-glow');
+  }
+
+  function clearTutorialUI() {
+    document.querySelectorAll('[data-tutorial-tip]').forEach(el => el.remove());
+    document.querySelectorAll('.tutorial-glow').forEach(el => el.classList.remove('tutorial-glow'));
+  }
+
+  function endTutorial() {
+    tutorialActive = false;
+    clearTutorialUI();
+    try { localStorage.setItem(TUTORIAL_KEY, '1'); } catch(e) {}
+  }
+
+  // Allow user to dismiss tutorial via help button or escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && tutorialActive) endTutorial();
+  });
+
+  loadProgress();
+</script>
+</body>
+</html>

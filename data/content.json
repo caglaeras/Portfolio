@@ -108,7 +108,9 @@
       "closeVideo": "videosunu kapat",
       "openPreviewFor": "canlı önizlemesini tam ekran aç",
       "openRepoFor": "deposunu GitHub'da aç",
-      "techsOf": "teknolojileri"
+      "techsOf": "teknolojileri",
+      "reportBtn": "Proje Raporu",
+      "openReportFor": "proje raporunu yeni sekmede aç"
     },
     "other": {
       "title": "Academic Work",
@@ -302,7 +304,9 @@
       "closeVideo": "video, close",
       "openPreviewFor": "live preview, open full screen",
       "openRepoFor": "repository, open on GitHub",
-      "techsOf": "technologies"
+      "techsOf": "technologies",
+      "reportBtn": "Project Report",
+      "openReportFor": "project report, open in a new tab"
     },
     "other": {
       "title": "Academic Work",

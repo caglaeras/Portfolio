@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import LivePreview from "@/components/LivePreview";
 import Portal from "@/components/Portal";
+import { frameIsReady } from "@/components/frameReady";
 import StoryDrawer, { type StoryLink, type StorySection } from "@/components/StoryDrawer";
 import {
   LOAD_TIMEOUT,
@@ -42,7 +43,15 @@ const Icons = {
       <path d="M6 6l12 12M18 6L6 18" />
     </svg>
   ),
+  report: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M5 3h11l3 3v15H5zM8 9h8M8 13h8M8 17h5" />
+    </svg>
+  ),
 };
+
+/** basePath duz dosya adreslerine uygulanmadigi icin elle ekleniyor. */
+const BASE = "/Portfolio";
 
 const watchUrl = (videoId: string) => "https://www.youtube.com/watch?v=" + videoId;
 
@@ -67,8 +76,10 @@ function useFrameLoader(src: string, active: boolean) {
     started.current = true;
 
     let timer = 0;
+    let poll = 0;
     const onLoad = () => {
       window.clearTimeout(timer);
+      window.clearInterval(poll);
       setLoaded(true);
       setFailed(false);
     };
@@ -77,9 +88,19 @@ function useFrameLoader(src: string, active: boolean) {
     timer = window.setTimeout(() => setFailed(true), LOAD_TIMEOUT);
     frame.src = src;
 
+    /*
+     * load olayi alt kaynaklari bekledigi icin gecikebiliyor. Ayni origin'de
+     * belgeyi okuyup hazir olur olmaz iskeleti kaldiriyoruz; capraz origin'de
+     * bu kontrol false doner ve load olayi beklenmeye devam eder.
+     */
+    poll = window.setInterval(() => {
+      if (frameIsReady(frame)) onLoad();
+    }, 250);
+
     return () => {
       frame.removeEventListener("load", onLoad);
       window.clearTimeout(timer);
+      window.clearInterval(poll);
     };
   }, [src, active]);
 
@@ -310,7 +331,12 @@ export default function Web() {
         ...(storyFor.kind === "live"
           ? [{ label: copy.liveSiteLink, href: storyFor.live, icon: Icons.external, primary: true }]
           : [{ label: copy.demoLink, href: watchUrl(storyFor.videoId), icon: Icons.play }]),
-        { label: copy.repoLink, href: storyFor.github, icon: Icons.github },
+        ...(storyFor.report
+          ? [{ label: copy.reportBtn, href: `${BASE}${storyFor.report}`, icon: Icons.report }]
+          : []),
+        ...(storyFor.github
+          ? [{ label: copy.repoLink, href: storyFor.github, icon: Icons.github }]
+          : []),
       ]
     : [];
 
@@ -376,17 +402,34 @@ export default function Web() {
                   <span>{storyCopy.button}</span>
                 </button>
 
-                <a
-                  className={`${styles.btn} ${styles.quiet}`}
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${project.name} ${copy.openRepoFor}`}
-                >
-                  {Icons.github}
-                  <span>{copy.githubBtn}</span>
-                </a>
+                {project.github && (
+                  <a
+                    className={`${styles.btn} ${styles.quiet}`}
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.name} ${copy.openRepoFor}`}
+                  >
+                    {Icons.github}
+                    <span>{copy.githubBtn}</span>
+                  </a>
+                )}
               </div>
+
+              {project.report && (
+                <div className={styles.extras}>
+                  <a
+                    className={styles.extraLink}
+                    href={`${BASE}${project.report}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.name} ${copy.openReportFor}`}
+                  >
+                    {Icons.report}
+                    <span>{copy.reportBtn}</span>
+                  </a>
+                </div>
+              )}
             </div>
           </article>
         ))}

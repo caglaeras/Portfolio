@@ -450,3 +450,39 @@
   .drawer { transition: none; }
   .skeleton { animation: none; }
 }
+
+/*
+ * Proje raporu gibi ek baglantilar ikincil satirda durur; uc esit buton
+ * kartin aksiyon satirina sigmiyor.
+ */
+.extras {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.extraLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.extraLink:hover {
+  color: var(--main-color-hover);
+  border-bottom-color: var(--main-color);
+}
+
+.extraLink svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  color: var(--main-color);
+}
