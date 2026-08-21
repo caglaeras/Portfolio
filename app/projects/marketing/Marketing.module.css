@@ -75,76 +75,6 @@
   margin: 0 0 18px;
 }
 
-/*
- * The strip is stepped through with the two arrows, so it needs room for them
- * on both flanks rather than a drag affordance.
- */
-.viewport {
-  position: relative;
-  padding: 0 52px;
-}
-
-.navBtn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 4;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--card-border);
-  background: var(--card-bg);
-  color: var(--text-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: var(--box-shadow);
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
-  font-size: 0.95rem;
-}
-
-.navBtn:hover:not(:disabled) {
-  background: var(--main-color);
-  color: #fff;
-  border-color: var(--main-color);
-}
-
-.navBtn:disabled {
-  opacity: 0.25;
-  cursor: default;
-}
-
-.navPrev {
-  left: 0;
-}
-
-.navNext {
-  right: 0;
-}
-
-.reel {
-  /*
-   * Every card is this tall; its width comes from the artwork ratio (--ar),
-   * so mixed 4:3 / 1:1 / 4:5 / 9:16 / 2:5 items line up on one baseline.
-   */
-  --reel-h: 380px;
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  padding: 4px 2px 6px;
-  /* Hidden, not disabled: touch devices can still swipe the strip. */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.reel::-webkit-scrollbar {
-  display: none;
-}
-
 .emptyState {
   display: flex;
   flex-direction: column;
@@ -172,6 +102,8 @@
 /* ── Cards ────────────────────────────────────────────────────────────────── */
 
 .card {
+  /* Serit yuksekligi: kart genisligi bundan ve orandan hesaplanir. */
+  --reel-h: 380px;
   flex: 0 0 auto;
   /* --ar is width / height, set inline from the file's real pixel size. */
   width: calc(var(--reel-h) * var(--ar));
@@ -418,23 +350,8 @@
     font-size: 1.75rem;
   }
 
-  .viewport {
-    padding: 0 38px;
-  }
-
-  .navBtn {
-    width: 34px;
-    height: 34px;
-    font-size: 0.8rem;
-  }
-
-  .reel {
-    --reel-h: 300px;
-    gap: 14px;
-    scroll-snap-type: x proximity;
-  }
-
   .card {
+    --reel-h: 300px;
     max-width: 82vw;
     scroll-snap-align: start;
   }

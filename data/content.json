@@ -76,14 +76,15 @@
     "unity": {
       "title": "Unity ile Geliştirdiğim Projeler",
       "lead": "Oyun motoru Unity ve C# kullanarak geliştirdiğim prototipler, mobil oyunlar ve interaktif simülasyonlar. Oyun tasarımı ve geliştirme becerilerimi gösteren çalışmalar.",
-      "projects": [
-        { "title": "Dans Animasyonu", "desc": "Bu projede karakter rigleme, kemik yapılarının birleşimi ve dans animasyonu oluşturma süreçlerini gerçekleştirdim. Ayrıca karakterle senkronize şekilde ses efektleri için Audio Source bileşenini kullandım.", "videoId": "tVeVMm9t0AE" },
-        { "title": "Işık Kullanımı", "desc": "Universal Render Pipeline (URP) kullanarak farklı 2D ışık türlerini sahnede uyguladım. Karakter animasyonu eşliğinde her ışık türünü vurgulayan dinamik bir animasyon/gif oluşturuldu.", "videoId": "LWPtN9uJTjk" },
-        { "title": "2D Platform Oyunu", "desc": "Bu projede bir top karakterini WASD tuşlarıyla yönlendirerek platformlar arasında ilerlediği ve dikenli tuzaklara çarpmadan tamamlaması gereken bir mini platform oyunu geliştirdim.", "videoId": "ceNNmWJ9K3g" },
-        { "title": "2D Bir Oyun Örneği", "desc": "Oyuncu yukarı ve aşağı yön tuşlarıyla bir uzay gemisini kontrol ediyor. Space tuşuyla ateş ederek karşısına çıkan engelleri yok etmesi gereken basit ama etkili bir oyun kurguladım.", "videoId": "ysaB9TzSp7M" },
-        { "title": "Ateş Atma", "desc": "Unity üzerinde basit kontrolleri test etmek için geliştirdiğim bu projede, hedefe doğru ateş gönderen, çarptıktan sonra yok olan objeler için temel script fonksiyonları geliştirdim.", "videoId": "W2rIoqOzSKM" },
-        { "title": "Flappy Bird Remake", "desc": "Klasik Flappy Bird oyununu yeniden Unity üzerinde canlandırdım. Yerçekimi, skor takip sistemi ve engel geçişleri gibi mekanikleri birebir şekilde kodladım.", "videoId": "T6Rnd_THoG8" }
-      ]
+      "playVideo": "videosunu oynat",
+      "closeVideo": "videosunu kapat",
+      "videoFailed": "Video bu pencerede açılamadı.",
+      "openYoutube": "YouTube'da aç",
+      "watchBtn": "Videoyu Aç",
+      "openWatchFor": "videosunu YouTube'da aç",
+      "prevLabel": "Önceki projeler",
+      "nextLabel": "Sonraki projeler",
+      "reelHint": "Gezinmek için okları kullanın"
     },
     "web": {
       "title": "Web Geliştirme Projeleri",
@@ -156,7 +157,9 @@
       "pauseLabel": "Durdur",
       "stopLabel": "Videoyu kapat",
       "zoomLabel": "Büyüt",
-      "closeLabel": "Kapat"
+      "closeLabel": "Kapat",
+      "prevLabel": "Önceki içerikler",
+      "nextLabel": "Sonraki içerikler"
     },
     "genCiftligi": {
       "title": "Gen Çiftliği: 8. Sınıf Genetik Konuları İçin Unity Tabanlı Eğitsel Oyun ve Araştırma Çalışması",
@@ -260,14 +263,15 @@
     "unity": {
       "title": "Projects Developed with Unity",
       "lead": "Prototypes, mobile games, and interactive simulations I developed using the Unity game engine and C#. These works showcase my game design and development skills.",
-      "projects": [
-        { "title": "Dance Animation", "desc": "In this project, I handled character rigging, bone structure linking, and dance animation creation. I also used the Audio Source component to synchronize sound effects with the character.", "videoId": "tVeVMm9t0AE" },
-        { "title": "Light Usage", "desc": "I applied different 2D light types in a scene using the Universal Render Pipeline (URP). This dynamic animation showcases various lighting effects accompanying character animation.", "videoId": "LWPtN9uJTjk" },
-        { "title": "2D Platform Game", "desc": "A mini-platformer where the player guides a ball using WASD keys, navigating between platforms and completing the course without hitting spike traps.", "videoId": "ceNNmWJ9K3g" },
-        { "title": "2D Game Example", "desc": "The player controls a spaceship moving up and down. They must destroy obstacles by shooting with the Space key in this simple yet effective game concept.", "videoId": "ysaB9TzSp7M" },
-        { "title": "Shooting Projectile", "desc": "A basic controls testing project developed in Unity, featuring core script functions for objects that shoot towards a target and destroy themselves upon impact.", "videoId": "W2rIoqOzSKM" },
-        { "title": "Flappy Bird Remake", "desc": "I recreated the classic Flappy Bird game in Unity. I precisely coded mechanics like gravity, score tracking, and obstacle generation.", "videoId": "T6Rnd_THoG8" }
-      ]
+      "playVideo": "video, play",
+      "closeVideo": "video, close",
+      "videoFailed": "The video could not be played in this window.",
+      "openYoutube": "Open on YouTube",
+      "watchBtn": "Open the video",
+      "openWatchFor": "video, open on YouTube",
+      "prevLabel": "Previous projects",
+      "nextLabel": "Next projects",
+      "reelHint": "Use the arrows to browse"
     },
     "web": {
       "title": "Web Development Projects",
@@ -340,7 +344,9 @@
       "pauseLabel": "Pause",
       "stopLabel": "Close video",
       "zoomLabel": "Expand",
-      "closeLabel": "Close"
+      "closeLabel": "Close",
+      "prevLabel": "Previous items",
+      "nextLabel": "Next items"
     },
     "genCiftligi": {
       "title": "Gen Çiftliği: A Unity-Based Educational Game for 8th-Grade Genetics, Design and Quasi-Experimental Evaluation",

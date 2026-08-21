@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Portal from "@/components/Portal";
+import Reel from "@/components/Reel";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   captionFor,
@@ -21,73 +22,23 @@ const SHORTS_AR = 9 / 16;
 
 const arOf = (width: number, height: number) => (width / height).toFixed(4);
 
-/* ---------------------------------------------------------------------------
-   Horizontal reel: arrow buttons + mouse drag on desktop, native swipe on touch
-   --------------------------------------------------------------------------- */
-
-function useReel() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [edges, setEdges] = useState({ atStart: true, atEnd: true });
-
-  const syncEdges = useCallback(() => {
-    const el = ref.current;
-    if (!el) return;
-    const max = el.scrollWidth - el.clientWidth;
-    setEdges({ atStart: el.scrollLeft <= 1, atEnd: el.scrollLeft >= max - 1 });
-  }, []);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    syncEdges();
-    el.addEventListener("scroll", syncEdges, { passive: true });
-    window.addEventListener("resize", syncEdges);
-    return () => {
-      el.removeEventListener("scroll", syncEdges);
-      window.removeEventListener("resize", syncEdges);
-    };
-  }, [syncEdges]);
-
-  /**
-   * Steps to the next / previous card rather than a fixed pixel amount, so the
-   * mixed card widths always land flush against the left edge of the strip.
-   */
-  const step = (direction: -1 | 1) => {
-    const el = ref.current;
-    if (!el) return;
-    const left = el.getBoundingClientRect().left;
-    const cards = Array.from(el.children) as HTMLElement[];
-    const offsets = cards.map((c) => c.getBoundingClientRect().left - left);
-
-    const target =
-      direction === 1
-        ? offsets.find((offset) => offset > 2)
-        : [...offsets].reverse().find((offset) => offset < -2);
-
-    if (target === undefined) {
-      el.scrollTo({ left: direction === 1 ? el.scrollWidth : 0, behavior: "smooth" });
-      return;
-    }
-    el.scrollBy({ left: target, behavior: "smooth" });
-  };
-
-  return {
-    ref,
-    edges,
-    step,
-    reelProps: { className: styles.reel },
-  };
-}
-
 interface ReelSectionProps {
   heading: string;
   emptyLabel: string;
   isEmpty: boolean;
-  reel: ReturnType<typeof useReel>;
+  prevLabel: string;
+  nextLabel: string;
   children: React.ReactNode;
 }
 
-function ReelSection({ heading, emptyLabel, isEmpty, reel, children }: ReelSectionProps) {
+function ReelSection({
+  heading,
+  emptyLabel,
+  isEmpty,
+  prevLabel,
+  nextLabel,
+  children,
+}: ReelSectionProps) {
   return (
     <section className={styles.section}>
       <h2 className={styles.sectionHeading}>{heading}</h2>
@@ -98,31 +49,9 @@ function ReelSection({ heading, emptyLabel, isEmpty, reel, children }: ReelSecti
           <p>{emptyLabel}</p>
         </div>
       ) : (
-        <div className={styles.viewport}>
-          <button
-            type="button"
-            className={`${styles.navBtn} ${styles.navPrev}`}
-            onClick={() => reel.step(-1)}
-            disabled={reel.edges.atStart}
-            aria-label="Previous"
-          >
-            <i className="fas fa-chevron-left" aria-hidden="true"></i>
-          </button>
-
-          <div ref={reel.ref} {...reel.reelProps}>
-            {children}
-          </div>
-
-          <button
-            type="button"
-            className={`${styles.navBtn} ${styles.navNext}`}
-            onClick={() => reel.step(1)}
-            disabled={reel.edges.atEnd}
-            aria-label="Next"
-          >
-            <i className="fas fa-chevron-right" aria-hidden="true"></i>
-          </button>
-        </div>
+        <Reel prevLabel={prevLabel} nextLabel={nextLabel}>
+          {children}
+        </Reel>
       )}
     </section>
   );
@@ -343,9 +272,6 @@ export default function Marketing() {
   const { content, language } = useLanguage();
   const copy = content.marketing;
 
-  const videoReel = useReel();
-  const visualReel = useReel();
-
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
   const [lightbox, setLightbox] = useState<MarketingVisual | null>(null);
 
@@ -381,7 +307,8 @@ export default function Marketing() {
         heading={copy.videoSectionTitle}
         emptyLabel={copy.emptyState}
         isEmpty={marketingVideos.length === 0}
-        reel={videoReel}
+        prevLabel={copy.prevLabel}
+        nextLabel={copy.nextLabel}
       >
         {marketingVideos.map((item) => {
           const shared = {
@@ -405,7 +332,8 @@ export default function Marketing() {
         heading={copy.visualSectionTitle}
         emptyLabel={copy.emptyState}
         isEmpty={marketingVisuals.length === 0}
-        reel={visualReel}
+        prevLabel={copy.prevLabel}
+        nextLabel={copy.nextLabel}
       >
         {marketingVisuals.map((item) => {
           const caption = captionFor(item, language);

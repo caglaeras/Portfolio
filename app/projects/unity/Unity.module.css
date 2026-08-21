@@ -1,0 +1,279 @@
+/*
+ * /projects/unity sayfasi: yatay kaydirmali proje galerisi.
+ * Serit components/Reel, palet ve fontlar app/globals.css icinden gelir.
+ */
+
+.page {
+  --main-tint: rgba(140, 123, 101, 0.12);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --font-display: 'Lora', Georgia, serif;
+  display: block;
+}
+
+.page h2,
+.page h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.pageTitle {
+  font-size: clamp(2rem, 4.4vw, 2.7rem);
+  margin-bottom: 16px;
+  position: relative;
+  padding-bottom: 22px;
+}
+
+.pageTitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  height: 2px;
+  background: var(--main-color);
+}
+
+.pageLead {
+  max-width: 62ch;
+  color: var(--secondary-text);
+  font-weight: 300;
+  font-size: 1.03rem;
+}
+
+.hint {
+  margin: 26px 0 14px;
+  font-size: 0.8rem;
+  color: var(--secondary-text);
+  opacity: 0.75;
+}
+
+/* --- Kart ------------------------------------------------------------- */
+
+.card {
+  flex: 0 0 auto;
+  /* Serit icinde sabit genislik; aciklama kartin altinda kalir. */
+  width: 420px;
+  max-width: 82vw;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #15130f;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Kapak goruntusunun tamamini kaplayan oynat dugmesi. */
+.playBtn {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgba(20, 18, 16, 0.22);
+  cursor: pointer;
+  transition: background 0.3s var(--ease);
+}
+
+.playBtn:hover {
+  background: rgba(20, 18, 16, 0.38);
+}
+
+.playBtn:focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: -3px;
+}
+
+.playBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--main-color);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.24);
+  transition: transform 0.28s var(--ease);
+}
+
+.playBadge svg {
+  width: 19px;
+  height: 19px;
+  margin-left: 3px;
+}
+
+.playBtn:hover .playBadge {
+  transform: scale(1.08);
+}
+
+.videoClose {
+  position: absolute;
+  z-index: 4;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(20, 18, 16, 0.66);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s var(--ease);
+}
+
+.videoClose:hover {
+  background: rgba(20, 18, 16, 0.92);
+}
+
+.videoClose svg {
+  width: 15px;
+  height: 15px;
+}
+
+.stageFallback {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 22px;
+  text-align: center;
+  background: #F3F1EE;
+  color: var(--secondary-text);
+  font-size: 0.86rem;
+}
+
+.stageFallback a {
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  color: var(--secondary-text);
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.stageFallback a:hover {
+  border-color: var(--text-color);
+  color: var(--text-color);
+}
+
+/* --- Kartin altindaki yazilar ----------------------------------------- */
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+  padding: 20px 22px 22px;
+}
+
+.cardName {
+  font-size: 1.15rem;
+}
+
+.cardDesc {
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.watchLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+  align-self: flex-start;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.watchLink:hover {
+  color: var(--main-color-hover);
+  border-bottom-color: var(--main-color);
+}
+
+.watchLink svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 300px;
+  }
+
+  .cardBody {
+    padding: 18px 18px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page,
+  .page *,
+  .page *::before,
+  .page *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
