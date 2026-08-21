@@ -65,7 +65,7 @@ export default function RootLayout({
             <h2>Navigation &amp; Key Projects</h2>
             <ul>
               <li><a href="/Portfolio/projects/gen-ciftligi">Gen Çiftliği: Unity-Based Educational Game &amp; Research Case Study</a></li>
-              <li><a href="/Portfolio/projects/cancera-growth">Cancera Growth: LLM-Assisted Content Pipeline &amp; Guideline-Verified E-Books</a></li>
+              <li><a href="/Portfolio/projects/cancera-growth">Healthcare Growth: LLM-Assisted Content Pipeline &amp; Guideline-Verified E-Books</a></li>
               <li><a href="/Portfolio/education">Education &amp; Competencies</a></li>
               <li><a href="/Portfolio/vizyon">Educational Vision</a></li>
               <li><a href="/Portfolio/projects">Projects Portfolio</a></li>

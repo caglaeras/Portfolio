@@ -150,7 +150,7 @@
       "disclaimer": "ÖNEMLİ NOT: Bu değerlendirmede kullanılan veriler, araştırmanın nicel istatistiksel metodolojisini ve SPSS analiz süreçlerini göstermek amacıyla oluşturulmuş simüle edilmiş bir veri setidir."
     },
     "canceraGrowth": {
-      "title": "Cancera Growth Çalışmaları: Büyüme Pazarlaması ve Otomasyon Vaka Çalışması",
+      "title": "Sağlık Alanında Büyüme Pazarlaması ve Otomasyon Vaka Çalışması",
       "subtitle": "n8n + LLM İçerik Boru Hattı ve Klinik Kılavuz Onaylı Onkoloji Beslenmesi E-Kitap Çalışmaları",
       "pipelineTitle": "n8n ile LLM Destekli İçerik Boru Hattı",
       "pipelineDesc": "Sağlık pazarlamasında içerik üretimini ölçeklendirmek amacıyla n8n üzerinde otomatik bir akış kurgulanmıştır. Akış; haftalık konu keşfi, SEO odaklı anahtar kelime analizi, istem mühendisliği (prompt engineering) ile LLM taslak üretimi, klinik kılavuz kontrolü ve Notion otomatik yayını aşamalarından oluşur.",
@@ -311,7 +311,7 @@
       "disclaimer": "IMPORTANT DISCLAIMER: The evaluation used a simulated dataset constructed to demonstrate the study's statistical methodology and SPSS analysis procedures."
     },
     "canceraGrowth": {
-      "title": "Cancera Growth Studies: Growth Marketing and Automation Case Study",
+      "title": "Healthcare Growth Marketing and Automation Case Study",
       "subtitle": "n8n + LLM Content Pipeline and Guideline-Verified Oncology Nutrition E-Books",
       "pipelineTitle": "LLM-Assisted Content Pipeline with n8n",
       "pipelineDesc": "To scale healthcare content production while maintaining strict editorial quality, an automated workflow was built on n8n. The pipeline handles weekly topic discovery, SEO keyword targeting, LLM draft generation via prompt engineering, clinical guideline verification, and automated Notion publishing.",
