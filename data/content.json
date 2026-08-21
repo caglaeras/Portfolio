@@ -158,6 +158,19 @@
       "ebookDesc": "Kanser hastaları ve yakınları için hazırlanan dijital rehberler; NCCN (National Comprehensive Cancer Network), ASCO (American Society of Clinical Oncology) ve ESMO (European Society for Medical Oncology) klinik protokollerine kıyaslanarak medikal doğruluk süzgecinden geçirilmiştir.",
       "metricsTitle": "Büyüme Performansı ve Metrikler",
       "metricsDesc": "Büyüme pazarlaması stratejileri kapsamında optimize edilen içerik dağıtımı ve Meta Ads kampanyalarıyla elde edilen performans göstergeleri gizlilik nedeniyle oranlı olarak sunulmuştur."
+    },
+    "marketingWorks": {
+      "title": "Marketing Works",
+      "subtitle": "Cancera Health Sosyal Medya İçerik Galerisi",
+      "intro": "Bu galeride yer alan video ve görsel çalışmalar, Cancera Health sosyal medya operasyonunun bir parçası olarak üretilmiştir. İçerikler; hasta ve hasta yakınlarını bilgilendirme, onkolojide farkındalık oluşturma ve topluluk etkileşimini artırma amaçlarıyla planlanmıştır. Her kartın altındaki satır; içeriğin yayınlandığı platformu, kampanya amacını ve üretim sürecindeki rolümü belirtir.",
+      "videoSectionTitle": "Video Content",
+      "visualSectionTitle": "Visual Content",
+      "emptyState": "Bu şeride ait içerikler yakında eklenecek.",
+      "dragHint": "Kaydırmak için sürükleyin veya okları kullanın",
+      "playLabel": "Oynat",
+      "pauseLabel": "Durdur",
+      "zoomLabel": "Büyüt",
+      "closeLabel": "Kapat"
     }
   },
   "en": {
@@ -319,6 +332,19 @@
       "ebookDesc": "Digital nutrition guides designed for cancer patients and caregivers were rigorously validated against clinical protocols from the NCCN (National Comprehensive Cancer Network), ASCO (American Society of Clinical Oncology), and ESMO (European Society for Medical Oncology).",
       "metricsTitle": "Growth Performance & Metrics",
       "metricsDesc": "Key performance indicators across content distribution channels and Meta Ads campaigns are presented as ratio metrics for privacy reasons."
+    },
+    "marketingWorks": {
+      "title": "Marketing Works",
+      "subtitle": "Cancera Health Social Media Content Gallery",
+      "intro": "The videos and visuals in this gallery were produced as part of the Cancera Health social media operation. Each piece was planned to inform patients and caregivers, build awareness around oncology topics, and grow community engagement. The line beneath every card notes the platform it shipped on, the campaign goal, and my role in producing it.",
+      "videoSectionTitle": "Video Content",
+      "visualSectionTitle": "Visual Content",
+      "emptyState": "Content for this strip is coming soon.",
+      "dragHint": "Drag to scroll, or use the arrows",
+      "playLabel": "Play",
+      "pauseLabel": "Pause",
+      "zoomLabel": "Expand",
+      "closeLabel": "Close"
     }
   }
 }

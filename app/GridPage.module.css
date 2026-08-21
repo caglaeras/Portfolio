@@ -36,3 +36,69 @@
     font-size: 2.2rem;
   }
 }
+
+/* Link card that points to the Marketing Works gallery */
+.worksLink {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  margin-bottom: 50px;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.worksLink:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.worksIcon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(140, 123, 101, 0.12);
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.worksBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.worksBody strong {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.worksBody span {
+  font-size: 0.88rem;
+  color: var(--secondary-text);
+}
+
+.worksLink > i {
+  color: var(--main-color);
+  transition: transform 0.3s ease;
+}
+
+.worksLink:hover > i {
+  transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .worksLink {
+    padding: 16px 18px;
+    gap: 14px;
+  }
+}

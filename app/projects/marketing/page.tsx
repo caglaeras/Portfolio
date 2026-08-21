@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "../../GridPage.module.css"; 
@@ -14,6 +15,18 @@ export default function Marketing() {
         <h2 className={styles.title} style={{ fontSize: "2.2rem" }}>{content.marketing.title}</h2>
         <p className={styles.lead}>{content.marketing.lead}</p>
       </div>
+
+      {/* Entry point to the full social media content gallery */}
+      <Link href="/projects/marketing-works" className={`card-glass ${styles.worksLink}`}>
+        <span className={styles.worksIcon}>
+          <i className="fas fa-photo-film" aria-hidden="true"></i>
+        </span>
+        <span className={styles.worksBody}>
+          <strong>{content.marketingWorks.title}</strong>
+          <span>{content.marketingWorks.subtitle}</span>
+        </span>
+        <i className="fas fa-arrow-right" aria-hidden="true"></i>
+      </Link>
       
       <h3 style={{ marginBottom: "30px", fontSize: "1.5rem", fontFamily: "Lora, serif", color: "var(--text-color)" }}>
         {language === "en" ? "Video Content" : "Video İçerikleri"}
