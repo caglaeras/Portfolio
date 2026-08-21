@@ -9,11 +9,6 @@
  *                       kartta gosterilir, tam ekran modal ile buyutulebilir.
  *   kind: "youtube"  -> `videoId` kapak goruntusu olarak inar, oynatici ancak
  *                       tiklaninca kurulur.
- *
- * >>> TASLAK UYARISI <<<
- * story alanlari (problem, amac, cozum, ozellikler, ogrendim) ilk tur TASLAK
- * metinlerdir. Proje tanimlarindan yola cikilarak yazildi; kendi anlatiminizla
- * degistirmeniz beklenir. Bolum yapisini bozmadan serbestce guncelleyebilirsiniz.
  */
 
 export interface LocalizedText {
