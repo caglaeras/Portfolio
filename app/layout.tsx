@@ -7,10 +7,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Çağla Eraslan - Educational Technologist & Growth Marketer",
-  description: "Portfolio of Çağla Eraslan - Educational Technologist & Growth Marketer. Boğaziçi University CEIT Class of 2026 (1st Rank). Unity EdTech Research & Meta Ads / n8n Automation.",
+  description: "Portfolio of Çağla Eraslan - Educational Technologist & Growth Marketer. Boğaziçi University CET Class of 2026 (1st Rank). Unity EdTech Research & Meta Ads / n8n Automation.",
   openGraph: {
     title: "Çağla Eraslan - Educational Technologist & Growth Marketer",
-    description: "Educational Technologist & Growth Marketer | Boğaziçi University CEIT Class of 2026 (1st Rank)",
+    description: "Educational Technologist & Growth Marketer | Boğaziçi University CET Class of 2026 (1st Rank)",
     url: "https://caglaeras.github.io/Portfolio",
     siteName: "Çağla Eraslan Portfolio",
     type: "profile",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Çağla Eraslan - Educational Technologist & Growth Marketer",
-    description: "Educational Technologist & Growth Marketer | Boğaziçi University CEIT Class of 2026 (1st Rank)",
+    description: "Educational Technologist & Growth Marketer | Boğaziçi University CET Class of 2026 (1st Rank)",
   }
 };
 
@@ -30,7 +30,7 @@ const personJsonLd = {
   "alumniOf": {
     "@type": "EducationalOrganization",
     "name": "Boğaziçi University",
-    "department": "Computer Education and Instructional Technology (CEIT)"
+    "department": "Computer Education and Instructional Technology (CET)"
   },
   "workLocation": {
     "@type": "Place",
@@ -60,7 +60,7 @@ export default function RootLayout({
         <noscript>
           <div style={{ padding: "40px", maxWidth: "800px", margin: "0 auto", fontFamily: "sans-serif", color: "#1a1a1a" }}>
             <h1>Çağla Eraslan - Educational Technologist &amp; Growth Marketer</h1>
-            <p>Boğaziçi University CEIT Class of 2026 (Graduated 1st in Cohort, GPA: 3.22/4.00).</p>
+            <p>Boğaziçi University CET Class of 2026 (Graduated 1st in Cohort, GPA: 3.22/4.00).</p>
             <p>Designing interactive learning experiences in Unity and web, and running data-driven growth marketing with Meta Ads and n8n + LLM automation.</p>
             <h2>Navigation &amp; Key Projects</h2>
             <ul>

@@ -87,7 +87,7 @@ export default function Home() {
           <i className={`fas fa-graduation-cap ${styles.featureIcon}`}></i>
           <h3 className={styles.featureTitle}>{content.nav.education}</h3>
           <p className={styles.featureDesc}>
-            {language === 'tr' ? "BÖTE programında aldığım temel dersler ve kazandığım yetkinlikler." : "Key courses taken and competencies gained in the CEIT program."}
+            {language === 'tr' ? "BÖTE programında aldığım temel dersler ve kazandığım yetkinlikler." : "Key courses taken and competencies gained in the CET program."}
           </p>
         </Link>
 
