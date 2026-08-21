@@ -88,11 +88,37 @@
     "web": {
       "title": "Web Geliştirme Projeleri",
       "lead": "Web programlama derslerim ve bireysel çalışmalarım sonucunda ortaya çıkan web projelerim.",
-      "projects": [
-        { "title": "Lion Commerse", "desc": "HTML ve CSS kullanarak geliştirdiğim bu statik e-ticaret sitesi, temel web sayfası yapısını ve responsive tasarım ilkelerini öğrenmemi sağladı. Ürün listeleri, iletişim formu ve stil öğeleriyle tam sayfa bir alışveriş sitesi simülasyonu oluşturdum.", "videoId": "Xhp_GIoMdxo" },
-        { "title": "WorldStory", "desc": "Bu .NET projesi, World History (Dünya Tarihi) temasından esinlenerek oluşturduğum bir bilgi uygulamasıdır. Dünya kıtalarının tarihsel özelliklerini, önemli savaşları ve genel kültürel bilgileri kullanıcıya basit bir arayüzle sunmayı hedefledim.", "videoId": "FFdFfIFaShI" },
-        { "title": "UniMarket", "desc": "ASP.NET MVC teknolojisiyle geliştirdiğim bu platform, üniversite öğrencilerinin kendi aralarında ikinci el eşya alım satımı yapabilmeleri için tasarlandı. Kullanıcıların ilan ekleyebildiği, favori ürünleri listeleyebildiği ve iletişime geçebildiği işlevsel bir web uygulamasıdır.", "videoId": "xbRc3xKAoq8" }
-      ]
+      "storyKicker": "Proje Hikayesi",
+      "previewBtn": "Canlı Önizleme",
+      "storyBtn": "Proje Hikayesi",
+      "githubBtn": "GitHub'da İncele",
+      "liveBadge": "Canlı",
+      "previewLoading": "Önizleme yükleniyor",
+      "siteLoading": "Site yükleniyor",
+      "previewFailed": "Önizleme bu tarayıcıda gösterilemedi.",
+      "modalFailed": "Site bu pencerede açılamadı.",
+      "videoFailed": "Video bu pencerede açılamadı.",
+      "openNewTab": "Yeni sekmede aç",
+      "openSite": "Siteyi yeni sekmede aç",
+      "openYoutube": "YouTube'da aç",
+      "liveSiteLink": "Canlı Site",
+      "repoLink": "GitHub Deposu",
+      "demoLink": "Demo Videosu",
+      "closeStory": "Proje hikayesi panelini kapat",
+      "closePreview": "Canlı önizlemeyi kapat",
+      "playVideo": "demo videosunu oynat",
+      "closeVideo": "videosunu kapat",
+      "openPreviewFor": "canlı önizlemesini tam ekran aç",
+      "openStoryFor": "proje hikayesini aç",
+      "openRepoFor": "deposunu GitHub'da aç",
+      "techsOf": "teknolojileri",
+      "storyLabels": {
+        "problem": "Problem",
+        "amac": "Amaç",
+        "cozum": "Çözüm",
+        "ozellikler": "Öne Çıkan Özellikler",
+        "ogrendim": "Neler Öğrendim"
+      }
     },
     "other": {
       "title": "Diğer Projelerim",
@@ -233,11 +259,37 @@
     "web": {
       "title": "Web Development Projects",
       "lead": "Web projects created through my web programming courses and independent work.",
-      "projects": [
-        { "title": "Lion Commerse", "desc": "This static e-commerce site, built using HTML and CSS, helped me learn basic web structure and responsive design principles. I simulated a full shopping site with product lists, a contact form, and styling.", "videoId": "Xhp_GIoMdxo" },
-        { "title": "WorldStory", "desc": "An ASP.NET project inspired by World History, acting as an informational app. I aimed to present historical aspects of continents, major wars, and general cultural knowledge with a simple interface.", "videoId": "FFdFfIFaShI" },
-        { "title": "UniMarket", "desc": "Developed with ASP.NET MVC, this platform is designed for university students to trade second-hand items among themselves. Users can post listings, favorite items, and communicate through this functional app.", "videoId": "xbRc3xKAoq8" }
-      ]
+      "storyKicker": "Project Story",
+      "previewBtn": "Live Preview",
+      "storyBtn": "Project Story",
+      "githubBtn": "View on GitHub",
+      "liveBadge": "Live",
+      "previewLoading": "Loading preview",
+      "siteLoading": "Loading site",
+      "previewFailed": "The preview could not be shown in this browser.",
+      "modalFailed": "The site could not be opened in this window.",
+      "videoFailed": "The video could not be played in this window.",
+      "openNewTab": "Open in new tab",
+      "openSite": "Open the site in a new tab",
+      "openYoutube": "Open on YouTube",
+      "liveSiteLink": "Live Site",
+      "repoLink": "GitHub Repository",
+      "demoLink": "Demo Video",
+      "closeStory": "Close the project story panel",
+      "closePreview": "Close the live preview",
+      "playVideo": "demo video, play",
+      "closeVideo": "video, close",
+      "openPreviewFor": "live preview, open full screen",
+      "openStoryFor": "project story, open",
+      "openRepoFor": "repository, open on GitHub",
+      "techsOf": "technologies",
+      "storyLabels": {
+        "problem": "Problem",
+        "amac": "Goal",
+        "cozum": "Solution",
+        "ozellikler": "Key Features",
+        "ogrendim": "What I Learned"
+      }
     },
     "other": {
       "title": "Other Projects",

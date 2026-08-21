@@ -902,15 +902,40 @@ a { color: inherit; text-decoration: none; }
     frame.title = project.name + " küçültülmüş önizleme";
 
     var settled = false;
-    var timer = window.setTimeout(function () {
-      if (settled) return;
-      settled = true;
-      fallback.hidden = false;
-    }, LOAD_TIMEOUT);
+    var timer = null;
+
+    /*
+     * loading="lazy" iframe ekranin altinda beklerken yuklenmez, bu yuzden
+     * zaman asimi sayaci ancak kart goruntu alanina girince baslar. Aksi halde
+     * alt siradaki kart bosuna yedek baglantiya duserdi.
+     */
+    function startGuard() {
+      if (timer !== null || settled) return;
+      timer = window.setTimeout(function () {
+        if (settled) return;
+        settled = true;
+        fallback.hidden = false;
+      }, LOAD_TIMEOUT);
+    }
+
+    if (typeof IntersectionObserver === "function") {
+      var observer = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            startGuard();
+            observer.disconnect();
+            return;
+          }
+        }
+      }, { rootMargin: "200px" });
+      observer.observe(stage);
+    } else {
+      startGuard();
+    }
 
     frame.addEventListener("load", function () {
       settled = true;
-      window.clearTimeout(timer);
+      if (timer !== null) window.clearTimeout(timer);
       skeleton.hidden = true;
       fitPreview(stage);
     });
