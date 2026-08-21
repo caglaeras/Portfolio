@@ -84,30 +84,49 @@
   margin-top: 25px;
 }
 
-.mediaPlaceholder {
-  background: rgba(0, 0, 0, 0.02);
-  border: 2px dashed var(--card-border);
-  border-radius: 6px;
-  height: 180px;
+@media (max-width: 760px) {
+  .overviewGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Oyun ici ekran goruntusu: tiklaninca tam boy acilir. */
+.shot {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--secondary-text);
   gap: 10px;
-  padding: 15px;
-  text-align: center;
-  transition: border-color 0.3s ease;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--card-bg);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mediaPlaceholder:hover {
+.shot:hover {
   border-color: var(--main-color);
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-hover);
 }
 
-.mediaIcon {
-  font-size: 2rem;
-  color: var(--main-color);
-  opacity: 0.7;
+.shot:focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: 3px;
+}
+
+.shotImg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #15130f;
+}
+
+.shotCaption {
+  padding: 0 14px 14px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--secondary-text);
 }
 
 /* 2. Responsive 16:9 WebGL Iframe Container */

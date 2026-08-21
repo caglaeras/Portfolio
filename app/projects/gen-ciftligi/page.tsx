@@ -22,6 +22,12 @@ export default function GenCiftligiPage() {
   const pdfPaperUrl = "/Portfolio/papers/Cagla_Eraslan_FinalReport.pdf";
   const windowsDownloadUrl = "/Portfolio/downloads/GenCiftligi_Windows.zip";
 
+  const screenshots = [
+    { src: "/Portfolio/images/genciftligi-genotype-phenotype.webp", caption: data.shotGenotype },
+    { src: "/Portfolio/images/genciftligi-crossbreeding.webp", caption: data.shotCrossbreeding },
+    { src: "/Portfolio/images/genciftligi-dna-pairing.webp", caption: data.shotDnaPairing },
+  ];
+
   return (
     <div className={styles.container}>
       {/* Page Title & Subtitle */}
@@ -44,35 +50,24 @@ export default function GenCiftligiPage() {
           {data.screenshotsTitle || (language === "tr" ? "Oyun İçi Ekran Görüntüleri" : "In-Game Screenshots")}
         </h3>
         <div className={styles.overviewGrid}>
-          <div className={styles.mediaPlaceholder}>
-            <i className={`fas fa-gamepad ${styles.mediaIcon}`}></i>
-            <div>
-              <strong>{language === "tr" ? "Ekran Görüntüsü #1" : "Screenshot #1"}</strong>
-              <div style={{ fontSize: "0.82rem", marginTop: "4px" }}>
-                {language === "tr" ? "Çaprazlama Arayüzü" : "Crossbreeding UI"}
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.mediaPlaceholder}>
-            <i className={`fas fa-dna ${styles.mediaIcon}`}></i>
-            <div>
-              <strong>{language === "tr" ? "Ekran Görüntüsü #2" : "Screenshot #2"}</strong>
-              <div style={{ fontSize: "0.82rem", marginTop: "4px" }}>
-                {language === "tr" ? "Genotip & Fenotip Minigame" : "Genotype & Phenotype Minigame"}
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.mediaPlaceholder}>
-            <i className={`fas fa-trophy ${styles.mediaIcon}`}></i>
-            <div>
-              <strong>{language === "tr" ? "Ekran Görüntüsü #3" : "Screenshot #3"}</strong>
-              <div style={{ fontSize: "0.82rem", marginTop: "4px" }}>
-                {language === "tr" ? "Öğrenme Kazanımı Geri Bildirimi" : "Learning Outcome Feedback"}
-              </div>
-            </div>
-          </div>
+          {screenshots.map((shot) => (
+            <a
+              key={shot.src}
+              href={shot.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.shot}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={shot.src}
+                alt={shot.caption}
+                loading="lazy"
+                className={styles.shotImg}
+              />
+              <span className={styles.shotCaption}>{shot.caption}</span>
+            </a>
+          ))}
         </div>
       </section>
 
