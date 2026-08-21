@@ -1,0 +1,1132 @@
+<!doctype html>
+<!--
+  ENTEGRASYON NOTU
+  Bu dosya tek basina calisan bir sayfadir: CSS ve JS gomulu, harici bagimlilik olarak yalnizca Google Fonts kullanir.
+  Tum metinler ve proje verileri asagidaki PROJECTS dizisinde durur; icerik guncellemesi icin sadece o diziyi duzenlemek yeterlidir.
+  Next.js icine tasimak icin: <style> blogu bir CSS module'e, PROJECTS dizisi data/ altinda bir dosyaya, <script> blogu da bir client component'e alinir.
+  Video yollari (assets/*.mp4) simdilik yer tutucudur; dosyalar eklenene kadar kartlar otomatik olarak GitHub yonlendirmesine duser.
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Geliştirme Projeleri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ---------------------------------------------------------------------------
+   Palet ve tipografi. Portfolyonun geri kalaniyla ayni degiskenleri kullanir:
+   sicak beyaz zemin, koyu kursun metin, tas rengi vurgu, keskin 4px koseler.
+   --------------------------------------------------------------------------- */
+:root {
+  --main-color: #8C7B65;
+  --main-color-hover: #6E5E4A;
+  --main-tint: rgba(140, 123, 101, 0.12);
+  --bg-color: #FAFAFA;
+  --text-color: #1a1a1a;
+  --secondary-text: #595959;
+  --card-bg: #FFFFFF;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --skeleton: #ECEAE6;
+  --border-radius: 4px;
+  --box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.08);
+  --overlay: rgba(20, 18, 16, 0.62);
+  --font-display: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Odak halkasi her yerde gorunur kalsin. */
+:focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px 90px;
+}
+
+/* --- Sayfa basligi ------------------------------------------------------- */
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--main-color);
+  background: var(--main-tint);
+  padding: 6px 13px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: clamp(2rem, 4.4vw, 2.7rem);
+  margin-bottom: 16px;
+  position: relative;
+  padding-bottom: 22px;
+}
+
+.page-title em {
+  color: var(--main-color);
+  font-style: italic;
+}
+
+.page-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  height: 2px;
+  background: var(--main-color);
+}
+
+.page-lead {
+  max-width: 62ch;
+  color: var(--secondary-text);
+  font-weight: 300;
+  font-size: 1.03rem;
+}
+
+/* --- Kart grid'i --------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  margin-top: 52px;
+}
+
+@media (max-width: 820px) {
+  .grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* --- Onizleme alani (canli iframe ve video ortak) ------------------------ */
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #15130f;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+
+/*
+ * Mini onizleme: iframe 1280px genislikte render edilir, sonra JS ile
+ * hesaplanan olcekle kart genisligine sigdirilir. Tiklama gecmez.
+ */
+.stage iframe.mini {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 800px;
+  border: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  background: #fff;
+}
+
+.stage video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #15130f;
+}
+
+/* Yuklenene kadar iskelet. */
+.skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(100deg, var(--skeleton) 28%, #F5F3F0 46%, var(--skeleton) 64%);
+  background-size: 240% 100%;
+  animation: sweep 1.5s linear infinite;
+}
+
+.skeleton::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: auto 0 18px 0;
+  text-align: center;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+}
+
+@keyframes sweep {
+  from { background-position: 120% 0; }
+  to { background-position: -120% 0; }
+}
+
+.skeleton[hidden] { display: none; }
+
+/* iframe veya video yuklenmezse devreye giren yedek katman. */
+.stage-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  background: #F3F1EE;
+  color: var(--secondary-text);
+  font-size: 0.88rem;
+}
+
+.stage-fallback[hidden] { display: none; }
+
+.live-dot {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.93);
+  color: var(--text-color);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.live-dot span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4E9A63;
+}
+
+/* --- Kart govdesi ------------------------------------------------------- */
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 14px;
+  padding: 24px 24px 26px;
+}
+
+.card-name {
+  font-size: 1.32rem;
+}
+
+.card-summary {
+  color: var(--secondary-text);
+  font-size: 0.93rem;
+  font-weight: 300;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  list-style: none;
+}
+
+.chips li {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--main-color-hover);
+  background: var(--main-tint);
+  border-radius: 100px;
+  padding: 4px 11px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 11px 18px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.btn:hover {
+  background: var(--text-color);
+  color: #fff;
+}
+
+.btn.primary {
+  border-color: var(--main-color);
+  background: var(--main-color);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--main-color-hover);
+  border-color: var(--main-color-hover);
+}
+
+.btn.quiet {
+  border-color: var(--card-border);
+  color: var(--secondary-text);
+}
+
+.btn.quiet:hover {
+  border-color: var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+}
+
+.btn svg { width: 14px; height: 14px; flex: none; }
+
+/* --- Ortak katman zemini ------------------------------------------------ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+
+.backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Proje hikayesi paneli --------------------------------------------- */
+
+.drawer {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(520px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border-left: 1px solid var(--card-border);
+  box-shadow: -18px 0 50px rgba(0, 0, 0, 0.12);
+  transform: translateX(100%);
+  transition: transform 0.42s var(--ease);
+  visibility: hidden;
+}
+
+.drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.drawer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 26px 26px 18px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.drawer-head .kicker {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--main-color);
+  margin-bottom: 7px;
+}
+
+.drawer-head h2 { font-size: 1.4rem; }
+
+.icon-btn {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.icon-btn:hover {
+  background: var(--text-color);
+  border-color: var(--text-color);
+  color: #fff;
+}
+
+.drawer-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 26px 8px;
+}
+
+.story-block { margin-bottom: 26px; }
+
+.story-block h3 {
+  font-family: var(--font-body);
+  font-size: 0.71rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--main-color);
+  margin-bottom: 9px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.story-block p {
+  color: var(--secondary-text);
+  font-size: 0.93rem;
+  font-weight: 300;
+}
+
+.story-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.story-block li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--secondary-text);
+  font-size: 0.93rem;
+  font-weight: 300;
+}
+
+.story-block li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 1px;
+  background: var(--main-color);
+}
+
+.drawer-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px 26px 24px;
+  border-top: 1px solid var(--card-border);
+  background: var(--bg-color);
+}
+
+/* Mobilde alttan yukari acilan tam genislik panel. */
+@media (max-width: 640px) {
+  .drawer {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: min(88vh, 100%);
+    border-left: 0;
+    border-top: 1px solid var(--card-border);
+    border-radius: 14px 14px 0 0;
+    transform: translateY(100%);
+    box-shadow: 0 -18px 50px rgba(0, 0, 0, 0.16);
+  }
+  .drawer.open { transform: translateY(0); }
+  .drawer-head { padding: 22px 20px 16px; }
+  .drawer-scroll { padding: 20px 20px 8px; }
+  .drawer-foot { padding: 16px 20px 22px; }
+}
+
+/* --- Canli onizleme modali -------------------------------------------- */
+
+.modal {
+  position: fixed;
+  z-index: 50;
+  inset: 24px;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.985);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  visibility: hidden;
+}
+
+.modal.open {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+}
+
+.modal-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--card-border);
+  background: var(--bg-color);
+}
+
+.modal-bar h2 {
+  font-size: 1rem;
+  margin-right: auto;
+}
+
+.modal-stage {
+  position: relative;
+  flex: 1;
+  background: #fff;
+}
+
+.modal-stage iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .modal { inset: 0; border-radius: 0; border: 0; }
+  .modal-bar h2 { font-size: 0.9rem; }
+  .modal-bar .btn { padding: 9px 12px; }
+}
+
+/* --- Hareket azaltma tercihi ------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .card:hover { transform: none; }
+  .drawer { transition: none; }
+  .skeleton { animation: none; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Web Geliştirme</span>
+    <h1 class="page-title">Web <em>Projelerim</em></h1>
+    <p class="page-lead">
+      Web programlama derslerim ve bireysel çalışmalarım sonucunda ortaya çıkan projeler.
+      Canlı olanları kartın içinden gezebilir, her projenin arkasındaki kararları
+      "Proje Hikayesi" panelinden okuyabilirsiniz.
+    </p>
+  </header>
+
+  <main class="grid" id="grid"></main>
+</div>
+
+<!-- Hikaye paneli ve onizleme modali icin ortak zemin -->
+<div class="backdrop" id="backdrop"></div>
+
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+  <div class="drawer-head">
+    <div>
+      <span class="kicker">Proje Hikayesi</span>
+      <h2 id="drawerTitle"></h2>
+    </div>
+    <button class="icon-btn" id="drawerClose" type="button" aria-label="Proje hikayesi panelini kapat">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-scroll" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot"></div>
+</aside>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-bar">
+    <h2 id="modalTitle"></h2>
+    <a class="btn quiet" id="modalOpen" href="#" target="_blank" rel="noopener noreferrer">
+      Yeni sekmede aç
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+    </a>
+    <button class="icon-btn" id="modalClose" type="button" aria-label="Canlı önizlemeyi kapat">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="modal-stage" id="modalStage"></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* =========================================================================
+     TEK VERI KAYNAGI
+     Sayfadaki her metin ve baglanti bu dizidedir. Icerik degistirmek icin
+     yalnizca burayi duzenlemek yeterli, HTML bu diziden uretilir.
+
+     >>> TASLAK UYARISI <<<
+     Asagidaki story alanlari (problem, amac, cozum, ozellikler, ogrendim)
+     ilk tur TASLAK metinlerdir. Proje tanimlarindan yola cikilarak yazildi,
+     kendi anlatiminizla degistirmeniz beklenir. Bolum yapisini bozmadan
+     metinleri serbestce guncelleyebilirsiniz.
+     ========================================================================= */
+  var PROJECTS = [
+    {
+      id: "lion-commerce",
+      name: "Lion Commerce",
+      kind: "live",
+      summary: "HTML ve CSS ile sıfırdan kurulmuş çok sayfalı e-ticaret sitesi. Ürün listeleme, ürün detayı ve form akışlarını içerir.",
+      tags: ["HTML", "CSS", "GitHub Pages"],
+      live: "https://caglaeras.github.io/LionCommerce/",
+      github: "https://github.com/caglaeras/LionCommerce",
+      story: {
+        problem: "Web geliştirmeye başlarken öğrenilen HTML ve CSS bilgisi, dağınık alıştırmalar halinde kalıyor ve bir ürün bütünlüğüne dönüşmüyordu. Tek tek denenen etiketler yerine, baştan sona kurgulanmış gerçek bir siteye ihtiyacım vardı.",
+        amac: "Ürün listelemeden ürün detayına, iletişimden kayıt formuna kadar bir e-ticaret akışının tamamını kendi elimle kurmak istedim. Hedefim, temel web yapı taşlarını gerçek bir senaryo içinde oturtmaktı.",
+        cozum: "Yalnızca HTML ve CSS kullanarak çok sayfalı bir e-ticaret sitesi geliştirdim. Ürün listeleri, ürün detay sayfaları, iletişim ve kayıt formları birbirine bağlı tek bir bütün olarak çalışıyor ve site GitHub Pages üzerinde yayında.",
+        ozellikler: [
+          "Çok sayfalı gezinme yapısı ve sayfalar arası tutarlı düzen",
+          "Ürün listeleme ve ürün detay sayfaları",
+          "İletişim ve kayıt formu şablonları",
+          "Responsive yerleşim için CSS düzen teknikleri",
+          "GitHub Pages üzerinde canlı yayın"
+        ],
+        ogrendim: "Sayfa sayısı arttıkça, semantik HTML kurgusunun ve CSS ile düzen kurmanın ne kadar belirleyici olduğunu gördüm. Bir projeyi yayına almanın, onu bitmiş saymaktan ayrı bir disiplin istediğini de burada öğrendim."
+      }
+    },
+    {
+      id: "essay-grader",
+      name: "Essay Grader",
+      kind: "live",
+      summary: "React ve Vite ile geliştirilmiş, dil modeli destekli kompozisyon değerlendirme aracı. Rubrik bazlı puanlama ve Türkçe / İngilizce desteği sunar.",
+      tags: ["React", "Vite", "LLM API"],
+      live: "https://caglaeras.github.io/EssayGrader/",
+      github: "https://github.com/caglaeras/EssayGrader",
+      story: {
+        problem: "Kompozisyon değerlendirmesi öğretmenler için hem zaman alan hem de kolayca tutarsızlaşan bir iş. Aynı metni farklı zamanlarda okuyan bir değerlendirici bile birbirinden uzak puanlar verebiliyor.",
+        amac: "Öğretmenlerin değerlendirme yükünü azaltmak ve puanlamayı belirli bir rubriğe bağlayarak tutarlı hale getirmek istedim. Aracın Türkçe ve İngilizce metinlerle birlikte çalışması baştan beri şarttı.",
+        cozum: "React ve Vite ile, bir dil modelini rubrik bazlı puanlama için kullanan bir değerlendirme aracı geliştirdim. Kullanıcı metni giriyor, araç rubrik başlıkları üzerinden puan ve kısa gerekçe üretiyor.",
+        ozellikler: [
+          "Rubrik başlıkları üzerinden puanlama ve gerekçe üretimi",
+          "Türkçe ve İngilizce dil desteği",
+          "LLM API entegrasyonu",
+          "Vite ile hızlı geliştirme ve derleme akışı",
+          "Tarayıcıda çalışan hafif arayüz"
+        ],
+        ogrendim: "Bir dil modelinin çıktısını işe yarar kılanın modelin kendisi değil, ona verilen rubrik ve istem yapısı olduğunu gördüm. Bunun yanında API anahtarı yönetimini ve hata durumlarını arayüzde düzgün karşılamanın önemini kavradım."
+      }
+    },
+    {
+      id: "unimarket",
+      name: "UniMarket",
+      kind: "video",
+      summary: "Üniversite öğrencilerine yönelik ikinci el eşya pazaryeri. Sepet, sipariş, favoriler ve nakliyeci listesi içerir.",
+      tags: ["ASP.NET Core", "EF Core", "SQL Server"],
+      video: "assets/unimarket-demo.mp4",
+      poster: "",
+      github: "https://github.com/caglaeras/HousingMarket",
+      story: {
+        problem: "Dönem sonlarında öğrenciler taşınırken, hâlâ kullanılabilir durumdaki eşyalar çöpe gidiyor ya da çok ucuza elden çıkıyor. Öğrencilerin birbirine güvenli biçimde ulaşabileceği ortak bir yer yoktu.",
+        amac: "Üniversite öğrencilerine özel, ikinci el eşyaların alıcısıyla buluştuğu bir pazaryeri kurmak istedim. Sadece ilan panosu değil, siparişe kadar giden eksiksiz bir akış hedefledim.",
+        cozum: "ASP.NET Core MVC, Entity Framework Core ve Identity kullanarak sepet, sipariş, favoriler ve nakliyeci listesi içeren bir pazaryeri geliştirdim. Veriler SQL Server üzerinde tutuluyor.",
+        ozellikler: [
+          "Identity ile kullanıcı kaydı ve oturum yönetimi",
+          "Sepet ve sipariş akışı",
+          "Favori ürün listesi",
+          "Taşınma sürecine yardımcı nakliyeci listesi",
+          "EF Core ile SQL Server veri katmanı"
+        ],
+        ogrendim: "Katmanlı bir MVC uygulamasında veri modelini baştan doğru kurmanın, sonradan eklenen her özelliği ne kadar kolaylaştırdığını gördüm. Kimlik doğrulamayı hazır ve sınanmış bir altyapıyla çözmenin, kendi çözümümü yazmaya kalkışmaktan çok daha güvenli olduğunu öğrendim."
+      }
+    },
+    {
+      id: "worldstory",
+      name: "WorldStory",
+      kind: "video",
+      summary: "Kıtaların tarihini ve kültürünü quizlerle öğreten .NET MAUI uygulaması. Öğrenme takibi ve yerel veri saklama içerir.",
+      tags: [".NET MAUI", "C#", "SQLite"],
+      video: "assets/worldstory-demo.mp4",
+      poster: "",
+      github: "https://github.com/caglaeras/WorldStoryApp",
+      story: {
+        problem: "Kıtaların tarihi ve kültürü, ders kitaplarında çoğu zaman ezberlenecek bir bilgi yığını olarak kalıyor. Öğrenenin kendi hızında ilerleyip ne kadar öğrendiğini görebileceği bir ortam eksikti.",
+        amac: "Eğitim teknolojisi geçmişimi mobil geliştirmeyle birleştirip, kıtaları konu alan küçük ve odaklı bir öğrenme uygulaması yapmak istedim. Öğrenme takibinin kullanıcıya görünür olması benim için önemliydi.",
+        cozum: ".NET MAUI ile kıtaların tarihini ve kültürünü quizler üzerinden öğreten bir uygulama geliştirdim. Kullanıcı girişi ve öğrenme kaydı SQLite üzerinde cihazda yerel olarak tutuluyor.",
+        ozellikler: [
+          "Kıta bazlı öğrenme bölümleri",
+          "Quiz ile pekiştirme akışı",
+          "Öğrenme takibi ve ilerleme kaydı",
+          "SQLite ile yerel veri saklama",
+          "Tek kod tabanından çok platform hedefi"
+        ],
+        ogrendim: "Öğretim tasarımı bilgimin arayüz kararlarını doğrudan etkilediğini fark ettim; soruların sırası ve geri bildirimin tonu, teknik kısımdan daha çok düşündürdü. MAUI ile tek kod tabanından birden çok platforma çıkmanın sınırlarını da yakından gördüm."
+      }
+    }
+  ];
+
+  /* Panelde gosterilecek bolumlerin sirasi ve basliklari. */
+  var STORY_SECTIONS = [
+    { key: "problem", label: "Problem", type: "text" },
+    { key: "amac", label: "Amaç", type: "text" },
+    { key: "cozum", label: "Çözüm", type: "text" },
+    { key: "ozellikler", label: "Öne Çıkan Özellikler", type: "list" },
+    { key: "ogrendim", label: "Neler Öğrendim", type: "text" }
+  ];
+
+  var PREVIEW_WIDTH = 1280;   /* iframe'in render genisligi */
+  var PREVIEW_HEIGHT = 800;
+  var LOAD_TIMEOUT = 9000;    /* bu sureden sonra yedek katmana dusulur */
+
+  var ICONS = {
+    github: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.55v-1.94c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.04 1.78 2.72 1.27 3.38.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.18-1.49 3.14-1.18 3.14-1.18.63 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12A11.5 11.5 0 0 0 12 .5z"/></svg>',
+    play: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 3.5v17l15-8.5z"/></svg>',
+    book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h7a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-7a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h7z"/></svg>',
+    external: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>'
+  };
+
+  /* --- Yardimcilar ------------------------------------------------------ */
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  /* Video posteri verilmediyse, proje adini tasiyan bir yer tutucu uretir. */
+  function placeholderPoster(name) {
+    var svg = [
+      '<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800">',
+      '<rect width="1280" height="800" fill="#1d1a16"/>',
+      '<circle cx="640" cy="368" r="58" fill="none" stroke="#8C7B65" stroke-width="3"/>',
+      '<path d="M620 340 L676 368 L620 396 Z" fill="#8C7B65"/>',
+      '<text x="640" y="486" fill="#efece7" font-family="Georgia,serif" font-size="42" text-anchor="middle">',
+      name,
+      '</text>',
+      '<text x="640" y="530" fill="#9b948a" font-family="Helvetica,Arial,sans-serif" font-size="21" letter-spacing="3" text-anchor="middle">DEMO VIDEO</text>',
+      '</svg>'
+    ].join("");
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  }
+
+  /* --- Mini onizleme olcegi -------------------------------------------- */
+
+  /*
+   * iframe 1280px genislikte render edilir; kart genisligine sigdirmak icin
+   * olcek burada hesaplanir. Kart genisligi degistikce yeniden calisir.
+   */
+  function fitPreview(stage) {
+    var frame = stage.querySelector("iframe.mini");
+    if (!frame) return;
+    var scale = stage.clientWidth / PREVIEW_WIDTH;
+    frame.style.transform = "scale(" + scale + ")";
+    /* Olceklenen yuksekligi kart alanina esitle, bosluk kalmasin. */
+    frame.style.height = (stage.clientHeight / scale) + "px";
+  }
+
+  function watchPreview(stage) {
+    if (typeof ResizeObserver === "function") {
+      new ResizeObserver(function () { fitPreview(stage); }).observe(stage);
+    }
+    window.addEventListener("resize", function () { fitPreview(stage); });
+    fitPreview(stage);
+  }
+
+  /* --- Kart uretimi ---------------------------------------------------- */
+
+  function buildLiveStage(project) {
+    var stage = el("div", "stage");
+
+    var badge = el("span", "live-dot");
+    badge.appendChild(el("span"));
+    badge.appendChild(document.createTextNode("Canlı"));
+    stage.appendChild(badge);
+
+    var skeleton = el("div", "skeleton");
+    skeleton.setAttribute("data-label", "Önizleme yükleniyor");
+    stage.appendChild(skeleton);
+
+    var fallback = el("div", "stage-fallback");
+    fallback.hidden = true;
+    fallback.appendChild(el("p", null, "Önizleme bu tarayıcıda gösterilemedi."));
+    var fallbackLink = el("a", "btn quiet", "Siteyi yeni sekmede aç");
+    fallbackLink.href = project.live;
+    fallbackLink.target = "_blank";
+    fallbackLink.rel = "noopener noreferrer";
+    fallback.appendChild(fallbackLink);
+    stage.appendChild(fallback);
+
+    var frame = document.createElement("iframe");
+    frame.className = "mini";
+    frame.src = project.live;
+    frame.loading = "lazy";
+    frame.setAttribute("tabindex", "-1");
+    frame.setAttribute("aria-hidden", "true");
+    frame.setAttribute("scrolling", "no");
+    frame.title = project.name + " küçültülmüş önizleme";
+
+    var settled = false;
+    var timer = window.setTimeout(function () {
+      if (settled) return;
+      settled = true;
+      fallback.hidden = false;
+    }, LOAD_TIMEOUT);
+
+    frame.addEventListener("load", function () {
+      settled = true;
+      window.clearTimeout(timer);
+      skeleton.hidden = true;
+      fitPreview(stage);
+    });
+
+    stage.appendChild(frame);
+    watchPreview(stage);
+    return stage;
+  }
+
+  function buildVideoStage(project) {
+    var stage = el("div", "stage");
+
+    var video = document.createElement("video");
+    video.controls = true;
+    video.preload = "metadata";
+    video.poster = project.poster ? project.poster : placeholderPoster(project.name);
+    video.src = project.video;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("aria-label", project.name + " demo videosu");
+
+    var fallback = el("div", "stage-fallback");
+    fallback.hidden = true;
+    fallback.appendChild(el("p", null, "Demo videosu henüz eklenmedi."));
+    var link = el("a", "btn quiet", "GitHub'da incele");
+    link.href = project.github;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    fallback.appendChild(link);
+
+    /* Yer tutucu mp4 yoksa kart kirik gorunmesin, GitHub'a yonlendir. */
+    video.addEventListener("error", function () {
+      fallback.hidden = false;
+      video.style.display = "none";
+    });
+
+    stage.appendChild(video);
+    stage.appendChild(fallback);
+    return stage;
+  }
+
+  function buildCard(project) {
+    var card = el("article", "card");
+    card.id = "card-" + project.id;
+
+    card.appendChild(project.kind === "live" ? buildLiveStage(project) : buildVideoStage(project));
+
+    var body = el("div", "card-body");
+    body.appendChild(el("h2", "card-name", project.name));
+    body.appendChild(el("p", "card-summary", project.summary));
+
+    var chips = el("ul", "chips");
+    chips.setAttribute("aria-label", project.name + " teknolojileri");
+    project.tags.forEach(function (tag) { chips.appendChild(el("li", null, tag)); });
+    body.appendChild(chips);
+
+    var actions = el("div", "actions");
+
+    if (project.kind === "live") {
+      var previewBtn = el("button", "btn primary");
+      previewBtn.type = "button";
+      previewBtn.innerHTML = ICONS.play + "<span>Canlı Önizleme</span>";
+      previewBtn.setAttribute("aria-label", project.name + " canlı önizlemesini tam ekran aç");
+      previewBtn.addEventListener("click", function () { openModal(project, previewBtn); });
+      actions.appendChild(previewBtn);
+    }
+
+    var storyBtn = el("button", "btn");
+    storyBtn.type = "button";
+    storyBtn.innerHTML = ICONS.book + "<span>Proje Hikayesi</span>";
+    storyBtn.setAttribute("aria-label", project.name + " proje hikayesini aç");
+    storyBtn.addEventListener("click", function () { openDrawer(project, storyBtn); });
+    actions.appendChild(storyBtn);
+
+    var gh = el("a", "btn quiet");
+    gh.href = project.github;
+    gh.target = "_blank";
+    gh.rel = "noopener noreferrer";
+    gh.innerHTML = ICONS.github + "<span>GitHub'da İncele</span>";
+    gh.setAttribute("aria-label", project.name + " deposunu GitHub'da aç");
+    actions.appendChild(gh);
+
+    body.appendChild(actions);
+    card.appendChild(body);
+    return card;
+  }
+
+  var grid = document.getElementById("grid");
+  PROJECTS.forEach(function (project) { grid.appendChild(buildCard(project)); });
+
+  /* --- Katman yonetimi: scroll kilidi, odak tuzagi --------------------- */
+
+  var backdrop = document.getElementById("backdrop");
+  var drawer = document.getElementById("drawer");
+  var drawerTitle = document.getElementById("drawerTitle");
+  var drawerBody = document.getElementById("drawerBody");
+  var drawerFoot = document.getElementById("drawerFoot");
+  var modal = document.getElementById("modal");
+  var modalTitle = document.getElementById("modalTitle");
+  var modalStage = document.getElementById("modalStage");
+  var modalOpenLink = document.getElementById("modalOpen");
+
+  var FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, video[controls], [tabindex]:not([tabindex="-1"])';
+  var activePanel = null;
+  var lastFocused = null;
+  var savedOverflow = "";
+
+  function lockScroll() {
+    savedOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+  }
+
+  function unlockScroll() {
+    document.body.style.overflow = savedOverflow;
+  }
+
+  function focusables(panel) {
+    return Array.prototype.filter.call(panel.querySelectorAll(FOCUSABLE), function (node) {
+      return node.offsetWidth > 0 || node.offsetHeight > 0;
+    });
+  }
+
+  /* Odak acik panelin icinde kalir. */
+  function onKeydown(event) {
+    if (!activePanel) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closePanel();
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+    var items = focusables(activePanel);
+    if (!items.length) return;
+    var first = items[0];
+    var last = items[items.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    } else if (!activePanel.contains(document.activeElement)) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function openPanel(panel, trigger) {
+    if (activePanel) closePanel();
+    activePanel = panel;
+    lastFocused = trigger || document.activeElement;
+    lockScroll();
+    backdrop.classList.add("open");
+    panel.classList.add("open");
+    panel.setAttribute("aria-hidden", "false");
+    var items = focusables(panel);
+    if (items.length) items[0].focus();
+    document.addEventListener("keydown", onKeydown);
+  }
+
+  function closePanel() {
+    if (!activePanel) return;
+    var panel = activePanel;
+    activePanel = null;
+    panel.classList.remove("open");
+    panel.setAttribute("aria-hidden", "true");
+    backdrop.classList.remove("open");
+    unlockScroll();
+    document.removeEventListener("keydown", onKeydown);
+    /* Modal kapaninca iframe'i sok, arkada calismaya devam etmesin. */
+    if (panel === modal) modalStage.innerHTML = "";
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+    lastFocused = null;
+  }
+
+  /* --- Proje hikayesi paneli ------------------------------------------- */
+
+  function openDrawer(project, trigger) {
+    drawerTitle.textContent = project.name;
+    drawerBody.innerHTML = "";
+
+    STORY_SECTIONS.forEach(function (section) {
+      var value = project.story[section.key];
+      if (!value) return;
+
+      var block = el("div", "story-block");
+      block.appendChild(el("h3", null, section.label));
+
+      if (section.type === "list") {
+        var list = el("ul");
+        value.forEach(function (item) { list.appendChild(el("li", null, item)); });
+        block.appendChild(list);
+      } else {
+        block.appendChild(el("p", null, value));
+      }
+      drawerBody.appendChild(block);
+    });
+
+    /* Panelin altinda projenin baglantilari tekrar yer alir. */
+    drawerFoot.innerHTML = "";
+    if (project.live) {
+      var liveLink = el("a", "btn primary");
+      liveLink.href = project.live;
+      liveLink.target = "_blank";
+      liveLink.rel = "noopener noreferrer";
+      liveLink.innerHTML = ICONS.external + "<span>Canlı Site</span>";
+      drawerFoot.appendChild(liveLink);
+    }
+    var ghLink = el("a", "btn quiet");
+    ghLink.href = project.github;
+    ghLink.target = "_blank";
+    ghLink.rel = "noopener noreferrer";
+    ghLink.innerHTML = ICONS.github + "<span>GitHub Deposu</span>";
+    drawerFoot.appendChild(ghLink);
+
+    drawerBody.scrollTop = 0;
+    openPanel(drawer, trigger);
+  }
+
+  /* --- Canli onizleme modali ------------------------------------------ */
+
+  function openModal(project, trigger) {
+    modalTitle.textContent = project.name;
+    modalOpenLink.href = project.live;
+    modalStage.innerHTML = "";
+
+    var skeleton = el("div", "skeleton");
+    skeleton.setAttribute("data-label", "Site yükleniyor");
+    modalStage.appendChild(skeleton);
+
+    var fallback = el("div", "stage-fallback");
+    fallback.hidden = true;
+    fallback.appendChild(el("p", null, "Site bu pencerede açılamadı."));
+    var link = el("a", "btn quiet", "Siteyi yeni sekmede aç");
+    link.href = project.live;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    fallback.appendChild(link);
+    modalStage.appendChild(fallback);
+
+    var frame = document.createElement("iframe");
+    frame.src = project.live;
+    frame.title = project.name + " canlı önizleme";
+
+    var settled = false;
+    var timer = window.setTimeout(function () {
+      if (settled) return;
+      settled = true;
+      fallback.hidden = false;
+    }, LOAD_TIMEOUT);
+
+    frame.addEventListener("load", function () {
+      settled = true;
+      window.clearTimeout(timer);
+      skeleton.hidden = true;
+    });
+
+    modalStage.appendChild(frame);
+    openPanel(modal, trigger);
+  }
+
+  /* --- Kapatma tetikleyicileri ---------------------------------------- */
+
+  backdrop.addEventListener("click", closePanel);
+  document.getElementById("drawerClose").addEventListener("click", closePanel);
+  document.getElementById("modalClose").addEventListener("click", closePanel);
+})();
+</script>
+</body>
+</html>
