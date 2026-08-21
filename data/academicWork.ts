@@ -9,6 +9,11 @@
  *                        tiklaninca kurulur.
  *   kind: "document"  -> `image` onizleme gorseli olarak gosterilir, `pdf` ise
  *                        yeni sekmede acilir. Ikisi de public/ altina gorelidir.
+ *
+ * extras: karta ve hikaye paneline eklenen ek baglantilar. kind degeri
+ * content.json icindeki `other` bolumunden etiketini alir:
+ *   "essay"   -> calismanin yazili raporu (public/ altina goreli PDF)
+ *   "mockup"  -> arayuz taslagi (dis adres)
  */
 
 import type { LocalizedList, LocalizedText } from "./webProjects";
@@ -23,11 +28,22 @@ export interface AcademicStory {
   ogrendim: LocalizedText;
 }
 
+export type AcademicExtraKind = "essay" | "mockup";
+
+export interface AcademicExtra {
+  kind: AcademicExtraKind;
+  /** essay icin public/ altina goreli yol, mockup icin tam adres. */
+  href: string;
+  /** true ise adres public/ altinda, basePath onune eklenir. */
+  local?: boolean;
+}
+
 interface AcademicBase {
   id: string;
   title: LocalizedText;
   summary: LocalizedText;
   tags: string[];
+  extras?: AcademicExtra[];
   story: AcademicStory;
 }
 
@@ -143,45 +159,48 @@ export const academicWork: AcademicItem[] = [
     id: "coffee-video",
     kind: "youtube",
     videoId: "KP_9mSYPptw",
-    tags: ["Adobe Premiere Pro"],
+    tags: ["Adobe Premiere Pro", "CET 224"],
+    extras: [{ kind: "essay", href: "/documents/coffee_video_essay.pdf", local: true }],
     title: {
-      tr: "Kahve Üzerine Eğitsel Video",
-      en: "Educational Video on Coffee",
+      tr: "Espresso Demleme Üzerine Eğitsel Video",
+      en: "Educational Video on Brewing Espresso",
     },
     summary: {
-      tr: "Senaryosu, çekimi ve kurgusu tamamen ekibimize ait olan, kahve konulu eğitsel video çalışması.",
-      en: "An educational video about coffee whose script, filming and editing were entirely handled by our team.",
+      tr: "Kahve tutkunları ve yeni başlayan baristalar için hazırlanmış, iki dakikalık espresso demleme rehberi. Senaryo, çekim ve kurgu ekibimize ait.",
+      en: "A two minute guide to brewing espresso, made for coffee lovers and beginner baristas. The script, filming and editing were handled by our team.",
     },
     story: {
       problem: {
-        tr: "Bir konuyu videoyla anlatmak, kamerayı açıp konuşmaktan çok farklı. İzleyicinin dikkati ilk saniyelerde kopuyorsa içerik ne kadar doğru olursa olsun karşıya geçmiyor.",
-        en: "Explaining a topic on video is very different from turning on a camera and talking. If the viewer's attention breaks in the first seconds, the content does not land no matter how accurate it is.",
+        tr: "Espresso demlemek, anlatılırken kolay görünen ama her adımı ölçüye bağlı bir iş. Yeni başlayan biri hangi adımda ne kadar hassas olması gerektiğini bilmediğinde sonuç her seferinde değişiyor.",
+        en: "Brewing espresso sounds simple when described, yet every step depends on precision. When a beginner does not know how exact to be at which step, the result changes every time.",
       },
       amac: {
-        tr: "Kahveyi merkeze alan, baştan sona planlanmış kısa bir eğitsel video üretmek istedik. Senaryodan kurguya kadar her aşamayı kendimiz yürütmek amacın bir parçasıydı.",
-        en: "We wanted to produce a short educational video centred on coffee and planned from beginning to end. Running every stage ourselves, from script to edit, was part of the goal.",
+        tr: "Kahve tutkunları ve yeni başlayan baristalar için, mükemmel espressoya giden adımları eksiksiz gösteren bir rehber video hazırlamak istedik. Videonun iki dakikayı geçmemesi gerekiyordu.",
+        en: "We wanted to make a guide video for coffee lovers and beginner baristas showing every step towards a good espresso. The video had to stay under two minutes.",
       },
       cozum: {
-        tr: "Ekip arkadaşımla senaryoyu yazdık, çekimleri yaptık ve kurguyu Adobe Premiere Pro ile tamamladık. Anlatım sırasını, izleyicinin konuyu takip etme biçimine göre kurguda yeniden düzenledik.",
-        en: "With my teammate I wrote the script, shot the footage and finished the edit in Adobe Premiere Pro. We reordered the narration in the edit according to how a viewer follows the topic.",
+        tr: "Birden çok kaynaktan araştırma yapıp adımları doğruladık, ardından senaryoyu ve storyboard'u birlikte yazdık. Çekimi kendimiz yaptık, kurguyu Adobe Premiere Pro ile tamamladık; ben demleme sürecinin araştırması ve kurgusuna, ekip arkadaşım kahvenin kültürel ve tarihsel arka planına odaklandı.",
+        en: "We researched the steps across several sources and cross checked them, then wrote the script and storyboard together. We filmed it ourselves and finished the edit in Adobe Premiere Pro; I focused on researching the brewing process and on the edit, while my teammate covered the cultural and historical background of coffee.",
       },
       ozellikler: {
         tr: [
-          "Baştan sona ekip içinde yazılan senaryo",
-          "Kendi yürüttüğümüz çekim süreci",
+          "Espresso demlemenin adım adım gösterimi",
+          "Birden çok kaynaktan doğrulanmış içerik",
+          "Ekip içinde yazılan senaryo ve storyboard",
           "Adobe Premiere Pro ile post prodüksiyon",
-          "Anlatım sırasının kurguda yeniden düzenlenmesi",
+          "İki dakika sınırına göre kurgulanmış anlatım",
         ],
         en: [
-          "A script written entirely within the team",
-          "A filming process we ran ourselves",
+          "Step by step demonstration of brewing espresso",
+          "Content cross checked across several sources",
+          "Script and storyboard written within the team",
           "Post production in Adobe Premiere Pro",
-          "Narration order reworked during the edit",
+          "Narration cut to fit a two minute limit",
         ],
       },
       ogrendim: {
-        tr: "Kurgunun, çekilmiş görüntüyü birleştirmek değil anlatımı yeniden kurmak olduğunu gördüm. Bir konuyu sesli anlatırken nerede duracağımı bilmenin, ne söylediğim kadar belirleyici olduğunu öğrendim.",
-        en: "I saw that editing is not about joining the footage but about rebuilding the narration. I learned that knowing where to pause while narrating is as decisive as what I say.",
+        tr: "Detaylı bir süreci çekerken kamera açısının ve ışığın, anlatımın kendisi kadar belirleyici olduğunu gördüm. İki dakika sınırı ise en zorlayıcı kısımdı; neyi çıkaracağıma karar vermek, ne anlatacağıma karar vermekten daha çok düşündürdü.",
+        en: "Filming a detailed process showed me that camera angle and lighting matter as much as the narration itself. The two minute limit was the hardest part; deciding what to cut made me think harder than deciding what to say.",
       },
     },
   },
@@ -237,7 +256,8 @@ export const academicWork: AcademicItem[] = [
     kind: "document",
     pdf: "/documents/project_development.pdf",
     image: "/images/project_development.png",
-    tags: ["PDF"],
+    tags: ["PDF", "Figma"],
+    extras: [{ kind: "mockup", href: "https://onion-read-07842130.figma.site/" }],
     title: {
       tr: "Proje Geliştirme Dersi Dokümantasyonu",
       en: "Project Development Class Documentation",
@@ -263,12 +283,14 @@ export const academicWork: AcademicItem[] = [
         tr: [
           "Planlama, uygulama ve değerlendirme aşamalarının ayrı ayrı ele alınması",
           "Alınan kararların gerekçeleriyle kaydı",
+          "Projenin arayüz taslağı",
           "Sonuçların nasıl ölçüldüğünün belgelenmesi",
           "Sonraki projelere taşınabilir bir süreç kaydı",
         ],
         en: [
           "Planning, implementation and evaluation phases treated separately",
           "Decisions recorded together with their reasoning",
+          "A UI mock-up of the project",
           "Documentation of how the outcomes were measured",
           "A process record that carries into later projects",
         ],

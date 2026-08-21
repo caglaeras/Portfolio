@@ -121,7 +121,11 @@
       "openYoutube": "YouTube'da aç",
       "openDocFor": "belgesini yeni sekmede aç",
       "previewOf": "önizleme görseli",
-      "techsOf": "etiketleri"
+      "techsOf": "etiketleri",
+      "essayBtn": "Değerlendirme Yazısı",
+      "mockupBtn": "Arayüz Taslağı",
+      "openEssayFor": "değerlendirme yazısını yeni sekmede aç",
+      "openMockupFor": "arayüz taslağını yeni sekmede aç"
     },
     "story": {
       "kicker": "Proje Hikayesi",
@@ -296,7 +300,11 @@
       "openYoutube": "Open on YouTube",
       "openDocFor": "document, open in a new tab",
       "previewOf": "preview image",
-      "techsOf": "tags"
+      "techsOf": "tags",
+      "essayBtn": "Reflection Essay",
+      "mockupBtn": "UI Mock-up",
+      "openEssayFor": "reflection essay, open in a new tab",
+      "openMockupFor": "UI mock-up, open in a new tab"
     },
     "story": {
       "kicker": "Project Story",

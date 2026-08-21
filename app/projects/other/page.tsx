@@ -3,7 +3,12 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import StoryDrawer, { type StoryLink, type StorySection } from "@/components/StoryDrawer";
-import { academicWork, type AcademicItem, type AcademicVideo } from "@/data/academicWork";
+import {
+  academicWork,
+  type AcademicExtra,
+  type AcademicItem,
+  type AcademicVideo,
+} from "@/data/academicWork";
 import { LOAD_TIMEOUT } from "@/data/webProjects";
 import styles from "./Academic.module.css";
 
@@ -33,6 +38,16 @@ const Icons = {
       <path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7zM14 3v4h4" />
     </svg>
   ),
+  essay: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M5 3h11l3 3v15H5zM8 9h8M8 13h8M8 17h5" />
+    </svg>
+  ),
+  mockup: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M3 4h18v13H3zM3 9h18M9 9v8M2 21h20" />
+    </svg>
+  ),
   close: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
       <path d="M6 6l12 12M18 6L6 18" />
@@ -48,6 +63,15 @@ const Icons = {
 const watchUrl = (videoId: string) => "https://www.youtube.com/watch?v=" + videoId;
 
 type Copy = Record<string, string>;
+
+/** Ek baglantilarin etiketi, ikonu ve adresi tek yerden cozulur. */
+function resolveExtra(extra: AcademicExtra, copy: Copy) {
+  const map = {
+    essay: { label: copy.essayBtn, aria: copy.openEssayFor, icon: Icons.essay },
+    mockup: { label: copy.mockupBtn, aria: copy.openMockupFor, icon: Icons.mockup },
+  } as const;
+  return { ...map[extra.kind], href: extra.local ? `${BASE}${extra.href}` : extra.href };
+}
 
 /**
  * YouTube karti: sayfa acilisinda yalnizca kapak goruntusu iner, oynatici
@@ -198,23 +222,25 @@ export default function Other() {
     : [];
 
   const links: StoryLink[] = storyFor
-    ? storyFor.kind === "youtube"
-      ? [
-          {
-            label: copy.watchBtn,
-            href: watchUrl(storyFor.videoId),
-            icon: Icons.play,
-            primary: true,
-          },
-        ]
-      : [
-          {
-            label: copy.docLink,
-            href: `${BASE}${storyFor.pdf}`,
-            icon: Icons.external,
-            primary: true,
-          },
-        ]
+    ? [
+        storyFor.kind === "youtube"
+          ? {
+              label: copy.watchBtn,
+              href: watchUrl(storyFor.videoId),
+              icon: Icons.play,
+              primary: true,
+            }
+          : {
+              label: copy.docLink,
+              href: `${BASE}${storyFor.pdf}`,
+              icon: Icons.external,
+              primary: true,
+            },
+        ...(storyFor.extras ?? []).map((extra) => {
+          const resolved = resolveExtra(extra, copy);
+          return { label: resolved.label, href: resolved.href, icon: resolved.icon };
+        }),
+      ]
     : [];
 
   return (
@@ -301,6 +327,23 @@ export default function Other() {
                       <span>{copy.watchBtn}</span>
                     </a>
                   )}
+
+                  {(item.extras ?? []).map((extra) => {
+                    const resolved = resolveExtra(extra, copy);
+                    return (
+                      <a
+                        key={extra.kind}
+                        className={`${styles.btn} ${styles.quiet}`}
+                        href={resolved.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${title} ${resolved.aria}`}
+                      >
+                        {resolved.icon}
+                        <span>{resolved.label}</span>
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </article>
