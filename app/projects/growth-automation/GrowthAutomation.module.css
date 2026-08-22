@@ -2,9 +2,9 @@
  * /projects/growth-automation sayfasi.
  *
  * Tipografi ve olculer diger proje sekmeleriyle (web, unity, other) ayni
- * kalibi kullanir: baslik pageTitle, giris pageLead, kart adlari 1.32rem.
- * Bolumler kutu icinde degil, aralarinda ince cizgiyle ayrilir; boylece
- * sayfa gereksiz dikey bosluk harcamiyor.
+ * kalibi kullanir: baslik pageTitle, giris pageLead, bolum basligi 1.4rem,
+ * kart dolgusu 24px, grid araligi 30px, kartlarda ayni golge. Bolumler kutu
+ * icine alinmaz, aralarindaki boslukla ayrilir.
  */
 
 .page {
@@ -54,7 +54,7 @@
   flex-wrap: wrap;
   gap: 7px;
   list-style: none;
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
 .chipRow li {
@@ -70,16 +70,14 @@
 /* --- Bolumler --- */
 
 .section {
-  padding-top: 30px;
-  margin-top: 30px;
-  border-top: 1px solid var(--card-border);
+  margin-top: 50px;
 }
 
 .sectionHead {
   display: flex;
   align-items: center;
   gap: 13px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 /* Bolum numarasi: sayfada nerede olundugu bir bakista belli olur. */
@@ -95,7 +93,8 @@
 }
 
 .sectionHeading {
-  font-size: 1.32rem;
+  /* Diger sekmelerin bolum basligiyla ayni. */
+  font-size: 1.4rem;
   margin: 0;
 }
 
@@ -113,47 +112,58 @@
 
 /*
  * Maddeler duz liste yerine kart olarak diziliyor: her birinin kisa bir
- * etiketi var, sayfa okunmadan taranabiliyor. auto-fit sayesinde uc maddeli
- * bolum uc sutuna, dort maddeli bolum dort sutuna yayilir; iki satira
- * tasmadigi icin sayfa kisaliyor.
+ * etiketi var, sayfa okunmadan taranabiliyor. Kart olculeri diger
+ * sekmelerdeki kartlarla ayni.
  */
 .pointGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-  gap: 12px;
-  margin-top: 18px;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Uc maddeli bolumler uc sutun, dort maddeli bolum 2x2; ikisi de duzgun
+   kapaniyor, kartlar da diger sekmelerdeki kadar genis kaliyor. */
+.cols3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cols2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .pointCard {
-  padding: 15px 17px;
+  padding: 24px 24px 26px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 .pointLabel {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--main-color);
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .pointText {
+  /* Diger sekmelerdeki kart aciklamasiyla ayni. */
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.93rem;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--secondary-text);
 }
 
 /* --- n8n akis diyagrami --- */
 
 .flowchart {
-  margin-top: 18px;
-  padding: 18px;
+  margin-top: 30px;
+  padding: 24px;
+  box-shadow: var(--box-shadow);
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
@@ -171,7 +181,7 @@
 .flowchartGrid {
   display: flex;
   align-items: stretch;
-  gap: 6px;
+  gap: 10px;
 }
 
 .flowStep {
@@ -180,8 +190,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 5px;
-  padding: 12px 8px;
+  gap: 6px;
+  padding: 16px 10px;
   background: var(--bg-color);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
@@ -218,19 +228,20 @@
 
 .guidelineGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  margin-top: 30px;
 }
 
 .guidelineCard {
   display: flex;
   align-items: baseline;
-  gap: 10px;
-  padding: 14px 16px;
+  gap: 11px;
+  padding: 24px 24px 26px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 .guidelineCode {
@@ -251,8 +262,8 @@
 /* --- Kapsam ve sinir notu --- */
 
 .noteBox {
-  margin-top: 16px;
-  padding: 14px 18px;
+  margin-top: 30px;
+  padding: 20px 24px;
   background: var(--main-tint);
   border-left: 3px solid var(--main-color);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
@@ -261,7 +272,7 @@
 .noteBox p {
   margin: 0;
   max-width: 74ch;
-  font-size: 0.87rem;
+  font-size: 0.9rem;
   font-weight: 300;
   line-height: 1.65;
   color: var(--secondary-text);
@@ -289,12 +300,21 @@
   .guidelineGrid {
     grid-template-columns: 1fr;
   }
+
+  .cols3,
+  .cols2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 560px) {
   .section {
-    padding-top: 24px;
-    margin-top: 24px;
+    margin-top: 34px;
+  }
+
+  .cols3,
+  .cols2 {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

@@ -15,12 +15,15 @@ function Section({
   title,
   lead,
   points,
+  cols = 3,
   children,
 }: {
   num: string;
   title: string;
   lead: string;
   points?: Point[];
+  /** Uc maddeli bolumler ucer, dort maddeli bolum ikiser dizilir. */
+  cols?: 2 | 3;
   children?: React.ReactNode;
 }) {
   return (
@@ -35,7 +38,7 @@ function Section({
       {children}
 
       {points && (
-        <div className={styles.pointGrid}>
+        <div className={`${styles.pointGrid} ${cols === 2 ? styles.cols2 : styles.cols3}`}>
           {points.map((p) => (
             <div key={p.label} className={styles.pointCard}>
               <span className={styles.pointLabel}>{p.label}</span>
@@ -158,6 +161,7 @@ export default function GrowthAutomationPage() {
         num="05"
         title={data.opsTitle}
         lead={data.opsDesc}
+        cols={2}
         points={[
           { label: data.o1Label, text: data.o1Text },
           { label: data.o2Label, text: data.o2Text },
