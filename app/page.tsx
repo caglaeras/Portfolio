@@ -42,7 +42,7 @@ export default function Home() {
               <i className="fas fa-microscope" style={{ marginRight: "6px" }}></i>
               {t.seeResearchBtn || "See My Research"}
             </Link>
-            <Link href="/projects/cancera-growth" className="btn-main">
+            <Link href="/projects/growth-automation" className="btn-main">
               <i className="fas fa-chart-line" style={{ marginRight: "6px" }}></i>
               {t.marketingCasesBtn || "Marketing Case Studies"}
             </Link>

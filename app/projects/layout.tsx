@@ -12,7 +12,7 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
 
   const tabs = [
     { name: "Gen Çiftliği (EdTech)", path: "/projects/gen-ciftligi" },
-    { name: language === 'tr' ? "Büyüme Pazarlaması" : "Growth Case Study", path: "/projects/cancera-growth" },
+    { name: language === 'tr' ? "Büyüme Pazarlaması" : "Growth Case Study", path: "/projects/growth-automation" },
     { name: "Unity 3D", path: "/projects/unity" },
     { name: language === 'tr' ? "Web Geliştirme" : "Web Development", path: "/projects/web" },
     { name: "Marketing", path: "/projects/marketing" },
