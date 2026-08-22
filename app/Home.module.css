@@ -14,16 +14,26 @@
   padding-bottom: 80px;
 }
 
+/* Uc CTA tek satirda kalabilsin diye metin sutunu gorselden genis. */
 .textContent {
-  flex: 1;
+  flex: 1.3;
   max-width: 600px;
 }
 
 .title {
   font-size: 4rem;
   line-height: 1.1;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: var(--text-color);
+}
+
+/* Ad ile biyografi arasindaki rol satiri. */
+.tagline {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: var(--main-color);
+  margin-bottom: 26px;
 }
 
 .bio {
@@ -42,31 +52,14 @@
   margin-bottom: 35px;
 }
 
-.credibilityList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 35px;
+/*
+ * Varsayilan 35px yan bosluk uc butonu ikinci satira tasiyordu; en uzun
+ * etiketler Turkce oldugu icin olcu ona gore daraltildi.
+ */
+.buttons :global(.btn-main) {
+  padding-left: 20px;
+  padding-right: 20px;
 }
-
-.credibilityBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(140, 123, 101, 0.08);
-  border-left: 3px solid var(--main-color);
-  padding: 10px 16px;
-  border-radius: 0 4px 4px 0;
-  font-size: 0.92rem;
-  color: var(--text-color);
-  font-weight: 500;
-}
-
-.credibilityIcon {
-  color: var(--main-color);
-  font-size: 1rem;
-}
-
 
 .imageWrapper {
   flex: 1;

@@ -7,20 +7,14 @@
       "projects": "Projeler"
     },
     "home": {
-      "greeting1": "Merhaba,",
-      "greeting2": "Ben Çağla Eraslan.",
-      "bio": "Ben Çağla Eraslan; eğitim teknolojisti ve büyüme (growth) pazarlamacısıyım. Unity ve web üzerinde etkileşimli öğrenme deneyimleri tasarlıyor, Meta Ads ile n8n + LLM otomasyonlarıyla veri odaklı pazarlama yürütüyorum. Boğaziçi Üniversitesi CET 2026 mezunu ve bölüm birincisiyim.",
-      "downloadCv": "CV'm",
-      "seeResearchBtn": "Araştırmamı İnceleyin",
-      "marketingCasesBtn": "Pazarlama Vaka Çalışmaları",
+      "name": "Çağla Eraslan",
+      "tagline": "Eğitim Teknolojisti ve Büyüme Pazarlamacısı",
+      "bio": "Eğitsel oyunlar, online dersler, yapay zeka okuryazarlığı dersleri ve bunları insanların karşısına çıkaran büyüme pazarlaması. Boğaziçi CET '26, bölüm birincisi.",
+      "tryGameBtn": "Gen Çiftliği'ni Dene",
+      "growthWorkBtn": "Büyüme Çalışmaları",
+      "downloadCv": "CV",
       "letsMeet": "Tanışalım!",
-      "aboutMe": "Hakkımda",
       "heroImage": "/images/foto.JPEG",
-      "credibility": [
-        "Bölüm Birincisi Mezuniyeti, GANO: 3.22 / 4.00",
-        "Hikmet Sebüktekin Ödülü Adayı",
-        "İstanbul Büyükşehir Belediyesi Kodlama Eğitmeni (~50 ortaokul öğrencisi)"
-      ],
       "skills": {
         "title": "Uzmanlık & Yetkinlikler",
         "programming": { "title": "Programlama", "items": ["Python", "SQL", "C#"] },
@@ -31,13 +25,18 @@
     },
     "footer": {
       "title": "Çağla Eraslan",
-      "bio": "Boğaziçi Üniversitesi Bilgisayar ve Öğretim Teknolojileri öğrencisi. Eğitimi teknolojiyle buluşturarak, kullanıcı odaklı ve etkileşimli dijital öğrenme çözümleri üretiyorum.",
+      "bio": "İstanbul merkezli eğitim teknolojisti ve büyüme pazarlamacısı. Boğaziçi Üniversitesi CET '26. Eğitim ile teknolojiyi birleştirerek kullanıcı odaklı ve etkileşimli dijital öğrenme çözümleri üretiyorum.",
       "contact": "İletişim",
       "location": "İstanbul, Türkiye",
       "follow": "Takip Et",
       "rights": "Çağla Eraslan Portfolyo. Tüm Hakları Saklıdır."
     },
     "vizyon": {
+      "credibility": [
+        "Bölüm Birincisi Mezuniyeti, GANO: 3.22 / 4.00",
+        "Hikmet Sebüktekin Ödülü Adayı",
+        "İstanbul Büyükşehir Belediyesi Kodlama Eğitmeni (~50 ortaokul öğrencisi)"
+      ],
       "title": "Eğitim Vizyonum ve Kazanımlarım",
       "visionTitle": "Vizyonum",
       "visionLead": "Teknolojinin ancak insan öğrenimine hizmet ettiğinde anlamlı hale geldiğine inanıyorum. Amacım, sadece işlevsel değil; aynı zamanda gerçekten ilgi çekici, araştırmalara dayanan, kullanıcı ihtiyaçlarıyla şekillenen ve tek bir sınıfın ötesinde kalıcı olacak dijital deneyimler tasarlamaktır.",
@@ -252,20 +251,14 @@
       "projects": "Projects"
     },
     "home": {
-      "greeting1": "Hello, I'm",
-      "greeting2": "Çağla Eraslan.",
-      "bio": "I'm Çağla Eraslan, an educational technologist and growth marketer. I design interactive learning experiences in Unity and on the web, and run data-driven marketing with Meta Ads and n8n + LLM automation. Boğaziçi University CET, Class of 2026, graduated first in my cohort.",
-      "downloadCv": "My CV",
-      "seeResearchBtn": "See My Research",
-      "marketingCasesBtn": "Marketing Case Studies",
+      "name": "Çağla Eraslan",
+      "tagline": "Educational Technologist & Growth Marketer",
+      "bio": "Educational games, online courses, AI literacy lessons and the growth marketing that gets them in front of people. Boğaziçi CET '26, first in my cohort.",
+      "tryGameBtn": "Try Gen Çiftliği",
+      "growthWorkBtn": "Growth Work",
+      "downloadCv": "CV",
       "letsMeet": "Let's Meet!",
-      "aboutMe": "About Me",
       "heroImage": "/images/foto.JPEG",
-      "credibility": [
-        "Graduated 1st in Cohort, GPA 3.22 / 4.00",
-        "Nominee, Hikmet Sebüktekin Award",
-        "Coding Instructor at Istanbul Metropolitan Municipality (~50 middle school students)"
-      ],
       "skills": {
         "title": "Skills & Expertise",
         "programming": { "title": "Programming", "items": ["Python", "SQL", "C#"] },
@@ -276,13 +269,18 @@
     },
     "footer": {
       "title": "Çağla Eraslan",
-      "bio": "Boğaziçi University CET student. Creating user-centric and interactive digital learning solutions by bridging education and technology.",
+      "bio": "Educational technologist and growth marketer based in Istanbul. Boğaziçi University CET '26. Creating user-centric and interactive digital learning solutions by bridging education and technology.",
       "contact": "Contact",
       "location": "Istanbul, Turkey",
       "follow": "Follow Me",
       "rights": "Çağla Eraslan Portfolio. All Rights Reserved."
     },
     "vizyon": {
+      "credibility": [
+        "Graduated 1st in Cohort, GPA 3.22 / 4.00",
+        "Nominee, Hikmet Sebüktekin Award",
+        "Coding Instructor at Istanbul Metropolitan Municipality (~50 middle school students)"
+      ],
       "title": "My Educational Vision and Achievements",
       "visionTitle": "My Vision",
       "visionLead": "I believe technology becomes meaningful only when it serves human learning. My goal is to design digital experiences that are not only functional, but genuinely engaging, grounded in research, shaped by user needs, and built to last beyond a single classroom.",

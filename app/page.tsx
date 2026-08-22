@@ -17,40 +17,26 @@ export default function Home() {
       {/* Editorial Asymmetrical Hero */}
       <section className={styles.heroSection}>
         <div className={styles.textContent}>
-          <h1 className={styles.title}>
-            {t.greeting1} <br/>
-            <strong>{t.greeting2}</strong>
-          </h1>
-          
-          <p className={styles.bio}>{t.bio}</p>
+          <h1 className={styles.title}>{t.name}</h1>
+          <p className={styles.tagline}>{t.tagline}</p>
 
-          {/* Credibility Signals Badges */}
-          {t.credibility && (
-            <div className={styles.credibilityList}>
-              {t.credibility.map((item, idx) => (
-                <div key={idx} className={styles.credibilityBadge}>
-                  <i className={`fas ${idx === 0 ? "fa-trophy" : idx === 1 ? "fa-award" : "fa-chalkboard-teacher"} ${styles.credibilityIcon}`}></i>
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          )}
+          <p className={styles.bio}>{t.bio}</p>
 
           {/* Action CTAs */}
           <div className={styles.buttons}>
             <Link href="/projects/gen-ciftligi" className="btn-main">
-              <i className="fas fa-microscope" style={{ marginRight: "6px" }}></i>
-              {t.seeResearchBtn || "See My Research"}
+              {t.tryGameBtn}
             </Link>
             <Link href="/projects/growth-automation" className="btn-main">
-              <i className="fas fa-chart-line" style={{ marginRight: "6px" }}></i>
-              {t.marketingCasesBtn || "Marketing Case Studies"}
+              {t.growthWorkBtn}
             </Link>
-            <a href="/Portfolio/documents/CaglaEraslan_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn-main">
+            <a
+              href="/Portfolio/documents/CaglaEraslan_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-main"
+            >
               {t.downloadCv}
-            </a>
-            <a href="mailto:caglaeraslan@gmail.com" aria-label="Email Çağla Eraslan" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--main-color)', color: 'white', textDecoration: 'none', transition: 'all 0.3s ease', fontSize: '1.1rem', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.15)' }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)' }}>
-              <i className="fas fa-envelope"></i>
             </a>
           </div>
         </div>
