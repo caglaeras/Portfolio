@@ -49,31 +49,43 @@
   padding: 35px;
 }
 
-.sectionHeading {
-  font-size: 1.5rem;
-  font-family: 'Lora', serif;
-  color: var(--text-color);
-  margin-bottom: 20px;
-  position: relative;
-  padding-bottom: 12px;
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--card-border);
 }
 
-.sectionHeading::after {
-  content: "";
-  width: 35px;
-  height: 2px;
-  background: var(--main-color);
-  position: absolute;
-  bottom: 0;
-  left: 0;
+/* Bolum numarasi: goz sayfada nerede oldugunu bir bakista bulur. */
+.sectionNum {
+  flex: none;
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 100px;
+  padding: 4px 11px;
+}
+
+.sectionHeading {
+  font-size: 1.4rem;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.3;
 }
 
 .bodyText {
-  font-size: 1.05rem;
+  /* Okunur satir uzunlugu: uzun satirlar goz takibini zorlastiriyor. */
+  max-width: 66ch;
+  font-size: 1.02rem;
   color: var(--secondary-text);
-  line-height: 1.8;
+  line-height: 1.75;
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 /* Pure CSS Flowchart Component for n8n Pipeline */
@@ -165,34 +177,6 @@
   margin-top: 4px;
 }
 
-.metricsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 25px;
-}
-
-.metricCard {
-  background: var(--bg-color);
-  border: 1px solid var(--card-border);
-  border-radius: 6px;
-  padding: 22px;
-  text-align: center;
-}
-
-.metricVal {
-  font-size: 2.2rem;
-  font-family: 'Lora', serif;
-  font-weight: 600;
-  color: var(--main-color);
-}
-
-.metricLabel {
-  font-size: 0.9rem;
-  color: var(--secondary-text);
-  margin-top: 6px;
-}
-
 @media (max-width: 850px) {
   .flowchartGrid {
     flex-direction: column;
@@ -201,42 +185,9 @@
     transform: rotate(90deg);
     margin: 8px 0;
   }
-  .guidelineGrid, .metricsGrid {
+  .guidelineGrid {
     grid-template-columns: 1fr;
   }
-}
-
-/* Bolum icindeki madde listesi. */
-.featureList {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.featureList li {
-  position: relative;
-  padding-left: 20px;
-  color: var(--secondary-text);
-  font-size: 0.95rem;
-  font-weight: 300;
-  line-height: 1.7;
-}
-
-.featureList li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.72em;
-  width: 8px;
-  height: 1px;
-  background: var(--main-color);
-}
-
-.featureList li strong {
-  color: var(--text-color);
-  font-weight: 500;
 }
 
 /* Kapsam ve sinir notu. */
@@ -251,6 +202,72 @@
 .noteBox p {
   margin: 0;
   font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--secondary-text);
+}
+
+/* --- Bir bakista kapsam ------------------------------------------------- */
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--card-border);
+}
+
+.chipRow li {
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--main-color-hover);
+  background: rgba(140, 123, 101, 0.12);
+  border-radius: 100px;
+  padding: 5px 13px;
+}
+
+/* --- Etiketli kartlar --------------------------------------------------- */
+
+/*
+ * Maddeler duz liste yerine kart olarak diziliyor: her birinin kalin bir
+ * etiketi var, boylece sayfa okunmadan taranabiliyor.
+ */
+.pointGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+@media (max-width: 620px) {
+  .pointGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.pointCard {
+  padding: 18px 20px;
+  background: var(--bg-color);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+}
+
+.pointLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--main-color);
+  margin-bottom: 8px;
+}
+
+.pointText {
+  margin: 0;
+  font-size: 0.93rem;
   font-weight: 300;
   line-height: 1.7;
   color: var(--secondary-text);
