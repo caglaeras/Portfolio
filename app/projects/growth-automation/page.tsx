@@ -24,10 +24,10 @@ function Section({
   children?: React.ReactNode;
 }) {
   return (
-    <section className={styles.sectionCard}>
+    <section className={styles.section}>
       <div className={styles.sectionHead}>
         <span className={styles.sectionNum}>{num}</span>
-        <h2 className={styles.sectionHeading}>{title}</h2>
+        <h3 className={styles.sectionHeading}>{title}</h3>
       </div>
 
       <p className={styles.bodyText}>{lead}</p>
@@ -49,12 +49,10 @@ function Section({
 }
 
 export default function GrowthAutomationPage() {
-  const { content, language } = useLanguage();
+  const { content } = useLanguage();
   const data = content.growthAutomation;
 
   if (!data) return null;
-
-  const tr = language === "tr";
 
   const pipeline = [
     { icon: "fa-chart-line", label: data.flow1, sub: data.flow1Sub },
@@ -66,18 +64,19 @@ export default function GrowthAutomationPage() {
 
   const chips = [data.chip1, data.chip2, data.chip3, data.chip4, data.chip5, data.chip6];
 
-  return (
-    <div className={styles.container}>
-      <header className={styles.headerCard}>
-        <span className={styles.badge}>
-          <i className="fas fa-chart-line" style={{ marginRight: "6px" }}></i>
-          {tr ? "Büyüme Pazarlaması ve Otomasyon" : "Growth Marketing and Automation"}
-        </span>
-        <h1 className={styles.title}>{data.title}</h1>
-        <p className={styles.subtitle}>{data.subtitle}</p>
+  const guidelines = [
+    { code: "NCCN", name: "National Comprehensive Cancer Network" },
+    { code: "ASCO", name: "American Society of Clinical Oncology" },
+    { code: "ESMO", name: "European Society for Medical Oncology" },
+  ];
 
-        {/* Bir bakista kapsam: sayfayi okumadan ne oldugunu gosterir. */}
-        <ul className={styles.chipRow} aria-label={tr ? "Kapsam" : "Scope"}>
+  return (
+    <div className={styles.page}>
+      {/* Baslik bloğu diger proje sekmeleriyle ayni kalipta. */}
+      <header>
+        <h2 className={styles.pageTitle}>{data.title}</h2>
+        <p className={styles.pageLead}>{data.subtitle}</p>
+        <ul className={styles.chipRow}>
           {chips.map((chip) => (
             <li key={chip}>{chip}</li>
           ))}
@@ -94,22 +93,18 @@ export default function GrowthAutomationPage() {
           { label: data.p3Label, text: data.p3Text },
         ]}
       >
-        <div className={styles.flowchartContainer}>
-          <div className={styles.flowchartTitle}>
-            <i className="fas fa-network-wired" style={{ marginRight: "8px", color: "var(--main-color)" }}></i>
-            {data.flowTitle}
-          </div>
-
+        <div className={styles.flowchart}>
+          <div className={styles.flowchartTitle}>{data.flowTitle}</div>
           <div className={styles.flowchartGrid}>
             {pipeline.map((step, i) => (
               <React.Fragment key={step.label}>
                 {i > 0 && (
                   <div className={styles.flowArrow}>
-                    <i className="fas fa-chevron-right"></i>
+                    <i className="fas fa-chevron-right" aria-hidden="true"></i>
                   </div>
                 )}
                 <div className={styles.flowStep}>
-                  <i className={`fas ${step.icon} ${styles.flowIcon}`}></i>
+                  <i className={`fas ${step.icon} ${styles.flowIcon}`} aria-hidden="true"></i>
                   <div className={styles.flowLabel}>{step.label}</div>
                   <div className={styles.flowSub}>{step.sub}</div>
                 </div>
@@ -142,7 +137,7 @@ export default function GrowthAutomationPage() {
       >
         <div className={styles.noteBox}>
           <p>
-            <i className="fas fa-scale-balanced" style={{ marginRight: "8px", color: "var(--main-color)" }}></i>
+            <i className="fas fa-scale-balanced" style={{ marginRight: "8px", color: "var(--main-color)" }} aria-hidden="true"></i>
             {data.testNote}
           </p>
         </div>
@@ -150,18 +145,12 @@ export default function GrowthAutomationPage() {
 
       <Section num="04" title={data.ebookTitle} lead={data.ebookDesc}>
         <div className={styles.guidelineGrid}>
-          <div className={styles.guidelineCard}>
-            <div className={styles.guidelineCode}>NCCN</div>
-            <div className={styles.guidelineName}>National Comprehensive Cancer Network</div>
-          </div>
-          <div className={styles.guidelineCard}>
-            <div className={styles.guidelineCode}>ASCO</div>
-            <div className={styles.guidelineName}>American Society of Clinical Oncology</div>
-          </div>
-          <div className={styles.guidelineCard}>
-            <div className={styles.guidelineCode}>ESMO</div>
-            <div className={styles.guidelineName}>European Society for Medical Oncology</div>
-          </div>
+          {guidelines.map((g) => (
+            <div key={g.code} className={styles.guidelineCard}>
+              <span className={styles.guidelineCode}>{g.code}</span>
+              <span className={styles.guidelineName}>{g.name}</span>
+            </div>
+          ))}
         </div>
       </Section>
 
