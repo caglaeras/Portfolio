@@ -82,7 +82,7 @@ export default function Home() {
           <i className={`fas fa-laptop-code ${styles.featureIcon}`}></i>
           <h3 className={styles.featureTitle}>{content.nav.projects}</h3>
           <p className={styles.featureDesc}>
-            {language === 'tr' ? "Gen Çiftliği, Büyüme Pazarlaması, Unity 3D ve Web projelerim." : "Gen Çiftliği, Growth Case Studies, Unity 3D, and Web projects."}
+            {language === 'tr' ? "Gen Çiftliği, Büyüme Pazarlaması, Unity 3D ve Web projelerim." : "Gen Çiftliği, Growth Marketing, Unity 3D, and Web projects."}
           </p>
         </Link>
 
