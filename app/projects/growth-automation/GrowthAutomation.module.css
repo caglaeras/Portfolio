@@ -1,90 +1,117 @@
 /*
  * /projects/growth-automation sayfasi.
  *
- * Tipografi ve olculer diger proje sekmeleriyle (web, unity, other) ayni
- * kalibi kullanir: baslik pageTitle, giris pageLead, bolum basligi 1.4rem,
- * kart dolgusu 24px, grid araligi 30px, kartlarda ayni golge. Bolumler kutu
- * icine alinmaz, aralarindaki boslukla ayrilir.
+ * Duzen Gen Ciftligi sayfasiyla ayni: 950px genislik, kart icinde baslik
+ * blogu, her bolum kendi kartinda, 1.5rem bolum basligi ve altinda kisa
+ * vurgu cizgisi. Olculer oradan birebir alindi.
  */
 
-.page {
-  --main-tint: rgba(140, 123, 101, 0.12);
-  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --font-display: 'Lora', Georgia, serif;
-  display: block;
-}
-
-.page h2,
-.page h3 {
-  font-family: var(--font-display);
+.container h2,
+.container h3 {
+  font-family: 'Lora', serif;
   font-weight: 500;
   letter-spacing: -0.02em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 950px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+/* --- Baslik blogu --- */
+
+.headerCard {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 40px 35px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(140, 123, 101, 0.12);
+  color: var(--main-color);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2.2rem;
   line-height: 1.25;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
+  margin-bottom: 15px;
 }
 
-/* --- Sayfa basligi: diger sekmelerle ayni --- */
-
-.pageTitle {
-  font-size: clamp(2rem, 4.4vw, 2.7rem);
-  margin-bottom: 16px;
-  position: relative;
-  padding-bottom: 22px;
-}
-
-.pageTitle::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 44px;
-  height: 2px;
-  background: var(--main-color);
-}
-
-.pageLead {
-  max-width: 62ch;
+.subtitle {
+  font-size: 1.1rem;
   color: var(--secondary-text);
+  line-height: 1.6;
   font-weight: 300;
-  font-size: 1.03rem;
 }
 
 /* Bir bakista kapsam. */
 .chipRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 8px;
   list-style: none;
-  margin-top: 20px;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--card-border);
 }
 
 .chipRow li {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--main-color-hover);
-  background: var(--main-tint);
+  background: rgba(140, 123, 101, 0.12);
   border-radius: 100px;
-  padding: 4px 11px;
+  padding: 5px 12px;
 }
 
-/* --- Bolumler --- */
+/* --- Bolum kartlari --- */
 
-.section {
-  margin-top: 50px;
+.sectionCard {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 35px;
 }
 
 .sectionHead {
   display: flex;
   align-items: center;
   gap: 13px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 12px;
 }
 
-/* Bolum numarasi: sayfada nerede olundugu bir bakista belli olur. */
+.sectionHead::after {
+  content: "";
+  width: 35px;
+  height: 2px;
+  background: var(--main-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 .sectionNum {
   flex: none;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-family: 'Lora', serif;
+  font-size: 0.8rem;
   letter-spacing: 0.06em;
   color: var(--main-color);
   border: 1px solid var(--main-color);
@@ -93,17 +120,17 @@
 }
 
 .sectionHeading {
-  /* Diger sekmelerin bolum basligiyla ayni. */
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-family: 'Lora', serif;
+  color: var(--text-color);
   margin: 0;
+  line-height: 1.3;
 }
 
 .bodyText {
-  /* Okunur satir uzunlugu. */
-  max-width: 66ch;
-  font-size: 0.97rem;
+  font-size: 1.05rem;
   color: var(--secondary-text);
-  line-height: 1.7;
+  line-height: 1.8;
   font-weight: 300;
   margin: 0;
 }
@@ -111,18 +138,16 @@
 /* --- Etiketli kartlar --- */
 
 /*
- * Maddeler duz liste yerine kart olarak diziliyor: her birinin kisa bir
- * etiketi var, sayfa okunmadan taranabiliyor. Kart olculeri diger
- * sekmelerdeki kartlarla ayni.
+ * Maddeler duz liste yerine kart olarak diziliyor: kisa etiketleri sayesinde
+ * sayfa okunmadan taranabiliyor. Bolum karti zaten beyaz oldugu icin bu
+ * kartlar sayfa zeminiyle ayriliyor.
  */
 .pointGrid {
   display: grid;
-  gap: 30px;
-  margin-top: 30px;
+  gap: 16px;
+  margin-top: 25px;
 }
 
-/* Uc maddeli bolumler uc sutun, dort maddeli bolum 2x2; ikisi de duzgun
-   kapaniyor, kartlar da diger sekmelerdeki kadar genis kaliyor. */
 .cols3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -132,11 +157,10 @@
 }
 
 .pointCard {
-  padding: 24px 24px 26px;
-  background: var(--card-bg);
+  padding: 18px 20px;
+  background: var(--bg-color);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
 }
 
 .pointLabel {
@@ -146,13 +170,12 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--main-color);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .pointText {
-  /* Diger sekmelerdeki kart aciklamasiyla ayni. */
   margin: 0;
-  font-size: 0.93rem;
+  font-size: 0.92rem;
   font-weight: 300;
   line-height: 1.7;
   color: var(--secondary-text);
@@ -161,27 +184,26 @@
 /* --- n8n akis diyagrami --- */
 
 .flowchart {
-  margin-top: 30px;
-  padding: 24px;
-  box-shadow: var(--box-shadow);
-  background: var(--card-bg);
+  margin-top: 25px;
+  padding: 22px;
+  background: var(--bg-color);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
 }
 
 .flowchartTitle {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--secondary-text);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .flowchartGrid {
   display: flex;
   align-items: stretch;
-  gap: 10px;
+  gap: 8px;
 }
 
 .flowStep {
@@ -191,8 +213,8 @@
   align-items: center;
   text-align: center;
   gap: 6px;
-  padding: 16px 10px;
-  background: var(--bg-color);
+  padding: 14px 8px;
+  background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
 }
@@ -203,14 +225,14 @@
 }
 
 .flowLabel {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--text-color);
   line-height: 1.3;
 }
 
 .flowSub {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 300;
   color: var(--secondary-text);
   line-height: 1.35;
@@ -229,25 +251,24 @@
 .guidelineGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 30px;
-  margin-top: 30px;
+  gap: 16px;
+  margin-top: 25px;
 }
 
 .guidelineCard {
   display: flex;
   align-items: baseline;
   gap: 11px;
-  padding: 24px 24px 26px;
-  background: var(--card-bg);
+  padding: 18px 20px;
+  background: var(--bg-color);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
 }
 
 .guidelineCode {
   flex: none;
-  font-family: var(--font-display);
-  font-size: 1rem;
+  font-family: 'Lora', serif;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--main-color);
 }
@@ -262,25 +283,24 @@
 /* --- Kapsam ve sinir notu --- */
 
 .noteBox {
-  margin-top: 30px;
-  padding: 20px 24px;
-  background: var(--main-tint);
+  margin-top: 25px;
+  padding: 18px 22px;
+  background: rgba(140, 123, 101, 0.12);
   border-left: 3px solid var(--main-color);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
 .noteBox p {
   margin: 0;
-  max-width: 74ch;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 300;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--secondary-text);
 }
 
 /* --- Mobil --- */
 
-@media (max-width: 820px) {
+@media (max-width: 850px) {
   .flowchartGrid {
     flex-direction: column;
   }
@@ -308,21 +328,17 @@
 }
 
 @media (max-width: 560px) {
-  .section {
-    margin-top: 34px;
+  .headerCard,
+  .sectionCard {
+    padding: 26px 22px;
+  }
+
+  .title {
+    font-size: 1.8rem;
   }
 
   .cols3,
   .cols2 {
     grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .page,
-  .page *,
-  .page *::before,
-  .page *::after {
-    transition-duration: 0.001ms !important;
   }
 }

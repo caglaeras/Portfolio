@@ -27,7 +27,7 @@ function Section({
   children?: React.ReactNode;
 }) {
   return (
-    <section className={styles.section}>
+    <section className={styles.sectionCard}>
       <div className={styles.sectionHead}>
         <span className={styles.sectionNum}>{num}</span>
         <h3 className={styles.sectionHeading}>{title}</h3>
@@ -74,11 +74,17 @@ export default function GrowthAutomationPage() {
   ];
 
   return (
-    <div className={styles.page}>
-      {/* Baslik bloğu diger proje sekmeleriyle ayni kalipta. */}
-      <header>
-        <h2 className={styles.pageTitle}>{data.title}</h2>
-        <p className={styles.pageLead}>{data.subtitle}</p>
+    <div className={styles.container}>
+      {/* Baslik blogu Gen Ciftligi sayfasiyla ayni kalipta. */}
+      <header className={styles.headerCard}>
+        <span className={styles.badge}>
+          <i className="fas fa-chart-line" style={{ marginRight: "6px" }} aria-hidden="true"></i>
+          {data.badge}
+        </span>
+        {/* Gorunum Gen Ciftligi ile ayni; layout zaten bir h1 bastigi icin
+            burada h2 kullaniliyor. */}
+        <h2 className={styles.title}>{data.title}</h2>
+        <p className={styles.subtitle}>{data.subtitle}</p>
         <ul className={styles.chipRow}>
           {chips.map((chip) => (
             <li key={chip}>{chip}</li>

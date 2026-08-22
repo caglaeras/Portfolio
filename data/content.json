@@ -185,7 +185,8 @@
       "buildPanelMeta": "ZIP arşivi, 35 MB, açıldığında 119 MB"
     },
     "growthAutomation": {
-      "title": "Sağlık İletişiminde Büyüme Pazarlaması ve İçerik Otomasyonu",
+      "badge": "Sağlık İletişimi Vaka Çalışması",
+      "title": "Büyüme Pazarlaması ve İçerik Otomasyonu",
       "subtitle": "n8n içerik hattı, formüle bağlı video üretimi, literatüre dayalı risk testi",
       "chip1": "n8n otomasyonu",
       "chip2": "GEO ve SEO",
@@ -429,7 +430,8 @@
       "buildPanelMeta": "ZIP archive, 35 MB, 119 MB extracted"
     },
     "growthAutomation": {
-      "title": "Growth Marketing and Content Automation in Health Communication",
+      "badge": "Health Communication Case Study",
+      "title": "Growth Marketing and Content Automation",
       "subtitle": "An n8n content pipeline, formula driven video production, a literature based risk assessment",
       "chip1": "n8n automation",
       "chip2": "GEO and SEO",
