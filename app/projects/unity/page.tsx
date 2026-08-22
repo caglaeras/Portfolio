@@ -172,10 +172,17 @@ export default function Unity() {
   const [playingId, setPlayingId] = useState<string | null>(null);
 
   return (
-    <div className={styles.page}>
-      <header>
-        <h2 className={styles.pageTitle}>{copy.title}</h2>
-        <p className={styles.pageLead}>{copy.lead}</p>
+    <div className={`${styles.page} ${styles.container}`}>
+      {/* Baslik blogu Gen Ciftligi sayfasiyla ayni kalipta; sekmeler arasi
+          gecerken duzen degismiyor. Layout zaten bir h1 bastigi icin
+          buradaki baslik h2. */}
+      <header className={styles.headerCard}>
+        <span className={styles.badge}>
+          <i className="fas fa-cube" aria-hidden="true"></i>
+          {copy.badge}
+        </span>
+        <h2 className={styles.title}>{copy.title}</h2>
+        <p className={styles.subtitle}>{copy.lead}</p>
       </header>
 
       <p className={styles.hint}>{copy.reelHint}</p>

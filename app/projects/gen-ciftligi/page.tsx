@@ -33,7 +33,8 @@ export default function GenCiftligiPage() {
           <i className="fas fa-gamepad" style={{ marginRight: "6px" }}></i>
           {language === "tr" ? "Eğitsel Oyun & Araştırma Vaka Çalışması" : "Educational Game & Research Case Study"}
         </span>
-        <h1 className={styles.title}>{data.title}</h1>
+        {/* Layout zaten bir h1 bastigi icin sayfa basligi h2. */}
+        <h2 className={styles.title}>{data.title}</h2>
         <p className={styles.subtitle}>{data.subtitle}</p>
       </header>
 

@@ -3,11 +3,68 @@
  * Serit components/Reel, palet ve fontlar app/globals.css icinden gelir.
  */
 
+/* --- Sayfa kabugu: olculer GenCiftligi.module.css ile ayni --------------- */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 950px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.headerCard {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 40px 35px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--main-tint);
+  color: var(--main-color);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2.2rem;
+  line-height: 1.25;
+  font-family: var(--font-display);
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+@media (max-width: 560px) {
+  .headerCard {
+    padding: 26px 22px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
 .page {
   --main-tint: rgba(140, 123, 101, 0.12);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --font-display: 'Lora', Georgia, serif;
-  display: block;
 }
 
 .page h2,
@@ -18,32 +75,7 @@
   line-height: 1.25;
 }
 
-.pageTitle {
-  font-size: clamp(2rem, 4.4vw, 2.7rem);
-  margin-bottom: 16px;
-  position: relative;
-  padding-bottom: 22px;
-}
-
-.pageTitle::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 44px;
-  height: 2px;
-  background: var(--main-color);
-}
-
-.pageLead {
-  max-width: 62ch;
-  color: var(--secondary-text);
-  font-weight: 300;
-  font-size: 1.03rem;
-}
-
 .hint {
-  margin: 26px 0 14px;
   font-size: 0.8rem;
   color: var(--secondary-text);
   opacity: 0.75;

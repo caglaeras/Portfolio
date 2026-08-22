@@ -73,6 +73,7 @@
       ]
     },
     "unity": {
+      "badge": "Unity 3D ve C# Oyun Geliştirme",
       "title": "Unity ile Geliştirdiğim Projeler",
       "lead": "Oyun motoru Unity ve C# kullanarak geliştirdiğim prototipler, mobil oyunlar ve interaktif simülasyonlar. Oyun tasarımı ve geliştirme becerilerimi gösteren çalışmalar.",
       "playVideo": "videosunu oynat",
@@ -86,6 +87,7 @@
       "reelHint": "Gezinmek için okları kullanın"
     },
     "web": {
+      "badge": "Web Uygulama Geliştirme",
       "title": "Web Geliştirme Projeleri",
       "lead": "Web programlama derslerim ve bireysel çalışmalarım sonucunda ortaya çıkan web projelerim.",
       "previewBtn": "Canlı Önizleme",
@@ -112,6 +114,7 @@
       "openReportFor": "proje raporunu yeni sekmede aç"
     },
     "other": {
+      "badge": "Ders Projeleri ve Belgeler",
       "title": "Academic Work",
       "lead": "Eğitim teknolojileri, öğretim tasarımı, veritabanı planlaması ve içerik üretimi alanlarında yürüttüğüm akademik çalışmalar.",
       "downloadBtn": "İndir / Görüntüle",
@@ -148,6 +151,7 @@
       }
     },
     "marketing": {
+      "badge": "Sosyal Medya ve Kreatif",
       "title": "Marketing Portföyüm",
       "lead": "Pazarlama ve içerik üretimi odaklı hazırladığım görsel ve video çalışmalarım.",
       "intro": "Bu galeri, pazarlama ve içerik üretimi kapsamında hazırladığım video ve görsel çalışmaları bir arada topluyor. Şeritleri yatay olarak kaydırarak gezebilir, oynatmak için video kartlarına, büyütmek için görsellere tıklayabilirsiniz. Her kartın altındaki satır çalışmanın ne olduğunu ve hangi amaçla üretildiğini özetler.",
@@ -317,6 +321,7 @@
       ]
     },
     "unity": {
+      "badge": "Unity 3D and C# Game Development",
       "title": "Projects Developed with Unity",
       "lead": "Prototypes, mobile games, and interactive simulations I developed using the Unity game engine and C#. These works showcase my game design and development skills.",
       "playVideo": "video, play",
@@ -330,6 +335,7 @@
       "reelHint": "Use the arrows to browse"
     },
     "web": {
+      "badge": "Web Application Development",
       "title": "Web Development Projects",
       "lead": "Web projects created through my web programming courses and independent work.",
       "previewBtn": "Live Preview",
@@ -356,6 +362,7 @@
       "openReportFor": "project report, open in a new tab"
     },
     "other": {
+      "badge": "Coursework and Documentation",
       "title": "Academic Work",
       "lead": "Academic work in educational technology, instructional design, database planning and content production.",
       "downloadBtn": "View / Download",
@@ -392,6 +399,7 @@
       }
     },
     "marketing": {
+      "badge": "Social Media and Creative",
       "title": "Marketing Portfolio",
       "lead": "My visual and video works focused on marketing and content production.",
       "intro": "This gallery brings together the video and visual work I produced for marketing and content production. Scroll each strip sideways to browse it, click a video card to play it, and click a visual to open it full size. The line under every card summarises what the piece is and what it was made for.",

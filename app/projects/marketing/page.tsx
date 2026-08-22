@@ -294,9 +294,10 @@ export default function Marketing() {
       <header className={styles.headerCard}>
         <span className={styles.badge}>
           <i className="fas fa-photo-film" aria-hidden="true"></i>
-          Social Media &amp; Creative
+          {copy.badge}
         </span>
-        <h1 className={styles.title}>{copy.title}</h1>
+        {/* Layout zaten bir h1 bastigi icin sayfa basligi h2. */}
+        <h2 className={styles.title}>{copy.title}</h2>
         <p className={styles.subtitle}>{copy.lead}</p>
         <div className={styles.introBox}>
           <p>{copy.intro}</p>
