@@ -162,24 +162,6 @@ export const marketingVisuals: MarketingVisual[] = [
     note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster example created for a game promotion." },
   },
   {
-    id: "img4",
-    type: "visual",
-    src: "/images/freeproject1.png",
-    width: 1024,
-    height: 768,
-    label: { tr: "Maxxine Serbest Çalışma", en: "Maxxine Free Work" },
-    note: { tr: "Poster çalışması.", en: "Poster design work." },
-  },
-  {
-    id: "img5",
-    type: "visual",
-    src: "/images/freeproject2.png",
-    width: 1024,
-    height: 768,
-    label: { tr: "little Women Serbest Çalışma", en: "Little Women Free Work" },
-    note: { tr: "Poster çalışması.", en: "Poster design work." },
-  },
-  {
     id: "img6",
     type: "visual",
     src: "/images/pre-r_announcement.png",
@@ -266,4 +248,4 @@ export const marketingVisuals: MarketingVisual[] = [
 export const captionFor = (
   item: MarketingVideo | MarketingVisual,
   language: "tr" | "en"
-): string => `${item.label[language]} — ${item.note[language]}`;
+): string => `${item.label[language]} - ${item.note[language]}`;

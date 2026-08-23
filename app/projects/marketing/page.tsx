@@ -62,7 +62,7 @@ function Caption({ item, language }: { item: MarketingVideo | MarketingVisual; l
   return (
     <div className={styles.captionBox}>
       <p className={styles.captionLine} title={full}>
-        <strong>{item.label[language]}</strong> — {item.note[language]}
+        <strong>{item.label[language]}</strong> - {item.note[language]}
       </p>
     </div>
   );
@@ -130,7 +130,7 @@ function YouTubeCard({
           <button
             type="button"
             className={styles.mediaBtn}
-            aria-label={`${playLabel} — ${caption}`}
+            aria-label={`${playLabel} - ${caption}`}
             onClick={() => onPlay(item.id)}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -223,7 +223,7 @@ function FileVideoCard({
         }}
         role="button"
         tabIndex={0}
-        aria-label={`${playing ? pauseLabel : playLabel} — ${caption}`}
+        aria-label={`${playing ? pauseLabel : playLabel} - ${caption}`}
       >
         <video
           ref={videoRef}
@@ -347,7 +347,7 @@ export default function Marketing() {
               <button
                 type="button"
                 className={styles.media}
-                aria-label={`${copy.zoomLabel} — ${caption}`}
+                aria-label={`${copy.zoomLabel} - ${caption}`}
                 onClick={() => setLightbox(item)}
               >
                 <Image
