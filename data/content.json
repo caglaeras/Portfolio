@@ -19,7 +19,7 @@
         "title": "Uzmanlık & Yetkinlikler",
         "programming": { "title": "Programlama", "items": ["Python", "SQL", "C#"] },
         "edtech": { "title": "Eğitim Teknolojisi & Araştırma", "items": ["Unity", "Öğretim Tasarımı", "SPSS", "Nicel Araştırma Metodolojisi", "Kullanıcı Araştırması"] },
-        "marketing": { "title": "Pazarlama & Büyüme", "items": ["Meta Ads", "Google Ads", "Google Analytics", "n8n Otomasyon", "İçerik Pazarlaması", "Notion"] },
+        "marketing": { "title": "Pazarlama & Büyüme", "items": ["Meta Ads", "Google Ads", "Google Analytics", "SEO", "n8n Otomasyon", "İçerik Pazarlaması", "Notion"] },
         "design": { "title": "Tasarım & Medya", "items": ["Canva", "Adobe Premiere Pro", "HTML / CSS"] }
       }
     },
@@ -284,7 +284,7 @@
         "title": "Skills & Expertise",
         "programming": { "title": "Programming", "items": ["Python", "SQL", "C#"] },
         "edtech": { "title": "EdTech & Research", "items": ["Unity", "Instructional Design", "SPSS", "Quantitative Research", "User Research"] },
-        "marketing": { "title": "Marketing & Growth", "items": ["Meta Ads", "Google Ads", "Google Analytics", "n8n", "Content Marketing", "Notion"] },
+        "marketing": { "title": "Marketing & Growth", "items": ["Meta Ads", "Google Ads", "Google Analytics", "SEO", "n8n", "Content Marketing", "Notion"] },
         "design": { "title": "Design & Media", "items": ["Canva", "Adobe Premiere Pro", "HTML / CSS"] }
       }
     },
