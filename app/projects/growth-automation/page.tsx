@@ -83,11 +83,12 @@ export default function GrowthAutomationPage() {
     { code: "ESMO", name: "European Society for Medical Oncology" },
   ];
 
+  /* Yer tutucular kesikli cerceveyle, olculmus deger duz bicimde cikar. */
   const metrics = [
     { label: data.m1Label, value: data.m1Value },
     { label: data.m2Label, value: data.m2Value },
     { label: data.m3Label, value: data.m3Value },
-  ];
+  ].map((m) => ({ ...m, pending: m.value.startsWith("[METRIC:") }));
 
   const slots = [data.slot1, data.slot2, data.slot3, data.slot4, data.slot5, data.slot6, data.slot7];
 
@@ -175,7 +176,7 @@ export default function GrowthAutomationPage() {
           {metrics.map((m) => (
             <div key={m.label} className={styles.metricCard}>
               <span className={styles.metricLabel}>{m.label}</span>
-              <span className={styles.metricValue}>{m.value}</span>
+              <span className={m.pending ? styles.metricValue : styles.metricFilled}>{m.value}</span>
             </div>
           ))}
         </div>
@@ -232,6 +233,8 @@ export default function GrowthAutomationPage() {
           { label: data.o2Label, text: data.o2Text },
           { label: data.o3Label, text: data.o3Text },
           { label: data.o4Label, text: data.o4Text },
+          { label: data.o5Label, text: data.o5Text },
+          { label: data.o6Label, text: data.o6Text },
         ]}
       />
     </div>

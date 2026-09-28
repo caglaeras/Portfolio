@@ -6,10 +6,17 @@ import styles from "../vizyon/Vizyon.module.css";
 
 /*
  * Rozet sirasina karsilik gelen ikonlar: mezuniyet derecesi, bolum odulu,
- * Hikmet Sebuktekin odulu adayligi, egitmenlik. Liste buyurse sondakiler
- * varsayilan ikonla cikar.
+ * Hikmet Sebuktekin odulu adayligi, egitmenlik, iki sertifika. Liste
+ * buyurse sondakiler varsayilan ikonla cikar.
  */
-const CREDIBILITY_ICONS = ["fa-trophy", "fa-award", "fa-medal", "fa-chalkboard-teacher"];
+const CREDIBILITY_ICONS = [
+  "fa-trophy",
+  "fa-award",
+  "fa-medal",
+  "fa-chalkboard-teacher",
+  "fa-certificate",
+  "fa-certificate",
+];
 
 export default function Education() {
   const { content } = useLanguage();
@@ -21,6 +28,13 @@ export default function Education() {
       <h1 className={styles.pageTitle}>{content.nav.education}</h1>
 
       <div className={`card-glass ${styles.section}`}>
+        {t.degree && (
+          <p style={{ fontSize: "0.95rem", color: "var(--secondary-text)", fontWeight: 300, marginBottom: "25px" }}>
+            <i className="fas fa-building-columns" style={{ color: "var(--main-color)", marginRight: "10px" }} aria-hidden="true"></i>
+            {t.degree}
+          </p>
+        )}
+
         {t.credibility && (
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "35px" }}>
             {t.credibility.map((item, idx) => (
@@ -29,6 +43,24 @@ export default function Education() {
                 <span>{item}</span>
               </div>
             ))}
+          </div>
+        )}
+
+        {t.languages && (
+          <div style={{ marginBottom: "35px" }}>
+            <h2 className="section-title" style={{ fontSize: "1.15rem", marginBottom: "14px", paddingBottom: "8px" }}>
+              {t.languagesTitle}
+            </h2>
+            <ul style={{ display: "flex", flexWrap: "wrap", gap: "8px", listStyle: "none", padding: 0, margin: 0 }}>
+              {t.languages.map((lang) => (
+                <li
+                  key={lang}
+                  style={{ fontSize: "0.82rem", fontWeight: 500, color: "var(--main-color-hover)", background: "rgba(140, 123, 101, 0.12)", borderRadius: "100px", padding: "6px 14px" }}
+                >
+                  {lang}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
 

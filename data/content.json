@@ -32,11 +32,21 @@
       "rights": "Çağla Eraslan Portfolyo. Tüm Hakları Saklıdır."
     },
     "vizyon": {
+      "degree": "Boğaziçi Üniversitesi, Bilgisayar ve Öğretim Teknolojileri Eğitimi lisans programı, 2021 - 2026",
+      "languagesTitle": "Diller",
+      "languages": [
+        "Türkçe, anadil",
+        "İngilizce, C1",
+        "İspanyolca, A2",
+        "Almanca, A2"
+      ],
       "credibility": [
         "GANO ile Bölüm Birincisi Mezuniyeti, 3.22 / 4.00",
         "Bölüm Ödülü Sahibi",
         "Hikmet Sebüktekin Ödülü Adayı",
-        "İstanbul Büyükşehir Belediyesi Kodlama Eğitmeni (bir eğitim yılında 50+ öğrenci)"
+        "İstanbul Büyükşehir Belediyesi Kodlama Eğitmeni (bir eğitim yılında 50+ öğrenci)",
+        "McKinsey Forward Programı, McKinsey & Company (Aralık 2025)",
+        "Dijital Pazarlamanın Temelleri, Google Digital Academy (Ekim 2025)"
       ],
       "title": "Eğitim Vizyonum ve Kazanımlarım",
       "visionTitle": "Vizyonum",
@@ -229,13 +239,13 @@
       "limitsTitle": "Sistemin Yapmadıkları",
       "limitsText": "Nüanslı klinik yorum insanda kalıyor: hat bir iddiayı kılavuzla karşılaştırabiliyor, kılavuzu tek bir hastayla karşılaştıramıyor. Kılavuz eşiğini geçemeyen içerik yayınlanmıyor, yani sistemin çıktısı yazdığı taslak sayısından küçük. Klinik inceleme de sistemin atlayabileceği bir aşama değil: sistem insan incelemesinin yerini almıyor, ona iş hazırlıyor.",
       "resultsTitle": "Sonuçlar",
-      "resultsDesc": "Aşağıdaki üç ölçüm sistemin nasıl çalıştığını tarif ediyor. Değerler henüz doldurulmadı.",
+      "resultsDesc": "Aşağıdaki üç ölçüm sistemin nasıl çalıştığını tarif ediyor. Üretim süresi ölçüldü, diğer iki değer doldurulacak.",
       "m1Label": "Haftalık taslak",
       "m1Value": "[METRIC: haftalık taslak sayısı]",
       "m2Label": "Yayın eşiğini geçme oranı",
       "m2Value": "[METRIC: yayın eşiğini geçme oranı]",
       "m3Label": "Üretim süresi",
-      "m3Value": "[METRIC: içerik üretim süresi değişimi]",
+      "m3Value": "Manuel üretim süresinde %40 azalma",
       "videoTitle": "İkinci Bir Sistem: Video Senaryo Formülü",
       "videoDesc": "Formül senaryonun sırasını yedi slota sabitliyor, böylece yeni bir video boş sayfadan değil bir yapıdan başlıyor. Notion üzerinde video production brief sistemi olarak kurulu: her brief, doldurulmuş yedi slot. Amaç video başına özgünlük değil, tutarlılık ve tekrarlanabilirlik.",
       "slot1": "Kanca",
@@ -253,15 +263,19 @@
       "a2Text": "Sorular ve risk faktörleri literatür taramasıyla derlendi. Bilgilendirir ve hekime yönlendirir, huninin girişinde durur.",
       "alsoNote": "Metinler sağlık hukuku sınırları gözetilerek yazıldı: amaç bilgilendirme ve farkındalık, teşhis değil.",
       "opsTitle": "İçerik ve Büyüme Operasyonu",
-      "opsDesc": "Sistemlerin yanında içerik ve büyümenin günlük işleyişini yürüttüm.",
+      "opsDesc": "Sistemlerin yanında içerik ve büyümenin günlük işleyişini yürüttüm. Yaklaşık 10 kişilik çekirdek ekipte, pazarlama fonksiyonunu sıfırdan kuran ekibin içindeydim.",
       "o1Label": "Sosyal medya ve büyüme",
-      "o1Text": "Kanal yönetimi ve büyüme girişimleri; etkileşimi performans analitiğiyle optimize etme.",
-      "o2Label": "Çok kanallı içerik",
-      "o2Text": "Blog, sosyal ve e-posta kanallarında içerik pazarlaması; editoryal planlama, webinar konseptleri.",
-      "o3Label": "Kampanya kurgusu",
-      "o3Text": "Birimler arası kampanyalar; bilinirlik ve potansiyel müşteri aynı takvimde.",
-      "o4Label": "Web sitesi katkısı",
-      "o4Text": "Özellik planlaması ve kullanıcı deneyimi iyileştirmelerine katkı."
+      "o1Text": "Instagram hesabını lansmandan 6.6K takipçiye taşıdım; görüntülemelerin %72'si takipçi dışından geliyor.",
+      "o2Label": "Ücretli sosyal, Meta Ads",
+      "o2Text": "Lead kampanyalarını uçtan uca yürüttüm: 1.400 lead, %2,2 link CTR, Meta ortalamasının yaklaşık iki katı. Şubat ve Haziran 2026 arasında kreatif ve hedef kitle testleriyle lead başına maliyeti %60 düşürdüm.",
+      "o3Label": "Çok kanallı içerik",
+      "o3Text": "Blog, sosyal ve e-posta kanallarında içerik pazarlaması; editoryal planlama, bir editör ve bir tasarımcının yönlendirilmesi.",
+      "o4Label": "Webinar serisi",
+      "o4Text": "13 oturumluk seriyi kurguladım ve yürüttüm; reklamla gelen 820+ kayıt.",
+      "o5Label": "Kampanya kurgusu",
+      "o5Text": "Birimler arası kampanyalar; bilinirlik ve potansiyel müşteri aynı takvimde.",
+      "o6Label": "Web sitesi katkısı",
+      "o6Text": "Ürün ve geliştirme ekipleriyle birlikte özellik planlaması ve kullanıcı deneyimi iyileştirmeleri."
     }
   },
   "en": {
@@ -297,11 +311,21 @@
       "rights": "Çağla Eraslan Portfolio. All Rights Reserved."
     },
     "vizyon": {
+      "degree": "B.Sc. in Computer Education and Educational Technology, Boğaziçi University, 2021 - 2026",
+      "languagesTitle": "Languages",
+      "languages": [
+        "Turkish, native",
+        "English, C1",
+        "Spanish, A2",
+        "German, A2"
+      ],
       "credibility": [
         "Ranked 1st in Cohort by GPA, 3.22 / 4.00",
         "Departmental Award Recipient",
         "Nominee, Hikmet Sebüktekin Award",
-        "Coding Instructor at Istanbul Metropolitan Municipality (50+ students over one academic year)"
+        "Coding Instructor at Istanbul Metropolitan Municipality (50+ students over one academic year)",
+        "McKinsey Forward Program, McKinsey & Company (Dec 2025)",
+        "Fundamentals of Digital Marketing, Google Digital Academy (Oct 2025)"
       ],
       "title": "My Educational Vision and Achievements",
       "visionTitle": "My Vision",
@@ -494,13 +518,13 @@
       "limitsTitle": "What the System Doesn't Do",
       "limitsText": "Nuanced clinical interpretation stays with a person: the pipeline can hold a claim against a guideline, it cannot hold a guideline against one patient. Content that does not clear the guideline threshold is not published, so the system's output is smaller than the number of drafts it writes. And the clinical review is not a step the system can route around: it does not replace human review, it prepares work for it.",
       "resultsTitle": "Results",
-      "resultsDesc": "These three measurements describe how the system runs. The values are not filled in yet.",
+      "resultsDesc": "These three measurements describe how the system runs. Production time is measured; the other two values are still to be filled in.",
       "m1Label": "Weekly drafts",
       "m1Value": "[METRIC: weekly draft count]",
       "m2Label": "Share clearing the publish threshold",
       "m2Value": "[METRIC: share of drafts clearing the publish threshold]",
       "m3Label": "Production time",
-      "m3Value": "[METRIC: change in content production time]",
+      "m3Value": "40% less manual production time",
       "videoTitle": "A Second System: Video Script Formula",
       "videoDesc": "The formula fixes the order of a script into seven slots, so a new video starts from a structure instead of a blank page. It is set up in Notion as a video production brief system: each brief is the seven slots filled in. The point is consistency and repeatability, not novelty in every video.",
       "slot1": "Hook",
@@ -518,15 +542,19 @@
       "a2Text": "The questions and risk factors were compiled from a literature review. It informs the reader and directs them to a physician, and it sits at the top of the funnel.",
       "alsoNote": "The texts were written within the limits of health law: the purpose is information and awareness, not diagnosis.",
       "opsTitle": "Content and Growth Operations",
-      "opsDesc": "Alongside the systems I ran the day to day of content and growth.",
+      "opsDesc": "Alongside the systems I ran the day to day of content and growth. On a roughly 10 person core team, I was part of the group that built the marketing function from zero.",
       "o1Label": "Social and growth",
-      "o1Text": "Channel management and growth initiatives, tuning engagement against performance analytics.",
-      "o2Label": "Multi channel content",
-      "o2Text": "Content marketing across blog, social and email; editorial planning, webinar concepts.",
-      "o3Label": "Campaign design",
-      "o3Text": "Cross functional campaigns, with awareness and lead generation on one calendar.",
-      "o4Label": "Website contribution",
-      "o4Text": "Input into feature planning and user experience improvements."
+      "o1Text": "I took the Instagram account from launch to 6.6K followers, with 72% of views coming from non-followers.",
+      "o2Label": "Paid social, Meta Ads",
+      "o2Text": "I ran lead generation campaigns end to end: 1,400 leads at a 2.2% link CTR, roughly double the Meta average. Between February and June 2026, creative and audience testing cut the cost per lead by 60%.",
+      "o3Label": "Multi channel content",
+      "o3Text": "Content marketing across blog, social and email; editorial planning, and directing an editor and a designer.",
+      "o4Label": "Webinar series",
+      "o4Text": "I designed and ran a 13 session series, with 820+ registrations driven by ads.",
+      "o5Label": "Campaign design",
+      "o5Text": "Cross functional campaigns, with awareness and lead generation on one calendar.",
+      "o6Label": "Website contribution",
+      "o6Text": "Working with the product and development teams on website features and user experience improvements."
     }
   }
 }

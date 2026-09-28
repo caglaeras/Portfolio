@@ -376,6 +376,15 @@
   opacity: 0.85;
 }
 
+/* Olculmus deger: yer tutucunun kesikli cercevesi yerine duz vurgu. */
+.metricFilled {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 6px 0 0;
+}
+
 /* --- Video senaryo formulu: yedi slot --- */
 
 /*
