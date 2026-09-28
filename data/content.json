@@ -18,8 +18,8 @@
       "skills": {
         "title": "Uzmanlık & Yetkinlikler",
         "programming": { "title": "Programlama", "items": ["Python", "SQL", "C#"] },
-        "edtech": { "title": "Eğitim Teknolojisi & Araştırma", "items": ["Unity", "Öğretim Tasarımı", "SPSS", "Nicel Araştırma Metodolojisi"] },
-        "marketing": { "title": "Pazarlama & Büyüme", "items": ["Meta Ads", "Google Ads", "Google Analytics", "n8n Otomasyon", "İçerik Pazarlaması"] },
+        "edtech": { "title": "Eğitim Teknolojisi & Araştırma", "items": ["Unity", "Öğretim Tasarımı", "SPSS", "Nicel Araştırma Metodolojisi", "Kullanıcı Araştırması"] },
+        "marketing": { "title": "Pazarlama & Büyüme", "items": ["Meta Ads", "Google Ads", "Google Analytics", "n8n Otomasyon", "İçerik Pazarlaması", "Notion"] },
         "design": { "title": "Tasarım & Medya", "items": ["Canva", "Adobe Premiere Pro", "HTML / CSS"] }
       }
     },
@@ -33,9 +33,9 @@
     },
     "vizyon": {
       "credibility": [
-        "Bölüm Birincisi Mezuniyeti, GANO: 3.22 / 4.00",
-        "Hikmet Sebüktekin Ödülü Adayı",
-        "İstanbul Büyükşehir Belediyesi Kodlama Eğitmeni (~50 ortaokul öğrencisi)"
+        "Bölüm Birincisi Mezuniyeti, Boğaziçi Üniversitesi CET",
+        "Bölüm Ödülü Sahibi",
+        "İstanbul Büyükşehir Belediyesi Kodlama Eğitmeni (bir eğitim yılında 50+ öğrenci)"
       ],
       "title": "Eğitim Vizyonum ve Kazanımlarım",
       "visionTitle": "Vizyonum",
@@ -282,8 +282,8 @@
       "skills": {
         "title": "Skills & Expertise",
         "programming": { "title": "Programming", "items": ["Python", "SQL", "C#"] },
-        "edtech": { "title": "EdTech & Research", "items": ["Unity", "Instructional Design", "SPSS", "Quantitative Research"] },
-        "marketing": { "title": "Marketing & Growth", "items": ["Meta Ads", "Google Ads", "Google Analytics", "n8n", "Content Marketing"] },
+        "edtech": { "title": "EdTech & Research", "items": ["Unity", "Instructional Design", "SPSS", "Quantitative Research", "User Research"] },
+        "marketing": { "title": "Marketing & Growth", "items": ["Meta Ads", "Google Ads", "Google Analytics", "n8n", "Content Marketing", "Notion"] },
         "design": { "title": "Design & Media", "items": ["Canva", "Adobe Premiere Pro", "HTML / CSS"] }
       }
     },
@@ -297,9 +297,9 @@
     },
     "vizyon": {
       "credibility": [
-        "Graduated 1st in Cohort, GPA 3.22 / 4.00",
-        "Nominee, Hikmet Sebüktekin Award",
-        "Coding Instructor at Istanbul Metropolitan Municipality (~50 middle school students)"
+        "Ranked 1st in Cohort, Boğaziçi University CET",
+        "Departmental Award Recipient",
+        "Coding Instructor at Istanbul Metropolitan Municipality (50+ students over one academic year)"
       ],
       "title": "My Educational Vision and Achievements",
       "visionTitle": "My Vision",

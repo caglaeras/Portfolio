@@ -60,7 +60,7 @@ export default function RootLayout({
         <noscript>
           <div style={{ padding: "40px", maxWidth: "800px", margin: "0 auto", fontFamily: "sans-serif", color: "#1a1a1a" }}>
             <h1>Çağla Eraslan - Educational Technologist &amp; Growth Marketer</h1>
-            <p>Boğaziçi University CET Class of 2026 (Graduated 1st in Cohort, GPA: 3.22/4.00).</p>
+            <p>Boğaziçi University CET Class of 2026, graduated ranked 1st in cohort and departmental award recipient.</p>
             <p>Designing interactive learning experiences in Unity and web, and running data-driven growth marketing with Meta Ads and n8n + LLM automation.</p>
             <h2>Navigation &amp; Key Projects</h2>
             <ul>
