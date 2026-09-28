@@ -17,6 +17,7 @@ function Section({
   points,
   cols = 3,
   children,
+  footer,
 }: {
   num: string;
   title: string;
@@ -25,6 +26,8 @@ function Section({
   /** Uc maddeli bolumler ucer, dort maddeli bolum ikiser dizilir. */
   cols?: 2 | 3;
   children?: React.ReactNode;
+  /** Kartlardan sonra gelen icerik, ornegin bir uyari kutusu. */
+  footer?: React.ReactNode;
 }) {
   return (
     <section className={styles.sectionCard}>
@@ -47,6 +50,8 @@ function Section({
           ))}
         </div>
       )}
+
+      {footer}
     </section>
   );
 }
@@ -203,18 +208,19 @@ export default function GrowthAutomationPage() {
           { label: data.a1Label, text: data.a1Text },
           { label: data.a2Label, text: data.a2Text },
         ]}
-      >
-        <div className={styles.noteBox}>
-          <p>
-            <i
-              className="fas fa-scale-balanced"
-              style={{ marginRight: "8px", color: "var(--main-color)" }}
-              aria-hidden="true"
-            ></i>
-            {data.alsoNote}
-          </p>
-        </div>
-      </Section>
+        footer={
+          <div className={styles.noteBox}>
+            <p>
+              <i
+                className="fas fa-scale-balanced"
+                style={{ marginRight: "8px", color: "var(--main-color)" }}
+                aria-hidden="true"
+              ></i>
+              {data.alsoNote}
+            </p>
+          </div>
+        }
+      />
 
       <Section
         num="07"
