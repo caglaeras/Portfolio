@@ -4,6 +4,13 @@ import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "../vizyon/Vizyon.module.css"; 
 
+/*
+ * Rozet sirasina karsilik gelen ikonlar: mezuniyet derecesi, bolum odulu,
+ * Hikmet Sebuktekin odulu adayligi, egitmenlik. Liste buyurse sondakiler
+ * varsayilan ikonla cikar.
+ */
+const CREDIBILITY_ICONS = ["fa-trophy", "fa-award", "fa-medal", "fa-chalkboard-teacher"];
+
 export default function Education() {
   const { content } = useLanguage();
   const t = content.vizyon;
@@ -18,7 +25,7 @@ export default function Education() {
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "35px" }}>
             {t.credibility.map((item, idx) => (
               <div key={idx} style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: "rgba(140, 123, 101, 0.08)", borderLeft: "3px solid var(--main-color)", padding: "12px 18px", borderRadius: "0 4px 4px 0", fontSize: "0.95rem", fontWeight: 500, color: "var(--text-color)" }}>
-                <i className={`fas ${idx === 0 ? "fa-trophy" : idx === 1 ? "fa-award" : "fa-chalkboard-teacher"}`} style={{ color: "var(--main-color)", fontSize: "1.1rem" }}></i>
+                <i className={`fas ${CREDIBILITY_ICONS[idx] ?? "fa-circle-check"}`} style={{ color: "var(--main-color)", fontSize: "1.1rem" }}></i>
                 <span>{item}</span>
               </div>
             ))}
