@@ -27,3 +27,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Unity WebGL cikti klasoru: yayina giren kopya public/games/ altinda,
+# kokteki bu klasor yalnizca Unity'nin export hedefi.
+/WebGl/
