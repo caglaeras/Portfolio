@@ -182,7 +182,16 @@ export default function GrowthAutomationPage() {
         </div>
       </Section>
 
-      <Section num="05" title={data.videoTitle} lead={data.videoDesc}>
+      <Section
+        num="05"
+        title={data.videoTitle}
+        lead={data.videoDesc}
+        points={[
+          { label: data.vp1Label, text: data.vp1Text },
+          { label: data.vp2Label, text: data.vp2Text },
+          { label: data.vp3Label, text: data.vp3Text },
+        ]}
+      >
         <div className={styles.slotStrip}>
           {slots.map((slot, i) => (
             <React.Fragment key={slot}>
@@ -198,6 +207,11 @@ export default function GrowthAutomationPage() {
             </React.Fragment>
           ))}
         </div>
+
+        {/* Formulun ustundeki uretim katmani: kartlar bu girisi acar. */}
+        <p className={styles.bodyText} style={{ marginTop: "25px" }}>
+          {data.vpLead}
+        </p>
       </Section>
 
       <Section
