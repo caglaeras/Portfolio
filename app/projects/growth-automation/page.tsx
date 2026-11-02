@@ -87,7 +87,10 @@ export default function GrowthAutomationPage() {
    * Yalnizca olculmus degerler burada duruyor. Olculmemis bir metrik, yer
    * tutucu metniyle yayinda durmaktansa listede hic bulunmuyor.
    */
-  const metrics = [{ label: data.m3Label, value: data.m3Value }];
+  const metrics = [
+    { label: data.m1Label, value: data.m1Value },
+    { label: data.m2Label, value: data.m2Value },
+  ];
 
   const slots = [data.slot1, data.slot2, data.slot3, data.slot4, data.slot5, data.slot6, data.slot7];
 

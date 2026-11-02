@@ -215,31 +215,6 @@
   border: 0;
 }
 
-.pdfHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.disclaimerBox {
-  background: #FFFBF2;
-  border-left: 4px solid #D97706;
-  padding: 16px 20px;
-  border-radius: 0 4px 4px 0;
-  margin-top: 25px;
-}
-
-.disclaimerText {
-  font-size: 0.92rem;
-  color: #92400E;
-  font-weight: 500;
-  line-height: 1.6;
-  margin: 0;
-}
-
 @media (max-width: 850px) {
   .overviewGrid {
     grid-template-columns: 1fr;
@@ -294,4 +269,60 @@
   letter-spacing: 0.04em;
   color: var(--secondary-text);
   opacity: 0.8;
+}
+
+/* --- Veri notu --------------------------------------------------------- */
+
+/*
+ * Renkler sabit yazilmiyor. Zemin ana rengin yari saydam tonu, metin
+ * --secondary-text: ikisi de temanin kendi degiskenlerinden besleniyor.
+ * Sitede henuz koyu tema yok ve sayfa isletim sistemi koyu olsa da acik
+ * kaliyor, bu yuzden prefers-color-scheme kurali yok; koyu tema eklenirse
+ * kutu degiskenlerle birlikte kendiliginden donusur.
+ */
+.dataNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding: 16px 20px;
+  background: rgba(140, 123, 101, 0.1);
+  border-left: 3px solid var(--main-color);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.dataNoteIcon {
+  flex: none;
+  margin-top: 3px;
+  font-size: 0.95rem;
+  color: var(--main-color);
+}
+
+.dataNoteText {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--secondary-text);
+}
+
+/* Not kutusundan sonra tek basina duran indirme baglantisi. */
+.pdfBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 560px) {
+  .dataNote {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .pdfBtn {
+    width: 100%;
+    justify-content: center;
+  }
 }

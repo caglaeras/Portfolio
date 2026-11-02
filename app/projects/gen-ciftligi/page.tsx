@@ -139,22 +139,26 @@ export default function GenCiftligiPage() {
 
       {/* SECTION 3: READ THE RESEARCH */}
       <section className={styles.sectionCard}>
-        <div className={styles.pdfHeader}>
-          <h2 className={styles.sectionHeading} style={{ margin: 0 }}>
-            {data.researchTitle || "3. Read the Research"}
-          </h2>
+        <h2 className={styles.sectionHeading}>
+          {data.researchTitle || "3. Read the Research"}
+        </h2>
 
-          <a
-            href={pdfPaperUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-main"
-            style={{ padding: "10px 22px", fontSize: "0.85rem" }}
-          >
-            <i className="fas fa-file-pdf" style={{ marginRight: "6px" }}></i>
-            {data.downloadPdfBtn || "Download PDF"}
-          </a>
+        {/* Verinin nasil elde edildigi, rapora gitmeden once okunmali; bu
+            yuzden baslikla indirme baglantisinin arasinda duruyor. */}
+        <div className={styles.dataNote}>
+          <i className={`fas fa-circle-info ${styles.dataNoteIcon}`} aria-hidden="true"></i>
+          <p className={styles.dataNoteText}>{data.dataNote}</p>
         </div>
+
+        <a
+          href={pdfPaperUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`btn-main ${styles.pdfBtn}`}
+        >
+          <i className="fas fa-file-pdf" style={{ marginRight: "6px" }}></i>
+          {data.downloadPdfBtn || "Download PDF"}
+        </a>
 
         <p className={styles.bodyText}>
           {language === "tr"
@@ -169,14 +173,6 @@ export default function GenCiftligiPage() {
             title="Gen Çiftliği Research Paper PDF"
             className={styles.pdfIframe}
           />
-        </div>
-
-        {/* Mandatory Simulated Dataset Disclaimer */}
-        <div className={styles.disclaimerBox}>
-          <p className={styles.disclaimerText}>
-            <i className="fas fa-exclamation-triangle" style={{ marginRight: "8px" }}></i>
-            {data.disclaimer}
-          </p>
         </div>
       </section>
     </div>
