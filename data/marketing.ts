@@ -66,7 +66,7 @@ export type MarketingVideo = YouTubeVideo | FileVideo;
 
 export interface MarketingVisual extends ItemBase {
   type: "visual";
-  /** Path under public/, e.g. "/images/1.png". */
+  /** Path under public/, e.g. "/images/1.webp". */
   src: string;
   width: number;
   height: number;
@@ -137,7 +137,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img1",
     type: "visual",
-    src: "/images/1.png",
+    src: "/images/1.webp",
     width: 1024,
     height: 768,
     label: { tr: "Afiş Örneği 1", en: "Poster Example 1" },
@@ -146,7 +146,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img2",
     type: "visual",
-    src: "/images/3.png",
+    src: "/images/3.webp",
     width: 1024,
     height: 768,
     label: { tr: "Afiş Örneği 2", en: "Poster Example 2" },
@@ -155,7 +155,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img3",
     type: "visual",
-    src: "/images/poster.png",
+    src: "/images/poster.webp",
     width: 1024,
     height: 768,
     label: { tr: "Afiş Örneği 3", en: "Poster Example 3" },
@@ -164,7 +164,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img6",
     type: "visual",
-    src: "/images/pre-r_announcement.png",
+    src: "/images/pre-r_announcement.webp",
     width: 1080,
     height: 1080,
     label: { tr: "Yayın Öncesi Duyuru", en: "Pre-Release Announcement" },
@@ -173,7 +173,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img7",
     type: "visual",
-    src: "/images/blog_announcement.png",
+    src: "/images/blog_announcement.webp",
     width: 1024,
     height: 768,
     label: { tr: "Blog Duyurusu", en: "Blog Announcement" },
@@ -182,7 +182,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img8",
     type: "visual",
-    src: "/images/app_storeimage.png",
+    src: "/images/app_storeimage.webp",
     width: 1080,
     height: 1920,
     label: { tr: "AppStore Görseli", en: "AppStore Visual" },
@@ -191,7 +191,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img9",
     type: "visual",
-    src: "/images/infografik.png",
+    src: "/images/infografik.webp",
     width: 800,
     height: 2000,
     label: { tr: "İnfografik Çalışması", en: "Infographic Design" },
@@ -200,7 +200,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img10",
     type: "visual",
-    src: "/images/announcement_post.gif",
+    src: "/images/announcement_post.webp",
     width: 1080,
     height: 1080,
     label: { tr: "Yeni Mod Duyurusu", en: "New Mode Announcement" },
@@ -209,7 +209,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img11",
     type: "visual",
-    src: "/images/website_announcement.gif",
+    src: "/images/website_announcement.webp",
     width: 800,
     height: 800,
     label: { tr: "Web Sitesi Tanıtımı", en: "Website Promotion" },
@@ -218,7 +218,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img12",
     type: "visual",
-    src: "/images/hs.gif",
+    src: "/images/hs.webp",
     width: 810,
     height: 1012,
     label: { tr: "Sosyal Medya İçeriği", en: "Social Media Content" },
@@ -227,7 +227,7 @@ export const marketingVisuals: MarketingVisual[] = [
   {
     id: "img13",
     type: "visual",
-    src: "/images/dr.gif",
+    src: "/images/dr.webp",
     width: 810,
     height: 1012,
     label: { tr: "Uygulama Tanıtımı", en: "App Promotion" },

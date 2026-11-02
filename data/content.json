@@ -22,7 +22,8 @@
       "growthWorkBtn": "Büyüme Çalışmaları",
       "downloadCv": "CV",
       "letsMeet": "Tanışalım!",
-      "heroImage": "/images/foto.JPEG",
+      "heroImage": "/images/foto.webp",
+      "heroAlt": "Çağla Eraslan'ın portre fotoğrafı",
       "skills": {
         "title": "Uzmanlık ve Yetkinlikler",
         "programming": { "title": "Programlama", "items": ["Python", "SQL", "C#"] },
@@ -316,7 +317,8 @@
       "growthWorkBtn": "Growth Work",
       "downloadCv": "CV",
       "letsMeet": "Let's Connect!",
-      "heroImage": "/images/foto.JPEG",
+      "heroImage": "/images/foto.webp",
+      "heroAlt": "Portrait of Çağla Eraslan",
       "skills": {
         "title": "Expertise and Skills",
         "programming": { "title": "Programming", "items": ["Python", "SQL", "C#"] },

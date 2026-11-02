@@ -44,11 +44,13 @@ export default function Home() {
         <div className={styles.imageWrapper}>
           <Image 
             src={`/Portfolio${t.heroImage}`}
-            alt="Çağla Eraslan Profile Picture" 
+            alt={t.heroAlt}
             className={styles.profileImg}
             width={450}
             height={560}
             unoptimized
+            // Ilk ekrandaki ana gorsel: tembel yuklenirse sayfanin en buyuk icerigi gec belirir
+            priority
           />
         </div>
       </section>

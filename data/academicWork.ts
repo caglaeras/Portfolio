@@ -116,7 +116,7 @@ export const academicWork: AcademicItem[] = [
     id: "sql-coaching",
     kind: "document",
     pdf: "/documents/coaching_system_presentation.pdf",
-    image: "/images/coaching_system_preview.png",
+    image: "/images/coaching_system_preview.webp",
     tags: ["SQL Server", "T-SQL", "PDF"],
     extras: [{ kind: "schema", href: "/documents/coaching_system_schema.pdf", local: true }],
     title: {
@@ -215,7 +215,7 @@ export const academicWork: AcademicItem[] = [
     id: "lesson-plan-spreadsheet",
     kind: "document",
     pdf: "/documents/6thGrade_LP2.pdf",
-    image: "/images/6thGrade_LP2_preview.png",
+    image: "/images/6thGrade_LP2_preview.webp",
     tags: ["MEB BT.6.4.1", "ISTE", "PRIMM", "PDF"],
     title: {
       tr: "Ders Planı: Acemi Dedektif ile Tablo Biçimlendirme",
@@ -266,7 +266,7 @@ export const academicWork: AcademicItem[] = [
     id: "lesson-plan-ai-literacy",
     kind: "document",
     pdf: "/documents/9thGrade_LP2.pdf",
-    image: "/images/9thGrade_LP2_preview.png",
+    image: "/images/9thGrade_LP2_preview.webp",
     tags: ["AI4K12", "CSTA", "ISTE", "PDF"],
     title: {
       tr: "Ders Planı: Yapay Zekada Temsil ve Prompt ile Arayüz Tasarımı",
@@ -317,7 +317,7 @@ export const academicWork: AcademicItem[] = [
     id: "research-proposal",
     kind: "document",
     pdf: "/documents/research_proposal.pdf",
-    image: "/images/research_proposal.png",
+    image: "/images/research_proposal.webp",
     tags: ["PDF"],
     title: {
       tr: "Akademik Araştırma Önerisi",
@@ -364,7 +364,7 @@ export const academicWork: AcademicItem[] = [
     id: "project-development",
     kind: "document",
     pdf: "/documents/project_development.pdf",
-    image: "/images/project_development.png",
+    image: "/images/project_development.webp",
     tags: ["PDF", "Figma"],
     extras: [{ kind: "mockup", href: "https://onion-read-07842130.figma.site/", preview: true }],
     title: {
@@ -414,7 +414,7 @@ export const academicWork: AcademicItem[] = [
     id: "canvas-lesson",
     kind: "document",
     pdf: "/documents/canvas_lesson.pdf",
-    image: "/images/canvas_lesson.png",
+    image: "/images/canvas_lesson.webp",
     tags: ["Canvas LMS", "PDF"],
     title: {
       tr: "Canvas ile Online Ders Hazırlığı",
