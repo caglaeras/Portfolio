@@ -34,9 +34,10 @@ const Navbar = () => {
         <button 
           className={styles.menuBtn} 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle Navigation"
+          aria-label={content.nav.menuToggle}
+          aria-expanded={isMenuOpen}
         >
-          <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
+          <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`} aria-hidden="true"></i>
         </button>
 
         <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}>

@@ -91,7 +91,7 @@ export default function GenCiftligiPage() {
             )}
             <iframe
               src={gameBuildUrl}
-              title="Gen Çiftliği Unity WebGL Game"
+              title={data.gameFrameTitle}
               className={styles.webglIframe}
               onLoad={() => setIsLoadingGame(false)}
               allowFullScreen
@@ -170,7 +170,7 @@ export default function GenCiftligiPage() {
         <div className={styles.pdfViewerWrapper}>
           <iframe
             src={`${pdfPaperUrl}#view=FitH`}
-            title="Gen Çiftliği Research Paper PDF"
+            title={data.paperFrameTitle}
             className={styles.pdfIframe}
           />
         </div>

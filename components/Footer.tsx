@@ -21,10 +21,10 @@ const Footer = () => {
             <h5 className={styles.title}>{t.contact}</h5>
             <ul className={styles.list}>
               <li className={styles.listItem}>
-                <i className="fas fa-map-marker-alt"></i> {t.location}
+                <i className="fas fa-map-marker-alt" aria-hidden="true"></i> {t.location}
               </li>
               <li className={styles.listItem}>
-                <i className="fas fa-envelope"></i> 
+                <i className="fas fa-envelope" aria-hidden="true"></i> 
                 <a href="mailto:caglaeraslan@gmail.com">caglaeraslan@gmail.com</a>
               </li>
             </ul>
@@ -33,11 +33,11 @@ const Footer = () => {
           <div className={styles.col}>
             <h5 className={styles.title}>{t.follow}</h5>
             <div className={styles.socials}>
-              <a href="https://www.linkedin.com/in/%C3%A7a%C4%9Fla-eraslan-76608b1b5/" target="_blank" rel="noopener noreferrer" className={styles.icon} title="LinkedIn">
-                <i className="fab fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/%C3%A7a%C4%9Fla-eraslan-76608b1b5/" target="_blank" rel="noopener noreferrer" className={styles.icon} title="LinkedIn" aria-label="LinkedIn">
+                <i className="fab fa-linkedin" aria-hidden="true"></i>
               </a>
-              <a href="https://github.com/caglaeras" target="_blank" rel="noopener noreferrer" className={styles.icon} title="GitHub">
-                <i className="fab fa-github"></i>
+              <a href="https://github.com/caglaeras" target="_blank" rel="noopener noreferrer" className={styles.icon} title="GitHub" aria-label="GitHub">
+                <i className="fab fa-github" aria-hidden="true"></i>
               </a>
             </div>
           </div>

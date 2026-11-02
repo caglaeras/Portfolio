@@ -1,10 +1,18 @@
 {
   "tr": {
+    "notFound": {
+      "title": "Sayfa bulunamadı",
+      "text": "Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir.",
+      "homeBtn": "Ana sayfaya dön",
+      "projectsBtn": "Projelere göz at"
+    },
     "nav": {
       "home": "Ana Sayfa",
       "vision": "Vizyon",
       "education": "Eğitim",
-      "projects": "Projeler"
+      "projects": "Projeler",
+      "menuToggle": "Gezinme menüsünü aç veya kapat",
+      "loadingProjects": "Projeler yükleniyor..."
     },
     "home": {
       "name": "Çağla Eraslan",
@@ -193,6 +201,8 @@
       "researchTitle": "3. Araştırmayı Oku",
       "downloadPdfBtn": "PDF'yi İndir",
       "dataNote": "Veriler hakkında not: Bu çalışmayı bir okulda uygulamak için gerekli izni alamadığımız için değerlendirmede rastgele üretilmiş bir veri seti kullanıldı. Ders hocamız raporu ampirik bir çalışmanın standart formatında yazmamızı istediği için yöntem ve bulgular bölümleri süreci gerçekten uygulanmış gibi anlatıyor. Rakamlar planlanan araştırma desenini ve SPSS analizini göstermek içindir; gerçek öğrencilerden elde edilmiş sonuçlar değildir.",
+      "gameFrameTitle": "Gen Çiftliği oyunu, Unity WebGL",
+      "paperFrameTitle": "Gen Çiftliği araştırma raporu, PDF",
       "playIntroDownload": "Oyunun Windows sürümü aşağıdan indirilebilir. Tarayıcıda oynanabilen WebGL sürümü hazırlandığında oyun doğrudan bu bölümde çalışacak.",
       "buildPanelTitle": "Windows Sürümü",
       "buildPanelText": "Arşivi indirip açtıktan sonra GenCiftligi.exe dosyasını çalıştırın. Oyunun çalışması için arşivdeki tüm dosyalar aynı klasörde kalmalıdır.",
@@ -284,11 +294,19 @@
     }
   },
   "en": {
+    "notFound": {
+      "title": "Page not found",
+      "text": "The page you are looking for may have moved or never existed.",
+      "homeBtn": "Back to home",
+      "projectsBtn": "Browse projects"
+    },
     "nav": {
       "home": "Home",
       "vision": "Vision",
       "education": "Education",
-      "projects": "Projects"
+      "projects": "Projects",
+      "menuToggle": "Open or close the navigation menu",
+      "loadingProjects": "Loading projects..."
     },
     "home": {
       "name": "Çağla Eraslan",
@@ -477,6 +495,8 @@
       "researchTitle": "3. Read the Research",
       "downloadPdfBtn": "Download PDF",
       "dataNote": "A note on the data: We could not obtain permission to run this study in a school, so the evaluation uses a randomly generated dataset. Our course instructor asked us to write the report in the standard format of an empirical study, so the methods and findings sections describe the procedure as if it had been carried out. The figures demonstrate the planned research design and the SPSS analysis; they are not results from real students.",
+      "gameFrameTitle": "Gen Çiftliği game, Unity WebGL",
+      "paperFrameTitle": "Gen Çiftliği research report, PDF",
       "playIntroDownload": "The Windows version of the game can be downloaded below. Once the browser-based WebGL version is ready, the game will run directly in this section.",
       "buildPanelTitle": "Windows Version",
       "buildPanelText": "After downloading and extracting the archive, run GenCiftligi.exe. All files from the archive must remain in the same folder for the game to work.",

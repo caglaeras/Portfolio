@@ -3,22 +3,39 @@ import type { Metadata } from "next";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { OG_IMAGE, PERSON, SITE_NAME, SITE_ORIGIN, SITE_URL } from "./seo";
 import "./globals.css";
 
+const SITE_TITLE = "Çağla Eraslan - Educational Technologist & Growth Marketer";
+const SITE_DESCRIPTION =
+  "Educational Technologist & Growth Marketer | Boğaziçi University CET Class of 2026, highest GPA in cohort";
+
 export const metadata: Metadata = {
-  title: "Çağla Eraslan - Educational Technologist & Growth Marketer",
+  // Gorsel ve kanonik URL'ler bu kokten cozuluyor
+  metadataBase: new URL(SITE_ORIGIN),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${PERSON}`,
+  },
   description: "Portfolio of Çağla Eraslan - Educational Technologist & Growth Marketer. Boğaziçi University CET Class of 2026, highest GPA in cohort. Unity EdTech Research & Meta Ads / n8n Automation.",
+  alternates: { canonical: `${SITE_URL}/` },
+  icons: {
+    icon: "/Portfolio/favicon.png",
+    apple: "/Portfolio/apple-touch-icon.png",
+  },
   openGraph: {
-    title: "Çağla Eraslan - Educational Technologist & Growth Marketer",
-    description: "Educational Technologist & Growth Marketer | Boğaziçi University CET Class of 2026, highest GPA in cohort",
-    url: "https://caglaeras.github.io/Portfolio",
-    siteName: "Çağla Eraslan Portfolio",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: `${SITE_URL}/`,
+    siteName: SITE_NAME,
     type: "profile",
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Çağla Eraslan - Educational Technologist & Growth Marketer",
-    description: "Educational Technologist & Growth Marketer | Boğaziçi University CET Class of 2026, highest GPA in cohort",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE.url],
   }
 };
 

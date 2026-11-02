@@ -17,17 +17,33 @@ const LanguageContext = createContext<LanguageContextProps | undefined>(undefine
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>("en");
 
+  // Depolama engelliyse (bazi gizli pencereler) okuma ve yazma istisna
+  // firlatir; dil tercihi o zaman yalnizca oturum boyunca gecerli olur.
   useEffect(() => {
-    const savedLang = localStorage.getItem("language");
-    if (savedLang === "tr" || savedLang === "en") {
-      setLanguage(savedLang);
+    try {
+      const savedLang = localStorage.getItem("language");
+      if (savedLang === "tr" || savedLang === "en") {
+        setLanguage(savedLang);
+      }
+    } catch {
+      /* tercih okunamadi, varsayilan dil kalir */
     }
   }, []);
+
+  // <html lang> dile uymazsa ekran okuyucular Turkce metni Ingilizce
+  // okur ve text-transform: uppercase "i" harfini "I" yapar ("KALITE").
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const toggleLanguage = () => {
     const newLang = language === "tr" ? "en" : "tr";
     setLanguage(newLang);
-    localStorage.setItem("language", newLang);
+    try {
+      localStorage.setItem("language", newLang);
+    } catch {
+      /* tercih kaydedilemedi, gecis yine de calisir */
+    }
   };
 
   const content = contentData[language];
