@@ -6,12 +6,12 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function ProjectsIndex() {
   const router = useRouter();
-  const { content } = useLanguage();
+  const { content, href } = useLanguage();
 
   useEffect(() => {
     // Automatically redirect to the first tab
-    router.replace("/projects/gen-ciftligi");
-  }, [router]);
+    router.replace(href("/projects/gen-ciftligi"));
+  }, [router, href]);
 
   return (
     <div style={{ minHeight: "300px", display: "flex", alignItems: "center", justifyContent: "center" }}>

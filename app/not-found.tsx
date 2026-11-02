@@ -10,7 +10,7 @@ import styles from "./NotFound.module.css";
  * menu, alt bilgi ve dil secimi burada da var.
  */
 export default function NotFound() {
-  const { content } = useLanguage();
+  const { content, href } = useLanguage();
   const t = content.notFound;
 
   return (
@@ -19,10 +19,10 @@ export default function NotFound() {
       <h1 className={styles.title}>{t.title}</h1>
       <p className={styles.text}>{t.text}</p>
       <div className={styles.actions}>
-        <Link href="/" className="btn-main">
+        <Link href={href("/")} className="btn-main">
           {t.homeBtn}
         </Link>
-        <Link href="/projects/gen-ciftligi" className={styles.secondary}>
+        <Link href={href("/projects/gen-ciftligi")} className={styles.secondary}>
           {t.projectsBtn}
         </Link>
       </div>

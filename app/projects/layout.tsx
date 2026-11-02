@@ -2,13 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "./ProjectsLayout.module.css";
 
 export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
-  const { content, language } = useLanguage();
-  const pathname = usePathname();
+  const { content, language, href, barePath } = useLanguage();
 
   const tabs = [
     { name: "Gen Çiftliği (EdTech)", path: "/projects/gen-ciftligi" },
@@ -31,11 +29,11 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
       <div className={styles.tabMenuWrapper}>
         <div className={styles.tabMenu}>
           {tabs.map((tab) => {
-            const isActive = pathname === tab.path || pathname.startsWith(tab.path + "/");
+            const isActive = barePath === tab.path || barePath.startsWith(tab.path + "/");
             return (
               <Link
                 key={tab.path}
-                href={tab.path}
+                href={href(tab.path)}
                 className={`${styles.tabBtn} ${isActive ? styles.active : ""}`}
               >
                 {tab.name}

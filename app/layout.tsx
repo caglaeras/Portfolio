@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { OG_IMAGE, PERSON, SITE_NAME, SITE_ORIGIN, SITE_URL } from "./seo";
+import { OG_IMAGE, PERSON, SITE_NAME, SITE_ORIGIN, SITE_URL, alternatesFor } from "./seo";
+import { LANGUAGE_SCRIPT } from "./language-script";
 import "./globals.css";
 
 const SITE_TITLE = "Çağla Eraslan - Educational Technologist & Growth Marketer";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     template: `%s | ${PERSON}`,
   },
   description: "Portfolio of Çağla Eraslan - Educational Technologist & Growth Marketer. Boğaziçi University CET Class of 2026, highest GPA in cohort. Unity EdTech Research & Meta Ads / n8n Automation.",
-  alternates: { canonical: `${SITE_URL}/` },
+  alternates: alternatesFor("/", "en"),
   icons: {
     icon: "/Portfolio/favicon.png",
     apple: "/Portfolio/apple-touch-icon.png",
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/`,
     siteName: SITE_NAME,
     type: "profile",
+    locale: "en_US",
+    alternateLocale: "tr_TR",
     images: [OG_IMAGE],
   },
   twitter: {
@@ -66,8 +69,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Dil ve tercih edilen dile yonlendirme: React'ten once, ilk karede */}
+        <script dangerouslySetInnerHTML={{ __html: LANGUAGE_SCRIPT }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

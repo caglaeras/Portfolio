@@ -2,13 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  const { content, language, toggleLanguage } = useLanguage();
-  const pathname = usePathname();
+  const { content, language, toggleLanguage, href, barePath } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
@@ -19,14 +17,14 @@ const Navbar = () => {
   ];
 
   const isActive = (path: string) => {
-    if (path === "/" && pathname !== "/") return false;
-    return pathname.startsWith(path);
+    if (path === "/") return barePath === "/";
+    return barePath === path || barePath.startsWith(path + "/");
   };
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href="/" className={styles.brand}>
+        <Link href={href("/")} className={styles.brand}>
           Çağla Eraslan
         </Link>
 
@@ -45,7 +43,7 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <li key={link.path} className={styles.navItem}>
                 <Link 
-                  href={link.path} 
+                  href={href(link.path)} 
                   className={`${styles.navLink} ${isActive(link.path) ? styles.active : ""}`}
                   onClick={() => setIsMenuOpen(false)}
                 >

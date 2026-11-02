@@ -8,7 +8,7 @@ import Skills from "@/components/Skills";
 import styles from "./Home.module.css";
 
 export default function Home() {
-  const { content, language } = useLanguage();
+  const { content, language, href } = useLanguage();
   const t = content.home;
 
   return (
@@ -24,10 +24,10 @@ export default function Home() {
 
           {/* Action CTAs */}
           <div className={styles.buttons}>
-            <Link href="/projects/gen-ciftligi" className="btn-main">
+            <Link href={href("/projects/gen-ciftligi")} className="btn-main">
               {t.tryGameBtn}
             </Link>
-            <Link href="/projects/growth-automation" className="btn-main">
+            <Link href={href("/projects/growth-automation")} className="btn-main">
               {t.growthWorkBtn}
             </Link>
             <a
@@ -62,7 +62,7 @@ export default function Home() {
       <section className={styles.featuredGrid} style={{ marginTop: "60px" }}>
         
         {/* Vision Feature */}
-        <Link href="/vizyon" className={styles.featureCard}>
+        <Link href={href("/vizyon")} className={styles.featureCard}>
           <i className={`fas fa-leaf ${styles.featureIcon}`}></i>
           <h3 className={styles.featureTitle}>{content.nav.vision}</h3>
           <p className={styles.featureDesc}>
@@ -71,7 +71,7 @@ export default function Home() {
         </Link>
         
         {/* Education Feature */}
-        <Link href="/education" className={styles.featureCard}>
+        <Link href={href("/education")} className={styles.featureCard}>
           <i className={`fas fa-graduation-cap ${styles.featureIcon}`}></i>
           <h3 className={styles.featureTitle}>{content.nav.education}</h3>
           <p className={styles.featureDesc}>
@@ -80,7 +80,7 @@ export default function Home() {
         </Link>
 
         {/* Projects Feature */}
-        <Link href="/projects" className={styles.featureCard}>
+        <Link href={href("/projects")} className={styles.featureCard}>
           <i className={`fas fa-laptop-code ${styles.featureIcon}`}></i>
           <h3 className={styles.featureTitle}>{content.nav.projects}</h3>
           <p className={styles.featureDesc}>
