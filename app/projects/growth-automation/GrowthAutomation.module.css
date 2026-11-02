@@ -336,13 +336,10 @@
 
 /* --- Sonuc olcumleri --- */
 
-/*
- * Degerler henuz olculmedi. Kesikli cerceve ve tek aralikli yazi tipi,
- * bunlarin doldurulacak yer tutucular oldugunu belli etmek icin.
- */
+/* Kart sayisi kadar kolon: tek olcum varken kart satiri doldurur. */
 .metricGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
   margin-top: 25px;
 }
@@ -363,17 +360,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--main-color);
-}
-
-.metricValue {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.78rem;
-  line-height: 1.5;
-  color: var(--secondary-text);
-  border: 1px dashed var(--main-color);
-  border-radius: 4px;
-  padding: 9px 11px;
-  opacity: 0.85;
 }
 
 /* Olculmus deger: yer tutucunun kesikli cercevesi yerine duz vurgu. */

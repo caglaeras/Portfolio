@@ -83,12 +83,11 @@ export default function GrowthAutomationPage() {
     { code: "ESMO", name: "European Society for Medical Oncology" },
   ];
 
-  /* Yer tutucular kesikli cerceveyle, olculmus deger duz bicimde cikar. */
-  const metrics = [
-    { label: data.m1Label, value: data.m1Value },
-    { label: data.m2Label, value: data.m2Value },
-    { label: data.m3Label, value: data.m3Value },
-  ].map((m) => ({ ...m, pending: m.value.startsWith("[METRIC:") }));
+  /*
+   * Yalnizca olculmus degerler burada duruyor. Olculmemis bir metrik, yer
+   * tutucu metniyle yayinda durmaktansa listede hic bulunmuyor.
+   */
+  const metrics = [{ label: data.m3Label, value: data.m3Value }];
 
   const slots = [data.slot1, data.slot2, data.slot3, data.slot4, data.slot5, data.slot6, data.slot7];
 
@@ -176,7 +175,7 @@ export default function GrowthAutomationPage() {
           {metrics.map((m) => (
             <div key={m.label} className={styles.metricCard}>
               <span className={styles.metricLabel}>{m.label}</span>
-              <span className={m.pending ? styles.metricValue : styles.metricFilled}>{m.value}</span>
+              <span className={styles.metricFilled}>{m.value}</span>
             </div>
           ))}
         </div>
