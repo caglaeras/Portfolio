@@ -80,7 +80,7 @@ export const marketingVideos: MarketingVideo[] = [
     source: "youtube",
     videoId: "gMKkm5kcke8",
     label: { tr: "YouTube Shorts 1", en: "YouTube Shorts 1" },
-    note: { tr: "Tanıtım videosu 1", en: "Promotional video 1" },
+    note: { tr: "Tanıtım videosu 1.", en: "Promotional video 1." },
   },
   {
     id: "yt2",
@@ -88,7 +88,7 @@ export const marketingVideos: MarketingVideo[] = [
     source: "youtube",
     videoId: "X3o4-4pyn2g",
     label: { tr: "YouTube Shorts 2", en: "YouTube Shorts 2" },
-    note: { tr: "Tanıtım videosu 2", en: "Promotional video 2" },
+    note: { tr: "Tanıtım videosu 2.", en: "Promotional video 2." },
   },
   {
     id: "yt3",
@@ -96,7 +96,7 @@ export const marketingVideos: MarketingVideo[] = [
     source: "youtube",
     videoId: "gynXSZEaN98",
     label: { tr: "YouTube Shorts 3", en: "YouTube Shorts 3" },
-    note: { tr: "Tanıtım videosu 3", en: "Promotional video 3" },
+    note: { tr: "Tanıtım videosu 3.", en: "Promotional video 3." },
   },
   {
     id: "yt4",
@@ -104,7 +104,7 @@ export const marketingVideos: MarketingVideo[] = [
     source: "youtube",
     videoId: "ct7o0Q4l6sk",
     label: { tr: "YouTube Shorts 4", en: "YouTube Shorts 4" },
-    note: { tr: "Tanıtım videosu 4", en: "Promotional video 4" },
+    note: { tr: "Tanıtım videosu 4.", en: "Promotional video 4." },
   },
   {
     id: "yt5",
@@ -112,7 +112,7 @@ export const marketingVideos: MarketingVideo[] = [
     source: "youtube",
     videoId: "AITJHwzmJnI",
     label: { tr: "YouTube Shorts 5", en: "YouTube Shorts 5" },
-    note: { tr: "Tanıtım videosu 5", en: "Promotional video 5" },
+    note: { tr: "Tanıtım videosu 5.", en: "Promotional video 5." },
   },
   {
     id: "yt6",
@@ -120,7 +120,7 @@ export const marketingVideos: MarketingVideo[] = [
     source: "youtube",
     videoId: "dMhl93xgxQ4",
     label: { tr: "YouTube Shorts 6", en: "YouTube Shorts 6" },
-    note: { tr: "Tanıtım videosu 6", en: "Promotional video 6" },
+    note: { tr: "Tanıtım videosu 6.", en: "Promotional video 6." },
   },
   {
     id: "yt7",
@@ -128,7 +128,7 @@ export const marketingVideos: MarketingVideo[] = [
     source: "youtube",
     videoId: "lKKu1GCBBN8",
     label: { tr: "YouTube Shorts 7", en: "YouTube Shorts 7" },
-    note: { tr: "Tanıtım videosu 7", en: "Promotional video 7" },
+    note: { tr: "Tanıtım videosu 7.", en: "Promotional video 7." },
   },
 ];
 
@@ -141,7 +141,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 1024,
     height: 768,
     label: { tr: "Afiş Örneği 1", en: "Poster Example 1" },
-    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster example created for a game promotion." },
+    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster created to promote a game." },
   },
   {
     id: "img2",
@@ -150,7 +150,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 1024,
     height: 768,
     label: { tr: "Afiş Örneği 2", en: "Poster Example 2" },
-    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster example created for a game promotion." },
+    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster created to promote a game." },
   },
   {
     id: "img3",
@@ -159,7 +159,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 1024,
     height: 768,
     label: { tr: "Afiş Örneği 3", en: "Poster Example 3" },
-    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster example created for a game promotion." },
+    note: { tr: "Oyun tanıtımı için hazırlanmış bir afiş örneği.", en: "A poster created to promote a game." },
   },
   {
     id: "img6",
@@ -168,7 +168,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 1080,
     height: 1080,
     label: { tr: "Yayın Öncesi Duyuru", en: "Pre-Release Announcement" },
-    note: { tr: "Ön sipariş ile alınan oyunumuz için yapılan bir duyuru görseli.", en: "Announcement visual for an upcoming pre-order game." },
+    note: { tr: "Ön siparişle alınan oyunumuz için hazırlanmış duyuru görseli.", en: "An announcement visual created for our game, which was available for pre-order." },
   },
   {
     id: "img7",
@@ -177,7 +177,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 1024,
     height: 768,
     label: { tr: "Blog Duyurusu", en: "Blog Announcement" },
-    note: { tr: "Yayına alınan blogları duyurmak için hazırlanmış bir görsel", en: "Visual prepared to announce newly published blog posts." },
+    note: { tr: "Yayımlanan blogları duyurmak için hazırlanmış bir görsel.", en: "A visual created to announce published blog posts." },
   },
   {
     id: "img8",
@@ -186,7 +186,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 1080,
     height: 1920,
     label: { tr: "AppStore Görseli", en: "AppStore Visual" },
-    note: { tr: "Appstore'a eklenmek üzere hazırlanmış görsel.", en: "Visual prepared to be featured on the AppStore." },
+    note: { tr: "Appstore'a eklenmek üzere hazırlanmış görsel.", en: "A visual created for the App Store." },
   },
   {
     id: "img9",
@@ -194,8 +194,8 @@ export const marketingVisuals: MarketingVisual[] = [
     src: "/images/infografik.png",
     width: 800,
     height: 2000,
-    label: { tr: "İnfografik Çalışması", en: "Infographic Work" },
-    note: { tr: "Veriler ile hazırlanmış bir infografik örneği", en: "An infographic example prepared with data analysis." },
+    label: { tr: "İnfografik Çalışması", en: "Infographic Design" },
+    note: { tr: "Verilerle hazırlanmış bir infografik örneği.", en: "An infographic created with data." },
   },
   {
     id: "img10",
@@ -204,7 +204,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 1080,
     height: 1080,
     label: { tr: "Yeni Mod Duyurusu", en: "New Mode Announcement" },
-    note: { tr: "Oyuna yeni eklenen bir mod için yapılan duyuru görseli", en: "Announcement visual for a new game mode." },
+    note: { tr: "Oyuna yeni eklenen bir mod için hazırlanmış duyuru görseli.", en: "An announcement visual for a newly added game mode." },
   },
   {
     id: "img11",
@@ -212,8 +212,8 @@ export const marketingVisuals: MarketingVisual[] = [
     src: "/images/website_announcement.gif",
     width: 800,
     height: 800,
-    label: { tr: "Websitesi Tanıtımı", en: "Website Launch" },
-    note: { tr: "Yayına aldığımız websitesi için hazırlanan duyuru", en: "Announcement prepared to celebrate our website launch." },
+    label: { tr: "Web Sitesi Tanıtımı", en: "Website Promotion" },
+    note: { tr: "Yayına aldığımız web sitesi için hazırlanmış duyuru.", en: "An announcement created for a website we launched." },
   },
   {
     id: "img12",
@@ -222,7 +222,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 810,
     height: 1012,
     label: { tr: "Sosyal Medya İçeriği", en: "Social Media Content" },
-    note: { tr: "Verilen hizmete dair ilgi çekici bir içerik fikri", en: "An engaging content idea for a service." },
+    note: { tr: "Sunulan hizmetle ilgili ilgi çekici bir içerik fikri.", en: "An engaging content idea about the service provided." },
   },
   {
     id: "img13",
@@ -230,8 +230,8 @@ export const marketingVisuals: MarketingVisual[] = [
     src: "/images/dr.gif",
     width: 810,
     height: 1012,
-    label: { tr: "Uygulama Tanıtım", en: "App Promotion" },
-    note: { tr: "App tanıtımı için ilgi çekici bir içerik", en: "Engaging visual for app promotion." },
+    label: { tr: "Uygulama Tanıtımı", en: "App Promotion" },
+    note: { tr: "App tanıtımı için ilgi çekici bir içerik.", en: "Engaging content created to promote an app." },
   },
   {
     id: "img14",
@@ -240,7 +240,7 @@ export const marketingVisuals: MarketingVisual[] = [
     width: 810,
     height: 1012,
     label: { tr: "Sosyal Medya İçeriği", en: "Social Media Content" },
-    note: { tr: "Motivasyonel ilgi çekici bir içerik fikri", en: "A motivational and engaging content idea." },
+    note: { tr: "İlgi çekici bir motivasyon içeriği fikri.", en: "An engaging motivational content idea." },
   },
 ];
 
